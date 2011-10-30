@@ -1,0 +1,19 @@
+﻿<Window x:Class="GUIComponent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:vm="clr-namespace:GUIComponent" 
+        Title="MainWindow" Height="350" Width="525">
+
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <StackPanel>
+        <TextBox Text="{Binding ReceivedData.Value}"/>
+        
+        <TextBox Text="{Binding SendData.Value}"/>
+        <Button Content="送信" Command="{Binding SendCommand}"/>
+        
+    </StackPanel>
+</Window>

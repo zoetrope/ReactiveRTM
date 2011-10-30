@@ -1,0 +1,10 @@
+module ReactiveRTM
+{
+  typedef sequence<wstring> WStringList;
+  exception SimpleServiceException { wstring description; };
+  
+  interface SimpleService
+  {
+    WStringList invoke(in wstring operation, in WStringList args) raises(SimpleServiceException);
+  };
+};

@@ -1,0 +1,90 @@
+﻿<#@ template language="C#" #>
+<#@ template language="C#" debug="true" #>
+<#@ assembly Name="System.Core.dll" #>
+<#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET.1.9.0\IIOPChannel.dll" #>
+<#@ assembly Name="$(SolutionDir)\idl\RTC.IDL.dll" #>
+<#@ assembly Name="$(SolutionDir)\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Reflection" #>
+<#
+    // 設定：ここに生成したいクラス(のTypeをFullNameで)を足してください(以下の4つは例)
+    // クラスによってはassemblyの増減が必要です、WPF/Silverlightなどはフルパス直書きしてください
+    var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes();
+#>
+using System.Linq;
+using System.Collections.Generic;
+using System;
+using System.Reactive.Linq;
+
+<# foreach(var x in GenerateTemplates(types)) {#>
+ 
+namespace <#= x.Namespace #>
+{
+    <# foreach(var ct in x.ClassTemplates) {#>
+ 
+    internal static class <#= ct.Classname #>AsyncExtensions
+    {
+        <# foreach(var method in ct.MethodTemplates) {#>
+ 
+        public static IObservable<<#= method.Return #>> <#= method.Name #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>, double timeoutSeconds=5)
+        {
+            return Observable.Start(()=>target.<#= method.Name #>(<#= method.CallArgs #>))
+                      .Timeout(TimeSpan.FromSeconds(timeoutSeconds));
+        }
+        <# } #>
+    }
+    <# }#>
+}
+<# }#>
+<#+
+
+        IEnumerable<ObservableTemplate> GenerateTemplates(Type[] types)
+        {
+            return types.Where(t => t.IsInterface && t.GetInterfaces().Any(i => i == typeof(Ch.Elca.Iiop.Idl.IIdlEntity)))
+                .Distinct()
+                .GroupBy(t => t.Namespace)
+                .Select(g => new ObservableTemplate
+                {
+                    Namespace = g.Key,
+                    ClassTemplates = g.Select(t => new ClassTemplate(t))
+                        .Where(t => t.MethodTemplates.Any())
+                        .ToArray()
+                })
+                .Where(a => a.ClassTemplates.Any())
+                .OrderBy(a => a.Namespace);
+        }
+
+        class ObservableTemplate
+        {
+            public string Namespace;
+            public ClassTemplate[] ClassTemplates;
+        }
+
+        class ClassTemplate
+        {
+            public string Classname;
+            public MethodTemplate[] MethodTemplates;
+
+            public ClassTemplate(Type type)
+            {
+                Classname = type.Name;
+                MethodTemplates = type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                    .Select(a => new MethodTemplate
+                    {
+                        Name = a.Name,
+                        Return = a.ReturnType == typeof(void) ? typeof(System.Reactive.Unit).FullName : a.ReturnType.FullName,
+                        DecArgs = a.GetParameters().Count() != 0 ? "," + string.Join(",", a.GetParameters().Select(p => p.ParameterType.ToString().Replace("&","") + " " + p.Name)) : string.Empty,
+                        CallArgs = string.Join(",", a.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + p.Name))
+                    })
+                    .ToArray();
+            }
+        }
+
+        class MethodTemplate
+        {
+            public string Name, DecArgs,CallArgs, Return;
+        }
+
+#>
