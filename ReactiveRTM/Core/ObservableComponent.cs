@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using OpenRTM;
 using ReactiveRTM.Adapter;
+using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
 using org.omg.SDOPackage;
@@ -21,43 +22,12 @@ namespace ReactiveRTM.Core
         public event EventHandler<ConfigurationEventArgs> ConfigurationStatusChanged;
         public event EventHandler HeartBeatReceived;
         
-        public ReturnCode_t Activate()
-        {
-            return Component.get_owned_contexts().First().activate_component(Component);
-        }
-
-        public ReturnCode_t Deactivate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ReturnCode_t Reset()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ReturnCode_t Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public LifeCycleState State
-        {
-            get { return Component.get_owned_contexts().First().get_component_state(Component); }
-        }
-
-        public ComponentProfile Profile
-        {
-            get { return Component.get_component_profile(); }
-        }
-
-        public DataFlowComponent Component { get; private set; }
 
         private ServiceProfile _profile;
 
         public ObservableComponent(DataFlowComponent comp)
         {
-            Component = comp;
+            _component = comp;
  
             var observer = new ComponentObserverAdapter();
 
@@ -79,6 +49,12 @@ namespace ReactiveRTM.Core
                 observer.Subscribe(Notify);
             }
 
+        }
+
+        private DataFlowComponent _component;
+        public DataFlowComponent Component
+        {
+            get { return _component; }
         }
 
         public void Notify(UpdateStatus status)
@@ -112,7 +88,7 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ComponentProfileChangedEventArgs() { Profile = x }));
 
         }
@@ -123,7 +99,7 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ConfigurationEventArgs()));
 
         }
@@ -134,7 +110,7 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ECStatusChangedEventArgs()));
 
         }
@@ -145,7 +121,7 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new HandledEventArgs()));
 
         }
@@ -156,7 +132,7 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new PortStatusChangedEventArgs()));
 
         }

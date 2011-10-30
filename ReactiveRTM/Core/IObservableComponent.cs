@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reactive.Linq;
+using ReactiveRTM.Corba;
 using omg.org.RTC;
+using DataFlowComponent = openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {
@@ -70,14 +72,8 @@ namespace ReactiveRTM.Core
         event EventHandler<PortStatusChangedEventArgs> PortStatusChanged;
         event EventHandler<ConfigurationEventArgs> ConfigurationStatusChanged;
         event EventHandler HeartBeatReceived;
+        DataFlowComponent Component { get; }
 
-        ReturnCode_t Activate();
-        ReturnCode_t Deactivate();
-        ReturnCode_t Reset();
-        ReturnCode_t Exit();
-
-        LifeCycleState State { get; }
-        ComponentProfile Profile { get; }
     }
 
 

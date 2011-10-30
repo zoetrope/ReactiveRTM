@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using omg.org.CosNaming.NamingContext_package;
 using omg.org.RTC;

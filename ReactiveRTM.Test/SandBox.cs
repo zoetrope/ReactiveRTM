@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RTC;
 
@@ -26,5 +30,42 @@ namespace ReactiveRTM.Test
             data2.data[1].Is(2);
             data2.data[2].Is(3);
         }
+
+        [TestMethod]
+        public void 自作する必要はないのか()
+        {
+
+            var scheduler = new EventLoopScheduler();
+
+
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .ObserveOn(scheduler)
+                .Subscribe(_ =>
+                {
+                    Console.WriteLine("entry1");
+                    Thread.Sleep(500);
+                    Console.WriteLine("exit1");
+                });
+
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .ObserveOn(scheduler)
+                .Subscribe(_ =>
+                {
+                    Console.WriteLine("entry2");
+                    Thread.Sleep(300);
+                    Console.WriteLine("exit2");
+                });
+
+            Thread.Sleep(10000);
+        }
+
+        [TestMethod]
+        public void Publishを理解()
+        {
+            var subject = new Subject<int>();
+
+            
+        }
+
     }
 }

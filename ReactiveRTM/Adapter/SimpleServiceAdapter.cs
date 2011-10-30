@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ReactiveRTM.IDL;
 
 namespace ReactiveRTM.Adapter
 {
-    public class SimpleServiceAdapter : MarshalByRefObject, SimpleService
+    public class SimpleServiceAdapter : MarshalByRefObject, ISimpleService
     {
         public override object InitializeLifetimeService()
         {
@@ -19,7 +20,7 @@ namespace ReactiveRTM.Adapter
             _callback = callback;
         }
 
-        public string[] invoke(string operation, string[] args)
+        public string[] Invoke(string operation, string[] args)
         {
             return new string[] { _callback(operation, args) };
         }

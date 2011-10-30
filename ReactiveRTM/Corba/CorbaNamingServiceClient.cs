@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ch.Elca.Iiop.Services;
+using ReactiveRTM.Core;
 using omg.org.CosNaming;
 using omg.org.CosNaming.NamingContext_package;
 
-namespace ReactiveRTM.Core
+namespace ReactiveRTM.Corba
 {
     /// <summary>
     /// CORBAのネーミングサービスを利用するためのクラス
@@ -87,7 +88,7 @@ namespace ReactiveRTM.Core
                 MarshalByRefObject obj;
                 try
                 {
-                    obj = _rootContext.resolve(ToName(name));
+                    obj = _rootContext.resolve(ToNameComponentArray(name));
                 }
                 catch (NotFound)
                 {
@@ -128,10 +129,10 @@ namespace ReactiveRTM.Core
         /// <param name="obj">登録するコンポーネントの参照</param>
         public void RegisterObject(string name, MarshalByRefObject obj)
         {
-            Rebind(ToName(name), obj);
+            BindObject(ToNameComponentArray(name), obj);
         }
 
-        private void Rebind(NameComponent[] name, MarshalByRefObject obj)
+        private void BindObject(NameComponent[] name, MarshalByRefObject obj)
         {
             try
             {
@@ -139,17 +140,17 @@ namespace ReactiveRTM.Core
             }
             catch (NotFound)
             {
-                RebindRecursive(_rootContext, name, obj);
+                RecursiveBindObject(_rootContext, name, obj);
 
             }
             catch (CannotProceed ex)
             {
-                RebindRecursive(ex.cxt, ex.rest_of_name, obj);
+                RecursiveBindObject(ex.cxt, ex.rest_of_name, obj);
 
             }
         }
 
-        private void RebindRecursive(NamingContext context, NameComponent[] name, MarshalByRefObject obj)
+        private void RecursiveBindObject(NamingContext context, NameComponent[] name, MarshalByRefObject obj)
         {
             int len = name.Length;
             NamingContext cxt = context;
@@ -159,7 +160,7 @@ namespace ReactiveRTM.Core
                 if (i == len - 1)
                 {
                     var objectName = new[] { name[len - 1] };
-                    Rebind(objectName, obj);
+                    BindObject(objectName, obj);
                 }
                 else
                 {
@@ -192,7 +193,7 @@ namespace ReactiveRTM.Core
         /// <param name="name">登録されている名前</param>
         public void UnregisterObject(string name)
         {
-            _rootContext.unbind(ToName(name));
+            _rootContext.unbind(ToNameComponentArray(name));
         }
 
         
@@ -203,7 +204,7 @@ namespace ReactiveRTM.Core
         /// <returns>取得したコンポーネント</returns>
         public TObjectType GetObject<TObjectType>(string name) where TObjectType : class
         {
-            var obj = _rootContext.resolve(ToName(name));
+            var obj = _rootContext.resolve(ToNameComponentArray(name));
 
             omg.org.CORBA.OrbServices orb = omg.org.CORBA.OrbServices.GetSingleton();
             if (!orb.is_a(obj, typeof (TObjectType)))
@@ -229,7 +230,7 @@ namespace ReactiveRTM.Core
         /// </summary>
         public bool IsA<TObject>(string name)
         {
-            var obj = _rootContext.resolve(ToName(name));
+            var obj = _rootContext.resolve(ToNameComponentArray(name));
 
             try
             {
@@ -277,7 +278,7 @@ namespace ReactiveRTM.Core
 
                         // 一つ下の階層のネーミングコンテキストを取得する
                         MarshalByRefObject obj = context.resolve(bindList[i].binding_name);
-                        NamingContext nc = (NamingContext) obj;
+                        var nc = (NamingContext) obj;
 
                         // 次の階層へ
                         foreach (var n in GetNameTreeRecursive(nc, newName))
@@ -313,7 +314,7 @@ namespace ReactiveRTM.Core
         public char TreeDelimiter { get; set; }
 
 
-        private NameComponent[] ToName(string stringName)
+        private NameComponent[] ToNameComponentArray(string stringName)
         {
             if (stringName == string.Empty)
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ReactiveRTM.Core
+namespace ReactiveRTM.Corba
 {
     public interface INamingServiceClient : IDisposable
     {

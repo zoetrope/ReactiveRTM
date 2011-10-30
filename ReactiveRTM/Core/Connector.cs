@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
 using org.omg.SDOPackage;
@@ -16,13 +17,13 @@ namespace ReactiveRTM.Core
         ///   ポート間の接続を行う
         /// </summary>
         /// <returns>実行の成否</returns>
-        ReturnCode_t Connect();
+        IObservable<ReturnCode_t> ConnectAsync();
 
         /// <summary>
         ///   ポート間の切断を行う
         /// </summary>
         /// <returns>実行の成否</returns>
-        ReturnCode_t Disconnect();
+        IObservable<ReturnCode_t> DisconnectAsync();
 
         /// <summary>
         ///   接続済みかどうかを取得するプロパティ
@@ -150,20 +151,21 @@ namespace ReactiveRTM.Core
         }
 
         /// <inheritdoc/>
-        public ReturnCode_t Connect()
+        public IObservable<ReturnCode_t> ConnectAsync()
         {
-            if (IsConnected) return ReturnCode_t.PRECONDITION_NOT_MET;
+            if (IsConnected) return Observable.Return(ReturnCode_t.PRECONDITION_NOT_MET);
 
             ReturnCode_t ret = _portServices[0].connect(ref _profile);
             _connectorId = _profile.connector_id;
             if (ret == ReturnCode_t.RTC_OK) IsConnected = true;
-            return ret;
+            //todo:仮実装。
+            return Observable.Return(ret);
         }
 
         /// <inheritdoc/>
-        public ReturnCode_t Disconnect()
+        public IObservable<ReturnCode_t> DisconnectAsync()
         {
-            if (!IsConnected) return ReturnCode_t.PRECONDITION_NOT_MET;
+            if (!IsConnected) return Observable.Return(ReturnCode_t.PRECONDITION_NOT_MET);
 
             var ret = _portServices[0].disconnect(_connectorId);
             if (ret == ReturnCode_t.RTC_OK)
@@ -184,7 +186,8 @@ namespace ReactiveRTM.Core
 
                 _profile.properties = props.ToArray();
             }
-            return ret;
+            //todo:仮実装。
+            return Observable.Return(ret);
         }
 
         /// <inheritdoc/>

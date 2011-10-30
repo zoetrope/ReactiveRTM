@@ -45,16 +45,17 @@ namespace ReactiveRTM.Core
         }
 
 
-        public void Write(TDataType data)
+        public PortStatus Write(TDataType data)
         {
             var stream = new MemoryStream();
             _serializer.Serialize(data, stream);
-            _proxy.put(stream.ToArray());
+            return _proxy.put(stream.ToArray());
         }
 
-        public void WriteAsync(TDataType data)
+        public IObservable<PortStatus> WriteAsync(TDataType data)
         {
-            Observable.Start(() => Write(data));
+            return Observable.Defer(() => Observable.Start(() => Write(data)));
+            
         }
 
 

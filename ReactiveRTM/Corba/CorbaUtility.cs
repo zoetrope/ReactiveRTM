@@ -25,6 +25,16 @@ namespace ReactiveRTM.Corba
             }
         }
 
+        public static TimeSpan DefaultTimeout { get; set; }
+
+        static CorbaUtility()
+		{
+		    DefaultTimeout = TimeSpan.FromSeconds(5);
+
+            Initialize();
+        }
+
+
         public static void Destroy()
         {
             ChannelServices.UnregisterChannel(_channel);

@@ -12,19 +12,19 @@ namespace ReactiveRTM.Test
     public class SimpleServiceTest
     {
         [TestMethod]
-        public void 確認()
+        public void 呼び出し確認()
         {
             dynamic cons = new SimpleServiceConsumer("test");
             var prov = new SimpleServiceProvider("test");
 
-            prov.RegisterMethod("Test", (double i) => Console.WriteLine(i));
+            prov.RegisterMethod("Test", (double i) => i * i);
 
             var dummy = prov.AdapterForTest;
 
-            cons.SetDummy(dummy);
+            cons.SetDummy((MarshalByRefObject)dummy);
 
-            cons.Test(1234);
-            
+            double ret = cons.Test(10);
+            ret.Is(100);
         }
 
 

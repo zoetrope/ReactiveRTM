@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Codeplex.Data;
 using ReactiveRTM.Adapter;
+using ReactiveRTM.IDL;
 
 namespace ReactiveRTM.Core
 {
@@ -14,9 +15,9 @@ namespace ReactiveRTM.Core
             _adapter = new SimpleServiceAdapter(Invoke);
         }
 
-        private SimpleService _adapter;
+        private ISimpleService _adapter;
 
-        public SimpleService AdapterForTest
+        public ISimpleService AdapterForTest
         {
             get { return _adapter; }
         }

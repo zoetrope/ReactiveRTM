@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 using System.Text;
 using ReactiveRTM.Adapter;
+using ReactiveRTM.Corba;
 using omg.org.RTC;
+using DataFlowComponent = openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {
@@ -17,7 +20,7 @@ namespace ReactiveRTM.Core
 
             ExecutionContextScheduler = new EventLoopScheduler();
 
-            Component = new DataFlowComponentAdapter(this,ExecutionContextScheduler, name);
+            _component = new DataFlowComponentAdapter(this, ExecutionContextScheduler, name);
 
             Component.initialize();
 
@@ -27,7 +30,8 @@ namespace ReactiveRTM.Core
 
         public IScheduler ExecutionContextScheduler { get; set; }
 
-        internal DataFlowComponentAdapter Component { get; set; }
+        private DataFlowComponentAdapter _component;
+
 
         internal void RaiseStateChanged(LifeCycleState state)
         {
@@ -40,35 +44,17 @@ namespace ReactiveRTM.Core
 
         }
 
-        public ReturnCode_t Activate()
+        public class ReturnCodeException : Exception
         {
-            return Component.get_context(0).activate_component(Component);
+            public ReturnCodeException(ReturnCode_t ret, string message = "")
+                :base(message)
+            {
+                ReturnCode = ret;
+            }
+
+            public ReturnCode_t ReturnCode { get; set; }
         }
 
-        public ReturnCode_t Deactivate()
-        {
-            return Component.get_context(0).deactivate_component(Component);
-        }
-
-        public ReturnCode_t Reset()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ReturnCode_t Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public LifeCycleState State
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public ComponentProfile Profile
-        {
-            get { throw new NotImplementedException(); }
-        }
 
 
         public event EventHandler<ComponentProfileChangedEventArgs> ComponentProfileChanged;
@@ -78,9 +64,14 @@ namespace ReactiveRTM.Core
         public event EventHandler<ConfigurationEventArgs> ConfigurationStatusChanged;
         public event EventHandler HeartBeatReceived;
 
+        public DataFlowComponent Component
+        {
+            get { return _component; }
+        }
+
         public void AddPort(ReactivePortBase reactivePort)
         {
-            Component.AddPort(reactivePort);
+            _component.AddPort(reactivePort);
         }
 
         #region Implementation of IComponentActionListener

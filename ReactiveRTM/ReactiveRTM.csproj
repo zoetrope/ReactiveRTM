@@ -35,7 +35,7 @@
     <Reference Include="IIOPChannel, Version=1.9.1.0, Culture=neutral, PublicKeyToken=dfc4c6ec4b887119, processorArchitecture=MSIL">
       <HintPath>..\Lib\IIOP.NET.1.9.0\IIOPChannel.dll</HintPath>
     </Reference>
-    <Reference Include="RTC.IDL">
+    <Reference Include="RTC.IDL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\idl\RTC.IDL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -51,12 +51,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Corba\RemotingNamingServiceClient.cs" />
     <Compile Include="Core\ComponentProfileHolder.cs" />
     <Compile Include="Core\ConnectorProfileHolder.cs" />
     <Compile Include="Core\IConnectable.cs" />
     <Compile Include="Core\PortProfileHolder.cs" />
     <Compile Include="Core\ReactiveComponentBase.cs" />
     <Compile Include="Core\SimpleComponent.cs" />
+    <Compile Include="Extensions\ObservableComponentExtensions.cs" />
+    <Compile Include="IDL\ISimpleService.cs" />
     <Compile Include="Mock\ExecutionContextMock.cs" />
     <Compile Include="Mock\MockFactory.cs" />
     <Compile Include="Mock\MockProxy.cs" />
@@ -81,11 +84,11 @@
     <Compile Include="Core\ComponentActionListener.cs" />
     <Compile Include="Core\Connector.cs" />
     <Compile Include="Extensions\ConnectorProfileExtensions.cs" />
-    <Compile Include="Core\CorbaNamingServiceClient.cs" />
+    <Compile Include="Corba\CorbaNamingServiceClient.cs" />
     <Compile Include="Corba\CorbaUtility.cs" />
     <Compile Include="Core\DelegateInPortCdr.cs" />
     <Compile Include="DynamicJson.cs" />
-    <Compile Include="Core\INamingServiceClient.cs" />
+    <Compile Include="Corba\INamingServiceClient.cs" />
     <Compile Include="Core\IObservableComponent.cs" />
     <Compile Include="Extensions\NameValueExtensions.cs" />
     <Compile Include="Utility\NativeTime.cs" />
