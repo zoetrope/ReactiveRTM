@@ -21,17 +21,20 @@ namespace ReactiveRTM.Adapter
         }
 
         private IComponentActionListener _listener;
-        private IScheduler _scheduler;
         private ConfigurationAdapter _configuration;
 
-        public DataFlowComponentAdapter(IComponentActionListener listener,IScheduler scheduler, string name)
+        public DataFlowComponentAdapter(IComponentActionListener listener, string name)
         {
-            _scheduler = scheduler;
             _profile = new ComponentProfile(name, name, "", "", "", "", new PortProfile[0], null, new NameValue[0]);
             
             _listener = listener;
 
             _configuration = new ConfigurationAdapter(this);
+        }
+        
+        public IScheduler ExecutionContextScheduler {
+            get { return _context.ExecutionContextScheduler; }
+            set { _context.ExecutionContextScheduler = value; }
         }
 
         private List<ComponentObserver> _observers = new List<ComponentObserver>();
@@ -46,7 +49,8 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t on_initialize()
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => 
+                observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout,ExecutionContextScheduler));
             return _listener.RaiseOnInitialize();
         }
 
@@ -67,19 +71,19 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t on_activated(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ACTIVE:0", CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ACTIVE:0", CorbaUtility.DefaultTimeout, ExecutionContextScheduler));
             return _listener.RaiseOnActivated(exec_handle);
         }
 
         public ReturnCode_t on_deactivated(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout, ExecutionContextScheduler));
             return _listener.RaiseOnDeactivated(exec_handle);
         }
 
         public ReturnCode_t on_aborting(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ERROR:0", CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ERROR:0", CorbaUtility.DefaultTimeout, ExecutionContextScheduler));
             return _listener.RaiseOnAborting(exec_handle);
             
         }
@@ -91,13 +95,13 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t on_reset(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0", CorbaUtility.DefaultTimeout, ExecutionContextScheduler));
             return _listener.RaiseOnReset(exec_handle);
         }
 
         public ReturnCode_t initialize()
         {
-            _context = new ExecutionContextServiceAdapter(_scheduler);
+            _context = new ExecutionContextServiceAdapter();
             
 
             _context.add_component(this);

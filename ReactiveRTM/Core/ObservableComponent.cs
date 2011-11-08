@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using OpenRTM;
 using ReactiveRTM.Adapter;
@@ -57,7 +58,13 @@ namespace ReactiveRTM.Core
             get { return _component; }
         }
 
-        public void Notify(UpdateStatus status)
+        public IScheduler ExecutionContextScheduler
+        {
+            get;
+            set;
+        }
+
+        internal void Notify(UpdateStatus status)
         {
             switch (status.StatusKind)
             {
@@ -82,62 +89,62 @@ namespace ReactiveRTM.Core
             }
         }
 
-        public void NotifyComponentProfileChanged(string hint)
+        private void NotifyComponentProfileChanged(string hint)
         {
             var handler = ComponentProfileChanged;
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
                 .Subscribe(x => handler(this, new ComponentProfileChangedEventArgs() { Profile = x }));
 
         }
 
-        public void NotifyConfigurationStatusChanged(string hint)
+        private void NotifyConfigurationStatusChanged(string hint)
         {
             var handler = ConfigurationStatusChanged;
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
                 .Subscribe(x => handler(this, new ConfigurationEventArgs()));
 
         }
 
-        public void NotifyECStatusChanged(string hint)
+        private void NotifyECStatusChanged(string hint)
         {
             var handler = ECStatusChanged;
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
                 .Subscribe(x => handler(this, new ECStatusChangedEventArgs()));
 
         }
 
-        public void NotifyHeartBeatReceived()
+        private void NotifyHeartBeatReceived()
         {
             var handler = HeartBeatReceived;
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
                 .Subscribe(x => handler(this, new HandledEventArgs()));
 
         }
 
-        public void NotifyPortStatusChanged(string hint)
+        private void NotifyPortStatusChanged(string hint)
         {
             var handler = PortStatusChanged;
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout)
+            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
                 .Subscribe(x => handler(this, new PortStatusChangedEventArgs()));
 
         }
 
-        public void NotifyStateChanged(string hint)
+        private void NotifyStateChanged(string hint)
         {
             var handler = StateChanged;
 

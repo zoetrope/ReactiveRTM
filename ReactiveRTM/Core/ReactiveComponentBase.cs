@@ -18,9 +18,7 @@ namespace ReactiveRTM.Core
         {
             Name = name;
 
-            ExecutionContextScheduler = new EventLoopScheduler();
-
-            _component = new DataFlowComponentAdapter(this, ExecutionContextScheduler, name);
+            _component = new DataFlowComponentAdapter(this, name);
 
             Component.initialize();
 
@@ -28,7 +26,10 @@ namespace ReactiveRTM.Core
 
         public string Name { get; set; }
 
-        public IScheduler ExecutionContextScheduler { get; set; }
+        public IScheduler ExecutionContextScheduler {
+            get { return _component.ExecutionContextScheduler; }
+            set { _component.ExecutionContextScheduler = value;}
+        }
 
         private DataFlowComponentAdapter _component;
 

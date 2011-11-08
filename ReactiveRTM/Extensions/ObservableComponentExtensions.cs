@@ -16,12 +16,11 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
-            var asyncActivate = target.Component.get_owned_contextsAsync(timeout.Value)
+            var asyncActivate = target.Component.get_owned_contextsAsync(timeout.Value,target.ExecutionContextScheduler)
                 .Do(ecs => { if (ecs.Length <= execHandle) throw new ArgumentOutOfRangeException("execHandle"); })
-                .Select(ecs => ecs[execHandle].activate_componentAsync(target.Component, timeout.Value))
+                .Select(ecs => ecs[execHandle].activate_componentAsync(target.Component, timeout.Value,target.ExecutionContextScheduler))
                 .Switch()
                 .Do(ret => { if (ret != ReturnCode_t.RTC_OK) throw new ReactiveComponentBase.ReturnCodeException(ret); });
-
 
             return target.StateChangedAsObservable()
                 .Where(state => state == LifeCycleState.ACTIVE_STATE)
@@ -34,9 +33,9 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
-            var asyncDeactivate = target.Component.get_owned_contextsAsync(timeout.Value)
+            var asyncDeactivate = target.Component.get_owned_contextsAsync(timeout.Value,target.ExecutionContextScheduler)
                 .Do(ecs => { if (ecs.Length <= execHandle) throw new ArgumentOutOfRangeException("execHandle"); })
-                .Select(ecs => ecs[execHandle].deactivate_componentAsync(target.Component, timeout.Value))
+                .Select(ecs => ecs[execHandle].deactivate_componentAsync(target.Component, timeout.Value, target.ExecutionContextScheduler))
                 .Switch()
                 .Do(ret => { if (ret != ReturnCode_t.RTC_OK) throw new ReactiveComponentBase.ReturnCodeException(ret); });
 
@@ -53,9 +52,9 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
-            var asyncReset = target.Component.get_owned_contextsAsync(timeout.Value)
+            var asyncReset = target.Component.get_owned_contextsAsync(timeout.Value,target.ExecutionContextScheduler)
                 .Do(ecs => { if (ecs.Length <= execHandle) throw new ArgumentOutOfRangeException("execHandle"); })
-                .Select(ecs => ecs[execHandle].reset_componentAsync(target.Component, timeout.Value))
+                .Select(ecs => ecs[execHandle].reset_componentAsync(target.Component, timeout.Value,target.ExecutionContextScheduler))
                 .Switch()
                 .Do(ret => { if (ret != ReturnCode_t.RTC_OK) throw new ReactiveComponentBase.ReturnCodeException(ret); });
 
@@ -76,9 +75,9 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
-            return target.Component.get_owned_contextsAsync(timeout.Value)
+            return target.Component.get_owned_contextsAsync(timeout.Value, target.ExecutionContextScheduler)
                 .Do(ecs => { if (ecs.Length <= execHandle) throw new ArgumentOutOfRangeException("execHandle"); })
-                .Select(ecs => ecs[execHandle].get_component_stateAsync(target.Component, timeout.Value))
+                .Select(ecs => ecs[execHandle].get_component_stateAsync(target.Component, timeout.Value, target.ExecutionContextScheduler))
                 .Switch();
         }
 
@@ -86,7 +85,7 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
-            return target.Component.get_component_profileAsync(timeout.Value);
+            return target.Component.get_component_profileAsync(timeout.Value, target.ExecutionContextScheduler);
         }
     }
 

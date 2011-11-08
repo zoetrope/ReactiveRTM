@@ -1,0 +1,18 @@
+﻿<Window x:Class="RtcLauncher.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:RtcLauncher.Views"
+        xmlns:vm="clr-namespace:RtcLauncher.ViewModels"
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        
+    </Grid>
+</Window>

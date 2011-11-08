@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using Codeplex.Data;
@@ -15,9 +16,9 @@ using org.omg.SDOPackage;
 
 namespace ReactiveRTM.Core
 {
-    public class ReactiveOutPort<TDataType> : ReactivePortBase
+    public class ReactiveOutPort<TDataType> : ReactivePortBase, IObserver<TDataType>
     {
-        private InPortCdr _proxy;
+        private List<IObserver<TDataType>> _observers = new List<IObserver<TDataType>>();
         private CdrSerializer<TDataType> _serializer;
 
         public ReactiveOutPort(string name)
@@ -39,17 +40,13 @@ namespace ReactiveRTM.Core
 
         }
 
-        public IDisposable Subscribe(IObserver<TDataType> observer)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public PortStatus Write(TDataType data)
         {
-            var stream = new MemoryStream();
-            _serializer.Serialize(data, stream);
-            return _proxy.put(stream.ToArray());
+
+            _observers.ForEach(observer => observer.OnNext(data));
+
+            return PortStatus.PORT_OK;
         }
 
         public IObservable<PortStatus> WriteAsync(TDataType data)
@@ -58,6 +55,10 @@ namespace ReactiveRTM.Core
             
         }
 
+        public void Connect(IObserver<TDataType> observer)
+        {
+            _observers.Add(observer);
+        }
 
         #region Overrides of ReactivePortBase
 
@@ -69,7 +70,17 @@ namespace ReactiveRTM.Core
         public override ReturnCode_t Connect(ref ConnectorProfile connectorProfile)
         {
             var ior = connectorProfile.GetInPortIor();
-            _proxy = CorbaUtility.ToObject<InPortCdr>(ior);
+            var proxy = CorbaUtility.ToObject<InPortCdr>(ior);
+
+            var observer = Observer.Create((TDataType data) =>
+            {
+                var stream = new MemoryStream();
+                _serializer.Serialize(data, stream);
+                proxy.put(stream.ToArray());
+            });
+
+            _observers.Add(observer);
+
             return ReturnCode_t.RTC_OK;
         }
 
@@ -79,6 +90,21 @@ namespace ReactiveRTM.Core
         }
 
         #endregion
+
+        public void OnNext(TDataType value)
+        {
+            WriteAsync(value);
+        }
+
+        public void OnError(Exception error)
+        {
+            
+        }
+
+        public void OnCompleted()
+        {
+            
+        }
     }
 
     public class ReactiveOutPort : ReactiveOutPort<TimedWString>

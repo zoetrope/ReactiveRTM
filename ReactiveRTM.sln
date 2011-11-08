@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveRTM.Test", "Reactiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIComponent", "Sample\GUIComponent\GUIComponent.csproj", "{88E83018-1549-4E95-9EEA-5D43EC7E6646}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1D0BD970-F9AB-41BA-BCE3-79C426DEC1F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtcLauncher", "Application\RtcLauncher\RtcLauncher.csproj", "{FC39135D-1F59-4C79-B970-FA926FEDB296}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ReactiveRTM.vsmdi
@@ -167,6 +171,16 @@ Global
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|Mixed Platforms.Build.0 = Release|x86
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|x86.ActiveCfg = Release|x86
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|x86.Build.0 = Release|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Debug|x86.ActiveCfg = Debug|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Debug|x86.Build.0 = Debug|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Release|Any CPU.ActiveCfg = Release|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Release|Mixed Platforms.Build.0 = Release|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Release|x86.ActiveCfg = Release|x86
+		{FC39135D-1F59-4C79-B970-FA926FEDB296}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,5 +196,6 @@ Global
 		{3A007FB5-85EA-49CE-B838-79DABF84E77C} = {0AB9257B-3ED9-41EA-B4EC-93E7210A15AB}
 		{28A420D5-72F3-42F4-B233-03491C7284AE} = {0AB9257B-3ED9-41EA-B4EC-93E7210A15AB}
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646} = {0AB9257B-3ED9-41EA-B4EC-93E7210A15AB}
+		{FC39135D-1F59-4C79-B970-FA926FEDB296} = {1D0BD970-F9AB-41BA-BCE3-79C426DEC1F0}
 	EndGlobalSection
 EndGlobal

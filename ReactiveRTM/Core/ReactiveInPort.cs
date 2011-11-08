@@ -15,7 +15,7 @@ namespace ReactiveRTM.Core
 {
     public class ReactiveInPort<TDataType> : ReactivePortBase, IObservable<TDataType>
     {
-        private IObservable<byte[]> _source;
+        private Subject<TDataType> _source;
         private CdrSerializer<TDataType> _serializer;
         private InPortCdrAdapter _adapter;
 
@@ -27,7 +27,11 @@ namespace ReactiveRTM.Core
 
             _adapter = new InPortCdrAdapter();
 
-            _source = _adapter.DataReceivedAsObservable();
+            _source = new Subject<TDataType>();
+
+            _adapter.DataReceivedAsObservable()
+                .Select(x => _serializer.Deserialize(new MemoryStream(x)))
+                .Subscribe(x => _source.OnNext(x));
 
             var prof = new PortProfile(name, new PortInterfaceProfile[0], null, new ConnectorProfile[0], null, new NameValue[0]);
 
@@ -42,7 +46,13 @@ namespace ReactiveRTM.Core
         }
         public IDisposable Subscribe(IObserver<TDataType> observer)
         {
-            return _source.Select(x => _serializer.Deserialize(new MemoryStream(x))).Subscribe(observer);
+            return _source.Subscribe(observer);
+        }
+
+
+        public void Connect(IObservable<TDataType> observable)
+        {
+            observable.Subscribe(x => _source.OnNext(x));
         }
 
 

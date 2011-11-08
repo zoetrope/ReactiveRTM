@@ -6,13 +6,14 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Microsoft.Reactive.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RTC;
 
 namespace ReactiveRTM.Test
 {
     [TestClass]
-    public class SandBox
+    public class SandBox : ReactiveTest
     {
         [TestMethod]
         public void 配列要素のコピー()
@@ -67,5 +68,79 @@ namespace ReactiveRTM.Test
             
         }
 
+        [TestMethod]
+        public void ObservableStartをTestSchedulerで動かすには()
+        {
+            var testScheduler = new TestScheduler();
+            var recorder = testScheduler.CreateObserver<int>();
+
+            bool isRun = false;
+            Observable.Start(() =>
+            {
+                isRun = true;
+                return 1234;
+            }, testScheduler)
+            .Subscribe(recorder);
+
+            recorder.Messages.Count.Is(0);
+
+            testScheduler.AdvanceBy(1);
+
+            recorder.Messages.Count.Is(2);
+
+            ReactiveAssert.AreElementsEqual(recorder.Messages,
+                new[] { OnNext(1, 1234), OnCompleted<int>(1) });
+
+        }
+
+        [TestMethod]
+        public void SubscribeOnとは()
+        {
+            var testScheduler = new TestScheduler();
+            var recorder = testScheduler.CreateObserver<int>();
+
+            bool isRun = false;
+            Observable.Start(() =>
+            {
+                isRun = true;
+                return 1234;
+            })
+            .SubscribeOn(testScheduler)
+            .Subscribe(recorder);
+
+            recorder.Messages.Count.Is(0);
+
+            testScheduler.AdvanceBy(1);
+
+            recorder.Messages.Count.Is(2);
+
+            ReactiveAssert.AreElementsEqual(recorder.Messages,
+                new[] { OnNext(1, 1234), OnCompleted<int>(1) });
+        }
+
+
+        [TestMethod]
+        public void 複数のObservableを監視するには()
+        {
+            var scheduler = new TestScheduler();
+
+            var subject1 = scheduler.CreateHotObservable(OnNext(100, 1), OnNext(200, 3));
+            var subject2 = scheduler.CreateHotObservable(OnNext(100, 2), OnNext(200, 4));
+
+            var aggSubject = new Subject<int>();
+
+            var recorder = scheduler.CreateObserver<int>();
+
+            aggSubject.Do(Console.WriteLine).Subscribe(recorder);
+
+            subject1.Subscribe(aggSubject);
+
+            scheduler.AdvanceBy(100);
+
+            subject2.Subscribe(aggSubject);
+
+            scheduler.AdvanceBy(200);
+            
+        }
     }
 }

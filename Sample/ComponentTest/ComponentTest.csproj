@@ -36,6 +36,7 @@
     <Reference Include="IIOPChannel">
       <HintPath>..\..\Lib\IIOP.NET.1.9.0\IIOPChannel.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Reactive.Testing, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="RTC.IDL">
       <HintPath>..\..\idl\RTC.IDL.dll</HintPath>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using ReactiveRTM.Corba;
 using omg.org.RTC;
@@ -73,6 +74,7 @@ namespace ReactiveRTM.Core
         event EventHandler<ConfigurationEventArgs> ConfigurationStatusChanged;
         event EventHandler HeartBeatReceived;
         DataFlowComponent Component { get; }
+        IScheduler ExecutionContextScheduler { get; set; }
 
     }
 

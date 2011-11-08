@@ -60,6 +60,7 @@
     <Compile Include="CdrSerializerTest.cs" />
     <Compile Include="ChainingAssertion.MSTest.cs" />
     <Compile Include="ComponentObserverTest.cs" />
+    <Compile Include="ComponentOperationTest.cs" />
     <Compile Include="DataPortTest.cs" />
     <Compile Include="GeneratorTest.cs" />
     <Compile Include="MockTest.cs" />

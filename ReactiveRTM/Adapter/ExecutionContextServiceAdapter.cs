@@ -17,9 +17,6 @@ namespace ReactiveRTM.Adapter
             return null;
         }
 
-        private IScheduler _scheduler;
-
-
         private DataFlowComponent _component;
         private IDisposable _executor;
         private TimeSpan _timeSpan;
@@ -27,14 +24,14 @@ namespace ReactiveRTM.Adapter
         private bool _isRunning;
         private ExecutionContextProfile _profile;
 
-        public ExecutionContextServiceAdapter(IScheduler scheduler)
+        public ExecutionContextServiceAdapter()
         {
             _state = LifeCycleState.CREATED_STATE;
             _timeSpan = TimeSpan.FromSeconds(1);
             _isRunning = false;
             _state = LifeCycleState.INACTIVE_STATE;
 
-            _scheduler = scheduler;
+            ExecutionContextScheduler = new EventLoopScheduler();
 
             _profile = new ExecutionContextProfile(ExecutionKind.PERIODIC, get_rate(), null, new RTObject[0], new NameValue[0]);
         }
@@ -85,12 +82,11 @@ namespace ReactiveRTM.Adapter
             {
                 _state = LifeCycleState.ACTIVE_STATE;
                 _component.on_activated(0);
-            }, _scheduler)
+            }, ExecutionContextScheduler)
             .Subscribe(_ =>
             {
                 _executor = Observable
-                    .Interval(_timeSpan)
-                    .ObserveOn(_scheduler)
+                    .Interval(_timeSpan,ExecutionContextScheduler)
                     .Subscribe(__ => _component.on_execute(0));
             });
 
@@ -127,6 +123,8 @@ namespace ReactiveRTM.Adapter
         {
             return _profile;
         }
+
+        public IScheduler ExecutionContextScheduler { get; set; }
     }
 
 }
