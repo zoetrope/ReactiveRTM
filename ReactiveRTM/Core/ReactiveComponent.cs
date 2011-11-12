@@ -71,7 +71,7 @@ namespace ReactiveRTM.Core
         public override sealed ReturnCode_t RaiseOnActivated(int execHandle)
         {
             var ret = OnActivated(execHandle);
-            base.RaiseOnInitialize();
+            base.RaiseOnActivated(execHandle);
             return ret;
         }
         protected virtual ReturnCode_t OnActivated(int execHandle)

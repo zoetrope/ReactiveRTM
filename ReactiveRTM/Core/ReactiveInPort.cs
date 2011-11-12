@@ -56,7 +56,7 @@ namespace ReactiveRTM.Core
         }
 
 
-        #region Overrides of ReactivePortBase
+        #region Overrides of ReactivePortBase 
 
         public override ReturnCode_t SetConnectionInfo(ref ConnectorProfile connectorProfile)
         {

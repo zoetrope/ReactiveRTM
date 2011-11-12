@@ -16,6 +16,16 @@ namespace ReactiveRTM.Extensions
         {
             if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
 
+            return target.Component.get_owned_contextsAsync(timeout.Value, target.ExecutionContextScheduler)
+                .Select(ecs => ecs[execHandle].activate_componentAsync(target.Component, timeout.Value, target.ExecutionContextScheduler))
+                .Switch();
+
+        }
+        /*
+        public static IObservable<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        {
+            if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
+
             var asyncActivate = target.Component.get_owned_contextsAsync(timeout.Value,target.ExecutionContextScheduler)
                 .Do(ecs => { if (ecs.Length <= execHandle) throw new ArgumentOutOfRangeException("execHandle"); })
                 .Select(ecs => ecs[execHandle].activate_componentAsync(target.Component, timeout.Value,target.ExecutionContextScheduler))
@@ -28,6 +38,7 @@ namespace ReactiveRTM.Extensions
                 .Timeout(timeout.Value)
                 .Catch((ReactiveComponentBase.ReturnCodeException ex) => Observable.Return(ex.ReturnCode));
         }
+        */
 
         public static IObservable<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {

@@ -59,6 +59,59 @@ namespace ReactiveRTM.Test
 
         }
 
+        [TestMethod]
+        public void OnExecuteを動かしてみる2()
+        {
+            var comp = new TestTargetComponent();
+
+            var testScheduler = new TestScheduler();
+            var recorder = testScheduler.CreateObserver<ReturnCode_t>();
+
+            comp.ExecutionContextScheduler = testScheduler;
+
+
+            // コンポーネントを活性化
+            comp.ActivateAsync().Subscribe(recorder);
+
+            // 時間がたっていないので何も起きていない
+            comp.ExecuteCounter.Is(0);
+            recorder.Messages.Count.Is(0);
+
+            // 時間を進める
+            testScheduler.AdvanceBy(100);
+
+            // 活性化に成功したことを確認
+            recorder.Messages.Count.Is(1);
+            recorder.Messages.First().Value.Value.Is(ReturnCode_t.RTC_OK);
+
+            comp.ExecuteCounter.Is(0);
+
+            // 時間を5秒進める
+            testScheduler.AdvanceBy(TimeSpan.FromSeconds(5).Ticks);
+
+            // OnExecuteは1秒に1回呼ばれる
+            comp.ExecuteCounter.Is(5);
+
+        }
 
     }
+
+    public class TestTargetComponent : ReactiveComponent
+    {
+        public TestTargetComponent()
+            : base("Test")
+        {
+            ExecuteCounter = 0;
+        }
+
+        public int ExecuteCounter { get; set; }
+
+        protected override ReturnCode_t OnExecute(int execHandle)
+        {
+            // OnExecuteが呼ばれるたびにカウンタをインクリメント
+            ExecuteCounter = ExecuteCounter + 1;
+            return ReturnCode_t.RTC_OK;
+        }
+    }
+
 }

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Text;
 using ReactiveRTM;
 using ReactiveRTM.Core;
+using ReactiveRTM.Extensions;
 using omg.org.RTC;
 
 /// <summary>
@@ -16,14 +18,16 @@ class Program
     {
         using (var manager = new RtcManager("localhost", 2809))
         {
-            var comp = manager.GetComponent("ConsoleOut.rtc");
+            var comp = manager.GetComponent("ConsoleOut0.rtc");
 
 
-            comp.StateChangedAsObservable()
-                //.Where(state => state == LifeCycleState.ACTIVE_STATE)
-                .Subscribe(state => Console.WriteLine(state));
+            var subject = new Subject<LifeCycleState>();
 
-            Console.ReadKey();
+            comp.StateChangedAsObservable().Subscribe(subject);
+
+            comp.ActivateAsync().First();
+
+            subject.First();
 
         }
     }

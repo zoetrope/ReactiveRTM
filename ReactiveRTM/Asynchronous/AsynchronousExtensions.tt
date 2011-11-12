@@ -26,7 +26,7 @@ namespace <#= x.Namespace #>
 {
     <# foreach(var ct in x.ClassTemplates) {#>
  
-    internal static class <#= ct.Classname #>AsyncExtensions
+    public static class <#= ct.Classname #>AsyncExtensions
     {
         <# foreach(var method in ct.MethodTemplates) {#>
  

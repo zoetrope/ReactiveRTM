@@ -50,6 +50,8 @@ namespace ReactiveRTM.Core
                 observer.Subscribe(Notify);
             }
 
+            ExecutionContextScheduler = new EventLoopScheduler();
+
         }
 
         private DataFlowComponent _component;

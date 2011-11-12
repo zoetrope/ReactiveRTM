@@ -4,9 +4,12 @@ using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Text;
+using System.Threading;
 using RTC;
 using ReactiveRTM.Core;
+using ReactiveRTM.Extensions;
 using omg.org.RTC;
 
 /// <summary>
@@ -16,28 +19,52 @@ class Program
 {
     public static void Main(string[] args)
     {
+        var comp = new ECSchedulerTest();
+
+        comp.ActivateAsync().First();
+
+        var subject = new Subject<TimedLong>();
+        comp.InPort.Connect(subject);
+
+        foreach (var i in Enumerable.Range(0,1000))
+        {
+            subject.OnNext(new TimedLong(new Time(), i));
+            Thread.Sleep(500);
+        }
+        
     }
 }
 
 class ECSchedulerTest : ReactiveComponent
 {
-    private ReactiveInPort<TimedLong> _inport = new ReactiveInPort<TimedLong>("in");
+    public ReactiveInPort<TimedLong> InPort { get; private set; }
 
     public ECSchedulerTest()
         : base("ECSchedulerTest")
     {
-        AddPort(_inport);
+        InPort = new ReactiveInPort<TimedLong>("in");
+        AddPort(InPort);
     }
 
-    private CompositeDisposable _disposer;
+    private IDisposable _disposer;
+    private DangerousObject _object = new DangerousObject();
 
     protected override ReturnCode_t OnActivated(int execHandle)
     {
-        var d = _inport.Where(x => x.data > 100)
+        _disposer = InPort
             .ObserveOn(ExecutionContextScheduler)
-            .Subscribe(x => Console.WriteLine(x.data));
+            .Subscribe(_ => _object.Do());
+        
+        return ReturnCode_t.RTC_OK;
+    }
 
-        _disposer.Add(d);
+    protected override ReturnCode_t OnExecute(int execHandle)
+    {
+        _object.IsDanger = true;
+
+        Thread.Sleep(TimeSpan.FromSeconds(1));
+
+        _object.IsDanger = false;
 
         return ReturnCode_t.RTC_OK;
     }
@@ -49,4 +76,13 @@ class ECSchedulerTest : ReactiveComponent
         return base.OnAborting(execHandle);
     }
 
+    private class DangerousObject
+    {
+        public bool IsDanger { get; set; }
+
+        public void Do()
+        {
+            if (IsDanger) throw new Exception();
+        }
+    }
 }

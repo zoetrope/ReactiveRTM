@@ -9,7 +9,7 @@ using ReactiveRTM.Corba;
 namespace omg.org.RTC
 {
      
-    internal static class ExecutionContextAsyncExtensions
+    public static class ExecutionContextAsyncExtensions
     {
          
         public static IObservable<System.Boolean> is_runningAsync(this ExecutionContext target , TimeSpan timeout, IScheduler scheduler)
@@ -73,7 +73,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class ComponentActionAsyncExtensions
+    public static class ComponentActionAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> on_initializeAsync(this ComponentAction target , TimeSpan timeout, IScheduler scheduler)
@@ -122,7 +122,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class LightweightRTObjectAsyncExtensions
+    public static class LightweightRTObjectAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> initializeAsync(this LightweightRTObject target , TimeSpan timeout, IScheduler scheduler)
@@ -176,7 +176,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class DataFlowComponentActionAsyncExtensions
+    public static class DataFlowComponentActionAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> on_executeAsync(this DataFlowComponentAction target ,System.Int32 exec_handle, TimeSpan timeout, IScheduler scheduler)
@@ -195,7 +195,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class FsmParticipantActionAsyncExtensions
+    public static class FsmParticipantActionAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> on_actionAsync(this FsmParticipantAction target ,System.Int32 exec_handle, TimeSpan timeout, IScheduler scheduler)
@@ -204,7 +204,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class ModeCapableAsyncExtensions
+    public static class ModeCapableAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.Mode> get_default_modeAsync(this ModeCapable target , TimeSpan timeout, IScheduler scheduler)
@@ -238,7 +238,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class MultiModeComponentActionAsyncExtensions
+    public static class MultiModeComponentActionAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> on_mode_changedAsync(this MultiModeComponentAction target ,System.Int32 exec_handle, TimeSpan timeout, IScheduler scheduler)
@@ -247,7 +247,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class RTObjectAsyncExtensions
+    public static class RTObjectAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ComponentProfile> get_component_profileAsync(this RTObject target , TimeSpan timeout, IScheduler scheduler)
@@ -261,7 +261,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class PortServiceAsyncExtensions
+    public static class PortServiceAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.PortProfile> get_port_profileAsync(this PortService target , TimeSpan timeout, IScheduler scheduler)
@@ -305,7 +305,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class FsmObjectAsyncExtensions
+    public static class FsmObjectAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> send_stimulusAsync(this FsmObject target ,System.String message,System.Int32 exec_handle, TimeSpan timeout, IScheduler scheduler)
@@ -314,7 +314,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class FsmServiceAsyncExtensions
+    public static class FsmServiceAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.FsmProfile> get_fsm_profileAsync(this FsmService target , TimeSpan timeout, IScheduler scheduler)
@@ -328,7 +328,7 @@ namespace omg.org.RTC
         }
             }
      
-    internal static class ExecutionContextServiceAsyncExtensions
+    public static class ExecutionContextServiceAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ExecutionContextProfile> get_profileAsync(this ExecutionContextService target , TimeSpan timeout, IScheduler scheduler)
@@ -341,7 +341,7 @@ namespace omg.org.RTC
 namespace OpenRTM
 {
      
-    internal static class ComponentObserverAsyncExtensions
+    public static class ComponentObserverAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> update_statusAsync(this ComponentObserver target ,OpenRTM.StatusKind status_kind,System.String hint, TimeSpan timeout, IScheduler scheduler)
@@ -350,7 +350,7 @@ namespace OpenRTM
         }
             }
      
-    internal static class InPortCdrAsyncExtensions
+    public static class InPortCdrAsyncExtensions
     {
          
         public static IObservable<OpenRTM.PortStatus> putAsync(this InPortCdr target ,System.Byte[] data, TimeSpan timeout, IScheduler scheduler)
@@ -359,7 +359,7 @@ namespace OpenRTM
         }
             }
      
-    internal static class OutPortCdrAsyncExtensions
+    public static class OutPortCdrAsyncExtensions
     {
          
         public static IObservable<OpenRTM.PortStatus> _getAsync(this OutPortCdr target ,System.Byte[] data, TimeSpan timeout, IScheduler scheduler)
@@ -368,7 +368,7 @@ namespace OpenRTM
         }
             }
      
-    internal static class LoggerAsyncExtensions
+    public static class LoggerAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> publishAsync(this Logger target ,OpenRTM.LogRecord record, TimeSpan timeout, IScheduler scheduler)
@@ -386,7 +386,7 @@ namespace OpenRTM
 namespace openrtm.aist.go.jp.OpenRTM
 {
      
-    internal static class ExtTrigExecutionContextServiceAsyncExtensions
+    public static class ExtTrigExecutionContextServiceAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> tickAsync(this ExtTrigExecutionContextService target , TimeSpan timeout, IScheduler scheduler)
@@ -399,7 +399,7 @@ namespace openrtm.aist.go.jp.OpenRTM
 namespace org.omg.SDOPackage
 {
      
-    internal static class SDOAsyncExtensions
+    public static class SDOAsyncExtensions
     {
          
         public static IObservable<System.String> get_sdo_idAsync(this SDO target , TimeSpan timeout, IScheduler scheduler)
@@ -458,7 +458,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    internal static class SDOSystemElementAsyncExtensions
+    public static class SDOSystemElementAsyncExtensions
     {
          
         public static IObservable<org.omg.SDOPackage.Organization[]> get_owned_organizationsAsync(this SDOSystemElement target , TimeSpan timeout, IScheduler scheduler)
@@ -467,7 +467,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    internal static class ConfigurationAsyncExtensions
+    public static class ConfigurationAsyncExtensions
     {
          
         public static IObservable<System.Boolean> set_device_profileAsync(this Configuration target ,org.omg.SDOPackage.DeviceProfile dProfile, TimeSpan timeout, IScheduler scheduler)
@@ -551,7 +551,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    internal static class OrganizationAsyncExtensions
+    public static class OrganizationAsyncExtensions
     {
          
         public static IObservable<System.String> get_organization_idAsync(this Organization target , TimeSpan timeout, IScheduler scheduler)
@@ -629,7 +629,7 @@ namespace org.omg.SDOPackage
 namespace RTC
 {
      
-    internal static class ActArrayAsyncExtensions
+    public static class ActArrayAsyncExtensions
     {
          
         public static IObservable<RTC.ActArrayGeometry> GetGeometryAsync(this ActArray target , TimeSpan timeout, IScheduler scheduler)
@@ -663,7 +663,7 @@ namespace RTC
         }
             }
      
-    internal static class AIOAsyncExtensions
+    public static class AIOAsyncExtensions
     {
          
         public static IObservable<System.Int16> NumChannelsAsync(this AIO target , TimeSpan timeout, IScheduler scheduler)
@@ -682,7 +682,7 @@ namespace RTC
         }
             }
      
-    internal static class BumperAsyncExtensions
+    public static class BumperAsyncExtensions
     {
          
         public static IObservable<RTC.BumperGeometry> GetGeometryAsync(this Bumper target , TimeSpan timeout, IScheduler scheduler)
@@ -691,7 +691,7 @@ namespace RTC
         }
             }
      
-    internal static class CameraAsyncExtensions
+    public static class CameraAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Camera target , TimeSpan timeout, IScheduler scheduler)
@@ -705,7 +705,7 @@ namespace RTC
         }
             }
      
-    internal static class DIOAsyncExtensions
+    public static class DIOAsyncExtensions
     {
          
         public static IObservable<System.Int16> NumBitsAsync(this DIO target , TimeSpan timeout, IScheduler scheduler)
@@ -724,7 +724,7 @@ namespace RTC
         }
             }
      
-    internal static class FiducialAsyncExtensions
+    public static class FiducialAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Fiducial target , TimeSpan timeout, IScheduler scheduler)
@@ -743,7 +743,7 @@ namespace RTC
         }
             }
      
-    internal static class GPSAsyncExtensions
+    public static class GPSAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this GPS target , TimeSpan timeout, IScheduler scheduler)
@@ -752,7 +752,7 @@ namespace RTC
         }
             }
      
-    internal static class GripperAsyncExtensions
+    public static class GripperAsyncExtensions
     {
          
         public static IObservable<RTC.GripperGeometry> GetGeometryAsync(this Gripper target , TimeSpan timeout, IScheduler scheduler)
@@ -771,7 +771,7 @@ namespace RTC
         }
             }
      
-    internal static class IMUAsyncExtensions
+    public static class IMUAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this IMU target , TimeSpan timeout, IScheduler scheduler)
@@ -780,7 +780,7 @@ namespace RTC
         }
             }
      
-    internal static class INSAsyncExtensions
+    public static class INSAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this INS target , TimeSpan timeout, IScheduler scheduler)
@@ -789,7 +789,7 @@ namespace RTC
         }
             }
      
-    internal static class LimbAsyncExtensions
+    public static class LimbAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Limb target , TimeSpan timeout, IScheduler scheduler)
@@ -813,7 +813,7 @@ namespace RTC
         }
             }
      
-    internal static class OGMapAsyncExtensions
+    public static class OGMapAsyncExtensions
     {
          
         public static IObservable<RTC.OGMapConfig> GetConfigAsync(this OGMap target , TimeSpan timeout, IScheduler scheduler)
@@ -827,7 +827,7 @@ namespace RTC
         }
             }
      
-    internal static class MulticameraAsyncExtensions
+    public static class MulticameraAsyncExtensions
     {
          
         public static IObservable<RTC.MulticameraGeometry> GetGeometryAsync(this Multicamera target , TimeSpan timeout, IScheduler scheduler)
@@ -841,7 +841,7 @@ namespace RTC
         }
             }
      
-    internal static class PanTiltAsyncExtensions
+    public static class PanTiltAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PanTilt target , TimeSpan timeout, IScheduler scheduler)
@@ -850,7 +850,7 @@ namespace RTC
         }
             }
      
-    internal static class PathPlanner2DAsyncExtensions
+    public static class PathPlanner2DAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> SetTaskAsync(this PathPlanner2D target ,RTC.Waypoint2D[] coarsePath, TimeSpan timeout, IScheduler scheduler)
@@ -859,7 +859,7 @@ namespace RTC
         }
             }
      
-    internal static class PathPlanner3DAsyncExtensions
+    public static class PathPlanner3DAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> SetTaskAsync(this PathPlanner3D target ,RTC.Waypoint3D[] coarsePath, TimeSpan timeout, IScheduler scheduler)
@@ -868,7 +868,7 @@ namespace RTC
         }
             }
      
-    internal static class PathFollower2DAsyncExtensions
+    public static class PathFollower2DAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> SetPathAsync(this PathFollower2D target ,RTC.Waypoint2D[] path, TimeSpan timeout, IScheduler scheduler)
@@ -892,7 +892,7 @@ namespace RTC
         }
             }
      
-    internal static class PathFollower3DAsyncExtensions
+    public static class PathFollower3DAsyncExtensions
     {
          
         public static IObservable<System.Reactive.Unit> SetPathAsync(this PathFollower3D target ,RTC.Waypoint3D[] path, TimeSpan timeout, IScheduler scheduler)
@@ -916,7 +916,7 @@ namespace RTC
         }
             }
      
-    internal static class PointCloudServicesAsyncExtensions
+    public static class PointCloudServicesAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PointCloudServices target , TimeSpan timeout, IScheduler scheduler)
@@ -925,7 +925,7 @@ namespace RTC
         }
             }
      
-    internal static class Odometry2DAsyncExtensions
+    public static class Odometry2DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Odometry2D target , TimeSpan timeout, IScheduler scheduler)
@@ -939,7 +939,7 @@ namespace RTC
         }
             }
      
-    internal static class Odometry3DAsyncExtensions
+    public static class Odometry3DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Odometry3D target , TimeSpan timeout, IScheduler scheduler)
@@ -953,7 +953,7 @@ namespace RTC
         }
             }
      
-    internal static class VelocityControl2DAsyncExtensions
+    public static class VelocityControl2DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry2D> GetGeometryAsync(this VelocityControl2D target , TimeSpan timeout, IScheduler scheduler)
@@ -962,7 +962,7 @@ namespace RTC
         }
             }
      
-    internal static class VelocityControl3DAsyncExtensions
+    public static class VelocityControl3DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this VelocityControl3D target , TimeSpan timeout, IScheduler scheduler)
@@ -971,7 +971,7 @@ namespace RTC
         }
             }
      
-    internal static class PoseControl2DAsyncExtensions
+    public static class PoseControl2DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry2D> GetGeometryAsync(this PoseControl2D target , TimeSpan timeout, IScheduler scheduler)
@@ -980,7 +980,7 @@ namespace RTC
         }
             }
      
-    internal static class PoseControl3DAsyncExtensions
+    public static class PoseControl3DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PoseControl3D target , TimeSpan timeout, IScheduler scheduler)
@@ -989,7 +989,7 @@ namespace RTC
         }
             }
      
-    internal static class CarlikeControlAsyncExtensions
+    public static class CarlikeControlAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry2D> GetGeometryAsync(this CarlikeControl target , TimeSpan timeout, IScheduler scheduler)
@@ -998,7 +998,7 @@ namespace RTC
         }
             }
      
-    internal static class HeadingControl2DAsyncExtensions
+    public static class HeadingControl2DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry2D> GetGeometryAsync(this HeadingControl2D target , TimeSpan timeout, IScheduler scheduler)
@@ -1007,7 +1007,7 @@ namespace RTC
         }
             }
      
-    internal static class HeadingControl3DAsyncExtensions
+    public static class HeadingControl3DAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this HeadingControl3D target , TimeSpan timeout, IScheduler scheduler)
@@ -1016,7 +1016,7 @@ namespace RTC
         }
             }
      
-    internal static class RangerAsyncExtensions
+    public static class RangerAsyncExtensions
     {
          
         public static IObservable<RTC.RangerGeometry> GetGeometryAsync(this Ranger target , TimeSpan timeout, IScheduler scheduler)
@@ -1045,7 +1045,7 @@ namespace RTC
         }
             }
      
-    internal static class RFIDAsyncExtensions
+    public static class RFIDAsyncExtensions
     {
          
         public static IObservable<RTC.Geometry3D> GetGeometryAsync(this RFID target , TimeSpan timeout, IScheduler scheduler)
@@ -1068,7 +1068,7 @@ namespace RTC
 namespace RTM
 {
      
-    internal static class ManagerAsyncExtensions
+    public static class ManagerAsyncExtensions
     {
          
         public static IObservable<omg.org.RTC.ReturnCode_t> load_moduleAsync(this Manager target ,System.String pathname,System.String initfunc, TimeSpan timeout, IScheduler scheduler)

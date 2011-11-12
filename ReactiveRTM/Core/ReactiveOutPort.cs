@@ -51,7 +51,8 @@ namespace ReactiveRTM.Core
 
         public IObservable<PortStatus> WriteAsync(TDataType data)
         {
-            return Observable.Defer(() => Observable.Start(() => Write(data)));
+            //return Observable.Defer(() => Observable.Start(() => Write(data)));
+            return Observable.Start(() => Write(data));
             
         }
 
@@ -93,7 +94,7 @@ namespace ReactiveRTM.Core
 
         public void OnNext(TDataType value)
         {
-            WriteAsync(value);
+            Write(value);
         }
 
         public void OnError(Exception error)
