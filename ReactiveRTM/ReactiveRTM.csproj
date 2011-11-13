@@ -83,7 +83,6 @@
     <Compile Include="Corba\CdrSerializerFactory.cs" />
     <Compile Include="Core\ComponentActionListener.cs" />
     <Compile Include="Core\Connector.cs" />
-    <Compile Include="Extensions\ConnectorProfileExtensions.cs" />
     <Compile Include="Corba\CorbaNamingServiceClient.cs" />
     <Compile Include="Corba\CorbaUtility.cs" />
     <Compile Include="Core\DelegateInPortCdr.cs" />
@@ -94,7 +93,6 @@
     <Compile Include="Utility\NativeTime.cs" />
     <Compile Include="Core\ObservableComponent.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
-    <Compile Include="Extensions\PortProfileExtensions.cs" />
     <Compile Include="Core\ReactivePortBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\ReactiveComponent.cs" />

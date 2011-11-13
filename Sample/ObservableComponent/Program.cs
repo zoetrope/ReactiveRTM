@@ -20,15 +20,23 @@ class Program
         {
             var comp = manager.GetComponent("ConsoleOut0.rtc");
 
+            var obs = comp.StateChangedAsObservable()
+              .Where(state => state == LifeCycleState.ACTIVE_STATE)
+              .PublishLast();
 
-            var subject = new Subject<LifeCycleState>();
-
-            comp.StateChangedAsObservable().Subscribe(subject);
+            obs.Connect();
 
             comp.ActivateAsync().First();
 
-            subject.First();
+            //obs.First();
 
+            obs.Timeout(TimeSpan.FromSeconds(5))
+              .Catch((TimeoutException ex) => { 
+                // 例外処理
+                return Observable.Empty<LifeCycleState>();
+              })
+              .First();
+              
         }
     }
 }

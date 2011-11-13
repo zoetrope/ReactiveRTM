@@ -97,7 +97,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
+            Component.get_component_profileAsync()
+                .SubscribeOn(ExecutionContextScheduler)
+                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ComponentProfileChangedEventArgs() { Profile = x }));
 
         }
@@ -108,7 +110,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
+            Component.get_component_profileAsync()
+                .SubscribeOn(ExecutionContextScheduler)
+                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ConfigurationEventArgs()));
 
         }
@@ -119,7 +123,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
+            Component.get_component_profileAsync()
+                .SubscribeOn(ExecutionContextScheduler)
+                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ECStatusChangedEventArgs()));
 
         }
@@ -130,7 +136,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
+            Component.get_component_profileAsync()
+                .SubscribeOn(ExecutionContextScheduler)
+                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new HandledEventArgs()));
 
         }
@@ -141,7 +149,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync(CorbaUtility.DefaultTimeout, ExecutionContextScheduler)
+            Component.get_component_profileAsync()
+                .SubscribeOn(ExecutionContextScheduler)
+                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new PortStatusChangedEventArgs()));
 
         }

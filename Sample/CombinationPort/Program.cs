@@ -43,8 +43,8 @@ class PortCombination : ReactiveComponent
         switch (combinationType)
         {
             case "Zip":
-                d = Observable.Zip(_inport1, _inport2, (indata1, indata2) => new {indata1, indata2})
-                    .Select(x => new TimedLong(new Time(), x.indata1.data + x.indata2.data))
+                d = Observable.Zip(_inport1, _inport2, 
+                    (indata1, indata2) => new TimedLong(new Time(), indata1.data + indata2.data))
                     .Subscribe(data => _outport.WriteAsync(data));
                 break;
 
@@ -54,8 +54,8 @@ class PortCombination : ReactiveComponent
                 break;
 
             case "CombineLatest":
-                d = Observable.CombineLatest(_inport1, _inport2, (indata1, indata2) => new {indata1, indata2})
-                    .Select(x => new TimedLong(new Time(), x.indata1.data + x.indata2.data))
+                d = Observable.CombineLatest(_inport1, _inport2, 
+                    (indata1, indata2) => new TimedLong(new Time(), indata1.data + indata2.data))
                     .Subscribe(data => _outport.WriteAsync(data));
                 break;
             default:

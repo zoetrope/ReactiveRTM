@@ -14,14 +14,14 @@ namespace ReactiveRTM.Adapter
 
     public class PortServiceAdapter : MarshalByRefObject, PortService
     {
-        private PortProfile _profile;
+        private PortProfileHolder _profile;
         private IConnectable _connector;
 
-        public PortServiceAdapter(IConnectable connector, PortProfile prof)
+        public PortServiceAdapter(IConnectable connector, PortProfileHolder prof)
         {
-            prof.port_ref = this;
             _connector = connector;
             _profile = prof;
+            _profile.PortRef = this;
         }
 
         public override object InitializeLifetimeService()
@@ -31,17 +31,17 @@ namespace ReactiveRTM.Adapter
 
         public PortProfile get_port_profile()
         {
-            return _profile;
+            return _profile.GetPortProfile();
         }
 
         public ConnectorProfile[] get_connector_profiles()
         {
-            return _profile.connector_profiles;
+            return _profile.GetPortProfile().connector_profiles;
         }
 
         public ConnectorProfile get_connector_profile(string connector_id)
         {
-            return _profile.connector_profiles
+            return _profile.GetPortProfile().connector_profiles
                 .Single(prof => prof.connector_id == connector_id);
         }
 
@@ -73,21 +73,23 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t notify_connect(ref ConnectorProfile connector_profile)
         {
-            if(connector_profile.GetInterfaceType()!="corba_cdr")
+            var prof = new ConnectorProfileHolder(connector_profile);
+
+            if(prof.InterfaceType!="corba_cdr")
             {
                 throw new NotSupportedException();
             }
 
-            _connector.SetConnectionInfo(ref connector_profile);
+            _connector.SetConnectionInfo(prof);
 
             var myIor = CorbaUtility.GetIor(this);
 
             //var port = connector_profile.ports.Select(CorbaUtility.GetIor).FirstOrDefault(ior => ior == myIor);
 
             int currentIndex = -1;
-            for (int i = 0; i < connector_profile.ports.Length; i++)
+            for (int i = 0; i < prof.Ports.Count; i++)
             {
-                if (CorbaUtility.GetIor(connector_profile.ports[i]) == myIor)
+                if (CorbaUtility.GetIor(prof.Ports[i]) == myIor)
                 {
                     currentIndex = i;
                     break;
@@ -95,16 +97,16 @@ namespace ReactiveRTM.Adapter
             }
             if (currentIndex == -1) return ReturnCode_t.BAD_PARAMETER;
 
-            if (currentIndex + 1 < connector_profile.ports.Length)
+            if (currentIndex + 1 < prof.Ports.Count)
             {
-                connector_profile.ports[currentIndex + 1].notify_connect(ref connector_profile);
+                var p = prof.GetConnectorProfile();
+                prof.Ports[currentIndex + 1].notify_connect(ref p);
+                prof = new ConnectorProfileHolder(p);
             }
 
-            _connector.Connect(ref connector_profile);
+            _connector.Connect(prof);
 
-            var list  =_profile.connector_profiles.ToList();
-            list.Add(connector_profile);
-            _profile.connector_profiles = list.ToArray();
+            _profile.ConnectorProfiles.Add(new ConnectorProfileHolder(prof.GetConnectorProfile()));
 
             return ReturnCode_t.RTC_OK;
         }

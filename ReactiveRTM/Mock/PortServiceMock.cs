@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenRTM;
+using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.CORBA;
 using omg.org.RTC;
@@ -21,7 +22,7 @@ namespace ReactiveRTM.Mock
 
         public override ReturnCode_t connect(ref ConnectorProfile connector_profile)
         {
-            var ior = connector_profile.GetInPortIor();
+            var ior = new ConnectorProfileHolder(connector_profile).InPortIor;
 
 
             var orb = OrbServices.GetSingleton();
@@ -44,8 +45,11 @@ namespace ReactiveRTM.Mock
         public override ReturnCode_t connect(ref ConnectorProfile connector_profile)
         {
             var orb = OrbServices.GetSingleton();
-            var ior = orb.object_to_string(_inPortCdrMock);
-            ConnectorProfileExtensions.AddInPortIor(ref connector_profile, ior);
+
+            var prof = new ConnectorProfileHolder(connector_profile);
+            prof.InPortIor = orb.object_to_string(_inPortCdrMock);
+
+            connector_profile = prof.GetConnectorProfile();
 
             return ReturnCode_t.RTC_OK;
         }

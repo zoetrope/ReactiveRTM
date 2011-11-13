@@ -50,7 +50,9 @@ namespace ReactiveRTM.Test
             };
 
             AssertEx.Throws<TimeoutException>(() =>
-                    comp.ActivateAsync(timeout: TimeSpan.FromSeconds(1)).First()
+                    comp.ActivateAsync()
+                    .Timeout(TimeSpan.FromSeconds(1))
+                    .First()
                 );
         }
 

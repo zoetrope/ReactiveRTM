@@ -30,9 +30,9 @@ namespace <#= x.Namespace #>
     {
         <# foreach(var method in ct.MethodTemplates) {#>
  
-        public static IObservable<<#= method.Return #>> <#= method.Name #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>, TimeSpan timeout, IScheduler scheduler)
+        public static IObservable<<#= method.Return #>> <#= method.Name #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>)
         {
-            return Observable.Defer(Observable.ToAsync(()=>target.<#= method.Name #>(<#= method.CallArgs #>),scheduler)).Timeout(timeout);
+            return Observable.Start(()=>target.<#= method.Name #>(<#= method.CallArgs #>));
         }
         <# } #>
     }

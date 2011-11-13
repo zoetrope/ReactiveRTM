@@ -33,14 +33,14 @@ namespace ReactiveRTM.Core
                 .Select(x => _serializer.Deserialize(new MemoryStream(x)))
                 .Subscribe(x => _source.OnNext(x));
 
-            var prof = new PortProfile(name, new PortInterfaceProfile[0], null, new ConnectorProfile[0], null, new NameValue[0]);
+            var prof = new PortProfileHolder() { Name = name };
 
-            PortProfileExtensions.AddDataFlowType(ref prof, "push");
-            PortProfileExtensions.AddSubscriptionType(ref prof, "flush");
-            PortProfileExtensions.AddInterfaceType(ref prof, "corba_cdr");
+            prof.DataflowType = "push";
+            prof.SubscriptionType= "flush";
+            prof.InterfaceType= "corba_cdr";
 
-            NameValueExtensions.AddStringValue(ref prof.properties, "port.port_type", "DataInPort");
-            NameValueExtensions.AddStringValue(ref prof.properties, "dataport.data_type", CorbaUtility.GetRepositoryID(typeof(TDataType)));
+            prof.PortType = PortType.DataInPort;
+            prof.DataType = CorbaUtility.GetRepositoryID(typeof(TDataType));
 
             Initialize(prof);
         }
@@ -58,18 +58,18 @@ namespace ReactiveRTM.Core
 
         #region Overrides of ReactivePortBase 
 
-        public override ReturnCode_t SetConnectionInfo(ref ConnectorProfile connectorProfile)
+        public override ReturnCode_t SetConnectionInfo(ConnectorProfileHolder connectorProfile)
         {
-            ConnectorProfileExtensions.AddInPortIor(ref connectorProfile, CorbaUtility.GetIor(_adapter));
+            connectorProfile.InPortIor = CorbaUtility.GetIor(_adapter);
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Connect(ref ConnectorProfile connectorProfile)
+        public override ReturnCode_t Connect(ConnectorProfileHolder connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Disconnect(ref ConnectorProfile connectorProfile)
+        public override ReturnCode_t Disconnect(ConnectorProfileHolder connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }

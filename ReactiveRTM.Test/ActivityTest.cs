@@ -37,6 +37,7 @@ namespace ReactiveRTM.Test
 
             // コンポーネントを活性化
             comp.ActivateAsync().Subscribe(recorder);
+            
 
             // 時間がたっていないので何も起きていない
             executeCounter.Is(0);
@@ -46,7 +47,7 @@ namespace ReactiveRTM.Test
             testScheduler.AdvanceBy(100);
 
             // 活性化に成功したことを確認
-            recorder.Messages.Count.Is(1);
+            recorder.Messages.Count.Is(2);
             recorder.Messages.First().Value.Value.Is(ReturnCode_t.RTC_OK);
 
             executeCounter.Is(0);
@@ -81,7 +82,7 @@ namespace ReactiveRTM.Test
             testScheduler.AdvanceBy(100);
 
             // 活性化に成功したことを確認
-            recorder.Messages.Count.Is(1);
+            recorder.Messages.Count.Is(2);
             recorder.Messages.First().Value.Value.Is(ReturnCode_t.RTC_OK);
 
             comp.ExecuteCounter.Is(0);

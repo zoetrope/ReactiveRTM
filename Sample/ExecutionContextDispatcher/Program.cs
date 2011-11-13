@@ -69,11 +69,11 @@ class ECSchedulerTest : ReactiveComponent
         return ReturnCode_t.RTC_OK;
     }
 
-    protected override ReturnCode_t OnAborting(int execHandle)
+    protected override ReturnCode_t OnDeactivated(int execHandle)
     {
         _disposer.Dispose();
 
-        return base.OnAborting(execHandle);
+        return ReturnCode_t.RTC_OK;
     }
 
     private class DangerousObject

@@ -27,9 +27,9 @@ namespace ReactiveRTM.Test
             data.data[1] = 2;
             data.data[2] = 1;
 
-            data2.data[0].Is(1);
+            data2.data[0].Is(3);
             data2.data[1].Is(2);
-            data2.data[2].Is(3);
+            data2.data[2].Is(1);
         }
 
         [TestMethod]
