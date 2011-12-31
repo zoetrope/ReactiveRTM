@@ -10,10 +10,10 @@ namespace ReactiveRTM.Corba
     public static class CorbaUtility
     {
         private static IiopChannel _channel;
-        private static readonly object _channelLock = new object();
+        private static readonly object ChannelLock = new object();
         public static void Initialize()
         {
-            lock (_channelLock)
+            lock (ChannelLock)
             {
                 if (_channel == null)
                 {

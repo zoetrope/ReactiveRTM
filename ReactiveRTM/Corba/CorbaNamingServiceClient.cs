@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ch.Elca.Iiop.Services;
 using ReactiveRTM.Core;
 using omg.org.CosNaming;
@@ -377,6 +378,150 @@ namespace ReactiveRTM.Corba
             }
             return subName;
         }
+
+        public NamingContextInfo RootContextInfo {
+            get { return new NamingContextInfo(null, null, _rootContext); }
+        }
     }
+
     
+//            var comps = context.Contexts
+//                .Expand(x => x.Contexts)
+//                .SelectMany(x => x.Objects)
+//                .Concat(context.Objects)
+//                .Select(x => x.FullName);
+            
+
+    public abstract class NamingInfoBase
+    {
+        private NamingContextInfo _parent;
+        private NameComponent[] _name;
+
+        /// <summary>
+        /// オブジェクトの名前を文字列で表現するときのIDとKINDの区切り文字。
+        /// デフォルトでは'.'
+        /// </summary>
+        public static char NameDelimiter { get; set; }
+
+        /// <summary>
+        /// オブジェクトの名前を文字列で表現するときの階層の区切り文字。
+        /// デフォルトでは'/'
+        /// </summary>
+        public static char TreeDelimiter { get; set; }
+
+        static NamingInfoBase()
+        {
+            NameDelimiter = '.';
+            TreeDelimiter = '/';
+        }
+
+        protected NamingInfoBase(NamingContextInfo parent, NameComponent[] name)
+        {
+            _parent = parent;
+            _name = name;
+        }
+
+        public string Name
+        {
+            get {
+                return _name == null ? "" : _name.First().id + NameDelimiter + _name.First().kind;
+            }
+        }
+        public string FullName
+        {
+            get {
+                return (_parent == null ? "" : _parent.FullName + TreeDelimiter) + Name;
+            }
+        }
+    }
+
+    public class NamingContextInfo : NamingInfoBase
+    {
+        private NamingContext _context;
+
+        public NamingContextInfo(NamingContextInfo parent, NameComponent[] name, NamingContext context)
+            : base(parent, name)
+        {
+            _context = context;
+        }
+
+
+        public IEnumerable<NamingContextInfo> Contexts
+        {
+            get
+            {
+                const int lote = 10;
+                Binding[] bindList;
+                BindingIterator bindIter;
+
+                // 現在の階層に登録されているコンテキストをlote個ずつ取得する
+                _context.list(lote, out bindList, out bindIter);
+
+                do
+                {
+                    for (int i = 0; i < bindList.Length; i++)
+                    {
+                        if (bindList[i].binding_type == BindingType.ncontext)
+                        {
+                            var name = bindList[i].binding_name;
+                            MarshalByRefObject obj = _context.resolve(name);
+                            var nc = (NamingContext) obj;
+                            yield return new NamingContextInfo(this, name, nc);
+                        }
+                    }
+                } while ((bindIter != null) && bindIter.next_n(lote, out bindList));
+
+                // 後片付け
+                if (bindIter != null)
+                {
+                    bindIter.destroy();
+                }
+
+            }
+        }
+
+        public IEnumerable<NamingObjectInfo> Objects
+        {
+            get
+            {
+                const int lote = 10;
+                Binding[] bindList;
+                BindingIterator bindIter;
+
+                // 現在の階層に登録されているコンテキストをlote個ずつ取得する
+                _context.list(lote, out bindList, out bindIter);
+
+                do
+                {
+                    for (int i = 0; i < bindList.Length; i++)
+                    {
+                        if (bindList[i].binding_type == BindingType.nobject)
+                        {
+                            var name = bindList[i].binding_name;
+                            MarshalByRefObject obj = _context.resolve(name);
+                            yield return new NamingObjectInfo(this, name, obj);
+
+                        }
+                    }
+                } while ((bindIter != null) && bindIter.next_n(lote, out bindList));
+
+                // 後片付け
+                if (bindIter != null)
+                {
+                    bindIter.destroy();
+                }
+            }
+        }
+    }
+
+    public class NamingObjectInfo : NamingInfoBase
+    {
+        private MarshalByRefObject _object;
+
+        public NamingObjectInfo(NamingContextInfo parent, NameComponent[] name, MarshalByRefObject obj)
+            : base(parent, name)
+        {
+            _object = obj;
+        }
+    }
 }
