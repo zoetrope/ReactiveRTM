@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using OpenRTM;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
@@ -97,9 +98,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.GetComponentProfileAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ComponentProfileChangedEventArgs() { Profile = x }));
 
         }
@@ -110,9 +111,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.GetComponentProfileAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ConfigurationEventArgs()));
 
         }
@@ -123,9 +124,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.GetComponentProfileAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new ECStatusChangedEventArgs()));
 
         }
@@ -136,9 +137,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.GetComponentProfileAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new HandledEventArgs()));
 
         }
@@ -149,9 +150,9 @@ namespace ReactiveRTM.Core
 
             if (handler == null) return; ;
 
-            Component.get_component_profileAsync()
+            Component.GetComponentProfileAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 .Subscribe(x => handler(this, new PortStatusChangedEventArgs()));
 
         }

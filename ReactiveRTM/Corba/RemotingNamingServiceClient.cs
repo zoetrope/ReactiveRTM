@@ -62,12 +62,7 @@ namespace ReactiveRTM.Corba
         {
             throw new NotImplementedException();
         }
-
-        public bool IsA<TObject>(string name)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         #endregion
     }
 }

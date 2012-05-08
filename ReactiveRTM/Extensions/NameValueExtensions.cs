@@ -6,6 +6,7 @@ using org.omg.SDOPackage;
 
 namespace ReactiveRTM.Extensions
 {
+    //TODO: ポリシーを見直したい。
     public static class NameValueExtensions
     {
         public static string GetStringValue(this NameValue[] target, string name)

@@ -142,5 +142,41 @@ namespace ReactiveRTM.Test
             scheduler.AdvanceBy(200);
             
         }
+
+        [TestMethod]
+        public void CamelCaseに変換する()
+        {
+            SnakeCaseToCamelCase("snake1").Is("Snake1");
+            SnakeCaseToCamelCase("snake_case2").Is("SnakeCase2");
+            SnakeCaseToCamelCase("snake_case_3").Is("SnakeCase3");
+            SnakeCaseToCamelCase("snake_case4_").Is("SnakeCase4");
+            SnakeCaseToCamelCase("_snake5").Is("Snake5");
+
+        }
+
+        private string SnakeCaseToCamelCase(string snake)
+        {
+            bool nextIsLarge = true;
+            string camel = "";
+
+            foreach (var c in snake)
+            {
+                if(c == '_')
+                {
+                    nextIsLarge = true;
+                    continue;
+                }
+                if(nextIsLarge)
+                {
+                    camel += c.ToString().ToUpper();
+                    nextIsLarge = false;
+                }
+                else
+                {
+                    camel += c;
+                }
+            }
+            return camel;
+        }
     }
 }

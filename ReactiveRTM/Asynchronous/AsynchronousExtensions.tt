@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System;
 using System.Reactive.Linq;
 using System.Reactive.Concurrency;
+using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 
 <# foreach(var x in GenerateTemplates(types)) {#>
@@ -30,9 +31,9 @@ namespace <#= x.Namespace #>
     {
         <# foreach(var method in ct.MethodTemplates) {#>
  
-        public static IObservable<<#= method.Return #>> <#= method.Name #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>)
+        public static Task<#= method.Return #> <#= SnakeCaseToCamelCase(method.Name) #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>)
         {
-            return Observable.Start(()=>target.<#= method.Name #>(<#= method.CallArgs #>));
+            return Task.Factory.StartNew(()=>target.<#= method.Name #>(<#= method.CallArgs #>));
         }
         <# } #>
     }
@@ -75,7 +76,7 @@ namespace <#= x.Namespace #>
                     .Select(a => new MethodTemplate
                     {
                         Name = a.Name,
-                        Return = a.ReturnType == typeof(void) ? typeof(System.Reactive.Unit).FullName : a.ReturnType.FullName,
+                        Return = a.ReturnType == typeof(void) ? "" : "<" + a.ReturnType.FullName + ">",
                         DecArgs = a.GetParameters().Count() != 0 ? "," + string.Join(",", a.GetParameters().Select(p => p.ParameterType.ToString().Replace("&","") + " " + p.Name)) : string.Empty,
                         CallArgs = string.Join(",", a.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + p.Name))
                     })
@@ -87,5 +88,29 @@ namespace <#= x.Namespace #>
         {
             public string Name, DecArgs,CallArgs, Return;
         }
+		
+        string SnakeCaseToCamelCase(string snake)
+        {
+            bool nextIsLarge = true;
+            string camel = "";
 
+            foreach (var c in snake)
+            {
+                if(c == '_')
+                {
+                    nextIsLarge = true;
+                    continue;
+                }
+                if(nextIsLarge)
+                {
+                    camel += c.ToString().ToUpper();
+                    nextIsLarge = false;
+                }
+                else
+                {
+                    camel += c;
+                }
+            }
+            return camel;
+        }
 #>

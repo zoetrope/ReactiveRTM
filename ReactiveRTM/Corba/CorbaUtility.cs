@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using Ch.Elca.Iiop;
@@ -10,36 +11,59 @@ namespace ReactiveRTM.Corba
     public static class CorbaUtility
     {
         private static IiopChannel _channel;
-        private static readonly object ChannelLock = new object();
-        public static void Initialize()
-        {
-            lock (ChannelLock)
-            {
-                if (_channel == null)
-                {
-                    // チャンネルを登録する
-                    _channel = new IiopChannel(0); // 自動的にポートを割り当てる
-                    ChannelServices.RegisterChannel(_channel, false);
-                }
-
-            }
-        }
-
-        public static TimeSpan DefaultTimeout { get; set; }
+        private static readonly object _channelLock = new object();
 
         static CorbaUtility()
 		{
-		    DefaultTimeout = TimeSpan.FromSeconds(5);
-
-            Initialize();
+            //Initialize();
         }
 
+        public static void Initialize()
+        {
+            //TODO: 設定は外から渡せるようにする。
+            var setting = new Dictionary<string, string>()
+                {
+                    // Common Settings
+                    //{"name","IIOPChannel"},
+                    //{"priority","0"},
+                    //{"endian","true"},
+
+                    // Client Settings
+                    //{"clientReceiveTimeOut","3000"},
+                    //{"clientSendTimeOut","3000"},
+                    {"clientRequestTimeOut","3000"},
+                    //{"unusedConnectionKeepAlive","300000"},
+                    //{"clientConnectionLimit","5"},
+                    //{"allowRequestMultiplex","true"},
+                    //{"maxNumberOfMultiplexedRequests","1000"},
+                    //{"maxNumberOfRetries","0"},
+                    //{"retryDelay","0"},
+
+                    // Server Settings
+                    {"port","0"},
+                    //{"machineName",""},
+                    //{"bindTo",""},
+                    //{"useIpAddress","true"},
+                    //{"serverThreadsMaxPerConnection","25"}
+                };
+
+            lock (_channelLock)
+            {
+                if (_channel == null)
+                {
+                    _channel = new IiopChannel(setting);
+                    ChannelServices.RegisterChannel(_channel, false);
+                }
+            }
+        }
 
         public static void Destroy()
         {
-            ChannelServices.UnregisterChannel(_channel);
-
-            _channel = null;
+            lock (_channelLock)
+            {
+                ChannelServices.UnregisterChannel(_channel);
+                _channel = null;
+            }
         }
 
         public static string GetIor(object obj)
@@ -56,9 +80,15 @@ namespace ReactiveRTM.Corba
             return (TObject)orb.string_to_object(ior);
         }
 
-        public static string GetRepositoryID(Type type)
+        public static string GetRepositoryId(Type type)
         {
             return type.GetCustomAttributes(typeof(RepositoryIDAttribute), true)
+                .Cast<RepositoryIDAttribute>().First().Id;
+        }
+
+        public static string GetRepositoryId<TType>()
+        {
+            return typeof (TType).GetCustomAttributes(typeof (RepositoryIDAttribute), true)
                 .Cast<RepositoryIDAttribute>().First().Id;
         }
     }

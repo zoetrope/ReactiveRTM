@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using System.Text;
 using OpenRTM;
 using ReactiveRTM.Corba;
@@ -24,7 +25,7 @@ namespace ReactiveRTM.Adapter
         private IComponentActionListener _listener;
         private ConfigurationAdapter _configuration;
 
-        public DataFlowComponentAdapter(IComponentActionListener listener, string name)
+        internal DataFlowComponentAdapter(IComponentActionListener listener, string name)
         {
             _profile = new ComponentProfile(name, name, "", "", "", "", new PortProfile[0], null, new NameValue[0]);
             
@@ -51,9 +52,9 @@ namespace ReactiveRTM.Adapter
         public ReturnCode_t on_initialize()
         {
             _observers.ForEach(observer => 
-                observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout)
                 );
             return _listener.RaiseOnInitialize();
         }
@@ -75,25 +76,26 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t on_activated(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ACTIVE:0")
-                .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ACTIVE:0")
+                                               .ToObservable() //TODO:
+                                               .SubscribeOn(ExecutionContextScheduler));
+                
             return _listener.RaiseOnActivated(exec_handle);
         }
 
         public ReturnCode_t on_deactivated(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
-                .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
             return _listener.RaiseOnDeactivated(exec_handle);
         }
 
         public ReturnCode_t on_aborting(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "ERROR:0")
-                .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ERROR:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
             return _listener.RaiseOnAborting(exec_handle);
             
         }
@@ -105,9 +107,9 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t on_reset(int exec_handle)
         {
-            _observers.ForEach(observer => observer.update_statusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
-                .SubscribeOn(ExecutionContextScheduler)
-                .Timeout(CorbaUtility.DefaultTimeout));
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
             return _listener.RaiseOnReset(exec_handle);
         }
 

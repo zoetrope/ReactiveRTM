@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace ReactiveRTM.Extensions
 {
+    /*
     /// <summary>
     /// RTコンポーネントの操作を簡略化するための拡張メソッド
     /// </summary>
@@ -97,4 +98,5 @@ namespace ReactiveRTM.Extensions
 
         }
     }
+        */
 }

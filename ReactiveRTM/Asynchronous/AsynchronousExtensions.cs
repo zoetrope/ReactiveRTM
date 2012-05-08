@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Reactive.Linq;
 using System.Reactive.Concurrency;
+using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 
  
@@ -12,328 +13,328 @@ namespace omg.org.RTC
     public static class ExecutionContextAsyncExtensions
     {
          
-        public static IObservable<System.Boolean> is_runningAsync(this ExecutionContext target )
+        public static Task<System.Boolean> IsRunningAsync(this ExecutionContext target )
         {
-            return Observable.Start(()=>target.is_running());
+            return Task.Factory.StartNew(()=>target.is_running());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> startAsync(this ExecutionContext target )
+        public static Task<omg.org.RTC.ReturnCode_t> StartAsync(this ExecutionContext target )
         {
-            return Observable.Start(()=>target.start());
+            return Task.Factory.StartNew(()=>target.start());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> _stopAsync(this ExecutionContext target )
+        public static Task<omg.org.RTC.ReturnCode_t> StopAsync(this ExecutionContext target )
         {
-            return Observable.Start(()=>target._stop());
+            return Task.Factory.StartNew(()=>target._stop());
         }
          
-        public static IObservable<System.Double> get_rateAsync(this ExecutionContext target )
+        public static Task<System.Double> GetRateAsync(this ExecutionContext target )
         {
-            return Observable.Start(()=>target.get_rate());
+            return Task.Factory.StartNew(()=>target.get_rate());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> set_rateAsync(this ExecutionContext target ,System.Double rate)
+        public static Task<omg.org.RTC.ReturnCode_t> SetRateAsync(this ExecutionContext target ,System.Double rate)
         {
-            return Observable.Start(()=>target.set_rate(rate));
+            return Task.Factory.StartNew(()=>target.set_rate(rate));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> add_componentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.ReturnCode_t> AddComponentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.add_component(comp));
+            return Task.Factory.StartNew(()=>target.add_component(comp));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> remove_componentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.ReturnCode_t> RemoveComponentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.remove_component(comp));
+            return Task.Factory.StartNew(()=>target.remove_component(comp));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> activate_componentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.ReturnCode_t> ActivateComponentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.activate_component(comp));
+            return Task.Factory.StartNew(()=>target.activate_component(comp));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> deactivate_componentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.ReturnCode_t> DeactivateComponentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.deactivate_component(comp));
+            return Task.Factory.StartNew(()=>target.deactivate_component(comp));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> reset_componentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.ReturnCode_t> ResetComponentAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.reset_component(comp));
+            return Task.Factory.StartNew(()=>target.reset_component(comp));
         }
          
-        public static IObservable<omg.org.RTC.LifeCycleState> get_component_stateAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
+        public static Task<omg.org.RTC.LifeCycleState> GetComponentStateAsync(this ExecutionContext target ,omg.org.RTC.LightweightRTObject comp)
         {
-            return Observable.Start(()=>target.get_component_state(comp));
+            return Task.Factory.StartNew(()=>target.get_component_state(comp));
         }
          
-        public static IObservable<omg.org.RTC.ExecutionKind> get_kindAsync(this ExecutionContext target )
+        public static Task<omg.org.RTC.ExecutionKind> GetKindAsync(this ExecutionContext target )
         {
-            return Observable.Start(()=>target.get_kind());
+            return Task.Factory.StartNew(()=>target.get_kind());
         }
             }
      
     public static class ComponentActionAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_initializeAsync(this ComponentAction target )
+        public static Task<omg.org.RTC.ReturnCode_t> OnInitializeAsync(this ComponentAction target )
         {
-            return Observable.Start(()=>target.on_initialize());
+            return Task.Factory.StartNew(()=>target.on_initialize());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_finalizeAsync(this ComponentAction target )
+        public static Task<omg.org.RTC.ReturnCode_t> OnFinalizeAsync(this ComponentAction target )
         {
-            return Observable.Start(()=>target.on_finalize());
+            return Task.Factory.StartNew(()=>target.on_finalize());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_startupAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnStartupAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_startup(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_startup(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_shutdownAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnShutdownAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_shutdown(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_shutdown(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_activatedAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnActivatedAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_activated(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_activated(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_deactivatedAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnDeactivatedAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_deactivated(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_deactivated(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_abortingAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnAbortingAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_aborting(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_aborting(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_errorAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnErrorAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_error(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_error(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_resetAsync(this ComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnResetAsync(this ComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_reset(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_reset(exec_handle));
         }
             }
      
     public static class LightweightRTObjectAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> initializeAsync(this LightweightRTObject target )
+        public static Task<omg.org.RTC.ReturnCode_t> InitializeAsync(this LightweightRTObject target )
         {
-            return Observable.Start(()=>target.initialize());
+            return Task.Factory.StartNew(()=>target.initialize());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> _finalizeAsync(this LightweightRTObject target )
+        public static Task<omg.org.RTC.ReturnCode_t> FinalizeAsync(this LightweightRTObject target )
         {
-            return Observable.Start(()=>target._finalize());
+            return Task.Factory.StartNew(()=>target._finalize());
         }
          
-        public static IObservable<System.Boolean> is_aliveAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext exec_context)
+        public static Task<System.Boolean> IsAliveAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext exec_context)
         {
-            return Observable.Start(()=>target.is_alive(exec_context));
+            return Task.Factory.StartNew(()=>target.is_alive(exec_context));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> _exitAsync(this LightweightRTObject target )
+        public static Task<omg.org.RTC.ReturnCode_t> ExitAsync(this LightweightRTObject target )
         {
-            return Observable.Start(()=>target._exit());
+            return Task.Factory.StartNew(()=>target._exit());
         }
          
-        public static IObservable<System.Int32> attach_contextAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext exec_context)
+        public static Task<System.Int32> AttachContextAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext exec_context)
         {
-            return Observable.Start(()=>target.attach_context(exec_context));
+            return Task.Factory.StartNew(()=>target.attach_context(exec_context));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> detach_contextAsync(this LightweightRTObject target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> DetachContextAsync(this LightweightRTObject target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.detach_context(exec_handle));
+            return Task.Factory.StartNew(()=>target.detach_context(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ExecutionContext> get_contextAsync(this LightweightRTObject target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ExecutionContext> GetContextAsync(this LightweightRTObject target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.get_context(exec_handle));
+            return Task.Factory.StartNew(()=>target.get_context(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ExecutionContext[]> get_owned_contextsAsync(this LightweightRTObject target )
+        public static Task<omg.org.RTC.ExecutionContext[]> GetOwnedContextsAsync(this LightweightRTObject target )
         {
-            return Observable.Start(()=>target.get_owned_contexts());
+            return Task.Factory.StartNew(()=>target.get_owned_contexts());
         }
          
-        public static IObservable<omg.org.RTC.ExecutionContext[]> get_participating_contextsAsync(this LightweightRTObject target )
+        public static Task<omg.org.RTC.ExecutionContext[]> GetParticipatingContextsAsync(this LightweightRTObject target )
         {
-            return Observable.Start(()=>target.get_participating_contexts());
+            return Task.Factory.StartNew(()=>target.get_participating_contexts());
         }
          
-        public static IObservable<System.Int32> get_context_handleAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext cxt)
+        public static Task<System.Int32> GetContextHandleAsync(this LightweightRTObject target ,omg.org.RTC.ExecutionContext cxt)
         {
-            return Observable.Start(()=>target.get_context_handle(cxt));
+            return Task.Factory.StartNew(()=>target.get_context_handle(cxt));
         }
             }
      
     public static class DataFlowComponentActionAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_executeAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnExecuteAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_execute(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_execute(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_state_updateAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnStateUpdateAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_state_update(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_state_update(exec_handle));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_rate_changedAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnRateChangedAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_rate_changed(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_rate_changed(exec_handle));
         }
             }
      
     public static class FsmParticipantActionAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_actionAsync(this FsmParticipantAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnActionAsync(this FsmParticipantAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_action(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_action(exec_handle));
         }
             }
      
     public static class ModeCapableAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.Mode> get_default_modeAsync(this ModeCapable target )
+        public static Task<omg.org.RTC.Mode> GetDefaultModeAsync(this ModeCapable target )
         {
-            return Observable.Start(()=>target.get_default_mode());
+            return Task.Factory.StartNew(()=>target.get_default_mode());
         }
          
-        public static IObservable<omg.org.RTC.Mode> get_current_modeAsync(this ModeCapable target )
+        public static Task<omg.org.RTC.Mode> GetCurrentModeAsync(this ModeCapable target )
         {
-            return Observable.Start(()=>target.get_current_mode());
+            return Task.Factory.StartNew(()=>target.get_current_mode());
         }
          
-        public static IObservable<omg.org.RTC.Mode> get_current_mode_in_contextAsync(this ModeCapable target ,omg.org.RTC.ExecutionContext exec_context)
+        public static Task<omg.org.RTC.Mode> GetCurrentModeInContextAsync(this ModeCapable target ,omg.org.RTC.ExecutionContext exec_context)
         {
-            return Observable.Start(()=>target.get_current_mode_in_context(exec_context));
+            return Task.Factory.StartNew(()=>target.get_current_mode_in_context(exec_context));
         }
          
-        public static IObservable<omg.org.RTC.Mode> get_pending_modeAsync(this ModeCapable target )
+        public static Task<omg.org.RTC.Mode> GetPendingModeAsync(this ModeCapable target )
         {
-            return Observable.Start(()=>target.get_pending_mode());
+            return Task.Factory.StartNew(()=>target.get_pending_mode());
         }
          
-        public static IObservable<omg.org.RTC.Mode> get_pending_mode_in_contextAsync(this ModeCapable target ,omg.org.RTC.ExecutionContext exec_context)
+        public static Task<omg.org.RTC.Mode> GetPendingModeInContextAsync(this ModeCapable target ,omg.org.RTC.ExecutionContext exec_context)
         {
-            return Observable.Start(()=>target.get_pending_mode_in_context(exec_context));
+            return Task.Factory.StartNew(()=>target.get_pending_mode_in_context(exec_context));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> set_modeAsync(this ModeCapable target ,omg.org.RTC.Mode new_mode,System.Boolean immediate)
+        public static Task<omg.org.RTC.ReturnCode_t> SetModeAsync(this ModeCapable target ,omg.org.RTC.Mode new_mode,System.Boolean immediate)
         {
-            return Observable.Start(()=>target.set_mode(new_mode,immediate));
+            return Task.Factory.StartNew(()=>target.set_mode(new_mode,immediate));
         }
             }
      
     public static class MultiModeComponentActionAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> on_mode_changedAsync(this MultiModeComponentAction target ,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> OnModeChangedAsync(this MultiModeComponentAction target ,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.on_mode_changed(exec_handle));
+            return Task.Factory.StartNew(()=>target.on_mode_changed(exec_handle));
         }
             }
      
     public static class RTObjectAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ComponentProfile> get_component_profileAsync(this RTObject target )
+        public static Task<omg.org.RTC.ComponentProfile> GetComponentProfileAsync(this RTObject target )
         {
-            return Observable.Start(()=>target.get_component_profile());
+            return Task.Factory.StartNew(()=>target.get_component_profile());
         }
          
-        public static IObservable<omg.org.RTC.PortService[]> get_portsAsync(this RTObject target )
+        public static Task<omg.org.RTC.PortService[]> GetPortsAsync(this RTObject target )
         {
-            return Observable.Start(()=>target.get_ports());
+            return Task.Factory.StartNew(()=>target.get_ports());
         }
             }
      
     public static class PortServiceAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.PortProfile> get_port_profileAsync(this PortService target )
+        public static Task<omg.org.RTC.PortProfile> GetPortProfileAsync(this PortService target )
         {
-            return Observable.Start(()=>target.get_port_profile());
+            return Task.Factory.StartNew(()=>target.get_port_profile());
         }
          
-        public static IObservable<omg.org.RTC.ConnectorProfile[]> get_connector_profilesAsync(this PortService target )
+        public static Task<omg.org.RTC.ConnectorProfile[]> GetConnectorProfilesAsync(this PortService target )
         {
-            return Observable.Start(()=>target.get_connector_profiles());
+            return Task.Factory.StartNew(()=>target.get_connector_profiles());
         }
          
-        public static IObservable<omg.org.RTC.ConnectorProfile> get_connector_profileAsync(this PortService target ,System.String connector_id)
+        public static Task<omg.org.RTC.ConnectorProfile> GetConnectorProfileAsync(this PortService target ,System.String connector_id)
         {
-            return Observable.Start(()=>target.get_connector_profile(connector_id));
+            return Task.Factory.StartNew(()=>target.get_connector_profile(connector_id));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> connectAsync(this PortService target ,omg.org.RTC.ConnectorProfile connector_profile)
+        public static Task<omg.org.RTC.ReturnCode_t> ConnectAsync(this PortService target ,omg.org.RTC.ConnectorProfile connector_profile)
         {
-            return Observable.Start(()=>target.connect(ref connector_profile));
+            return Task.Factory.StartNew(()=>target.connect(ref connector_profile));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> disconnectAsync(this PortService target ,System.String connector_id)
+        public static Task<omg.org.RTC.ReturnCode_t> DisconnectAsync(this PortService target ,System.String connector_id)
         {
-            return Observable.Start(()=>target.disconnect(connector_id));
+            return Task.Factory.StartNew(()=>target.disconnect(connector_id));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> disconnect_allAsync(this PortService target )
+        public static Task<omg.org.RTC.ReturnCode_t> DisconnectAllAsync(this PortService target )
         {
-            return Observable.Start(()=>target.disconnect_all());
+            return Task.Factory.StartNew(()=>target.disconnect_all());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> notify_connectAsync(this PortService target ,omg.org.RTC.ConnectorProfile connector_profile)
+        public static Task<omg.org.RTC.ReturnCode_t> NotifyConnectAsync(this PortService target ,omg.org.RTC.ConnectorProfile connector_profile)
         {
-            return Observable.Start(()=>target.notify_connect(ref connector_profile));
+            return Task.Factory.StartNew(()=>target.notify_connect(ref connector_profile));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> notify_disconnectAsync(this PortService target ,System.String connector_id)
+        public static Task<omg.org.RTC.ReturnCode_t> NotifyDisconnectAsync(this PortService target ,System.String connector_id)
         {
-            return Observable.Start(()=>target.notify_disconnect(connector_id));
+            return Task.Factory.StartNew(()=>target.notify_disconnect(connector_id));
         }
             }
      
     public static class FsmObjectAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> send_stimulusAsync(this FsmObject target ,System.String message,System.Int32 exec_handle)
+        public static Task<omg.org.RTC.ReturnCode_t> SendStimulusAsync(this FsmObject target ,System.String message,System.Int32 exec_handle)
         {
-            return Observable.Start(()=>target.send_stimulus(message,exec_handle));
+            return Task.Factory.StartNew(()=>target.send_stimulus(message,exec_handle));
         }
             }
      
     public static class FsmServiceAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.FsmProfile> get_fsm_profileAsync(this FsmService target )
+        public static Task<omg.org.RTC.FsmProfile> GetFsmProfileAsync(this FsmService target )
         {
-            return Observable.Start(()=>target.get_fsm_profile());
+            return Task.Factory.StartNew(()=>target.get_fsm_profile());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> set_fsm_profileAsync(this FsmService target ,omg.org.RTC.FsmProfile fsm_profile)
+        public static Task<omg.org.RTC.ReturnCode_t> SetFsmProfileAsync(this FsmService target ,omg.org.RTC.FsmProfile fsm_profile)
         {
-            return Observable.Start(()=>target.set_fsm_profile(fsm_profile));
+            return Task.Factory.StartNew(()=>target.set_fsm_profile(fsm_profile));
         }
             }
      
     public static class ExecutionContextServiceAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ExecutionContextProfile> get_profileAsync(this ExecutionContextService target )
+        public static Task<omg.org.RTC.ExecutionContextProfile> GetProfileAsync(this ExecutionContextService target )
         {
-            return Observable.Start(()=>target.get_profile());
+            return Task.Factory.StartNew(()=>target.get_profile());
         }
             }
     }
@@ -344,41 +345,41 @@ namespace OpenRTM
     public static class ComponentObserverAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> update_statusAsync(this ComponentObserver target ,OpenRTM.StatusKind status_kind,System.String hint)
+        public static Task UpdateStatusAsync(this ComponentObserver target ,OpenRTM.StatusKind status_kind,System.String hint)
         {
-            return Observable.Start(()=>target.update_status(status_kind,hint));
+            return Task.Factory.StartNew(()=>target.update_status(status_kind,hint));
         }
             }
      
     public static class InPortCdrAsyncExtensions
     {
          
-        public static IObservable<OpenRTM.PortStatus> putAsync(this InPortCdr target ,System.Byte[] data)
+        public static Task<OpenRTM.PortStatus> PutAsync(this InPortCdr target ,System.Byte[] data)
         {
-            return Observable.Start(()=>target.put(data));
+            return Task.Factory.StartNew(()=>target.put(data));
         }
             }
      
     public static class OutPortCdrAsyncExtensions
     {
          
-        public static IObservable<OpenRTM.PortStatus> _getAsync(this OutPortCdr target ,System.Byte[] data)
+        public static Task<OpenRTM.PortStatus> GetAsync(this OutPortCdr target ,System.Byte[] data)
         {
-            return Observable.Start(()=>target._get(out data));
+            return Task.Factory.StartNew(()=>target._get(out data));
         }
             }
      
     public static class LoggerAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> publishAsync(this Logger target ,OpenRTM.LogRecord record)
+        public static Task PublishAsync(this Logger target ,OpenRTM.LogRecord record)
         {
-            return Observable.Start(()=>target.publish(record));
+            return Task.Factory.StartNew(()=>target.publish(record));
         }
          
-        public static IObservable<System.Reactive.Unit> closeAsync(this Logger target )
+        public static Task CloseAsync(this Logger target )
         {
-            return Observable.Start(()=>target.close());
+            return Task.Factory.StartNew(()=>target.close());
         }
             }
     }
@@ -389,9 +390,9 @@ namespace openrtm.aist.go.jp.OpenRTM
     public static class ExtTrigExecutionContextServiceAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> tickAsync(this ExtTrigExecutionContextService target )
+        public static Task TickAsync(this ExtTrigExecutionContextService target )
         {
-            return Observable.Start(()=>target.tick());
+            return Task.Factory.StartNew(()=>target.tick());
         }
             }
     }
@@ -402,226 +403,226 @@ namespace org.omg.SDOPackage
     public static class SDOAsyncExtensions
     {
          
-        public static IObservable<System.String> get_sdo_idAsync(this SDO target )
+        public static Task<System.String> GetSdoIdAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_sdo_id());
+            return Task.Factory.StartNew(()=>target.get_sdo_id());
         }
          
-        public static IObservable<System.String> get_sdo_typeAsync(this SDO target )
+        public static Task<System.String> GetSdoTypeAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_sdo_type());
+            return Task.Factory.StartNew(()=>target.get_sdo_type());
         }
          
-        public static IObservable<org.omg.SDOPackage.DeviceProfile> get_device_profileAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.DeviceProfile> GetDeviceProfileAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_device_profile());
+            return Task.Factory.StartNew(()=>target.get_device_profile());
         }
          
-        public static IObservable<org.omg.SDOPackage.ServiceProfile[]> get_service_profilesAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.ServiceProfile[]> GetServiceProfilesAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_service_profiles());
+            return Task.Factory.StartNew(()=>target.get_service_profiles());
         }
          
-        public static IObservable<org.omg.SDOPackage.ServiceProfile> get_service_profileAsync(this SDO target ,System.String id)
+        public static Task<org.omg.SDOPackage.ServiceProfile> GetServiceProfileAsync(this SDO target ,System.String id)
         {
-            return Observable.Start(()=>target.get_service_profile(id));
+            return Task.Factory.StartNew(()=>target.get_service_profile(id));
         }
          
-        public static IObservable<org.omg.SDOPackage.SDOService> get_sdo_serviceAsync(this SDO target ,System.String id)
+        public static Task<org.omg.SDOPackage.SDOService> GetSdoServiceAsync(this SDO target ,System.String id)
         {
-            return Observable.Start(()=>target.get_sdo_service(id));
+            return Task.Factory.StartNew(()=>target.get_sdo_service(id));
         }
          
-        public static IObservable<org.omg.SDOPackage.Configuration> get_configurationAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.Configuration> GetConfigurationAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_configuration());
+            return Task.Factory.StartNew(()=>target.get_configuration());
         }
          
-        public static IObservable<org.omg.SDOPackage.Monitoring> get_monitoringAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.Monitoring> GetMonitoringAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_monitoring());
+            return Task.Factory.StartNew(()=>target.get_monitoring());
         }
          
-        public static IObservable<org.omg.SDOPackage.Organization[]> get_organizationsAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.Organization[]> GetOrganizationsAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_organizations());
+            return Task.Factory.StartNew(()=>target.get_organizations());
         }
          
-        public static IObservable<org.omg.SDOPackage.NameValue[]> get_status_listAsync(this SDO target )
+        public static Task<org.omg.SDOPackage.NameValue[]> GetStatusListAsync(this SDO target )
         {
-            return Observable.Start(()=>target.get_status_list());
+            return Task.Factory.StartNew(()=>target.get_status_list());
         }
          
-        public static IObservable<System.Object> get_statusAsync(this SDO target ,System.String nme)
+        public static Task<System.Object> GetStatusAsync(this SDO target ,System.String nme)
         {
-            return Observable.Start(()=>target.get_status(nme));
+            return Task.Factory.StartNew(()=>target.get_status(nme));
         }
             }
      
     public static class SDOSystemElementAsyncExtensions
     {
          
-        public static IObservable<org.omg.SDOPackage.Organization[]> get_owned_organizationsAsync(this SDOSystemElement target )
+        public static Task<org.omg.SDOPackage.Organization[]> GetOwnedOrganizationsAsync(this SDOSystemElement target )
         {
-            return Observable.Start(()=>target.get_owned_organizations());
+            return Task.Factory.StartNew(()=>target.get_owned_organizations());
         }
             }
      
     public static class ConfigurationAsyncExtensions
     {
          
-        public static IObservable<System.Boolean> set_device_profileAsync(this Configuration target ,org.omg.SDOPackage.DeviceProfile dProfile)
+        public static Task<System.Boolean> SetDeviceProfileAsync(this Configuration target ,org.omg.SDOPackage.DeviceProfile dProfile)
         {
-            return Observable.Start(()=>target.set_device_profile(dProfile));
+            return Task.Factory.StartNew(()=>target.set_device_profile(dProfile));
         }
          
-        public static IObservable<System.Boolean> add_service_profileAsync(this Configuration target ,org.omg.SDOPackage.ServiceProfile sProfile)
+        public static Task<System.Boolean> AddServiceProfileAsync(this Configuration target ,org.omg.SDOPackage.ServiceProfile sProfile)
         {
-            return Observable.Start(()=>target.add_service_profile(sProfile));
+            return Task.Factory.StartNew(()=>target.add_service_profile(sProfile));
         }
          
-        public static IObservable<System.Boolean> add_organizationAsync(this Configuration target ,org.omg.SDOPackage.Organization organization_object)
+        public static Task<System.Boolean> AddOrganizationAsync(this Configuration target ,org.omg.SDOPackage.Organization organization_object)
         {
-            return Observable.Start(()=>target.add_organization(organization_object));
+            return Task.Factory.StartNew(()=>target.add_organization(organization_object));
         }
          
-        public static IObservable<System.Boolean> remove_service_profileAsync(this Configuration target ,System.String id)
+        public static Task<System.Boolean> RemoveServiceProfileAsync(this Configuration target ,System.String id)
         {
-            return Observable.Start(()=>target.remove_service_profile(id));
+            return Task.Factory.StartNew(()=>target.remove_service_profile(id));
         }
          
-        public static IObservable<System.Boolean> remove_organizationAsync(this Configuration target ,System.String organization_id)
+        public static Task<System.Boolean> RemoveOrganizationAsync(this Configuration target ,System.String organization_id)
         {
-            return Observable.Start(()=>target.remove_organization(organization_id));
+            return Task.Factory.StartNew(()=>target.remove_organization(organization_id));
         }
          
-        public static IObservable<org.omg.SDOPackage.Parameter[]> get_configuration_parametersAsync(this Configuration target )
+        public static Task<org.omg.SDOPackage.Parameter[]> GetConfigurationParametersAsync(this Configuration target )
         {
-            return Observable.Start(()=>target.get_configuration_parameters());
+            return Task.Factory.StartNew(()=>target.get_configuration_parameters());
         }
          
-        public static IObservable<org.omg.SDOPackage.NameValue[]> get_configuration_parameter_valuesAsync(this Configuration target )
+        public static Task<org.omg.SDOPackage.NameValue[]> GetConfigurationParameterValuesAsync(this Configuration target )
         {
-            return Observable.Start(()=>target.get_configuration_parameter_values());
+            return Task.Factory.StartNew(()=>target.get_configuration_parameter_values());
         }
          
-        public static IObservable<System.Object> get_configuration_parameter_valueAsync(this Configuration target ,System.String name)
+        public static Task<System.Object> GetConfigurationParameterValueAsync(this Configuration target ,System.String name)
         {
-            return Observable.Start(()=>target.get_configuration_parameter_value(name));
+            return Task.Factory.StartNew(()=>target.get_configuration_parameter_value(name));
         }
          
-        public static IObservable<System.Boolean> set_configuration_parameterAsync(this Configuration target ,System.String name,System.Object value)
+        public static Task<System.Boolean> SetConfigurationParameterAsync(this Configuration target ,System.String name,System.Object value)
         {
-            return Observable.Start(()=>target.set_configuration_parameter(name,value));
+            return Task.Factory.StartNew(()=>target.set_configuration_parameter(name,value));
         }
          
-        public static IObservable<org.omg.SDOPackage.ConfigurationSet[]> get_configuration_setsAsync(this Configuration target )
+        public static Task<org.omg.SDOPackage.ConfigurationSet[]> GetConfigurationSetsAsync(this Configuration target )
         {
-            return Observable.Start(()=>target.get_configuration_sets());
+            return Task.Factory.StartNew(()=>target.get_configuration_sets());
         }
          
-        public static IObservable<org.omg.SDOPackage.ConfigurationSet> get_configuration_setAsync(this Configuration target ,System.String config_id)
+        public static Task<org.omg.SDOPackage.ConfigurationSet> GetConfigurationSetAsync(this Configuration target ,System.String config_id)
         {
-            return Observable.Start(()=>target.get_configuration_set(config_id));
+            return Task.Factory.StartNew(()=>target.get_configuration_set(config_id));
         }
          
-        public static IObservable<System.Boolean> set_configuration_set_valuesAsync(this Configuration target ,org.omg.SDOPackage.ConfigurationSet configuration_set)
+        public static Task<System.Boolean> SetConfigurationSetValuesAsync(this Configuration target ,org.omg.SDOPackage.ConfigurationSet configuration_set)
         {
-            return Observable.Start(()=>target.set_configuration_set_values(configuration_set));
+            return Task.Factory.StartNew(()=>target.set_configuration_set_values(configuration_set));
         }
          
-        public static IObservable<org.omg.SDOPackage.ConfigurationSet> get_active_configuration_setAsync(this Configuration target )
+        public static Task<org.omg.SDOPackage.ConfigurationSet> GetActiveConfigurationSetAsync(this Configuration target )
         {
-            return Observable.Start(()=>target.get_active_configuration_set());
+            return Task.Factory.StartNew(()=>target.get_active_configuration_set());
         }
          
-        public static IObservable<System.Boolean> add_configuration_setAsync(this Configuration target ,org.omg.SDOPackage.ConfigurationSet configuration_set)
+        public static Task<System.Boolean> AddConfigurationSetAsync(this Configuration target ,org.omg.SDOPackage.ConfigurationSet configuration_set)
         {
-            return Observable.Start(()=>target.add_configuration_set(configuration_set));
+            return Task.Factory.StartNew(()=>target.add_configuration_set(configuration_set));
         }
          
-        public static IObservable<System.Boolean> remove_configuration_setAsync(this Configuration target ,System.String config_id)
+        public static Task<System.Boolean> RemoveConfigurationSetAsync(this Configuration target ,System.String config_id)
         {
-            return Observable.Start(()=>target.remove_configuration_set(config_id));
+            return Task.Factory.StartNew(()=>target.remove_configuration_set(config_id));
         }
          
-        public static IObservable<System.Boolean> activate_configuration_setAsync(this Configuration target ,System.String config_id)
+        public static Task<System.Boolean> ActivateConfigurationSetAsync(this Configuration target ,System.String config_id)
         {
-            return Observable.Start(()=>target.activate_configuration_set(config_id));
+            return Task.Factory.StartNew(()=>target.activate_configuration_set(config_id));
         }
             }
      
     public static class OrganizationAsyncExtensions
     {
          
-        public static IObservable<System.String> get_organization_idAsync(this Organization target )
+        public static Task<System.String> GetOrganizationIdAsync(this Organization target )
         {
-            return Observable.Start(()=>target.get_organization_id());
+            return Task.Factory.StartNew(()=>target.get_organization_id());
         }
          
-        public static IObservable<org.omg.SDOPackage.OrganizationProperty> get_organization_propertyAsync(this Organization target )
+        public static Task<org.omg.SDOPackage.OrganizationProperty> GetOrganizationPropertyAsync(this Organization target )
         {
-            return Observable.Start(()=>target.get_organization_property());
+            return Task.Factory.StartNew(()=>target.get_organization_property());
         }
          
-        public static IObservable<System.Object> get_organization_property_valueAsync(this Organization target ,System.String name)
+        public static Task<System.Object> GetOrganizationPropertyValueAsync(this Organization target ,System.String name)
         {
-            return Observable.Start(()=>target.get_organization_property_value(name));
+            return Task.Factory.StartNew(()=>target.get_organization_property_value(name));
         }
          
-        public static IObservable<System.Boolean> add_organization_propertyAsync(this Organization target ,org.omg.SDOPackage.OrganizationProperty organization_property)
+        public static Task<System.Boolean> AddOrganizationPropertyAsync(this Organization target ,org.omg.SDOPackage.OrganizationProperty organization_property)
         {
-            return Observable.Start(()=>target.add_organization_property(organization_property));
+            return Task.Factory.StartNew(()=>target.add_organization_property(organization_property));
         }
          
-        public static IObservable<System.Boolean> set_organization_property_valueAsync(this Organization target ,System.String name,System.Object value)
+        public static Task<System.Boolean> SetOrganizationPropertyValueAsync(this Organization target ,System.String name,System.Object value)
         {
-            return Observable.Start(()=>target.set_organization_property_value(name,value));
+            return Task.Factory.StartNew(()=>target.set_organization_property_value(name,value));
         }
          
-        public static IObservable<System.Boolean> remove_organization_propertyAsync(this Organization target ,System.String name)
+        public static Task<System.Boolean> RemoveOrganizationPropertyAsync(this Organization target ,System.String name)
         {
-            return Observable.Start(()=>target.remove_organization_property(name));
+            return Task.Factory.StartNew(()=>target.remove_organization_property(name));
         }
          
-        public static IObservable<org.omg.SDOPackage.SDOSystemElement> get_ownerAsync(this Organization target )
+        public static Task<org.omg.SDOPackage.SDOSystemElement> GetOwnerAsync(this Organization target )
         {
-            return Observable.Start(()=>target.get_owner());
+            return Task.Factory.StartNew(()=>target.get_owner());
         }
          
-        public static IObservable<System.Boolean> set_ownerAsync(this Organization target ,org.omg.SDOPackage.SDOSystemElement sdo)
+        public static Task<System.Boolean> SetOwnerAsync(this Organization target ,org.omg.SDOPackage.SDOSystemElement sdo)
         {
-            return Observable.Start(()=>target.set_owner(sdo));
+            return Task.Factory.StartNew(()=>target.set_owner(sdo));
         }
          
-        public static IObservable<org.omg.SDOPackage.SDO[]> get_membersAsync(this Organization target )
+        public static Task<org.omg.SDOPackage.SDO[]> GetMembersAsync(this Organization target )
         {
-            return Observable.Start(()=>target.get_members());
+            return Task.Factory.StartNew(()=>target.get_members());
         }
          
-        public static IObservable<System.Boolean> set_membersAsync(this Organization target ,org.omg.SDOPackage.SDO[] sdos)
+        public static Task<System.Boolean> SetMembersAsync(this Organization target ,org.omg.SDOPackage.SDO[] sdos)
         {
-            return Observable.Start(()=>target.set_members(sdos));
+            return Task.Factory.StartNew(()=>target.set_members(sdos));
         }
          
-        public static IObservable<System.Boolean> add_membersAsync(this Organization target ,org.omg.SDOPackage.SDO[] sdo_list)
+        public static Task<System.Boolean> AddMembersAsync(this Organization target ,org.omg.SDOPackage.SDO[] sdo_list)
         {
-            return Observable.Start(()=>target.add_members(sdo_list));
+            return Task.Factory.StartNew(()=>target.add_members(sdo_list));
         }
          
-        public static IObservable<System.Boolean> remove_memberAsync(this Organization target ,System.String id)
+        public static Task<System.Boolean> RemoveMemberAsync(this Organization target ,System.String id)
         {
-            return Observable.Start(()=>target.remove_member(id));
+            return Task.Factory.StartNew(()=>target.remove_member(id));
         }
          
-        public static IObservable<org.omg.SDOPackage.DependencyType> get_dependencyAsync(this Organization target )
+        public static Task<org.omg.SDOPackage.DependencyType> GetDependencyAsync(this Organization target )
         {
-            return Observable.Start(()=>target.get_dependency());
+            return Task.Factory.StartNew(()=>target.get_dependency());
         }
          
-        public static IObservable<System.Boolean> set_dependencyAsync(this Organization target ,org.omg.SDOPackage.DependencyType dependency)
+        public static Task<System.Boolean> SetDependencyAsync(this Organization target ,org.omg.SDOPackage.DependencyType dependency)
         {
-            return Observable.Start(()=>target.set_dependency(dependency));
+            return Task.Factory.StartNew(()=>target.set_dependency(dependency));
         }
             }
     }
@@ -632,435 +633,435 @@ namespace RTC
     public static class ActArrayAsyncExtensions
     {
          
-        public static IObservable<RTC.ActArrayGeometry> GetGeometryAsync(this ActArray target )
+        public static Task<RTC.ActArrayGeometry> GetGeometryAsync(this ActArray target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> GoHomeAsync(this ActArray target ,System.Int16 index)
+        public static Task GoHomeAsync(this ActArray target ,System.Int16 index)
         {
-            return Observable.Start(()=>target.GoHome(index));
+            return Task.Factory.StartNew(()=>target.GoHome(index));
         }
          
-        public static IObservable<System.Reactive.Unit> PowerAsync(this ActArray target ,System.Boolean enable)
+        public static Task PowerAsync(this ActArray target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.Power(enable));
+            return Task.Factory.StartNew(()=>target.Power(enable));
         }
          
-        public static IObservable<System.Reactive.Unit> BrakesAsync(this ActArray target ,System.Boolean engage)
+        public static Task BrakesAsync(this ActArray target ,System.Boolean engage)
         {
-            return Observable.Start(()=>target.Brakes(engage));
+            return Task.Factory.StartNew(()=>target.Brakes(engage));
         }
          
-        public static IObservable<System.Reactive.Unit> ConfigSpeedAsync(this ActArray target ,System.Int16 index,System.Double speed)
+        public static Task ConfigSpeedAsync(this ActArray target ,System.Int16 index,System.Double speed)
         {
-            return Observable.Start(()=>target.ConfigSpeed(index,speed));
+            return Task.Factory.StartNew(()=>target.ConfigSpeed(index,speed));
         }
          
-        public static IObservable<System.Reactive.Unit> ConfigAccelAsync(this ActArray target ,System.Int16 index,System.Double accel)
+        public static Task ConfigAccelAsync(this ActArray target ,System.Int16 index,System.Double accel)
         {
-            return Observable.Start(()=>target.ConfigAccel(index,accel));
+            return Task.Factory.StartNew(()=>target.ConfigAccel(index,accel));
         }
             }
      
     public static class AIOAsyncExtensions
     {
          
-        public static IObservable<System.Int16> NumChannelsAsync(this AIO target )
+        public static Task<System.Int16> NumChannelsAsync(this AIO target )
         {
-            return Observable.Start(()=>target.NumChannels());
+            return Task.Factory.StartNew(()=>target.NumChannels());
         }
          
-        public static IObservable<System.Reactive.Unit> SetReferenceLevelAsync(this AIO target ,System.Int16 index,System.Double level)
+        public static Task SetReferenceLevelAsync(this AIO target ,System.Int16 index,System.Double level)
         {
-            return Observable.Start(()=>target.SetReferenceLevel(index,level));
+            return Task.Factory.StartNew(()=>target.SetReferenceLevel(index,level));
         }
          
-        public static IObservable<System.Double> GetResolutionAsync(this AIO target ,System.Int16 index)
+        public static Task<System.Double> GetResolutionAsync(this AIO target ,System.Int16 index)
         {
-            return Observable.Start(()=>target.GetResolution(index));
+            return Task.Factory.StartNew(()=>target.GetResolution(index));
         }
             }
      
     public static class BumperAsyncExtensions
     {
          
-        public static IObservable<RTC.BumperGeometry> GetGeometryAsync(this Bumper target )
+        public static Task<RTC.BumperGeometry> GetGeometryAsync(this Bumper target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class CameraAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Camera target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this Camera target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<RTC.CameraInfo> GetCameraInfoAsync(this Camera target )
+        public static Task<RTC.CameraInfo> GetCameraInfoAsync(this Camera target )
         {
-            return Observable.Start(()=>target.GetCameraInfo());
+            return Task.Factory.StartNew(()=>target.GetCameraInfo());
         }
             }
      
     public static class DIOAsyncExtensions
     {
          
-        public static IObservable<System.Int16> NumBitsAsync(this DIO target )
+        public static Task<System.Int16> NumBitsAsync(this DIO target )
         {
-            return Observable.Start(()=>target.NumBits());
+            return Task.Factory.StartNew(()=>target.NumBits());
         }
          
-        public static IObservable<System.Boolean> GetBitAsync(this DIO target ,System.Int16 index)
+        public static Task<System.Boolean> GetBitAsync(this DIO target ,System.Int16 index)
         {
-            return Observable.Start(()=>target.GetBit(index));
+            return Task.Factory.StartNew(()=>target.GetBit(index));
         }
          
-        public static IObservable<System.Reactive.Unit> SetBitAsync(this DIO target ,System.Int16 index,System.Boolean newValue)
+        public static Task SetBitAsync(this DIO target ,System.Int16 index,System.Boolean newValue)
         {
-            return Observable.Start(()=>target.SetBit(index,newValue));
+            return Task.Factory.StartNew(()=>target.SetBit(index,newValue));
         }
             }
      
     public static class FiducialAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Fiducial target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this Fiducial target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<RTC.FiducialFOV> GetFOVAsync(this Fiducial target )
+        public static Task<RTC.FiducialFOV> GetFOVAsync(this Fiducial target )
         {
-            return Observable.Start(()=>target.GetFOV());
+            return Task.Factory.StartNew(()=>target.GetFOV());
         }
          
-        public static IObservable<System.Reactive.Unit> SetFOVAsync(this Fiducial target ,RTC.FiducialFOV newFOV)
+        public static Task SetFOVAsync(this Fiducial target ,RTC.FiducialFOV newFOV)
         {
-            return Observable.Start(()=>target.SetFOV(newFOV));
+            return Task.Factory.StartNew(()=>target.SetFOV(newFOV));
         }
             }
      
     public static class GPSAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this GPS target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this GPS target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class GripperAsyncExtensions
     {
          
-        public static IObservable<RTC.GripperGeometry> GetGeometryAsync(this Gripper target )
+        public static Task<RTC.GripperGeometry> GetGeometryAsync(this Gripper target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> OpenAsync(this Gripper target )
+        public static Task OpenAsync(this Gripper target )
         {
-            return Observable.Start(()=>target.Open());
+            return Task.Factory.StartNew(()=>target.Open());
         }
          
-        public static IObservable<System.Reactive.Unit> CloseAsync(this Gripper target )
+        public static Task CloseAsync(this Gripper target )
         {
-            return Observable.Start(()=>target.Close());
+            return Task.Factory.StartNew(()=>target.Close());
         }
             }
      
     public static class IMUAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this IMU target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this IMU target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class INSAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this INS target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this INS target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class LimbAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Limb target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this Limb target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> PowerAsync(this Limb target ,System.Boolean enable)
+        public static Task PowerAsync(this Limb target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.Power(enable));
+            return Task.Factory.StartNew(()=>target.Power(enable));
         }
          
-        public static IObservable<System.Reactive.Unit> BrakesAsync(this Limb target ,System.Boolean engage)
+        public static Task BrakesAsync(this Limb target ,System.Boolean engage)
         {
-            return Observable.Start(()=>target.Brakes(engage));
+            return Task.Factory.StartNew(()=>target.Brakes(engage));
         }
          
-        public static IObservable<System.Reactive.Unit> SetSpeedAsync(this Limb target ,System.Double speed)
+        public static Task SetSpeedAsync(this Limb target ,System.Double speed)
         {
-            return Observable.Start(()=>target.SetSpeed(speed));
+            return Task.Factory.StartNew(()=>target.SetSpeed(speed));
         }
             }
      
     public static class OGMapAsyncExtensions
     {
          
-        public static IObservable<RTC.OGMapConfig> GetConfigAsync(this OGMap target )
+        public static Task<RTC.OGMapConfig> GetConfigAsync(this OGMap target )
         {
-            return Observable.Start(()=>target.GetConfig());
+            return Task.Factory.StartNew(()=>target.GetConfig());
         }
          
-        public static IObservable<RTC.OGMapTile> GetTileAsync(this OGMap target ,RTC.OGMapTile tile)
+        public static Task<RTC.OGMapTile> GetTileAsync(this OGMap target ,RTC.OGMapTile tile)
         {
-            return Observable.Start(()=>target.GetTile(tile));
+            return Task.Factory.StartNew(()=>target.GetTile(tile));
         }
             }
      
     public static class MulticameraAsyncExtensions
     {
          
-        public static IObservable<RTC.MulticameraGeometry> GetGeometryAsync(this Multicamera target )
+        public static Task<RTC.MulticameraGeometry> GetGeometryAsync(this Multicamera target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<RTC.CameraInfo[]> GetCameraInfosAsync(this Multicamera target )
+        public static Task<RTC.CameraInfo[]> GetCameraInfosAsync(this Multicamera target )
         {
-            return Observable.Start(()=>target.GetCameraInfos());
+            return Task.Factory.StartNew(()=>target.GetCameraInfos());
         }
             }
      
     public static class PanTiltAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PanTilt target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this PanTilt target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class PathPlanner2DAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> SetTaskAsync(this PathPlanner2D target ,RTC.Waypoint2D[] coarsePath)
+        public static Task SetTaskAsync(this PathPlanner2D target ,RTC.Waypoint2D[] coarsePath)
         {
-            return Observable.Start(()=>target.SetTask(coarsePath));
+            return Task.Factory.StartNew(()=>target.SetTask(coarsePath));
         }
             }
      
     public static class PathPlanner3DAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> SetTaskAsync(this PathPlanner3D target ,RTC.Waypoint3D[] coarsePath)
+        public static Task SetTaskAsync(this PathPlanner3D target ,RTC.Waypoint3D[] coarsePath)
         {
-            return Observable.Start(()=>target.SetTask(coarsePath));
+            return Task.Factory.StartNew(()=>target.SetTask(coarsePath));
         }
             }
      
     public static class PathFollower2DAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> SetPathAsync(this PathFollower2D target ,RTC.Waypoint2D[] path)
+        public static Task SetPathAsync(this PathFollower2D target ,RTC.Waypoint2D[] path)
         {
-            return Observable.Start(()=>target.SetPath(path));
+            return Task.Factory.StartNew(()=>target.SetPath(path));
         }
          
-        public static IObservable<System.Reactive.Unit> EnableAsync(this PathFollower2D target ,System.Boolean enable)
+        public static Task EnableAsync(this PathFollower2D target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.Enable(enable));
+            return Task.Factory.StartNew(()=>target.Enable(enable));
         }
          
-        public static IObservable<System.Int16> GetCurrentWaypointIndexAsync(this PathFollower2D target )
+        public static Task<System.Int16> GetCurrentWaypointIndexAsync(this PathFollower2D target )
         {
-            return Observable.Start(()=>target.GetCurrentWaypointIndex());
+            return Task.Factory.StartNew(()=>target.GetCurrentWaypointIndex());
         }
          
-        public static IObservable<RTC.Waypoint2D> GetCurrentWaypointAsync(this PathFollower2D target )
+        public static Task<RTC.Waypoint2D> GetCurrentWaypointAsync(this PathFollower2D target )
         {
-            return Observable.Start(()=>target.GetCurrentWaypoint());
+            return Task.Factory.StartNew(()=>target.GetCurrentWaypoint());
         }
             }
      
     public static class PathFollower3DAsyncExtensions
     {
          
-        public static IObservable<System.Reactive.Unit> SetPathAsync(this PathFollower3D target ,RTC.Waypoint3D[] path)
+        public static Task SetPathAsync(this PathFollower3D target ,RTC.Waypoint3D[] path)
         {
-            return Observable.Start(()=>target.SetPath(path));
+            return Task.Factory.StartNew(()=>target.SetPath(path));
         }
          
-        public static IObservable<System.Reactive.Unit> EnableAsync(this PathFollower3D target ,System.Boolean enable)
+        public static Task EnableAsync(this PathFollower3D target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.Enable(enable));
+            return Task.Factory.StartNew(()=>target.Enable(enable));
         }
          
-        public static IObservable<System.Int16> GetCurrentWaypointIndexAsync(this PathFollower3D target )
+        public static Task<System.Int16> GetCurrentWaypointIndexAsync(this PathFollower3D target )
         {
-            return Observable.Start(()=>target.GetCurrentWaypointIndex());
+            return Task.Factory.StartNew(()=>target.GetCurrentWaypointIndex());
         }
          
-        public static IObservable<RTC.Waypoint3D> GetCurrentWaypointAsync(this PathFollower3D target )
+        public static Task<RTC.Waypoint3D> GetCurrentWaypointAsync(this PathFollower3D target )
         {
-            return Observable.Start(()=>target.GetCurrentWaypoint());
+            return Task.Factory.StartNew(()=>target.GetCurrentWaypoint());
         }
             }
      
     public static class PointCloudServicesAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PointCloudServices target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this PointCloudServices target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class Odometry2DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Odometry2D target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this Odometry2D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> SetOdometryAsync(this Odometry2D target ,RTC.Pose2D newOdometry)
+        public static Task SetOdometryAsync(this Odometry2D target ,RTC.Pose2D newOdometry)
         {
-            return Observable.Start(()=>target.SetOdometry(newOdometry));
+            return Task.Factory.StartNew(()=>target.SetOdometry(newOdometry));
         }
             }
      
     public static class Odometry3DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this Odometry3D target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this Odometry3D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> SetOdometryAsync(this Odometry3D target ,RTC.Pose3D newOdometry)
+        public static Task SetOdometryAsync(this Odometry3D target ,RTC.Pose3D newOdometry)
         {
-            return Observable.Start(()=>target.SetOdometry(newOdometry));
+            return Task.Factory.StartNew(()=>target.SetOdometry(newOdometry));
         }
             }
      
     public static class VelocityControl2DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry2D> GetGeometryAsync(this VelocityControl2D target )
+        public static Task<RTC.Geometry2D> GetGeometryAsync(this VelocityControl2D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class VelocityControl3DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this VelocityControl3D target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this VelocityControl3D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class PoseControl2DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry2D> GetGeometryAsync(this PoseControl2D target )
+        public static Task<RTC.Geometry2D> GetGeometryAsync(this PoseControl2D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class PoseControl3DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this PoseControl3D target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this PoseControl3D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class CarlikeControlAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry2D> GetGeometryAsync(this CarlikeControl target )
+        public static Task<RTC.Geometry2D> GetGeometryAsync(this CarlikeControl target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class HeadingControl2DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry2D> GetGeometryAsync(this HeadingControl2D target )
+        public static Task<RTC.Geometry2D> GetGeometryAsync(this HeadingControl2D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class HeadingControl3DAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this HeadingControl3D target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this HeadingControl3D target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
             }
      
     public static class RangerAsyncExtensions
     {
          
-        public static IObservable<RTC.RangerGeometry> GetGeometryAsync(this Ranger target )
+        public static Task<RTC.RangerGeometry> GetGeometryAsync(this Ranger target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> PowerAsync(this Ranger target ,System.Boolean enable)
+        public static Task PowerAsync(this Ranger target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.Power(enable));
+            return Task.Factory.StartNew(()=>target.Power(enable));
         }
          
-        public static IObservable<System.Reactive.Unit> EnableIntensitiesAsync(this Ranger target ,System.Boolean enable)
+        public static Task EnableIntensitiesAsync(this Ranger target ,System.Boolean enable)
         {
-            return Observable.Start(()=>target.EnableIntensities(enable));
+            return Task.Factory.StartNew(()=>target.EnableIntensities(enable));
         }
          
-        public static IObservable<RTC.RangerConfig> GetConfigAsync(this Ranger target )
+        public static Task<RTC.RangerConfig> GetConfigAsync(this Ranger target )
         {
-            return Observable.Start(()=>target.GetConfig());
+            return Task.Factory.StartNew(()=>target.GetConfig());
         }
          
-        public static IObservable<System.Reactive.Unit> SetConfigAsync(this Ranger target ,RTC.RangerConfig newConfig)
+        public static Task SetConfigAsync(this Ranger target ,RTC.RangerConfig newConfig)
         {
-            return Observable.Start(()=>target.SetConfig(newConfig));
+            return Task.Factory.StartNew(()=>target.SetConfig(newConfig));
         }
             }
      
     public static class RFIDAsyncExtensions
     {
          
-        public static IObservable<RTC.Geometry3D> GetGeometryAsync(this RFID target )
+        public static Task<RTC.Geometry3D> GetGeometryAsync(this RFID target )
         {
-            return Observable.Start(()=>target.GetGeometry());
+            return Task.Factory.StartNew(()=>target.GetGeometry());
         }
          
-        public static IObservable<System.Reactive.Unit> WriteAsync(this RFID target ,System.String GUID,System.Byte[] data)
+        public static Task WriteAsync(this RFID target ,System.String GUID,System.Byte[] data)
         {
-            return Observable.Start(()=>target.Write(GUID,data));
+            return Task.Factory.StartNew(()=>target.Write(GUID,data));
         }
          
-        public static IObservable<System.Byte[]> ReadAsync(this RFID target ,System.String GUID)
+        public static Task<System.Byte[]> ReadAsync(this RFID target ,System.String GUID)
         {
-            return Observable.Start(()=>target.Read(GUID));
+            return Task.Factory.StartNew(()=>target.Read(GUID));
         }
             }
     }
@@ -1071,119 +1072,119 @@ namespace RTM
     public static class ManagerAsyncExtensions
     {
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> load_moduleAsync(this Manager target ,System.String pathname,System.String initfunc)
+        public static Task<omg.org.RTC.ReturnCode_t> LoadModuleAsync(this Manager target ,System.String pathname,System.String initfunc)
         {
-            return Observable.Start(()=>target.load_module(pathname,initfunc));
+            return Task.Factory.StartNew(()=>target.load_module(pathname,initfunc));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> unload_moduleAsync(this Manager target ,System.String pathname)
+        public static Task<omg.org.RTC.ReturnCode_t> UnloadModuleAsync(this Manager target ,System.String pathname)
         {
-            return Observable.Start(()=>target.unload_module(pathname));
+            return Task.Factory.StartNew(()=>target.unload_module(pathname));
         }
          
-        public static IObservable<RTM.ModuleProfile[]> get_loadable_modulesAsync(this Manager target )
+        public static Task<RTM.ModuleProfile[]> GetLoadableModulesAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_loadable_modules());
+            return Task.Factory.StartNew(()=>target.get_loadable_modules());
         }
          
-        public static IObservable<RTM.ModuleProfile[]> get_loaded_modulesAsync(this Manager target )
+        public static Task<RTM.ModuleProfile[]> GetLoadedModulesAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_loaded_modules());
+            return Task.Factory.StartNew(()=>target.get_loaded_modules());
         }
          
-        public static IObservable<RTM.ModuleProfile[]> get_factory_profilesAsync(this Manager target )
+        public static Task<RTM.ModuleProfile[]> GetFactoryProfilesAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_factory_profiles());
+            return Task.Factory.StartNew(()=>target.get_factory_profiles());
         }
          
-        public static IObservable<omg.org.RTC.RTObject> create_componentAsync(this Manager target ,System.String module_name)
+        public static Task<omg.org.RTC.RTObject> CreateComponentAsync(this Manager target ,System.String module_name)
         {
-            return Observable.Start(()=>target.create_component(module_name));
+            return Task.Factory.StartNew(()=>target.create_component(module_name));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> delete_componentAsync(this Manager target ,System.String instance_name)
+        public static Task<omg.org.RTC.ReturnCode_t> DeleteComponentAsync(this Manager target ,System.String instance_name)
         {
-            return Observable.Start(()=>target.delete_component(instance_name));
+            return Task.Factory.StartNew(()=>target.delete_component(instance_name));
         }
          
-        public static IObservable<omg.org.RTC.RTObject[]> get_componentsAsync(this Manager target )
+        public static Task<omg.org.RTC.RTObject[]> GetComponentsAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_components());
+            return Task.Factory.StartNew(()=>target.get_components());
         }
          
-        public static IObservable<omg.org.RTC.ComponentProfile[]> get_component_profilesAsync(this Manager target )
+        public static Task<omg.org.RTC.ComponentProfile[]> GetComponentProfilesAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_component_profiles());
+            return Task.Factory.StartNew(()=>target.get_component_profiles());
         }
          
-        public static IObservable<RTM.ManagerProfile> get_profileAsync(this Manager target )
+        public static Task<RTM.ManagerProfile> GetProfileAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_profile());
+            return Task.Factory.StartNew(()=>target.get_profile());
         }
          
-        public static IObservable<org.omg.SDOPackage.NameValue[]> get_configurationAsync(this Manager target )
+        public static Task<org.omg.SDOPackage.NameValue[]> GetConfigurationAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_configuration());
+            return Task.Factory.StartNew(()=>target.get_configuration());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> set_configurationAsync(this Manager target ,System.String name,System.String value)
+        public static Task<omg.org.RTC.ReturnCode_t> SetConfigurationAsync(this Manager target ,System.String name,System.String value)
         {
-            return Observable.Start(()=>target.set_configuration(name,value));
+            return Task.Factory.StartNew(()=>target.set_configuration(name,value));
         }
          
-        public static IObservable<System.Boolean> is_masterAsync(this Manager target )
+        public static Task<System.Boolean> IsMasterAsync(this Manager target )
         {
-            return Observable.Start(()=>target.is_master());
+            return Task.Factory.StartNew(()=>target.is_master());
         }
          
-        public static IObservable<RTM.Manager[]> get_master_managersAsync(this Manager target )
+        public static Task<RTM.Manager[]> GetMasterManagersAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_master_managers());
+            return Task.Factory.StartNew(()=>target.get_master_managers());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> add_master_managerAsync(this Manager target ,RTM.Manager mgr)
+        public static Task<omg.org.RTC.ReturnCode_t> AddMasterManagerAsync(this Manager target ,RTM.Manager mgr)
         {
-            return Observable.Start(()=>target.add_master_manager(mgr));
+            return Task.Factory.StartNew(()=>target.add_master_manager(mgr));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> remove_master_managerAsync(this Manager target ,RTM.Manager mgr)
+        public static Task<omg.org.RTC.ReturnCode_t> RemoveMasterManagerAsync(this Manager target ,RTM.Manager mgr)
         {
-            return Observable.Start(()=>target.remove_master_manager(mgr));
+            return Task.Factory.StartNew(()=>target.remove_master_manager(mgr));
         }
          
-        public static IObservable<RTM.Manager[]> get_slave_managersAsync(this Manager target )
+        public static Task<RTM.Manager[]> GetSlaveManagersAsync(this Manager target )
         {
-            return Observable.Start(()=>target.get_slave_managers());
+            return Task.Factory.StartNew(()=>target.get_slave_managers());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> add_slave_managerAsync(this Manager target ,RTM.Manager mgr)
+        public static Task<omg.org.RTC.ReturnCode_t> AddSlaveManagerAsync(this Manager target ,RTM.Manager mgr)
         {
-            return Observable.Start(()=>target.add_slave_manager(mgr));
+            return Task.Factory.StartNew(()=>target.add_slave_manager(mgr));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> remove_slave_managerAsync(this Manager target ,RTM.Manager mgr)
+        public static Task<omg.org.RTC.ReturnCode_t> RemoveSlaveManagerAsync(this Manager target ,RTM.Manager mgr)
         {
-            return Observable.Start(()=>target.remove_slave_manager(mgr));
+            return Task.Factory.StartNew(()=>target.remove_slave_manager(mgr));
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> forkAsync(this Manager target )
+        public static Task<omg.org.RTC.ReturnCode_t> ForkAsync(this Manager target )
         {
-            return Observable.Start(()=>target.fork());
+            return Task.Factory.StartNew(()=>target.fork());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> shutdownAsync(this Manager target )
+        public static Task<omg.org.RTC.ReturnCode_t> ShutdownAsync(this Manager target )
         {
-            return Observable.Start(()=>target.shutdown());
+            return Task.Factory.StartNew(()=>target.shutdown());
         }
          
-        public static IObservable<omg.org.RTC.ReturnCode_t> restartAsync(this Manager target )
+        public static Task<omg.org.RTC.ReturnCode_t> RestartAsync(this Manager target )
         {
-            return Observable.Start(()=>target.restart());
+            return Task.Factory.StartNew(()=>target.restart());
         }
          
-        public static IObservable<System.MarshalByRefObject> get_serviceAsync(this Manager target ,System.String name)
+        public static Task<System.MarshalByRefObject> GetServiceAsync(this Manager target ,System.String name)
         {
-            return Observable.Start(()=>target.get_service(name));
+            return Task.Factory.StartNew(()=>target.get_service(name));
         }
             }
     }

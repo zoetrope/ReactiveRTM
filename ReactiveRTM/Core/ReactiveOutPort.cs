@@ -34,7 +34,7 @@ namespace ReactiveRTM.Core
             prof.InterfaceType = "corba_cdr";
 
             prof.PortType = PortType.DataOutPort;
-            prof.DataType = CorbaUtility.GetRepositoryID(typeof(TDataType));
+            prof.DataType = CorbaUtility.GetRepositoryId(typeof(TDataType));
                 
 
             Initialize(prof);

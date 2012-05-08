@@ -22,6 +22,7 @@ namespace ReactiveRTM.Core
         public ReactiveInPort(string name)
             : base(name)
         {
+
             var factory = new CdrSerializerFactory();
             _serializer = factory.GetSerializer<TDataType>();
 
@@ -40,7 +41,7 @@ namespace ReactiveRTM.Core
             prof.InterfaceType= "corba_cdr";
 
             prof.PortType = PortType.DataInPort;
-            prof.DataType = CorbaUtility.GetRepositoryID(typeof(TDataType));
+            prof.DataType = CorbaUtility.GetRepositoryId(typeof(TDataType));
 
             Initialize(prof);
         }

@@ -6,7 +6,7 @@ using omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
-    public interface IComponentActionListener
+    internal interface IComponentActionListener
     {
         ReturnCode_t RaiseOnInitialize();
 

@@ -9,12 +9,6 @@ namespace ReactiveRTM.Corba
         string HostName { get; }
         int PortNumber { get; }
 
-
-        /// <summary>
-        /// 指定した型の無効なオブジェクトを削除する
-        /// </summary>
-        void ClearZombie<TObject>();
-
         /// <summary>
         /// コンポーネントをネーミングサービスに登録する
         /// </summary>
@@ -40,14 +34,7 @@ namespace ReactiveRTM.Corba
         /// </summary>
         /// <returns>オブジェクト名一覧</returns>
         IEnumerable<string> GetObjectNames();
-
-        /// <summary>
-        /// 指定した名前のオブジェクトがTObject型かどうかを判断する
-        /// </summary>
-        /// <typeparam name="TObject"></typeparam>
-        /// <param name="name">オブジェクトの名前</param>
-        /// <returns></returns>
-        bool IsA<TObject>(string name);
+        
     }
 
 }

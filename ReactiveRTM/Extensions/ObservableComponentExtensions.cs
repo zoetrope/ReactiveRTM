@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using System.Text;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
@@ -14,9 +15,11 @@ namespace ReactiveRTM.Extensions
     {
         public static IObservable<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0)
         {
-            return target.Component.get_owned_contextsAsync()
+            return target.Component.GetOwnedContextsAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].activate_componentAsync(target.Component)
+                .Select(ecs => ecs[execHandle].ActivateComponentAsync(target.Component)
+                    .ToObservable()//TODO:
                     .SubscribeOn(target.ExecutionContextScheduler))
                 .Switch();
         }
@@ -37,9 +40,11 @@ namespace ReactiveRTM.Extensions
 
         public static IObservable<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            return target.Component.get_owned_contextsAsync()
+            return target.Component.GetOwnedContextsAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].deactivate_componentAsync(target.Component)
+                .Select(ecs => ecs[execHandle].DeactivateComponentAsync(target.Component)
+                    .ToObservable()//TODO:
                     .SubscribeOn(target.ExecutionContextScheduler))
                 .Switch();
 
@@ -47,9 +52,11 @@ namespace ReactiveRTM.Extensions
 
         public static IObservable<ReturnCode_t> ResetAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            return target.Component.get_owned_contextsAsync()
+            return target.Component.GetOwnedContextsAsync()
+                .ToObservable()//TODO:
                 .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].reset_componentAsync(target.Component)
+                .Select(ecs => ecs[execHandle].ResetComponentAsync(target.Component)
+                    .ToObservable()//TODO:
                     .SubscribeOn(target.ExecutionContextScheduler))
                 .Switch();
         }
@@ -61,18 +68,15 @@ namespace ReactiveRTM.Extensions
 
         public static IObservable<LifeCycleState> GetStateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
-
-            return target.Component.get_owned_contextsAsync()
-                .Select(ecs => ecs[execHandle].get_component_stateAsync(target.Component))
+            return target.Component.GetOwnedContextsAsync()
+                .ToObservable()//TODO:
+                .Select(ecs => ecs[execHandle].GetComponentStateAsync(target.Component).ToObservable())//TODO:
                 .Switch();
         }
 
         public static IObservable<ComponentProfile> GetComponentProfileAsync(this IObservableComponent target, TimeSpan? timeout = null)
         {
-            if (timeout == null) timeout = CorbaUtility.DefaultTimeout;
-
-            return target.Component.get_component_profileAsync();
+            return target.Component.GetComponentProfileAsync().ToObservable();//TDOO
         }
     }
 
