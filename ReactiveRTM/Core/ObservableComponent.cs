@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;
 using OpenRTM;
 using ReactiveRTM.Adapter;
@@ -17,20 +19,13 @@ namespace ReactiveRTM.Core
 
     public class ObservableComponent : IObservableComponent
     {
-        public event EventHandler<ComponentProfileChangedEventArgs> ComponentProfileChanged;
-        public event EventHandler<StateChangedEventArgs> StateChanged;
-        public event EventHandler<ECStatusChangedEventArgs> ECStatusChanged;
-        public event EventHandler<PortStatusChangedEventArgs> PortStatusChanged;
-        public event EventHandler<ConfigurationEventArgs> ConfigurationStatusChanged;
-        public event EventHandler HeartBeatReceived;
-        
 
         private ServiceProfile _profile;
 
         public ObservableComponent(DataFlowComponent comp)
         {
             _component = comp;
- 
+
             var observer = new ComponentObserverAdapter();
 
             var conf = Component.get_configuration();
@@ -43,7 +38,7 @@ namespace ReactiveRTM.Core
             NameValueExtensions.AddStringValue(ref _profile.properties, "observed_status", "ALL");
             NameValueExtensions.AddStringValue(ref _profile.properties, "heartbeat.enable", "YES");
             NameValueExtensions.AddStringValue(ref _profile.properties, "heartbeat.interval", "1");
-            
+
             _profile.service = observer;
 
             if (conf.add_service_profile(_profile))
@@ -56,16 +51,13 @@ namespace ReactiveRTM.Core
         }
 
         private DataFlowComponent _component;
+
         public DataFlowComponent Component
         {
             get { return _component; }
         }
 
-        public IScheduler ExecutionContextScheduler
-        {
-            get;
-            set;
-        }
+        public IScheduler ExecutionContextScheduler { get; set; }
 
         internal void Notify(UpdateStatus status)
         {
@@ -94,75 +86,51 @@ namespace ReactiveRTM.Core
 
         private void NotifyComponentProfileChanged(string hint)
         {
-            var handler = ComponentProfileChanged;
-
-            if (handler == null) return; ;
-
             Component.GetComponentProfileAsync()
-                .ToObservable()//TODO:
+                .ToObservable() //TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Subscribe(x => handler(this, new ComponentProfileChangedEventArgs() { Profile = x }));
+                .Subscribe(x => _componentProfileSubject.OnNext(x));
 
         }
 
         private void NotifyConfigurationStatusChanged(string hint)
         {
-            var handler = ConfigurationStatusChanged;
-
-            if (handler == null) return; ;
-
             Component.GetComponentProfileAsync()
-                .ToObservable()//TODO:
+                .ToObservable() //TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Subscribe(x => handler(this, new ConfigurationEventArgs()));
+                .Subscribe(x => _configurationStatusSubject.OnNext(new ConfigurationEventArgs()));
 
         }
 
         private void NotifyECStatusChanged(string hint)
         {
-            var handler = ECStatusChanged;
-
-            if (handler == null) return; ;
-
             Component.GetComponentProfileAsync()
-                .ToObservable()//TODO:
+                .ToObservable() //TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Subscribe(x => handler(this, new ECStatusChangedEventArgs()));
+                .Subscribe(x => _ecStatusSubject.OnNext(new ECStatusChangedEventArgs()));
 
         }
 
         private void NotifyHeartBeatReceived()
         {
-            var handler = HeartBeatReceived;
-
-            if (handler == null) return; ;
-
             Component.GetComponentProfileAsync()
-                .ToObservable()//TODO:
+                .ToObservable() //TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Subscribe(x => handler(this, new HandledEventArgs()));
+                .Subscribe(x => _heartBeatSubject.OnNext(Unit.Default));
 
         }
 
         private void NotifyPortStatusChanged(string hint)
         {
-            var handler = PortStatusChanged;
-
-            if (handler == null) return; ;
-
             Component.GetComponentProfileAsync()
-                .ToObservable()//TODO:
+                .ToObservable() //TODO:
                 .SubscribeOn(ExecutionContextScheduler)
-                .Subscribe(x => handler(this, new PortStatusChangedEventArgs()));
+                .Subscribe(x => _portStatusSubject.OnNext(new PortStatusChangedEventArgs()));
 
         }
 
         private void NotifyStateChanged(string hint)
         {
-            var handler = StateChanged;
-
-            if (handler == null) return;
-
             LifeCycleState state;
 
             var items = hint.Split(':');
@@ -188,7 +156,7 @@ namespace ReactiveRTM.Core
                 return;
             }
 
-            Observable.Start(() => handler(this, new StateChangedEventArgs()
+            Observable.Start(() => _stateSubject.OnNext(new StateChangedEventArgs()
             {
                 State = state,
                 ExecutionContextHandle = execHandle
@@ -203,7 +171,49 @@ namespace ReactiveRTM.Core
              */
 
         }
+
+        private Subject<ComponentProfile> _componentProfileSubject = new Subject<ComponentProfile>();
+
+        public IObservable<ComponentProfile> ComponentProfileChangedAsObservable()
+        {
+            return _componentProfileSubject;
+        }
+
+        private Subject<StateChangedEventArgs> _stateSubject = new Subject<StateChangedEventArgs>();
+
+        public IObservable<StateChangedEventArgs> StateChangedAsObservable()
+        {
+            return _stateSubject;
+        }
+
+        private Subject<ECStatusChangedEventArgs> _ecStatusSubject = new Subject<ECStatusChangedEventArgs>();
+
+        public IObservable<ECStatusChangedEventArgs> ECStatusChangedAsObservable()
+        {
+            return _ecStatusSubject;
+        }
+
+        private Subject<PortStatusChangedEventArgs> _portStatusSubject = new Subject<PortStatusChangedEventArgs>();
+
+        public IObservable<PortStatusChangedEventArgs> PortStatusChangedAsObservable()
+        {
+            return _portStatusSubject;
+        }
+
+        private Subject<ConfigurationEventArgs> _configurationStatusSubject = new Subject<ConfigurationEventArgs>();
+
+        public IObservable<ConfigurationEventArgs> ConfigurationStatusChangedAsObservable()
+        {
+            return _configurationStatusSubject;
+        }
+
+        private Subject<Unit> _heartBeatSubject = new Subject<Unit>();
+
+        public IObservable<Unit> HeartBeatReceivedAsObservable()
+        {
+            return _heartBeatSubject;
+        }
+
+
     }
-
-
 }

@@ -78,12 +78,12 @@ namespace ReactiveRTM.Core
         #endregion
     }
 
-    public class ReactiveInPort : ReactiveInPort<TimedWString>
+    public class DynamicInPort : ReactiveInPort<TimedWString>
     {
         private Subject<TimedWString> _source;
         private CdrSerializer<TimedWString> _serializer;
 
-        public ReactiveInPort(string name)
+        public DynamicInPort(string name)
             : base(name)
         {
             var factory = new CdrSerializerFactory();

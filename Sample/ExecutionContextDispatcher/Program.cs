@@ -21,7 +21,7 @@ class Program
     {
         var comp = new ECSchedulerTest();
 
-        comp.ActivateAsync().First();
+        comp.ActivateAsync().Wait();
 
         var subject = new Subject<TimedLong>();
         comp.InPort.Connect(subject);

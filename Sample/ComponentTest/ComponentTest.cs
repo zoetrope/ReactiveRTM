@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ public class ComponentTest : ReactiveTest
 
         // コンポーネントを活性化
         var retRecorder = scheduler.CreateObserver<ReturnCode_t>();
-        comp.ActivateAsync().Subscribe(retRecorder);
+        comp.ActivateAsync().ToObservable().Subscribe(retRecorder);
         scheduler.AdvanceBy(100);
         retRecorder.Messages.Count.Is(2);
         retRecorder.Messages.First().Value.Value.Is(ReturnCode_t.RTC_OK);

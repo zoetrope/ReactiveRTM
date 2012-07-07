@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Text;
+using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using omg.org.RTC;
@@ -13,18 +14,14 @@ namespace ReactiveRTM.Extensions
 
     public static class ObservableComponentExtensions
     {
-        public static IObservable<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0)
+        public static Task<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0)
         {
             return target.Component.GetOwnedContextsAsync()
-                .ToObservable()//TODO:
-                .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].ActivateComponentAsync(target.Component)
-                    .ToObservable()//TODO:
-                    .SubscribeOn(target.ExecutionContextScheduler))
-                .Switch();
+                .ContinueWith(x => x.Result[execHandle].ActivateComponentAsync(target.Component))
+                .Unwrap();
         }
 
-        public static IObservable<LifeCycleState> Activate(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout=null)
+        public static Task<StateChangedEventArgs> Activate(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             var obs = target.StateChangedAsObservable()
                 .Take(1)
@@ -32,51 +29,40 @@ namespace ReactiveRTM.Extensions
 
             obs.Connect();
 
-            return ActivateAsync(target)
-                .Select(ret => obs)
-                .Switch();
+            return ActivateAsync(target).ContinueWith(x => obs.ToTask()).Unwrap();//TODO: 失敗したとき？
         }
 
 
-        public static IObservable<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static Task<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             return target.Component.GetOwnedContextsAsync()
-                .ToObservable()//TODO:
-                .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].DeactivateComponentAsync(target.Component)
-                    .ToObservable()//TODO:
-                    .SubscribeOn(target.ExecutionContextScheduler))
-                .Switch();
+                .ContinueWith(x => x.Result[execHandle].DeactivateComponentAsync(target.Component))
+                .Unwrap();
 
         }
 
-        public static IObservable<ReturnCode_t> ResetAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static Task<ReturnCode_t> ResetAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             return target.Component.GetOwnedContextsAsync()
-                .ToObservable()//TODO:
-                .SubscribeOn(target.ExecutionContextScheduler)
-                .Select(ecs => ecs[execHandle].ResetComponentAsync(target.Component)
-                    .ToObservable()//TODO:
-                    .SubscribeOn(target.ExecutionContextScheduler))
-                .Switch();
+                .ContinueWith(x => x.Result[execHandle].ResetComponentAsync(target.Component))
+                .Unwrap();
         }
 
-        public static IObservable<ReturnCode_t> ExitAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static Task<ReturnCode_t> ExitAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             throw new NotImplementedException();
         }
 
-        public static IObservable<LifeCycleState> GetStateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static Task<LifeCycleState> GetStateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             return target.Component.GetOwnedContextsAsync()
-                .ToObservable()//TODO:
-                .Select(ecs => ecs[execHandle].GetComponentStateAsync(target.Component).ToObservable())//TODO:
-                .Switch();
+                .ContinueWith(x => x.Result[execHandle].GetComponentStateAsync(target.Component))
+                .Unwrap();
         }
 
-        public static IObservable<ComponentProfile> GetComponentProfileAsync(this IObservableComponent target, TimeSpan? timeout = null)
+        public static Task<ComponentProfile> GetComponentProfileAsync(this IObservableComponent target, TimeSpan? timeout = null)
         {
-            return target.Component.GetComponentProfileAsync().ToObservable();//TDOO
+            return target.Component.GetComponentProfileAsync();
         }
     }
 

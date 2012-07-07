@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
 using org.omg.SDOPackage;
@@ -47,10 +48,9 @@ namespace ReactiveRTM.Core
             IsConnected = true;
         }
 
-        /// <inheritdoc/>
-        public IObservable<ReturnCode_t> ConnectAsync()
+        public Task<ReturnCode_t> ConnectAsync()
         {
-            if (IsConnected) return Observable.Return(ReturnCode_t.PRECONDITION_NOT_MET);
+            if (IsConnected) return Task.Factory.StartNew(() => ReturnCode_t.PRECONDITION_NOT_MET);
 
             var prof = _profile.GetConnectorProfile();
             ReturnCode_t ret = _portServices[0].connect(ref prof);
@@ -58,13 +58,12 @@ namespace ReactiveRTM.Core
             _connectorId = _profile.ConnectorID;
             if (ret == ReturnCode_t.RTC_OK) IsConnected = true;
             //todo:仮実装。
-            return Observable.Return(ret);
+            return Task.Factory.StartNew(() => ret);
         }
 
-        /// <inheritdoc/>
-        public IObservable<ReturnCode_t> DisconnectAsync()
+        public Task<ReturnCode_t> DisconnectAsync()
         {
-            if (!IsConnected) return Observable.Return(ReturnCode_t.PRECONDITION_NOT_MET);
+            if (IsConnected) return Task.Factory.StartNew(() => ReturnCode_t.PRECONDITION_NOT_MET);
 
             var ret = _portServices[0].disconnect(_connectorId);
             if (ret == ReturnCode_t.RTC_OK)
@@ -75,10 +74,9 @@ namespace ReactiveRTM.Core
 
             }
             //todo:仮実装。
-            return Observable.Return(ret);
+            return Task.Factory.StartNew(() => ret);
         }
 
-        /// <inheritdoc/>
         public bool IsConnected
         {
             get;

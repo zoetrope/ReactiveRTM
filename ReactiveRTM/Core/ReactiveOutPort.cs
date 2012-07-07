@@ -109,9 +109,9 @@ namespace ReactiveRTM.Core
         }
     }
 
-    public class ReactiveOutPort : ReactiveOutPort<TimedWString>
+    public class DynamicOutPort : ReactiveOutPort<TimedWString>
     {
-        ReactiveOutPort(string name)
+        DynamicOutPort(string name)
             :base(name)
         {
         }

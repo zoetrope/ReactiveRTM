@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
 
             calledActivated.Is(true);
         }
@@ -36,7 +37,7 @@ namespace ReactiveRTM.Test
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ActivateAsync(1).First());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ActivateAsync(1).Wait());
         }
 
         [TestMethod]
@@ -51,6 +52,7 @@ namespace ReactiveRTM.Test
 
             AssertEx.Throws<TimeoutException>(() =>
                     comp.ActivateAsync()
+                    .ToObservable()
                     .Timeout(TimeSpan.FromSeconds(1))
                     .First()
                 );
@@ -60,8 +62,8 @@ namespace ReactiveRTM.Test
         public void 活性化しているのにActivateしたら失敗()
         {
             var comp = new SimpleComponent("test");
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
-            comp.ActivateAsync().First().Is(ReturnCode_t.PRECONDITION_NOT_MET);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.PRECONDITION_NOT_MET);
         }
     }
     [TestClass]
@@ -80,8 +82,8 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
-            comp.DeactivateAsync().First().Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
+            comp.DeactivateAsync().Result.Is(ReturnCode_t.RTC_OK);
 
             calledDeactivated.Is(true);
         }
@@ -90,7 +92,7 @@ namespace ReactiveRTM.Test
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.DeactivateAsync(1).First());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.DeactivateAsync(1).Wait());
         }
 
         [TestMethod]
@@ -103,9 +105,9 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
             AssertEx.Throws<TimeoutException>(() =>
-                    comp.DeactivateAsync(timeout: TimeSpan.FromSeconds(1)).First()
+                    comp.DeactivateAsync(timeout: TimeSpan.FromSeconds(1)).Wait()
                 );
         }
 
@@ -113,7 +115,7 @@ namespace ReactiveRTM.Test
         public void 活性化してないのにDeactivateしたら失敗()
         {
             var comp = new SimpleComponent("test");
-            comp.DeactivateAsync().First().Is(ReturnCode_t.PRECONDITION_NOT_MET);
+            comp.DeactivateAsync().Result.Is(ReturnCode_t.PRECONDITION_NOT_MET);
         }
     }
 
@@ -136,8 +138,8 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
-            comp.ResetAsync().First().Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
+            comp.ResetAsync().Result.Is(ReturnCode_t.RTC_OK);
 
             calledReset.Is(true);
         }
@@ -146,7 +148,7 @@ namespace ReactiveRTM.Test
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ResetAsync(1).First());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ResetAsync(1).Wait());
         }
 
         [TestMethod]
@@ -161,9 +163,9 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            comp.ActivateAsync().First().Is(ReturnCode_t.RTC_OK);
+            comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
             AssertEx.Throws<TimeoutException>(() =>
-                    comp.ResetAsync(timeout: TimeSpan.FromSeconds(1)).First()
+                    comp.ResetAsync(timeout: TimeSpan.FromSeconds(1)).Wait()
                 );
         }
 
@@ -171,7 +173,7 @@ namespace ReactiveRTM.Test
         public void エラーが起きていないのにResetしたら失敗()
         {
             var comp = new SimpleComponent("test");
-            comp.ResetAsync().First().Is(ReturnCode_t.PRECONDITION_NOT_MET);
+            comp.ResetAsync().Result.Is(ReturnCode_t.PRECONDITION_NOT_MET);
         }
     }
 }

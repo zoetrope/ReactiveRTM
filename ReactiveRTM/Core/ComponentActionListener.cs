@@ -12,24 +12,24 @@ namespace ReactiveRTM.Core
 
         ReturnCode_t RaiseOnFinalize();
 
-        ReturnCode_t RaiseOnStartup(int exec_handle);
+        ReturnCode_t RaiseOnStartup(int execHandle);
 
-        ReturnCode_t RaiseOnShutdown(int exec_handle);
+        ReturnCode_t RaiseOnShutdown(int execHandle);
 
-        ReturnCode_t RaiseOnActivated(int exec_handle);
+        ReturnCode_t RaiseOnActivated(int execHandle);
 
-        ReturnCode_t RaiseOnDeactivated(int exec_handle);
+        ReturnCode_t RaiseOnDeactivated(int execHandle);
 
-        ReturnCode_t RaiseOnAborting(int exec_handle);
+        ReturnCode_t RaiseOnAborting(int execHandle);
 
-        ReturnCode_t RaiseOnError(int exec_handle);
+        ReturnCode_t RaiseOnError(int execHandle);
 
-        ReturnCode_t RaiseOnReset(int exec_handle);
+        ReturnCode_t RaiseOnReset(int execHandle);
 
-        ReturnCode_t RaiseOnExecute(int exec_handle);
+        ReturnCode_t RaiseOnExecute(int execHandle);
 
-        ReturnCode_t RaiseOnStateUpdate(int exec_handle);
+        ReturnCode_t RaiseOnStateUpdate(int execHandle);
 
-        ReturnCode_t RaiseOnRateChanged(int exec_handle);
+        ReturnCode_t RaiseOnRateChanged(int execHandle);
     }
 }

@@ -1,7 +1,7 @@
 ﻿<#@ template language="C#" #>
 <#@ template language="C#" debug="true" #>
 <#@ assembly Name="System.Core.dll" #>
-<#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET.1.9.0\IIOPChannel.dll" #>
+<#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll" #>
 <#@ assembly Name="$(SolutionDir)\idl\RTC.IDL.dll" #>
 <#@ assembly Name="$(SolutionDir)\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll" #>
 <#@ import namespace="System.Linq" #>
@@ -9,8 +9,6 @@
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Reflection" #>
 <#
-    // 設定：ここに生成したいクラス(のTypeをFullNameで)を足してください(以下の4つは例)
-    // クラスによってはassemblyの増減が必要です、WPF/Silverlightなどはフルパス直書きしてください
     var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes();
 #>
 using System.Linq;

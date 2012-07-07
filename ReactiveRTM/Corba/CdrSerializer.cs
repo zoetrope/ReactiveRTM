@@ -11,11 +11,10 @@ namespace ReactiveRTM.Corba
 
         private readonly byte _isLittleEndian;
 
-        public CdrSerializer(object serializer, bool isLittleEndian)
+        internal CdrSerializer(object serializer, bool isLittleEndian)
         {
             _serializer = new AccessPrivateWrapper(serializer);
 
-            // _isLittleEndian = 0: ビッグエンディアン、 1: リトルエンディアン
             if (isLittleEndian)
             {
                 _isLittleEndian = 1;
@@ -28,10 +27,13 @@ namespace ReactiveRTM.Corba
 
         public void Serialize(TDataType data, Stream outputStream)
         {
-            var stream = new CdrOutputStreamImpl(outputStream, _isLittleEndian);
+            var stream = new CdrOutputStreamImpl(outputStream, _isLittleEndian)
+            {
+                // これを設定しておかないと日本語の送受信ができない
+                WCharSet = (int) Ch.Elca.Iiop.Services.WCharSet.UTF16
+            };
 
-            // これを設定しておかないと日本語の送受信ができない
-            stream.WCharSet = (int)Ch.Elca.Iiop.Services.WCharSet.UTF16;
+            
 
             _serializer.Serialize(data, stream);
         }

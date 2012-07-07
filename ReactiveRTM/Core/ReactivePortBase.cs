@@ -6,19 +6,17 @@ using org.omg.SDOPackage;
 
 namespace ReactiveRTM.Core
 {
-    public class ConnectionChangedEventArgs : EventArgs
-    {
-        public ConnectorProfile ConnectorProfile { get; set; }
-    }
-
     public abstract class ReactivePortBase : IConnectable
     {
 
         public PortService PortService { get; private set; }
 
-        public event EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
+        public IObservable<ConnectorProfile> ConnectionChangedAsObservable()
+        {
+            throw new NotImplementedException();
+        }
 
-        public ReactivePortBase(string name)
+        protected ReactivePortBase(string name)
         {
             Name = name;
         }

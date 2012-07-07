@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
+using System.Reactive.Threading.Tasks;
 
 namespace ReactiveRTM.Test
 {
@@ -36,7 +37,7 @@ namespace ReactiveRTM.Test
             };
 
             // コンポーネントを活性化
-            comp.ActivateAsync().Subscribe(recorder);
+            comp.ActivateAsync().ToObservable().Subscribe(recorder);
             
 
             // 時間がたっていないので何も起きていない
@@ -72,7 +73,7 @@ namespace ReactiveRTM.Test
 
 
             // コンポーネントを活性化
-            comp.ActivateAsync().Subscribe(recorder);
+            comp.ActivateAsync().ToObservable().Subscribe(recorder);
 
             // 時間がたっていないので何も起きていない
             comp.ExecuteCounter.Is(0);

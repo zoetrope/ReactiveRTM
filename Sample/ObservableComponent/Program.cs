@@ -21,19 +21,19 @@ class Program
             var comp = manager.GetComponent("ConsoleOut0.rtc");
 
             var obs = comp.StateChangedAsObservable()
-              .Where(state => state == LifeCycleState.ACTIVE_STATE)
+              .Where(state => state.State == LifeCycleState.ACTIVE_STATE)
               .PublishLast();
 
             obs.Connect();
 
-            comp.ActivateAsync().First();
+            var ret = comp.ActivateAsync().Result;
 
             //obs.First();
 
             obs.Timeout(TimeSpan.FromSeconds(5))
               .Catch((TimeoutException ex) => { 
                 // 例外処理
-                return Observable.Empty<LifeCycleState>();
+                return Observable.Empty<StateChangedEventArgs>();
               })
               .First();
               

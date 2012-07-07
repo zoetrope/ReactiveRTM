@@ -27,7 +27,7 @@ namespace ReactiveRTM.Test
 
             var connector = new PortConnector(inport.PortService, outport.PortService);
 
-            connector.ConnectAsync().First().Is(ReturnCode_t.RTC_OK);
+            connector.ConnectAsync().Result.Is(ReturnCode_t.RTC_OK);
         }
 
         [TestMethod]
@@ -38,9 +38,9 @@ namespace ReactiveRTM.Test
 
             var connector = new PortConnector(inport.PortService, outport.PortService);
 
-            connector.ConnectAsync().First().Is(ReturnCode_t.RTC_OK);
+            connector.ConnectAsync().Result.Is(ReturnCode_t.RTC_OK);
 
-            connector.DisconnectAsync().First().Is(ReturnCode_t.RTC_OK);
+            connector.DisconnectAsync().Result.Is(ReturnCode_t.RTC_OK);
         }
 
 
@@ -55,7 +55,7 @@ namespace ReactiveRTM.Test
 
             var connector = new PortConnector(inport.PortService, outport.PortService);
 
-            connector.ConnectAsync().First().Is(ReturnCode_t.RTC_OK);
+            connector.ConnectAsync().Result.Is(ReturnCode_t.RTC_OK);
 
             inport.Subscribe(recorder);
 

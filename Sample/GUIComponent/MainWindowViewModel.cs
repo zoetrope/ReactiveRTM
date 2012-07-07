@@ -38,7 +38,7 @@ namespace GUIComponent
 
             // コンポーネントを活性化したときだけボタンを押せる
             SendCommand = _component.StateChangedAsObservable()
-                .Select(state => state == LifeCycleState.ACTIVE_STATE)
+                .Select(state => state.State == LifeCycleState.ACTIVE_STATE)
                 .ToReactiveCommand(initialValue: false);
                 
             // ボタンを押したらデータを送信する

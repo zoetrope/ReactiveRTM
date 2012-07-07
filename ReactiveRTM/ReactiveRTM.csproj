@@ -45,7 +45,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll</HintPath>
+      <HintPath>..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
@@ -84,7 +84,7 @@
     <Compile Include="Corba\CdrSerializerFactory.cs" />
     <Compile Include="Core\ComponentActionListener.cs" />
     <Compile Include="Core\Connector.cs" />
-    <Compile Include="Corba\CorbaNamingServiceClient.cs" />
+    <Compile Include="Corba\NamingServiceClient.cs" />
     <Compile Include="Corba\CorbaUtility.cs" />
     <Compile Include="Core\DelegateInPortCdr.cs" />
     <Compile Include="DynamicJson.cs" />
@@ -102,7 +102,6 @@
     <Compile Include="Core\ReactiveOutPort.cs" />
     <Compile Include="Adapter\ConfigurationAdapter.cs" />
     <Compile Include="Core\RtcManager.cs" />
-    <Compile Include="Extensions\RTObjectExtensions.cs" />
     <Compile Include="Core\SimpleServiceConsumer.cs" />
     <Compile Include="Core\SimpleServiceProvider.cs" />
   </ItemGroup>

@@ -12,12 +12,12 @@ namespace ReactiveRTM.Core
 {
     public class RtcManager : IDisposable
     {
-        private CorbaNamingServiceClient _client;
+        private NamingServiceClient _client;
 
         public RtcManager(string host, int port)
         {
             CorbaUtility.Initialize();
-            _client = new CorbaNamingServiceClient(host, port);
+            _client = new NamingServiceClient(host, port);
         }
 
         public void RegisterComponent(ReactiveComponentBase comp)
