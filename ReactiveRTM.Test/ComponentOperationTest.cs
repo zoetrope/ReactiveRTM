@@ -5,18 +5,18 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
 
 namespace ReactiveRTM.Test
 {
-    [TestFixture]
+    [TestClass]
     public class ActivateTest
     {
 
-        [Test]
+        [TestMethod]
         public void コンポーネントの活性化()
         {
             var comp = new SimpleComponent("test");
@@ -33,14 +33,14 @@ namespace ReactiveRTM.Test
             calledActivated.Is(true);
         }
 
-        [Test]
+        [TestMethod]
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            Assert.Throws<ArgumentOutOfRangeException>(() => comp.ActivateAsync(1).Wait());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ActivateAsync(1).Wait());
         }
 
-        [Test]
+        [TestMethod]
         public void 状態が変化しなかったらタイムアウト()
         {
             var comp = new SimpleComponent("test");
@@ -50,7 +50,7 @@ namespace ReactiveRTM.Test
                 return ReturnCode_t.RTC_OK;
             };
 
-            Assert.Throws<TimeoutException>(() =>
+            AssertEx.Throws<TimeoutException>(() =>
                     comp.ActivateAsync()
                     .ToObservable()
                     .Timeout(TimeSpan.FromSeconds(1))
@@ -58,7 +58,7 @@ namespace ReactiveRTM.Test
                 );
         }
 
-        [Test]
+        [TestMethod]
         public void 活性化しているのにActivateしたら失敗()
         {
             var comp = new SimpleComponent("test");
@@ -66,11 +66,11 @@ namespace ReactiveRTM.Test
             comp.ActivateAsync().Result.Is(ReturnCode_t.PRECONDITION_NOT_MET);
         }
     }
-    [TestFixture]
+    [TestClass]
     public class DeactivateTest
     {
 
-        [Test]
+        [TestMethod]
         public void コンポーネントの非活性化()
         {
             var comp = new SimpleComponent("test");
@@ -88,14 +88,14 @@ namespace ReactiveRTM.Test
             calledDeactivated.Is(true);
         }
 
-        [Test]
+        [TestMethod]
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            Assert.Throws<ArgumentOutOfRangeException>(() => comp.DeactivateAsync(1).Wait());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.DeactivateAsync(1).Wait());
         }
 
-        [Test]
+        [TestMethod]
         public void 状態が変化しなかったらタイムアウト()
         {
             var comp = new SimpleComponent("test");
@@ -106,12 +106,12 @@ namespace ReactiveRTM.Test
             };
 
             comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
-            Assert.Throws<TimeoutException>(() =>
+            AssertEx.Throws<TimeoutException>(() =>
                     comp.DeactivateAsync(timeout: TimeSpan.FromSeconds(1)).Wait()
                 );
         }
 
-        [Test]
+        [TestMethod]
         public void 活性化してないのにDeactivateしたら失敗()
         {
             var comp = new SimpleComponent("test");
@@ -120,11 +120,11 @@ namespace ReactiveRTM.Test
     }
 
 
-    [TestFixture]
+    [TestClass]
     public class ResetTest
     {
 
-        [Test]
+        [TestMethod]
         public void コンポーネントのリセット()
         {
             var comp = new SimpleComponent("test");
@@ -144,14 +144,14 @@ namespace ReactiveRTM.Test
             calledReset.Is(true);
         }
 
-        [Test]
+        [TestMethod]
         public void 存在しない実行コンテキストを指定したら例外()
         {
             var comp = new SimpleComponent("test");
-            Assert.Throws<ArgumentOutOfRangeException>(() => comp.ResetAsync(1).Wait());
+            AssertEx.Throws<ArgumentOutOfRangeException>(() => comp.ResetAsync(1).Wait());
         }
 
-        [Test]
+        [TestMethod]
         public void 状態が変化しなかったらタイムアウト()
         {
             var comp = new SimpleComponent("test");
@@ -164,12 +164,12 @@ namespace ReactiveRTM.Test
             };
 
             comp.ActivateAsync().Result.Is(ReturnCode_t.RTC_OK);
-            Assert.Throws<TimeoutException>(() =>
+            AssertEx.Throws<TimeoutException>(() =>
                     comp.ResetAsync(timeout: TimeSpan.FromSeconds(1)).Wait()
                 );
         }
 
-        [Test]
+        [TestMethod]
         public void エラーが起きていないのにResetしたら失敗()
         {
             var comp = new SimpleComponent("test");

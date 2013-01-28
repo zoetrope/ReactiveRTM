@@ -3,15 +3,15 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Codeplex.Data;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Core;
 
 namespace ReactiveRTM.Test
 {
-    [TestFixture]
+    [TestClass]
     public class SimpleServiceTest
     {
-        [Test]
+        [TestMethod]
         public void 呼び出し確認()
         {
             dynamic cons = new SimpleServiceConsumer("test");

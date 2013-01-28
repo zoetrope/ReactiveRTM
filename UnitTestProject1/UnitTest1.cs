@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ReactiveRTM.Test
+namespace UnitTestProject1
 {
     [TestClass]
-    public class ComponentObserverTest
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()

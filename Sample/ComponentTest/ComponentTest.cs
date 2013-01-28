@@ -9,14 +9,15 @@ using RTC;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace ComponentTest
 {
-[TestFixture]
+[TestClass]
 public class ComponentTest : ReactiveTest
 {
-    [Test]
+    [TestMethod]
     public void TargetComponentの入出力チェック()
     {
         var scheduler = new TestScheduler();
