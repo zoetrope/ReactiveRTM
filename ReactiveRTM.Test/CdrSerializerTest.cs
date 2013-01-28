@@ -4,17 +4,17 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Ch.Elca.Iiop.Util;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using RTC;
 using ReactiveRTM.Corba;
 using RtUtility;
 
 namespace RtStorage.Test
 {
-    [TestClass]
+    [TestFixture]
     public class CdrSerializerTest
     {
-        [TestMethod]
+        [Test]
         public void シリアライズのテスト()
         {
             var factory = new CdrSerializerFactory();
@@ -31,7 +31,7 @@ namespace RtStorage.Test
                 0x12, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x78, 0x56, 0x00, 0x00 });
         }
 
-        [TestMethod]
+        [Test]
         public void デシリアライズのテスト()
         {
             var factory = new CdrSerializerFactory();

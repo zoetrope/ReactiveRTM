@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using RTC;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
@@ -14,12 +14,12 @@ using omg.org.RTC;
 
 namespace ReactiveRTM.Test
 {
-    [TestClass]
+    [TestFixture]
     public class DataPortTest : ReactiveTest
     {
 
 
-        [TestMethod]
+        [Test]
         public void ポート接続確認()
         {
             var inport = new ReactiveInPort<TimedLong>("inport");
@@ -30,7 +30,7 @@ namespace ReactiveRTM.Test
             connector.ConnectAsync().Result.Is(ReturnCode_t.RTC_OK);
         }
 
-        [TestMethod]
+        [Test]
         public void ポート切断確認()
         {
             var inport = new ReactiveInPort<TimedLong>("inport");
@@ -44,7 +44,7 @@ namespace ReactiveRTM.Test
         }
 
 
-        [TestMethod]
+        [Test]
         public void 疎通確認()
         {
             var inport = new ReactiveInPort<TimedLong>("inport");

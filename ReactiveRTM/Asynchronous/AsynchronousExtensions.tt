@@ -1,9 +1,12 @@
-﻿<#@ template language="C#" #>
-<#@ template language="C#" debug="true" #>
+﻿<#@ template language="C#" debug="true" #>
+<#@ assembly Name="System.Runtime.dll" #>
 <#@ assembly Name="System.Core.dll" #>
 <#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll" #>
 <#@ assembly Name="$(SolutionDir)\idl\RTC.IDL.dll" #>
-<#@ assembly Name="$(SolutionDir)\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll" #>
+<#@ assembly Name="$(SolutionDir)\packages\Rx-Core.2.0.21114\lib\Net45\System.Reactive.Core.dll" #>
+<#@ assembly Name="$(SolutionDir)\packages\Rx-Interfaces.2.0.21114\lib\Net45\System.Reactive.Interfaces.dll" #>
+<#@ assembly Name="$(SolutionDir)\packages\Rx-Linq.2.0.21114\lib\Net45\System.Reactive.Linq.dll" #>
+<#@ assembly Name="$(SolutionDir)\packages\Rx-PlatformServices.2.0.21114\lib\Net45\System.Reactive.PlatformServices.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Text.RegularExpressions" #>

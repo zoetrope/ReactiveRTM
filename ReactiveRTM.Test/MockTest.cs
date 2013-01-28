@@ -3,7 +3,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using OpenRTM;
 using ReactiveRTM.Core;
 using ReactiveRTM.Mock;
@@ -13,10 +13,10 @@ using ReactiveRTM.Extensions;
 
 namespace RtStorage.Test
 {
-    [TestClass]
+    [TestFixture]
     public class MockTest
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             //MockProxy<PortServiceMock>.IsErrorMode = true;

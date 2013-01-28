@@ -5,18 +5,18 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Reactive.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RTC;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
+using NUnit.Framework;
 
 namespace ComponentTest
 {
-[TestClass]
+[TestFixture]
 public class ComponentTest : ReactiveTest
 {
-    [TestMethod]
+    [Test]
     public void TargetComponentの入出力チェック()
     {
         var scheduler = new TestScheduler();

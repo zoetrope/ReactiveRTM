@@ -2,14 +2,14 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace ReactiveRTM.Test
 {
-    [TestClass]
+    [TestFixture]
     public class ComponentObserverTest
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
         }

@@ -7,15 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using RTC;
 
 namespace ReactiveRTM.Test
 {
-    [TestClass]
+    [TestFixture]
     public class SandBox : ReactiveTest
     {
-        [TestMethod]
+        [Test]
         public void 配列要素のコピー()
         {
             var data = new TimedLongSeq();
@@ -32,7 +32,7 @@ namespace ReactiveRTM.Test
             data2.data[2].Is(1);
         }
 
-        [TestMethod]
+        [Test]
         public void 自作する必要はないのか()
         {
 
@@ -60,7 +60,7 @@ namespace ReactiveRTM.Test
             Thread.Sleep(10000);
         }
 
-        [TestMethod]
+        [Test]
         public void Publishを理解()
         {
             var subject = new Subject<int>();
@@ -68,7 +68,7 @@ namespace ReactiveRTM.Test
             
         }
 
-        [TestMethod]
+        [Test]
         public void ObservableStartをTestSchedulerで動かすには()
         {
             var testScheduler = new TestScheduler();
@@ -93,7 +93,7 @@ namespace ReactiveRTM.Test
 
         }
 
-        [TestMethod]
+        [Test]
         public void SubscribeOnとは()
         {
             var testScheduler = new TestScheduler();
@@ -119,7 +119,7 @@ namespace ReactiveRTM.Test
         }
 
 
-        [TestMethod]
+        [Test]
         public void 複数のObservableを監視するには()
         {
             var scheduler = new TestScheduler();
@@ -143,7 +143,7 @@ namespace ReactiveRTM.Test
             
         }
 
-        [TestMethod]
+        [Test]
         public void CamelCaseに変換する()
         {
             SnakeCaseToCamelCase("snake1").Is("Snake1");

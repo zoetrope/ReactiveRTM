@@ -9,16 +9,16 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Ch.Elca.Iiop.Idl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using OpenRTM;
 using omg.org.RTC;
 
 namespace RtUtility.Test
 {
-    [TestClass]
+    [TestFixture]
     public class GeneratorTest
     {
-        [TestMethod]
+        [Test]
         public void ObservableStartのキャンセルって何が起きる()
         {
             Observable.Start(() =>
@@ -33,7 +33,7 @@ namespace RtUtility.Test
             Thread.Sleep(TimeSpan.FromSeconds(10));
         }
 
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             Observable.Start(() => true).Timeout(TimeSpan.FromSeconds(5));

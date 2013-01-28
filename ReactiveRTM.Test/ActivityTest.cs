@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using omg.org.RTC;
@@ -14,11 +14,11 @@ using System.Reactive.Threading.Tasks;
 namespace ReactiveRTM.Test
 {
 
-    [TestClass]
+    [TestFixture]
     public class ActivityTest : ReactiveTest
     {
 
-        [TestMethod]
+        [Test]
         public void OnExecuteを動かしてみる()
         {
             var comp = new SimpleComponent("test");
@@ -61,7 +61,7 @@ namespace ReactiveRTM.Test
 
         }
 
-        [TestMethod]
+        [Test]
         public void OnExecuteを動かしてみる2()
         {
             var comp = new TestTargetComponent();
