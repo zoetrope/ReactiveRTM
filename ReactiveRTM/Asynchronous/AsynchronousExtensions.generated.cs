@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Reactive.Linq;
+using System.Linq;
 using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 
@@ -10,7 +10,7 @@ using ReactiveRTM.Corba;
 namespace omg.org.RTC
 {
      
-    public static class ExecutionContextAsyncExtensions
+    public class ExecutionContextAsyncExtensions
     {
          
         public static Task<System.Boolean> IsRunningAsync(this ExecutionContext target )
@@ -74,7 +74,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class ComponentActionAsyncExtensions
+    public class ComponentActionAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> OnInitializeAsync(this ComponentAction target )
@@ -123,7 +123,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class LightweightRTObjectAsyncExtensions
+    public class LightweightRTObjectAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> InitializeAsync(this LightweightRTObject target )
@@ -177,7 +177,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class DataFlowComponentActionAsyncExtensions
+    public class DataFlowComponentActionAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> OnExecuteAsync(this DataFlowComponentAction target ,System.Int32 exec_handle)
@@ -196,7 +196,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class FsmParticipantActionAsyncExtensions
+    public class FsmParticipantActionAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> OnActionAsync(this FsmParticipantAction target ,System.Int32 exec_handle)
@@ -205,7 +205,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class ModeCapableAsyncExtensions
+    public class ModeCapableAsyncExtensions
     {
          
         public static Task<omg.org.RTC.Mode> GetDefaultModeAsync(this ModeCapable target )
@@ -239,7 +239,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class MultiModeComponentActionAsyncExtensions
+    public class MultiModeComponentActionAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> OnModeChangedAsync(this MultiModeComponentAction target ,System.Int32 exec_handle)
@@ -248,7 +248,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class RTObjectAsyncExtensions
+    public class RTObjectAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ComponentProfile> GetComponentProfileAsync(this RTObject target )
@@ -262,7 +262,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class PortServiceAsyncExtensions
+    public class PortServiceAsyncExtensions
     {
          
         public static Task<omg.org.RTC.PortProfile> GetPortProfileAsync(this PortService target )
@@ -306,7 +306,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class FsmObjectAsyncExtensions
+    public class FsmObjectAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> SendStimulusAsync(this FsmObject target ,System.String message,System.Int32 exec_handle)
@@ -315,7 +315,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class FsmServiceAsyncExtensions
+    public class FsmServiceAsyncExtensions
     {
          
         public static Task<omg.org.RTC.FsmProfile> GetFsmProfileAsync(this FsmService target )
@@ -329,7 +329,7 @@ namespace omg.org.RTC
         }
             }
      
-    public static class ExecutionContextServiceAsyncExtensions
+    public class ExecutionContextServiceAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ExecutionContextProfile> GetProfileAsync(this ExecutionContextService target )
@@ -342,7 +342,7 @@ namespace omg.org.RTC
 namespace OpenRTM
 {
      
-    public static class ComponentObserverAsyncExtensions
+    public class ComponentObserverAsyncExtensions
     {
          
         public static Task UpdateStatusAsync(this ComponentObserver target ,OpenRTM.StatusKind status_kind,System.String hint)
@@ -351,7 +351,7 @@ namespace OpenRTM
         }
             }
      
-    public static class InPortCdrAsyncExtensions
+    public class InPortCdrAsyncExtensions
     {
          
         public static Task<OpenRTM.PortStatus> PutAsync(this InPortCdr target ,System.Byte[] data)
@@ -360,7 +360,7 @@ namespace OpenRTM
         }
             }
      
-    public static class OutPortCdrAsyncExtensions
+    public class OutPortCdrAsyncExtensions
     {
          
         public static Task<OpenRTM.PortStatus> GetAsync(this OutPortCdr target ,System.Byte[] data)
@@ -369,7 +369,7 @@ namespace OpenRTM
         }
             }
      
-    public static class LoggerAsyncExtensions
+    public class LoggerAsyncExtensions
     {
          
         public static Task PublishAsync(this Logger target ,OpenRTM.LogRecord record)
@@ -387,7 +387,7 @@ namespace OpenRTM
 namespace openrtm.aist.go.jp.OpenRTM
 {
      
-    public static class ExtTrigExecutionContextServiceAsyncExtensions
+    public class ExtTrigExecutionContextServiceAsyncExtensions
     {
          
         public static Task TickAsync(this ExtTrigExecutionContextService target )
@@ -400,7 +400,7 @@ namespace openrtm.aist.go.jp.OpenRTM
 namespace org.omg.SDOPackage
 {
      
-    public static class SDOAsyncExtensions
+    public class SDOAsyncExtensions
     {
          
         public static Task<System.String> GetSdoIdAsync(this SDO target )
@@ -459,7 +459,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    public static class SDOSystemElementAsyncExtensions
+    public class SDOSystemElementAsyncExtensions
     {
          
         public static Task<org.omg.SDOPackage.Organization[]> GetOwnedOrganizationsAsync(this SDOSystemElement target )
@@ -468,7 +468,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    public static class ConfigurationAsyncExtensions
+    public class ConfigurationAsyncExtensions
     {
          
         public static Task<System.Boolean> SetDeviceProfileAsync(this Configuration target ,org.omg.SDOPackage.DeviceProfile dProfile)
@@ -552,7 +552,7 @@ namespace org.omg.SDOPackage
         }
             }
      
-    public static class OrganizationAsyncExtensions
+    public class OrganizationAsyncExtensions
     {
          
         public static Task<System.String> GetOrganizationIdAsync(this Organization target )
@@ -630,7 +630,7 @@ namespace org.omg.SDOPackage
 namespace RTC
 {
      
-    public static class ActArrayAsyncExtensions
+    public class ActArrayAsyncExtensions
     {
          
         public static Task<RTC.ActArrayGeometry> GetGeometryAsync(this ActArray target )
@@ -664,7 +664,7 @@ namespace RTC
         }
             }
      
-    public static class AIOAsyncExtensions
+    public class AIOAsyncExtensions
     {
          
         public static Task<System.Int16> NumChannelsAsync(this AIO target )
@@ -683,7 +683,7 @@ namespace RTC
         }
             }
      
-    public static class BumperAsyncExtensions
+    public class BumperAsyncExtensions
     {
          
         public static Task<RTC.BumperGeometry> GetGeometryAsync(this Bumper target )
@@ -692,7 +692,7 @@ namespace RTC
         }
             }
      
-    public static class CameraAsyncExtensions
+    public class CameraAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this Camera target )
@@ -706,7 +706,7 @@ namespace RTC
         }
             }
      
-    public static class DIOAsyncExtensions
+    public class DIOAsyncExtensions
     {
          
         public static Task<System.Int16> NumBitsAsync(this DIO target )
@@ -725,7 +725,7 @@ namespace RTC
         }
             }
      
-    public static class FiducialAsyncExtensions
+    public class FiducialAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this Fiducial target )
@@ -744,7 +744,7 @@ namespace RTC
         }
             }
      
-    public static class GPSAsyncExtensions
+    public class GPSAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this GPS target )
@@ -753,7 +753,7 @@ namespace RTC
         }
             }
      
-    public static class GripperAsyncExtensions
+    public class GripperAsyncExtensions
     {
          
         public static Task<RTC.GripperGeometry> GetGeometryAsync(this Gripper target )
@@ -772,7 +772,7 @@ namespace RTC
         }
             }
      
-    public static class IMUAsyncExtensions
+    public class IMUAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this IMU target )
@@ -781,7 +781,7 @@ namespace RTC
         }
             }
      
-    public static class INSAsyncExtensions
+    public class INSAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this INS target )
@@ -790,7 +790,7 @@ namespace RTC
         }
             }
      
-    public static class LimbAsyncExtensions
+    public class LimbAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this Limb target )
@@ -814,7 +814,7 @@ namespace RTC
         }
             }
      
-    public static class OGMapAsyncExtensions
+    public class OGMapAsyncExtensions
     {
          
         public static Task<RTC.OGMapConfig> GetConfigAsync(this OGMap target )
@@ -828,7 +828,7 @@ namespace RTC
         }
             }
      
-    public static class MulticameraAsyncExtensions
+    public class MulticameraAsyncExtensions
     {
          
         public static Task<RTC.MulticameraGeometry> GetGeometryAsync(this Multicamera target )
@@ -842,7 +842,7 @@ namespace RTC
         }
             }
      
-    public static class PanTiltAsyncExtensions
+    public class PanTiltAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this PanTilt target )
@@ -851,7 +851,7 @@ namespace RTC
         }
             }
      
-    public static class PathPlanner2DAsyncExtensions
+    public class PathPlanner2DAsyncExtensions
     {
          
         public static Task SetTaskAsync(this PathPlanner2D target ,RTC.Waypoint2D[] coarsePath)
@@ -860,7 +860,7 @@ namespace RTC
         }
             }
      
-    public static class PathPlanner3DAsyncExtensions
+    public class PathPlanner3DAsyncExtensions
     {
          
         public static Task SetTaskAsync(this PathPlanner3D target ,RTC.Waypoint3D[] coarsePath)
@@ -869,7 +869,7 @@ namespace RTC
         }
             }
      
-    public static class PathFollower2DAsyncExtensions
+    public class PathFollower2DAsyncExtensions
     {
          
         public static Task SetPathAsync(this PathFollower2D target ,RTC.Waypoint2D[] path)
@@ -893,7 +893,7 @@ namespace RTC
         }
             }
      
-    public static class PathFollower3DAsyncExtensions
+    public class PathFollower3DAsyncExtensions
     {
          
         public static Task SetPathAsync(this PathFollower3D target ,RTC.Waypoint3D[] path)
@@ -917,7 +917,7 @@ namespace RTC
         }
             }
      
-    public static class PointCloudServicesAsyncExtensions
+    public class PointCloudServicesAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this PointCloudServices target )
@@ -926,7 +926,7 @@ namespace RTC
         }
             }
      
-    public static class Odometry2DAsyncExtensions
+    public class Odometry2DAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this Odometry2D target )
@@ -940,7 +940,7 @@ namespace RTC
         }
             }
      
-    public static class Odometry3DAsyncExtensions
+    public class Odometry3DAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this Odometry3D target )
@@ -954,7 +954,7 @@ namespace RTC
         }
             }
      
-    public static class VelocityControl2DAsyncExtensions
+    public class VelocityControl2DAsyncExtensions
     {
          
         public static Task<RTC.Geometry2D> GetGeometryAsync(this VelocityControl2D target )
@@ -963,7 +963,7 @@ namespace RTC
         }
             }
      
-    public static class VelocityControl3DAsyncExtensions
+    public class VelocityControl3DAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this VelocityControl3D target )
@@ -972,7 +972,7 @@ namespace RTC
         }
             }
      
-    public static class PoseControl2DAsyncExtensions
+    public class PoseControl2DAsyncExtensions
     {
          
         public static Task<RTC.Geometry2D> GetGeometryAsync(this PoseControl2D target )
@@ -981,7 +981,7 @@ namespace RTC
         }
             }
      
-    public static class PoseControl3DAsyncExtensions
+    public class PoseControl3DAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this PoseControl3D target )
@@ -990,7 +990,7 @@ namespace RTC
         }
             }
      
-    public static class CarlikeControlAsyncExtensions
+    public class CarlikeControlAsyncExtensions
     {
          
         public static Task<RTC.Geometry2D> GetGeometryAsync(this CarlikeControl target )
@@ -999,7 +999,7 @@ namespace RTC
         }
             }
      
-    public static class HeadingControl2DAsyncExtensions
+    public class HeadingControl2DAsyncExtensions
     {
          
         public static Task<RTC.Geometry2D> GetGeometryAsync(this HeadingControl2D target )
@@ -1008,7 +1008,7 @@ namespace RTC
         }
             }
      
-    public static class HeadingControl3DAsyncExtensions
+    public class HeadingControl3DAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this HeadingControl3D target )
@@ -1017,7 +1017,7 @@ namespace RTC
         }
             }
      
-    public static class RangerAsyncExtensions
+    public class RangerAsyncExtensions
     {
          
         public static Task<RTC.RangerGeometry> GetGeometryAsync(this Ranger target )
@@ -1046,7 +1046,7 @@ namespace RTC
         }
             }
      
-    public static class RFIDAsyncExtensions
+    public class RFIDAsyncExtensions
     {
          
         public static Task<RTC.Geometry3D> GetGeometryAsync(this RFID target )
@@ -1069,7 +1069,7 @@ namespace RTC
 namespace RTM
 {
      
-    public static class ManagerAsyncExtensions
+    public class ManagerAsyncExtensions
     {
          
         public static Task<omg.org.RTC.ReturnCode_t> LoadModuleAsync(this Manager target ,System.String pathname,System.String initfunc)

@@ -14,25 +14,27 @@
 #>
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 
-<# foreach(var x in StubGenerator.GenerateTemplates(types)) {#>
+<# foreach(var x in DataGenerator.GenerateTemplates(types)) {#>
  
 namespace <#= x.Namespace #>
 {
+	
     <# foreach(var ct in x.ClassTemplates) {#>
  
-    public class <#= ct.Classname #>AsyncExtensions
+    public static class <#= ct.StructName #>AsyncExtensions : INotifyPropertyChanged
     {
-        <# foreach(var method in ct.MethodTemplates) {#>
- 
-        public static Task<#= method.Return #> <#= GeneratorUtility.SnakeCaseToCamelCase(method.Name) #>Async(this <#= ct.Classname #> target <#= method.DecArgs #>)
+        <# foreach(var method in ct.PropertyTemplates) {#>
+        public <#= method.TypeName #> <#= GeneratorUtility.SnakeCaseToCamelCase(method.Name) #>
         {
-            return Task.Factory.StartNew(()=>target.<#= method.Name #>(<#= method.CallArgs #>));
+            get;
+			set;
         }
         <# } #>
     }

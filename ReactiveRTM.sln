@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBF5F7
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveRTM.Support", "ReactiveRTM.Support\ReactiveRTM.Support.csproj", "{77FCB232-BF58-4F37-9D5B-993B72F2AABB}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ReactiveRTM.vsmdi
@@ -153,6 +155,16 @@ Global
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|Mixed Platforms.Build.0 = Release|x86
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|x86.ActiveCfg = Release|x86
 		{88E83018-1549-4E95-9EEA-5D43EC7E6646}.Release|x86.Build.0 = Release|x86
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{77FCB232-BF58-4F37-9D5B-993B72F2AABB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
