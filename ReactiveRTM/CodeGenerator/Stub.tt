@@ -1,0 +1,79 @@
+﻿<#@ template language="C#" debug="true" #>
+<#@ output extension=".generated.cs" #>
+<#@ assembly Name="System.Core.dll" #>
+<#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll" #>
+<#@ assembly Name="$(SolutionDir)\idl\RTC.IDL.dll" #>
+<#@ assembly Name="$(SolutionDir)\ReactiveRTM.Support\Bin\Debug\ReactiveRTM.Support.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="ReactiveRTM.Support" #>
+<#
+    var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes();
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
+using ReactiveRTM.Corba;
+using ReactiveRTM.Generated;
+
+<# foreach(var x in StubGenerator.GenerateTemplates(types)) {#>
+ 
+namespace <#= x.Namespace #>
+{
+<#   foreach(var ct in x.ClassTemplates) {#>
+    public class <#= ct.ClassName #>Stub : IStub
+    {
+		private <#= ct.IiopClassName #> _target;
+
+		public <#= ct.ClassName #>Stub()
+		{
+		}
+
+		public <#= ct.ClassName #>Stub(<#= ct.IiopClassName #> target)
+		{
+			_target = target;
+		}
+
+		object IStub.GetTarget()
+		{
+		    return _target;
+		}
+		void IStub.SetTarget(object target)
+		{
+		    _target = (<#= ct.IiopClassName #>)target;
+		}
+<#     foreach(var parent in ct.Parents) {#> 
+		public static explicit operator <#= parent #>(<#= ct.FullName #> child)
+		{
+			return new <#= parent #>Stub((<#= parent #>)((IStub)child).GetTarget());
+		}
+		public static implicit operator <#= ct.FullName #>(<#= parent #>Stub parent)
+		{
+			return new <#= ct.FullName #>((<#= ct.IiopClassName #>)((IStub)parent).GetTarget());
+		}
+<#     } #>
+
+<#     foreach(var method in ct.MethodTemplates) {#> 
+        public <#= method.ReturnType #> <#= method.Name #>Async(<#= method.DecArgs #>)
+        {
+            return Task.Factory.StartNew(()=>{
+<#     foreach(var param in method.BeforeCall) {#> 
+			    <#= param #>;
+<#     } #>
+				<#= method.CallMethod #>
+<#     foreach(var param in method.AfterCall) {#> 
+			    <#= param #>;
+<#     } #>
+				<#= method.ReturnValue #>
+			});
+        }
+<#     } #>
+    }
+<#   }#>
+}
+<# }#>

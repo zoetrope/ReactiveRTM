@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterGenerator.cs" />
     <Compile Include="DataGenerator.cs" />
     <Compile Include="GeneratorUtility.cs" />
     <Compile Include="StubGenerator.cs" />
