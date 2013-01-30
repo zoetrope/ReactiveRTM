@@ -13,21 +13,15 @@ namespace ReactiveRTM.Adapter
         {
             _owner = owner;
         }
-
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
-        public bool set_device_profile(DeviceProfile dProfile)
+                
+        public bool SetDeviceProfile(DeviceProfile dProfile)
         {
             throw new NotImplementedException();
         }
 
-        
-        public bool add_service_profile(ServiceProfile sProfile)
+        public bool AddServiceProfile(ServiceProfile sProfile)
         {
-            if (sProfile.interface_type == "IDL:OpenRTM/ComponentObserver:1.0")
+            if (sProfile.InterfaceType == "IDL:OpenRTM/ComponentObserver:1.0")
             {
                 _owner.AddComponentObserver(sProfile);
                 return true;
@@ -36,72 +30,72 @@ namespace ReactiveRTM.Adapter
             return false;
         }
 
-        public bool add_organization(Organization organization_object)
+        public bool AddOrganization(ReactiveRTM.org.omg.SDOPackage.Organization organization_object)
         {
             throw new NotImplementedException();
         }
 
-        public bool remove_service_profile(string id)
+        public bool RemoveServiceProfile(string id)
         {
             throw new NotImplementedException();
         }
 
-        public bool remove_organization(string organization_id)
+        public bool RemoveOrganization(string organization_id)
         {
             throw new NotImplementedException();
         }
 
-        public Parameter[] get_configuration_parameters()
+        public System.Collections.Generic.List<Parameter> GetConfigurationParameters()
         {
             throw new NotImplementedException();
         }
 
-        public NameValue[] get_configuration_parameter_values()
+        public System.Collections.Generic.List<NameValue> GetConfigurationParameterValues()
         {
             throw new NotImplementedException();
         }
 
-        public object get_configuration_parameter_value(string name)
+        public object GetConfigurationParameterValue(string name)
         {
             throw new NotImplementedException();
         }
 
-        public bool set_configuration_parameter(string name, object value)
+        public bool SetConfigurationParameter(string name, ReactiveRTM.System.Object value)
         {
             throw new NotImplementedException();
         }
 
-        public ConfigurationSet[] get_configuration_sets()
-        {
-            return new ConfigurationSet[0];
-        }
-
-        public ConfigurationSet get_configuration_set(string config_id)
+        public System.Collections.Generic.List<ConfigurationSet> GetConfigurationSets()
         {
             throw new NotImplementedException();
         }
 
-        public bool set_configuration_set_values(ConfigurationSet configuration_set)
+        public ConfigurationSet GetConfigurationSet(string config_id)
         {
             throw new NotImplementedException();
         }
 
-        public ConfigurationSet get_active_configuration_set()
-        {
-            return default(ConfigurationSet);
-        }
-
-        public bool add_configuration_set(ConfigurationSet configuration_set)
+        public bool SetConfigurationSetValues(ConfigurationSet configuration_set)
         {
             throw new NotImplementedException();
         }
 
-        public bool remove_configuration_set(string config_id)
+        public ConfigurationSet GetActiveConfigurationSet()
         {
             throw new NotImplementedException();
         }
 
-        public bool activate_configuration_set(string config_id)
+        public bool AddConfigurationSet(ConfigurationSet configuration_set)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RemoveConfigurationSet(string config_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ActivateConfigurationSet(string config_id)
         {
             throw new NotImplementedException();
         }

@@ -28,11 +28,6 @@ namespace ReactiveRTM.Adapter
             _subject = new Subject<UpdateStatus>();
         }
 
-        public void update_status(StatusKind status_kind, string hint)
-        {
-            _subject.OnNext(new UpdateStatus() { StatusKind = status_kind, Hint = hint });
-        }
-
         #region Implementation of IObservable<out UpdateStatus>
 
         public IDisposable Subscribe(IObserver<UpdateStatus> observer)
@@ -42,5 +37,10 @@ namespace ReactiveRTM.Adapter
 
         #endregion
 
+
+        public void UpdateStatus(StatusKind status_kind, string hint)
+        {
+            _subject.OnNext(new UpdateStatus() { StatusKind = status_kind, Hint = hint });
+        }
     }
 }

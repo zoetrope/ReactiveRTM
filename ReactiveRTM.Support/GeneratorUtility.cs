@@ -69,6 +69,10 @@ namespace ReactiveRTM.Support
         public static string GetIiopName(Type type)
         {
             if (type == typeof(void)) return "void";
+            if (type.IsByRef)
+            {
+                return GetIiopName(type.GetElementType());
+            }
             if (IsPrimitive(type)) return type.FullName;
             return "global::" + type.FullName;
         }
@@ -83,6 +87,10 @@ namespace ReactiveRTM.Support
         public static string GetFullDataName(Type type)
         {
             if (type == typeof(void)) return "void";
+            if (type.IsByRef)
+            {
+                return GetFullDataName(type.GetElementType());
+            }
             if (IsPrimitive(type)) return type.FullName;
             return Join(BaseNamespace, type.FullName);
         }
@@ -90,6 +98,10 @@ namespace ReactiveRTM.Support
         public static string GetFullRefTypeName(Type type)
         {
             if (type == typeof(void)) return "void";
+            if (type.IsByRef)
+            {
+                return GetIiopName(type.GetElementType());
+            }
             if (type.IsArray)
             {
                 return "List<" + GetFullRefTypeName(type.GetElementType()) + ">";

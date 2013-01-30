@@ -14,50 +14,34 @@ namespace ReactiveRTM.Extensions
 
     public static class ObservableComponentExtensions
     {
-        public static Task<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0)
+        public static async Task<ReturnCode_t> ActivateAsync(this IObservableComponent target, int execHandle = 0)
         {
-            return target.Component.GetOwnedContextsAsync()
-                .ContinueWith(x => x.Result[execHandle].ActivateComponentAsync(target.Component))
-                .Unwrap();
+            var comps = await target.Component.GetOwnedContextsAsync();
+            return await comps[execHandle].ActivateComponentAsync(target.Component);
         }
-
-        public static Task<StateChangedEventArgs> Activate(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        
+        public static async Task<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            var obs = target.StateChangedAsObservable()
-                .Take(1)
-                .PublishLast();
-
-            obs.Connect();
-
-            return ActivateAsync(target).ContinueWith(x => obs.ToTask()).Unwrap();//TODO: 失敗したとき？
-        }
-
-
-        public static Task<ReturnCode_t> DeactivateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
-        {
-            return target.Component.GetOwnedContextsAsync()
-                .ContinueWith(x => x.Result[execHandle].DeactivateComponentAsync(target.Component))
-                .Unwrap();
+            var comps = await target.Component.GetOwnedContextsAsync();
+            return await comps[execHandle].DeactivateComponentAsync(target.Component);
 
         }
 
-        public static Task<ReturnCode_t> ResetAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static async Task<ReturnCode_t> ResetAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            return target.Component.GetOwnedContextsAsync()
-                .ContinueWith(x => x.Result[execHandle].ResetComponentAsync(target.Component))
-                .Unwrap();
+            var comps = await target.Component.GetOwnedContextsAsync();
+            return await comps[execHandle].ResetComponentAsync(target.Component);
         }
 
-        public static Task<ReturnCode_t> ExitAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static async Task<ReturnCode_t> ExitAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
             throw new NotImplementedException();
         }
 
-        public static Task<LifeCycleState> GetStateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
+        public static async Task<LifeCycleState> GetStateAsync(this IObservableComponent target, int execHandle = 0, TimeSpan? timeout = null)
         {
-            return target.Component.GetOwnedContextsAsync()
-                .ContinueWith(x => x.Result[execHandle].GetComponentStateAsync(target.Component))
-                .Unwrap();
+            var comps = await target.Component.GetOwnedContextsAsync();
+            return await comps[execHandle].GetComponentStateAsync(target.Component);
         }
 
         public static Task<ComponentProfile> GetComponentProfileAsync(this IObservableComponent target, TimeSpan? timeout = null)

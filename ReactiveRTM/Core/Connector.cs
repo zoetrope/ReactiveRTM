@@ -22,11 +22,11 @@ namespace ReactiveRTM.Core
         /// <see cref="PortConnector"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="ports">接続対象のポート</param>
-        public PortConnector(params PortService[] ports)
+        public PortConnector(params PortServiceStub[] ports)
         {
             _portServices = new List<PortService>(ports);
 
-            _profile = new ConnectorProfileHolder();
+            _profile = new ConnectorProfile();
             _profile.Ports = ports.ToList();
 
             _profile.DataFlowType = "push";
@@ -39,7 +39,7 @@ namespace ReactiveRTM.Core
         /// ConnecotrProfileをもとにPortConnectorを作成する
         /// </summary>
         /// <param name="profile">接続情報</param>
-        public PortConnector(ConnectorProfileHolder profile)
+        public PortConnector(ConnectorProfile profile)
         {
             _portServices = profile.Ports;
             _profile = profile;
@@ -47,24 +47,24 @@ namespace ReactiveRTM.Core
             IsConnected = true;
         }
 
-        public Task<ReturnCode_t> ConnectAsync()
+        public async Task<ReturnCode_t> ConnectAsync()
         {
-            if (IsConnected) return Task.Factory.StartNew(() => ReturnCode_t.PRECONDITION_NOT_MET);
+            if (IsConnected) return ReturnCode_t.PRECONDITION_NOT_MET;
 
             var prof = _profile.GetConnectorProfile();
-            ReturnCode_t ret = _portServices[0].connect(ref prof);
+            ReturnCode_t ret = await _portServices[0].ConnectAsync(ref prof);
             _profile = new ConnectorProfileHolder(prof);
             _connectorId = _profile.ConnectorID;
             if (ret == ReturnCode_t.RTC_OK) IsConnected = true;
             //todo:仮実装。
-            return Task.Factory.StartNew(() => ret);
+            return ret;
         }
 
-        public Task<ReturnCode_t> DisconnectAsync()
+        public async Task<ReturnCode_t> DisconnectAsync()
         {
-            if (IsConnected) return Task.Factory.StartNew(() => ReturnCode_t.PRECONDITION_NOT_MET);
+            if (IsConnected) return ReturnCode_t.PRECONDITION_NOT_MET;
 
-            var ret = _portServices[0].disconnect(_connectorId);
+            var ret = await _portServices[0].DisconnectAsync(_connectorId);
             if (ret == ReturnCode_t.RTC_OK)
             {
                 IsConnected = false;
@@ -73,7 +73,7 @@ namespace ReactiveRTM.Core
 
             }
             //todo:仮実装。
-            return Task.Factory.StartNew(() => ret);
+            return ret;
         }
 
         public bool IsConnected

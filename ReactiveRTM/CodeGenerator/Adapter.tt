@@ -42,7 +42,7 @@ namespace <#= x.Namespace #>
             _target = target;
         }
 <# foreach(var method in ct.MethodTemplates) {#>
-        public <#= method.IiopReturnType #> <#= method.Name #>(<#= method.DecArgs #>)
+        public <#= method.IiopReturnType #> <#= method.Name #>(<#= method.IiopDecArgs #>)
         {
 <#     foreach(var param in method.BeforeCall) {#> 
             <#= param #>;

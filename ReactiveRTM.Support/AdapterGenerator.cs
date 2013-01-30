@@ -55,7 +55,9 @@ namespace ReactiveRTM.Support
                         IiopReturnType = GU.GetIiopName(a.ReturnType),
                         ReturnType = GU.GetFullRefTypeName(a.ReturnType),
 
-                        DecArgs = string.Join(",", a.GetParameters().Select(p => "global::" + p.ParameterType.ToString().Replace("&", "") + " " + p.Name)),
+                        DecArgs = string.Join(",", a.GetParameters().Select(p => GU.GetFullDataName(p.ParameterType) + " " + p.Name)),
+                        IiopDecArgs = string.Join(",", a.GetParameters().Select(p => GU.GetIiopName(p.ParameterType) + " " + p.Name)),
+
                         BeforeCall = a.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef).Select(p => "var tmp" + p.Name + " = " + GU.FromIiop(p.ParameterType, p.Name)).ToArray(),
                         CallMethod = (a.ReturnType == typeof(void) ? "" : "var ret = ") + "_target." + GU.SnakeCaseToCamelCase(a.Name) + "(" + GetCallArgs(a) + ");",
                         AfterCall = a.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef).Select(p => p.Name + " = " + GU.ToIiop(p.ParameterType, "tmp" + p.Name)).ToArray(),
@@ -76,6 +78,7 @@ namespace ReactiveRTM.Support
             public string Name { get; set; }
             public string IiopName { get; set; }
             public string DecArgs { get; set; }
+            public string IiopDecArgs { get; set; }
 
             public string IiopReturnType { get; set; }
             public string ReturnType { get; set; }

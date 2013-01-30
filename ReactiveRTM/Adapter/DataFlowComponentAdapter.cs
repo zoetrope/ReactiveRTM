@@ -6,11 +6,12 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Text;
-using OpenRTM;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.openrtm.aist.go.jp.OpenRTM;
 using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.org.omg.SDOPackage;
+using ReactiveRTM.OpenRTM;
 
 namespace ReactiveRTM.Adapter
 {
@@ -27,7 +28,7 @@ namespace ReactiveRTM.Adapter
 
         internal DataFlowComponentAdapter(IComponentActionListener listener, string name)
         {
-            _profile = new ComponentProfile(name, name, "", "", "", "", new PortProfile[0], null, new NameValue[0]);
+            _profile = new ComponentProfile();
             
             _listener = listener;
 
@@ -39,17 +40,17 @@ namespace ReactiveRTM.Adapter
             set { _context.ExecutionContextScheduler = value; }
         }
 
-        private List<ComponentObserver> _observers = new List<ComponentObserver>();
+        private List<ComponentObserverStub> _observers = new List<ComponentObserverStub>();
 
         public void AddComponentObserver(ServiceProfile serviceProfile)
         {
-            var observer = (ComponentObserver)serviceProfile.service;
+            var observer = (ComponentObserverStub)serviceProfile.Service;
             _observers.Add(observer);
         }
 
         private ExecutionContextServiceAdapter _context;
 
-        public ReturnCode_t on_initialize()
+        public ReturnCode_t OnInitialize()
         {
             _observers.ForEach(observer => 
                 observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
