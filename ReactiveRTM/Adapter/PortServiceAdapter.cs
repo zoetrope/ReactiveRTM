@@ -6,13 +6,12 @@ using System.Text;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Adapter
 {
 
-    public class PortServiceAdapter : MarshalByRefObject, PortService
+    public class PortServiceAdapter : IPortService
     {
         private PortProfileHolder _profile;
         private IConnectable _connector;

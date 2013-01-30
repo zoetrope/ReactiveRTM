@@ -9,8 +9,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
-using omg.org.RTC;
-using DataFlowComponent = openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {

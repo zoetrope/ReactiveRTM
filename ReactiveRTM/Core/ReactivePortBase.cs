@@ -1,8 +1,7 @@
 ﻿using System;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {

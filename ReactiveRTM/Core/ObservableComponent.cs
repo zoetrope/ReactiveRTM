@@ -6,13 +6,12 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;
-using OpenRTM;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
-using DataFlowComponent = openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using ReactiveRTM.org.omg.SDOPackage;
+using ReactiveRTM.OpenRTM;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {

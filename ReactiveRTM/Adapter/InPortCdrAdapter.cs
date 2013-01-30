@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ReactiveRTM.OpenRTM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
-using OpenRTM;
 
 namespace ReactiveRTM.Adapter
 {
@@ -12,7 +12,7 @@ namespace ReactiveRTM.Adapter
         public byte[] Data { get; set; }
     }
 
-    public class InPortCdrAdapter : MarshalByRefObject, InPortCdr
+    public class InPortCdrAdapter : IInPortCdr
     {
         public override object InitializeLifetimeService()
         {

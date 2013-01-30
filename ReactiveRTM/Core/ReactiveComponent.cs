@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using ReactiveRTM.Adapter;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {

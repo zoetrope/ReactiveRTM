@@ -4,20 +4,19 @@ using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Text;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Adapter
 {
 
-    public class ExecutionContextServiceAdapter : MarshalByRefObject, ExecutionContextService
+    public class ExecutionContextServiceAdapter : IExecutionContextService
     {
         public override object InitializeLifetimeService()
         {
             return null;
         }
 
-        private DataFlowComponent _component;
+        private IDataFlowComponent _component;
         private IDisposable _executor;
         private TimeSpan _timeSpan;
         private LifeCycleState _state;

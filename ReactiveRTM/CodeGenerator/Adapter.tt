@@ -54,6 +54,10 @@ namespace <#= x.Namespace #>
             <#= method.ReturnValue #>
         }
 <# } #>
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
 <# }#>
 }

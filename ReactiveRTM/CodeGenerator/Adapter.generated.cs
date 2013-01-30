@@ -94,6 +94,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IComponentAction
     {
@@ -160,6 +164,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface ILightweightRTObject
@@ -288,6 +296,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IDataFlowComponentAction
     {
@@ -318,6 +330,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IDataFlowComponent
@@ -464,6 +480,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IFsm
     {
@@ -591,6 +611,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IFsmParticipantAction
     {
@@ -609,6 +633,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.OnAction(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IFsmParticipant
@@ -743,6 +771,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.OnAction(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IMode
     {
@@ -755,6 +787,10 @@ namespace ReactiveRTM.omg.org.RTC
         public ModeAdapter(IMode target)
         {
             _target = target;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IModeCapable
@@ -805,6 +841,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.SetMode(new_mode,immediate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IMultiModeComponentAction
     {
@@ -823,6 +863,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.OnModeChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IMultiModeObject
@@ -992,6 +1036,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.OnModeChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IRTObject
@@ -1204,6 +1252,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPortService
     {
@@ -1273,6 +1325,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.NotifyDisconnect(connector_id);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IFsmObject
     {
@@ -1291,6 +1347,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.SendStimulus(message,exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IFsmService
@@ -1316,6 +1376,10 @@ namespace ReactiveRTM.omg.org.RTC
         {
             var ret = _target.SetFsmProfile(fsm_profile);
             return (global::omg.org.RTC.ReturnCode_t)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IExecutionContextService
@@ -1408,6 +1472,10 @@ namespace ReactiveRTM.omg.org.RTC
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
 }
  
@@ -1431,6 +1499,10 @@ namespace ReactiveRTM.OpenRTM
             _target.UpdateStatus(status_kind,hint);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IInPortCdr
     {
@@ -1449,6 +1521,10 @@ namespace ReactiveRTM.OpenRTM
         {
             var ret = _target.Put(data);
             return (global::OpenRTM.PortStatus)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IOutPortCdr
@@ -1472,6 +1548,10 @@ namespace ReactiveRTM.OpenRTM
  
             data = tmpdata.Select(x=>x).ToArray();
             return (global::OpenRTM.PortStatus)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface ILogger
@@ -1497,6 +1577,10 @@ namespace ReactiveRTM.OpenRTM
         {
             _target.Close();
             return;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
 }
@@ -1731,6 +1815,10 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IExtTrigExecutionContextService
     {
@@ -1828,6 +1916,10 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
 }
  
@@ -1917,6 +2009,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface ISDOService
     {
@@ -1929,6 +2025,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public SDOServiceAdapter(ISDOService target)
         {
             _target = target;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface ISDOSystemElement
@@ -1948,6 +2048,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IConfiguration
@@ -2058,6 +2162,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var ret = _target.ActivateConfigurationSet(config_id);
             return ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IMonitoring
     {
@@ -2070,6 +2178,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public MonitoringAdapter(IMonitoring target)
         {
             _target = target;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IOrganization
@@ -2168,6 +2280,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var ret = _target.SetDependency(dependency);
             return ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
 }
  
@@ -2221,6 +2337,10 @@ namespace ReactiveRTM.RTC
             _target.ConfigAccel(index,accel);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IAIO
     {
@@ -2252,6 +2372,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetResolution(index);
             return ret;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IBumper
     {
@@ -2270,6 +2394,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.BumperGeometry)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface ICamera
@@ -2295,6 +2423,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetCameraInfo();
             return ((global::RTC.CameraInfo)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IDIO
@@ -2327,6 +2459,10 @@ namespace ReactiveRTM.RTC
             _target.SetBit(index,newValue);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IFiducial
     {
@@ -2358,6 +2494,10 @@ namespace ReactiveRTM.RTC
             _target.SetFOV(newFOV);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IGPS
     {
@@ -2376,6 +2516,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IGripper
@@ -2408,6 +2552,10 @@ namespace ReactiveRTM.RTC
             _target.Close();
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IIMU
     {
@@ -2427,6 +2575,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IINS
     {
@@ -2445,6 +2597,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface ILimb
@@ -2483,6 +2639,10 @@ namespace ReactiveRTM.RTC
             _target.SetSpeed(speed);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IOGMap
     {
@@ -2507,6 +2667,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetTile(tile);
             return ((global::RTC.OGMapTile)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IMulticamera
@@ -2533,6 +2697,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetCameraInfos();
             return ret.Select(x=>((global::RTC.CameraInfo)((IStub)x).GetTarget())).ToArray();
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPanTilt
     {
@@ -2551,6 +2719,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IPathPlanner2D
@@ -2571,6 +2743,10 @@ namespace ReactiveRTM.RTC
             _target.SetTask(coarsePath);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPathPlanner3D
     {
@@ -2589,6 +2765,10 @@ namespace ReactiveRTM.RTC
         {
             _target.SetTask(coarsePath);
             return;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IPathFollower2D
@@ -2627,6 +2807,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetCurrentWaypoint();
             return ((global::RTC.Waypoint2D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPathFollower3D
     {
@@ -2664,6 +2848,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetCurrentWaypoint();
             return ((global::RTC.Waypoint3D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPointCloudServices
     {
@@ -2682,6 +2870,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IOdometry2D
@@ -2708,6 +2900,10 @@ namespace ReactiveRTM.RTC
             _target.SetOdometry(newOdometry);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IOdometry3D
     {
@@ -2733,6 +2929,10 @@ namespace ReactiveRTM.RTC
             _target.SetOdometry(newOdometry);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IVelocityControl2D
     {
@@ -2751,6 +2951,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry2D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IVelocityControl3D
@@ -2771,6 +2975,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IPoseControl2D
     {
@@ -2789,6 +2997,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry2D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IPoseControl3D
@@ -2809,6 +3021,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface ICarlikeControl
     {
@@ -2827,6 +3043,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry2D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IHeadingControl2D
@@ -2847,6 +3067,10 @@ namespace ReactiveRTM.RTC
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry2D)((IStub)ret).GetTarget());
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IHeadingControl3D
     {
@@ -2865,6 +3089,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.GetGeometry();
             return ((global::RTC.Geometry3D)((IStub)ret).GetTarget());
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
     public interface IRanger
@@ -2909,6 +3137,10 @@ namespace ReactiveRTM.RTC
             _target.SetConfig(newConfig);
             return;
         }
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
     public interface IRFID
     {
@@ -2939,6 +3171,10 @@ namespace ReactiveRTM.RTC
         {
             var ret = _target.Read(GUID);
             return ret.Select(x=>x).ToArray();
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
 }
@@ -3094,6 +3330,10 @@ namespace ReactiveRTM.RTM
         {
             var ret = _target.GetService(name);
             return (global::System.MarshalByRefObject)ret;
+        }
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
     }
 }

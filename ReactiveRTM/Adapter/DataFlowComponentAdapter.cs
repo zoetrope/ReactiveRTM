@@ -9,13 +9,13 @@ using System.Text;
 using OpenRTM;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.openrtm.aist.go.jp.OpenRTM;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Adapter
 {
 
-    public class DataFlowComponentAdapter : MarshalByRefObject, openrtm.aist.go.jp.OpenRTM.DataFlowComponent
+    public class DataFlowComponentAdapter : IDataFlowComponent
     {
         public override object InitializeLifetimeService()
         {

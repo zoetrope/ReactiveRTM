@@ -4,8 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
@@ -15,8 +14,8 @@ namespace ReactiveRTM.Core
     /// </summary>
     public class PortConnector
     {
-        private ConnectorProfileHolder _profile;
-        private readonly List<PortService> _portServices;
+        private ConnectorProfile _profile;
+        private readonly List<PortServiceStub> _portServices;
         private string _connectorId;
 
         /// <summary>

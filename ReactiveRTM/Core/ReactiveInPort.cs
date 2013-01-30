@@ -4,12 +4,10 @@ using System.IO;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Codeplex.Data;
-using RTC;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Core
 {

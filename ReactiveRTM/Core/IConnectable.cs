@@ -1,15 +1,15 @@
-﻿using System;
+﻿using ReactiveRTM.omg.org.RTC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
     public interface IConnectable
     {
-        ReturnCode_t SetConnectionInfo(ConnectorProfileHolder connectorProfile);
-        ReturnCode_t Connect(ConnectorProfileHolder connectorProfile);
-        ReturnCode_t Disconnect(ConnectorProfileHolder connectorProfile);
+        ReturnCode_t SetConnectionInfo(ConnectorProfile connectorProfile);
+        ReturnCode_t Connect(ConnectorProfile connectorProfile);
+        ReturnCode_t Disconnect(ConnectorProfile connectorProfile);
     }
 }

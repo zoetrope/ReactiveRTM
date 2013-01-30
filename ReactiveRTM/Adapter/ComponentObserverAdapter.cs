@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
 using System.Text;
-using OpenRTM;
+using ReactiveRTM.OpenRTM;
 
 namespace ReactiveRTM.Adapter
 {
@@ -13,7 +13,7 @@ namespace ReactiveRTM.Adapter
         public string Hint { get; set; }
     }
 
-    public class ComponentObserverAdapter : MarshalByRefObject, ComponentObserver, IObservable<UpdateStatus>
+    public class ComponentObserverAdapter : IComponentObserver, IObservable<UpdateStatus>
     {
         private Subject<UpdateStatus> _subject;
 
@@ -41,5 +41,6 @@ namespace ReactiveRTM.Adapter
         }
 
         #endregion
+
     }
 }

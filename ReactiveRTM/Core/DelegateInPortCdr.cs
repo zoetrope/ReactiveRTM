@@ -1,12 +1,13 @@
 ﻿using System;
 using OpenRTM;
+using ReactiveRTM.OpenRTM;
 
 namespace ReactiveRTM.Core
 {
     /// <summary>
     /// put処理を移譲するInPortCdr
     /// </summary>
-    public class DelegateInPortCdr : MarshalByRefObject, InPortCdr
+    public class DelegateInPortCdr : IInPortCdr
     {
         public override object InitializeLifetimeService()
         {

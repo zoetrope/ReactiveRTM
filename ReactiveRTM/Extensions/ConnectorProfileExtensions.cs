@@ -8,37 +8,8 @@ using org.omg.SDOPackage;
 
 namespace ReactiveRTM.Core
 {
-    public class ConnectorProfileHolder
+    public static class ConnectorProfileExtensions
     {
-        private ConnectorProfile _profile;
-
-        public ConnectorProfileHolder()
-        {
-            _profile.ports = new PortService[0];
-            _profile.properties = new NameValue[0];
-        }
-
-        public ConnectorProfileHolder(ConnectorProfile prof)
-        {
-            _profile = prof;
-        }
-
-        public string Name
-        {
-            get { return _profile.name; }
-            set { _profile.name = value; }
-        }
-        public string ConnectorID
-        {
-            get { return _profile.connector_id; }
-            set { _profile.connector_id = value; }
-        }
-        public List<PortService> Ports
-        {
-            get { return _profile.ports.ToList(); }
-            set { _profile.ports = value.ToArray(); }
-        }
-
         /// <summary>
         /// push/pull
         /// </summary>

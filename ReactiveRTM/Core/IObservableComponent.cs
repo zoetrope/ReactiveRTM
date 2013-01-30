@@ -3,8 +3,7 @@ using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using ReactiveRTM.Corba;
-using omg.org.RTC;
-using DataFlowComponent = openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
@@ -70,7 +69,7 @@ namespace ReactiveRTM.Core
         IObservable<ConfigurationEventArgs> ConfigurationStatusChangedAsObservable();
         IObservable<Unit> HeartBeatReceivedAsObservable();
 
-        DataFlowComponent Component { get; }
+        DataFlowComponentStub Component { get; }
         IScheduler ExecutionContextScheduler { get; }
     }
 }

@@ -6,13 +6,11 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using Codeplex.Data;
-using OpenRTM;
-using RTC;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.OpenRTM;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Core
 {

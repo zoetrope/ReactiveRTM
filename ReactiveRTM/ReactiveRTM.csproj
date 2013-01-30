@@ -82,10 +82,9 @@
       <DependentUpon>Stub.tt</DependentUpon>
     </Compile>
     <Compile Include="Corba\RemotingNamingServiceClient.cs" />
-    <Compile Include="Core\ComponentProfileHolder.cs" />
-    <Compile Include="Core\ConnectorProfileHolder.cs" />
+    <Compile Include="Extensions\ConnectorProfileExtensions.cs" />
     <Compile Include="Core\IConnectable.cs" />
-    <Compile Include="Core\PortProfileHolder.cs" />
+    <Compile Include="Extensions\PortProfileExtensions.cs" />
     <Compile Include="Core\ReactiveComponentBase.cs" />
     <Compile Include="Core\SimpleComponent.cs" />
     <Compile Include="Extensions\ObservableComponentExtensions.cs" />

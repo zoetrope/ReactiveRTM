@@ -1,10 +1,10 @@
 ﻿using System;
 using OpenRTM;
-using org.omg.SDOPackage;
+using ReactiveRTM.org.omg.SDOPackage;
 
 namespace ReactiveRTM.Adapter
 {
-    public class ConfigurationAdapter : MarshalByRefObject, Configuration
+    public class ConfigurationAdapter : IConfiguration
     {
         private DataFlowComponentAdapter _owner;
         private ComponentObserver _observer;
