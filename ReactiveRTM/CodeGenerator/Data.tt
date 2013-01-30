@@ -28,64 +28,64 @@ using ReactiveRTM.Generated;
 namespace <#= x.Namespace #>
 {
 <#   foreach(var e in x.EnumTemplates) {#>
-	public enum <#= e.Name #>
-	{
+    public enum <#= e.Name #>
+    {
 <#     foreach(var field in e.FieldTemplates) {#>
-		<#= field.Name #> = <#= field.Value#>,
+        <#= field.Name #> = <#= field.Value#>,
 <#     }#>
-	}
+    }
 <#   }#>
-	
+    
 <#   foreach(var ct in x.StructTemplates) {#>
  
     public class <#= ct.StructName #> : NotifyPropertyChangedBase
     {
 <#     foreach(var prop in ct.PropertyTemplates) {#>
-		private <#= prop.TypeName #> _<#= prop.Name #>;
-        
-		///<exclude/>
-		public <#= prop.TypeName #> <#= prop.Name #>
+        private <#= prop.TypeName #> _<#= prop.Name #>;
+            
+        ///<exclude/>
+        public <#= prop.TypeName #> <#= prop.Name #>
         {
             get { return _<#= prop.Name #>; }
-			set 
-			{
-				if(_<#= prop.Name #> != value)
-				{
-					_<#= prop.Name #>  = value;
-					RaisePropertyChanged("<#= prop.Name #>");
-				}
-			}
+            set 
+            {
+                if(_<#= prop.Name #> != value)
+                {
+                    _<#= prop.Name #>  = value;
+                    RaisePropertyChanged("<#= prop.Name #>");
+                }
+            }
         }
 <#     } #>
-		public string RepositoryId
-		{
-		    //TODO:
-			get { return ""; }
-		}
-		public static explicit operator <#= ct.IiopName #> (<#= ct.FullName #> source)
-		{
-			var instance = new <#= ct.IiopName #>();
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator <#= ct.IiopName #> (<#= ct.FullName #> source)
+        {
+            var instance = new <#= ct.IiopName #>();
 <#     foreach(var prop in ct.PropertyTemplates) {#>
             instance.<#= prop.IiopName #> =  <#= GeneratorUtility.ToIiop(prop.Type, "source._" + prop.Name) #>;
 <#     } #>
-			return instance;
-		}
-		public <#= ct.StructName #> ()
-		{
-		}
-		public <#= ct.StructName #> (<#= ct.IiopName #> source)
-		{
+            return instance;
+        }
+        public <#= ct.StructName #> ()
+        {
+        }
+        public <#= ct.StructName #> (<#= ct.IiopName #> source)
+        {
 <#     foreach(var prop in ct.PropertyTemplates) {#>
             _<#= prop.Name #> = <#= GeneratorUtility.FromIiop(prop.Type, "source." + prop.IiopName) #>;
 <#     } #>
-		}
+        }
 
-		///<exclude/>
+        ///<exclude/>
         public bool Equals(<#= ct.StructName #> other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-		    //TODO: SequenceEquals
+            //TODO: SequenceEquals
             return <# for(var i = 0; i < ct.PropertyTemplates.Length; i++) {#><#= i==0? "" : " && " #>other._<#= ct.PropertyTemplates[i].Name #>.Equals(_<#= ct.PropertyTemplates[i].Name #>)<# } #>;
         }
         ///<exclude/>
@@ -103,7 +103,7 @@ namespace <#= x.Namespace #>
             {
                 int result = 0;
 <#     foreach(var prop in ct.PropertyTemplates) {#>
-		    //TODO: 配列のハッシュは？
+            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _<#= prop.Name #>.GetHashCode();
 <#     } #>
                 return result;

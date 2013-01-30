@@ -28,34 +28,34 @@ namespace <#= x.Namespace #>
 <#   foreach(var ct in x.ClassTemplates) {#>
     public class <#= ct.ClassName #>Stub : IStub
     {
-		private <#= ct.IiopClassName #> _target;
+        private <#= ct.IiopClassName #> _target;
 
-		public <#= ct.ClassName #>Stub()
-		{
-		}
+        public <#= ct.ClassName #>Stub()
+        {
+        }
 
-		public <#= ct.ClassName #>Stub(<#= ct.IiopClassName #> target)
-		{
-			_target = target;
-		}
+        public <#= ct.ClassName #>Stub(<#= ct.IiopClassName #> target)
+        {
+            _target = target;
+        }
 
-		object IStub.GetTarget()
-		{
-		    return _target;
-		}
-		void IStub.SetTarget(object target)
-		{
-		    _target = (<#= ct.IiopClassName #>)target;
-		}
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (<#= ct.IiopClassName #>)target;
+        }
 <#     foreach(var parent in ct.Parents) {#> 
-		public static explicit operator <#= parent #>(<#= ct.FullName #> child)
-		{
-			return new <#= parent #>Stub((<#= parent #>)((IStub)child).GetTarget());
-		}
-		public static implicit operator <#= ct.FullName #>(<#= parent #>Stub parent)
-		{
-			return new <#= ct.FullName #>((<#= ct.IiopClassName #>)((IStub)parent).GetTarget());
-		}
+        public static explicit operator <#= parent #>(<#= ct.FullName #> child)
+        {
+            return new <#= parent #>Stub((<#= parent #>)((IStub)child).GetTarget());
+        }
+        public static implicit operator <#= ct.FullName #>(<#= parent #>Stub parent)
+        {
+            return new <#= ct.FullName #>((<#= ct.IiopClassName #>)((IStub)parent).GetTarget());
+        }
 <#     } #>
 
 <#     foreach(var method in ct.MethodTemplates) {#> 
@@ -63,14 +63,14 @@ namespace <#= x.Namespace #>
         {
             return Task.Factory.StartNew(()=>{
 <#     foreach(var param in method.BeforeCall) {#> 
-			    <#= param #>;
+                <#= param #>;
 <#     } #>
-				<#= method.CallMethod #>
+                <#= method.CallMethod #>
 <#     foreach(var param in method.AfterCall) {#> 
-			    <#= param #>;
+                <#= param #>;
 <#     } #>
-				<#= method.ReturnValue #>
-			});
+                <#= method.ReturnValue #>
+            });
         }
 <#     } #>
     }
