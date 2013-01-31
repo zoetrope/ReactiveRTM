@@ -1,13 +1,13 @@
 ﻿using System;
-using OpenRTM;
 using ReactiveRTM.OpenRTM;
+using System.Collections.Generic;
 
 namespace ReactiveRTM.Core
 {
     /// <summary>
     /// put処理を移譲するInPortCdr
     /// </summary>
-    public class DelegateInPortCdr : IInPortCdr
+    public class DelegateInPortCdr : InPortCdr
     {
         public override object InitializeLifetimeService()
         {
@@ -23,9 +23,10 @@ namespace ReactiveRTM.Core
             _action = action;
         }
 
-        public PortStatus put(byte[] data)
+
+        public ReactiveRTM.OpenRTM.PortStatus Put(List<byte> data)
         {
-            return _action(data);
+            return _action(data.ToArray());
         }
     }
 }

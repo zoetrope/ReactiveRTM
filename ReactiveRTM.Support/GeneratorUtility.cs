@@ -77,11 +77,11 @@ namespace ReactiveRTM.Support
             return "global::" + type.FullName;
         }
 
-        public static string GetFullStubName(Type type)
+        public static string GetFullName(Type type)
         {
             if (type == typeof(void)) return "void";
             if (IsPrimitive(type)) return type.FullName;
-            return Join(BaseNamespace, type.FullName) + "Stub";
+            return Join(BaseNamespace, type.FullName);
         }
 
         public static string GetFullDataName(Type type)
@@ -100,7 +100,7 @@ namespace ReactiveRTM.Support
             if (type == typeof(void)) return "void";
             if (type.IsByRef)
             {
-                return GetIiopName(type.GetElementType());
+                return GetFullRefTypeName(type.GetElementType());
             }
             if (type.IsArray)
             {
@@ -109,7 +109,7 @@ namespace ReactiveRTM.Support
 
             if (IsPrimitive(type)) return type.FullName;
             if (IsEnum(type) || IsStruct(type)) return GetFullDataName(type);
-            if (IsInterface(type)) return GetFullStubName(type);
+            if (IsInterface(type)) return GetFullName(type);
 
             return typeof(object).FullName;
         }
@@ -152,7 +152,7 @@ namespace ReactiveRTM.Support
             if (IsPrimitive(type)) return name;
 
             if (IsStruct(type)) return "new " + GetFullDataName(type) + "(" + name + ")";
-            if (IsInterface(type)) return "new " + GetFullStubName(type) + "(" + name + ")";
+            if (IsInterface(type)) return "new " + GetFullName(type) + "Stub(" + name + ")";
 
             //if (IsEnum(type)) 
             return "(" + type.FullName + ")" + name;

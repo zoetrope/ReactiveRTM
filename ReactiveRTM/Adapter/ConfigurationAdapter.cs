@@ -1,15 +1,16 @@
 ﻿using System;
 using OpenRTM;
 using ReactiveRTM.org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Adapter
 {
-    public class ConfigurationAdapter : IConfiguration
+    public class ConfigurationImpl : Configuration
     {
-        private DataFlowComponentAdapter _owner;
+        private DataFlowComponent _owner;
         private ComponentObserver _observer;
 
-        public ConfigurationAdapter(DataFlowComponentAdapter owner)
+        public ConfigurationImpl(DataFlowComponent owner)
         {
             _owner = owner;
         }
@@ -30,7 +31,7 @@ namespace ReactiveRTM.Adapter
             return false;
         }
 
-        public bool AddOrganization(ReactiveRTM.org.omg.SDOPackage.Organization organization_object)
+        public bool AddOrganization(Organization organizationObject)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +41,7 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public bool RemoveOrganization(string organization_id)
+        public bool RemoveOrganization(string organizationId)
         {
             throw new NotImplementedException();
         }
@@ -60,7 +61,7 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public bool SetConfigurationParameter(string name, ReactiveRTM.System.Object value)
+        public bool SetConfigurationParameter(string name, object value)
         {
             throw new NotImplementedException();
         }
@@ -70,12 +71,12 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public ConfigurationSet GetConfigurationSet(string config_id)
+        public ConfigurationSet GetConfigurationSet(string configId)
         {
             throw new NotImplementedException();
         }
 
-        public bool SetConfigurationSetValues(ConfigurationSet configuration_set)
+        public bool SetConfigurationSetValues(ConfigurationSet configurationSet)
         {
             throw new NotImplementedException();
         }
@@ -85,17 +86,17 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public bool AddConfigurationSet(ConfigurationSet configuration_set)
+        public bool AddConfigurationSet(ConfigurationSet configurationSet)
         {
             throw new NotImplementedException();
         }
 
-        public bool RemoveConfigurationSet(string config_id)
+        public bool RemoveConfigurationSet(string configId)
         {
             throw new NotImplementedException();
         }
 
-        public bool ActivateConfigurationSet(string config_id)
+        public bool ActivateConfigurationSet(string configId)
         {
             throw new NotImplementedException();
         }

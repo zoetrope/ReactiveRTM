@@ -9,21 +9,21 @@ using ReactiveRTM.omg.org.RTC;
 namespace ReactiveRTM.Adapter
 {
 
-    public class ExecutionContextServiceAdapter : IExecutionContextService
+    public class ExecutionContextServiceImpl : ExecutionContextService
     {
         public override object InitializeLifetimeService()
         {
             return null;
         }
 
-        private IDataFlowComponent _component;
+        private DataFlowComponent _component;
         private IDisposable _executor;
         private TimeSpan _timeSpan;
         private LifeCycleState _state;
         private bool _isRunning;
         private ExecutionContextProfile _profile;
 
-        public ExecutionContextServiceAdapter()
+        public ExecutionContextServiceImpl()
         {
             _state = LifeCycleState.CREATED_STATE;
             _timeSpan = TimeSpan.FromSeconds(1);
@@ -32,98 +32,98 @@ namespace ReactiveRTM.Adapter
 
             ExecutionContextScheduler = new EventLoopScheduler();
 
-            _profile = new ExecutionContextProfile(ExecutionKind.PERIODIC, get_rate(), null, new RTObject[0], new NameValue[0]);
+            _profile = new ExecutionContextProfile();
+        }
+        
+        public IScheduler ExecutionContextScheduler { get; set; }
+
+        public ExecutionContextProfile GetProfile()
+        {
+            return _profile;
         }
 
-        public bool is_running()
+        public bool IsRunning()
         {
             return _isRunning;
         }
 
-        public ReturnCode_t start()
+        public ReturnCode_t Start()
         {
             _isRunning = true;
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t _stop()
+        public ReturnCode_t Stop()
         {
             _isRunning = false;
             return ReturnCode_t.RTC_OK;
         }
 
-        public double get_rate()
+        public double GetRate()
         {
             return 1.0 / _timeSpan.Seconds;
         }
 
-        public ReturnCode_t set_rate(double rate)
+        public ReturnCode_t SetRate(double rate)
         {
             _timeSpan = TimeSpan.FromMilliseconds(1000.0 / rate);
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t add_component(LightweightRTObject comp)
+        public ReturnCode_t AddComponent(LightweightRTObject comp)
         {
             _component = (DataFlowComponent)comp;
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t remove_component(LightweightRTObject comp)
+        public ReturnCode_t RemoveComponent(LightweightRTObject comp)
         {
             _component = null;
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t activate_component(LightweightRTObject comp)
+        public ReturnCode_t ActivateComponent(LightweightRTObject comp)
         {
             Observable.Start(() =>
             {
                 _state = LifeCycleState.ACTIVE_STATE;
-                _component.on_activated(0);
+                _component.OnActivated(0);
             }, ExecutionContextScheduler)
             .Subscribe(_ =>
             {
                 _executor = Observable
-                    .Interval(_timeSpan,ExecutionContextScheduler)
-                    .Subscribe(__ => _component.on_execute(0));
+                    .Interval(_timeSpan, ExecutionContextScheduler)
+                    .Subscribe(__ => _component.OnExecute(0));
             });
 
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t deactivate_component(LightweightRTObject comp)
+        public ReturnCode_t DeactivateComponent(LightweightRTObject comp)
         {
             _executor.Dispose();
 
             _state = LifeCycleState.INACTIVE_STATE;
 
-            _component.on_deactivated(0);
+            _component.OnDeactivated(0);
 
             return ReturnCode_t.RTC_OK;
         }
 
-        public ReturnCode_t reset_component(LightweightRTObject comp)
+        public ReturnCode_t ResetComponent(LightweightRTObject comp)
         {
             throw new NotImplementedException();
         }
 
-        public LifeCycleState get_component_state(LightweightRTObject comp)
+        public LifeCycleState GetComponentState(LightweightRTObject comp)
         {
             return _state;
         }
 
-        public ExecutionKind get_kind()
+        public ExecutionKind GetKind()
         {
             return ExecutionKind.PERIODIC;
         }
-
-        public ExecutionContextProfile get_profile()
-        {
-            return _profile;
-        }
-
-        public IScheduler ExecutionContextScheduler { get; set; }
     }
 
 }

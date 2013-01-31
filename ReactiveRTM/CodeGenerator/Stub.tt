@@ -21,12 +21,12 @@ using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Generated;
 
-<# foreach(var x in StubGenerator.GenerateTemplates(types)) {#>
+<# foreach(var x in ClassGenerator.GenerateTemplates(types)) {#>
  
 namespace <#= x.Namespace #>
 {
 <#   foreach(var ct in x.ClassTemplates) {#>
-    public class <#= ct.ClassName #>Stub : IStub
+    public class <#= ct.ClassName #>Stub : IStub, <#= ct.FullName #>
     {
         private <#= ct.IiopClassName #> _target;
 
@@ -48,29 +48,27 @@ namespace <#= x.Namespace #>
             _target = (<#= ct.IiopClassName #>)target;
         }
 <#     foreach(var parent in ct.Parents) {#> 
-        public static explicit operator <#= parent #>(<#= ct.FullName #> child)
+        public static explicit operator <#= parent.Name #>Stub(<#= ct.FullName #>Stub child)
         {
-            return new <#= parent #>Stub((<#= parent #>)((IStub)child).GetTarget());
+            return new <#= parent.Name #>Stub((<#= parent.IiopName #>)((IStub)child).GetTarget());
         }
-        public static implicit operator <#= ct.FullName #>(<#= parent #>Stub parent)
+        public static implicit operator <#= ct.FullName #>Stub(<#= parent.Name #>Stub parent)
         {
-            return new <#= ct.FullName #>((<#= ct.IiopClassName #>)((IStub)parent).GetTarget());
+            return new <#= ct.FullName #>Stub((<#= ct.IiopClassName #>)((IStub)parent).GetTarget());
         }
 <#     } #>
 
 <#     foreach(var method in ct.MethodTemplates) {#> 
-        public <#= method.ReturnType #> <#= method.Name #>Async(<#= method.DecArgs #>)
+        public <#= method.ReturnType #> <#= method.Name #>(<#= method.DecArgs #>)
         {
-            return Task.Factory.StartNew(()=>{
-<#     foreach(var param in method.BeforeCall) {#> 
-                <#= param #>;
+<#     foreach(var param in method.StubBeforeCall) {#> 
+            <#= param #>;
 <#     } #>
-                <#= method.CallMethod #>
-<#     foreach(var param in method.AfterCall) {#> 
-                <#= param #>;
+            <#= method.StubCallMethod #>
+<#     foreach(var param in method.StubAfterCall) {#> 
+            <#= param #>;
 <#     } #>
-                <#= method.ReturnValue #>
-            });
+            <#= method.StubReturnValue #>
         }
 <#     } #>
     }

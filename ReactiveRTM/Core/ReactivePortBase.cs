@@ -29,7 +29,7 @@ namespace ReactiveRTM.Core
 
         public void Connection()
         {
-            var prof = new ConnectorProfileHolder();
+            var prof = new ConnectorProfile();
             prof.Ports.Add(PortService);
             prof.Name = "dummy"; //名前見直し？
             prof.ConnectorID = "";
@@ -42,9 +42,9 @@ namespace ReactiveRTM.Core
         {
         }
 
-        public abstract ReturnCode_t SetConnectionInfo(ConnectorProfileHolder connectorProfile);
-        public abstract ReturnCode_t Connect(ConnectorProfileHolder connectorProfile);
-        public abstract ReturnCode_t Disconnect(ConnectorProfileHolder connectorProfile);
+        public abstract ReturnCode_t SetConnectionInfo(ConnectorProfile connectorProfile);
+        public abstract ReturnCode_t Connect(ConnectorProfile connectorProfile);
+        public abstract ReturnCode_t Disconnect(ConnectorProfile connectorProfile);
         
     }
 }

@@ -11,6 +11,7 @@ using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.OpenRTM;
 using ReactiveRTM.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
@@ -62,12 +63,12 @@ namespace ReactiveRTM.Core
 
         #region Overrides of ReactivePortBase
 
-        public override ReturnCode_t SetConnectionInfo(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t SetConnectionInfo(ConnectorProfile connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Connect(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t Connect(ConnectorProfile connectorProfile)
         {
             var ior = connectorProfile.InPortIor;
             var proxy = CorbaUtility.ToObject<InPortCdr>(ior);
@@ -76,7 +77,7 @@ namespace ReactiveRTM.Core
             {
                 var stream = new MemoryStream();
                 _serializer.Serialize(data, stream);
-                proxy.put(stream.ToArray());
+                proxy.Put(stream.ToArray());
             });
 
             _observers.Add(observer);
@@ -84,7 +85,7 @@ namespace ReactiveRTM.Core
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Disconnect(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t Disconnect(ConnectorProfile connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }
@@ -119,7 +120,7 @@ namespace ReactiveRTM.Core
             var json = DynamicJson.Serialize(data);
 
             TimedWString ts = new TimedWString();
-            ts.data = json;
+            ts.Data = json;
 
             base.Write(ts);
         }
@@ -129,7 +130,7 @@ namespace ReactiveRTM.Core
             var json = DynamicJson.Serialize(data);
 
             TimedWString ts = new TimedWString();
-            ts.data = json;
+            ts.Data = json;
 
             base.WriteAsync(ts);
         }

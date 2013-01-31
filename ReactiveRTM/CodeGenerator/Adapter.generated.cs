@@ -10,86 +10,71 @@ using ReactiveRTM.Generated;
  
 namespace ReactiveRTM.omg.org.RTC
 {
-    public interface IExecutionContext
-    {
-        System.Boolean IsRunning();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Start();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Stop();
-        System.Double GetRate();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ExecutionKind GetKind();
-    }
 
     public class ExecutionContextAdapter : MarshalByRefObject, global::omg.org.RTC.ExecutionContext
     {
-        private IExecutionContext _target;
+        private ExecutionContext _target;
 
-        public ExecutionContextAdapter(IExecutionContext target)
+        public ExecutionContextAdapter(ExecutionContext target)
         {
             _target = target;
         }
-        public System.Boolean IsRunning()
+        public System.Boolean is_running()
         {
             var ret = _target.IsRunning();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Start()
+        public global::omg.org.RTC.ReturnCode_t start()
         {
             var ret = _target.Start();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Stop()
+        public global::omg.org.RTC.ReturnCode_t _stop()
         {
             var ret = _target.Stop();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Double GetRate()
+        public System.Double get_rate()
         {
             var ret = _target.GetRate();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
+        public global::omg.org.RTC.ReturnCode_t set_rate(System.Double rate)
         {
             var ret = _target.SetRate(rate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t AddComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t add_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.AddComponent(comp);
+            var ret = _target.AddComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t RemoveComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t remove_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.RemoveComponent(comp);
+            var ret = _target.RemoveComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ActivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t activate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ActivateComponent(comp);
+            var ret = _target.ActivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DeactivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t deactivate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.DeactivateComponent(comp);
+            var ret = _target.DeactivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ResetComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t reset_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ResetComponent(comp);
+            var ret = _target.ResetComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.LifeCycleState GetComponentState(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.LifeCycleState get_component_state(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.GetComponentState(comp);
+            var ret = _target.GetComponentState(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.LifeCycleState)ret;
         }
-        public global::omg.org.RTC.ExecutionKind GetKind()
+        public global::omg.org.RTC.ExecutionKind get_kind()
         {
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
@@ -99,68 +84,56 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IComponentAction
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-    }
 
     public class ComponentActionAdapter : MarshalByRefObject, global::omg.org.RTC.ComponentAction
     {
-        private IComponentAction _target;
+        private ComponentAction _target;
 
-        public ComponentActionAdapter(IComponentAction target)
+        public ComponentActionAdapter(ComponentAction target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -169,129 +142,107 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface ILightweightRTObject
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
     }
 
     public class LightweightRTObjectAdapter : MarshalByRefObject, global::omg.org.RTC.LightweightRTObject
     {
-        private ILightweightRTObject _target;
+        private LightweightRTObject _target;
 
-        public LightweightRTObjectAdapter(ILightweightRTObject target)
+        public LightweightRTObjectAdapter(LightweightRTObject target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -300,33 +251,27 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IDataFlowComponentAction
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle);
     }
 
     public class DataFlowComponentActionAdapter : MarshalByRefObject, global::omg.org.RTC.DataFlowComponentAction
     {
-        private IDataFlowComponentAction _target;
+        private DataFlowComponentAction _target;
 
-        public DataFlowComponentActionAdapter(IDataFlowComponentAction target)
+        public DataFlowComponentActionAdapter(DataFlowComponentAction target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_execute(System.Int32 exec_handle)
         {
             var ret = _target.OnExecute(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_state_update(System.Int32 exec_handle)
         {
             var ret = _target.OnStateUpdate(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_rate_changed(System.Int32 exec_handle)
         {
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -335,147 +280,122 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IDataFlowComponent
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle);
     }
 
     public class DataFlowComponentAdapter : MarshalByRefObject, global::omg.org.RTC.DataFlowComponent
     {
-        private IDataFlowComponent _target;
+        private DataFlowComponent _target;
 
-        public DataFlowComponentAdapter(IDataFlowComponent target)
+        public DataFlowComponentAdapter(DataFlowComponent target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_execute(System.Int32 exec_handle)
         {
             var ret = _target.OnExecute(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_state_update(System.Int32 exec_handle)
         {
             var ret = _target.OnStateUpdate(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_rate_changed(System.Int32 exec_handle)
         {
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -485,128 +405,106 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IFsm
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-    }
 
     public class FsmAdapter : MarshalByRefObject, global::omg.org.RTC.Fsm
     {
-        private IFsm _target;
+        private Fsm _target;
 
-        public FsmAdapter(IFsm target)
+        public FsmAdapter(Fsm target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -615,21 +513,17 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IFsmParticipantAction
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAction(System.Int32 exec_handle);
     }
 
     public class FsmParticipantActionAdapter : MarshalByRefObject, global::omg.org.RTC.FsmParticipantAction
     {
-        private IFsmParticipantAction _target;
+        private FsmParticipantAction _target;
 
-        public FsmParticipantActionAdapter(IFsmParticipantAction target)
+        public FsmParticipantActionAdapter(FsmParticipantAction target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAction(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_action(System.Int32 exec_handle)
         {
             var ret = _target.OnAction(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -638,135 +532,112 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IFsmParticipant
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAction(System.Int32 exec_handle);
     }
 
     public class FsmParticipantAdapter : MarshalByRefObject, global::omg.org.RTC.FsmParticipant
     {
-        private IFsmParticipant _target;
+        private FsmParticipant _target;
 
-        public FsmParticipantAdapter(IFsmParticipant target)
+        public FsmParticipantAdapter(FsmParticipant target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAction(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_action(System.Int32 exec_handle)
         {
             var ret = _target.OnAction(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -776,15 +647,12 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IMode
-    {
-    }
 
     public class ModeAdapter : MarshalByRefObject, global::omg.org.RTC.Mode
     {
-        private IMode _target;
+        private Mode _target;
 
-        public ModeAdapter(IMode target)
+        public ModeAdapter(Mode target)
         {
             _target = target;
         }
@@ -792,74 +660,61 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IModeCapable
-    {
-        ReactiveRTM.omg.org.RTC.ModeStub GetDefaultMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetCurrentMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetCurrentModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ModeStub GetPendingMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetPendingModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetMode(ReactiveRTM.omg.org.RTC.Mode new_mode,System.Boolean immediate);
     }
 
     public class ModeCapableAdapter : MarshalByRefObject, global::omg.org.RTC.ModeCapable
     {
-        private IModeCapable _target;
+        private ModeCapable _target;
 
-        public ModeCapableAdapter(IModeCapable target)
+        public ModeCapableAdapter(ModeCapable target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.Mode GetDefaultMode()
+        public global::omg.org.RTC.Mode get_default_mode()
         {
             var ret = _target.GetDefaultMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetCurrentMode()
+        public global::omg.org.RTC.Mode get_current_mode()
         {
             var ret = _target.GetCurrentMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetCurrentModeInContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public global::omg.org.RTC.Mode get_current_mode_in_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.GetCurrentModeInContext(exec_context);
+            var ret = _target.GetCurrentModeInContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetPendingMode()
+        public global::omg.org.RTC.Mode get_pending_mode()
         {
             var ret = _target.GetPendingMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetPendingModeInContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public global::omg.org.RTC.Mode get_pending_mode_in_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.GetPendingModeInContext(exec_context);
+            var ret = _target.GetPendingModeInContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ReturnCode_t SetMode(global::omg.org.RTC.Mode new_mode,System.Boolean immediate)
+        public global::omg.org.RTC.ReturnCode_t set_mode(global::omg.org.RTC.Mode new_mode,System.Boolean immediate)
         {
-            var ret = _target.SetMode(new_mode,immediate);
+            var ret = _target.SetMode(new ReactiveRTM.omg.org.RTC.ModeStub(new_mode),immediate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
         public override object InitializeLifetimeService()
         {
             return null;
         }
-    }
-    public interface IMultiModeComponentAction
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 exec_handle);
     }
 
     public class MultiModeComponentActionAdapter : MarshalByRefObject, global::omg.org.RTC.MultiModeComponentAction
     {
-        private IMultiModeComponentAction _target;
+        private MultiModeComponentAction _target;
 
-        public MultiModeComponentActionAdapter(IMultiModeComponentAction target)
+        public MultiModeComponentActionAdapter(MultiModeComponentAction target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_mode_changed(System.Int32 exec_handle)
         {
             var ret = _target.OnModeChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -868,171 +723,142 @@ namespace ReactiveRTM.omg.org.RTC
         {
             return null;
         }
-    }
-    public interface IMultiModeObject
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ModeStub GetDefaultMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetCurrentMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetCurrentModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ModeStub GetPendingMode();
-        ReactiveRTM.omg.org.RTC.ModeStub GetPendingModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetMode(ReactiveRTM.omg.org.RTC.Mode new_mode,System.Boolean immediate);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 exec_handle);
     }
 
     public class MultiModeObjectAdapter : MarshalByRefObject, global::omg.org.RTC.MultiModeObject
     {
-        private IMultiModeObject _target;
+        private MultiModeObject _target;
 
-        public MultiModeObjectAdapter(IMultiModeObject target)
+        public MultiModeObjectAdapter(MultiModeObject target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.Mode GetDefaultMode()
+        public global::omg.org.RTC.Mode get_default_mode()
         {
             var ret = _target.GetDefaultMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetCurrentMode()
+        public global::omg.org.RTC.Mode get_current_mode()
         {
             var ret = _target.GetCurrentMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetCurrentModeInContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public global::omg.org.RTC.Mode get_current_mode_in_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.GetCurrentModeInContext(exec_context);
+            var ret = _target.GetCurrentModeInContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetPendingMode()
+        public global::omg.org.RTC.Mode get_pending_mode()
         {
             var ret = _target.GetPendingMode();
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.Mode GetPendingModeInContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public global::omg.org.RTC.Mode get_pending_mode_in_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.GetPendingModeInContext(exec_context);
+            var ret = _target.GetPendingModeInContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ((global::omg.org.RTC.Mode)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ReturnCode_t SetMode(global::omg.org.RTC.Mode new_mode,System.Boolean immediate)
+        public global::omg.org.RTC.ReturnCode_t set_mode(global::omg.org.RTC.Mode new_mode,System.Boolean immediate)
         {
-            var ret = _target.SetMode(new_mode,immediate);
+            var ret = _target.SetMode(new ReactiveRTM.omg.org.RTC.ModeStub(new_mode),immediate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_mode_changed(System.Int32 exec_handle)
         {
             var ret = _target.OnModeChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -1042,212 +868,176 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IRTObject
-    {
-        ReactiveRTM.omg.org.RTC.ComponentProfile GetComponentProfile();
-        List<ReactiveRTM.omg.org.RTC.PortServiceStub> GetPorts();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-        System.String GetSdoId();
-        System.String GetSdoType();
-        ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles();
-        ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.SDOServiceStub GetSdoService(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationStub GetConfiguration();
-        ReactiveRTM.org.omg.SDOPackage.MonitoringStub GetMonitoring();
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
-        System.Object GetStatus(System.String nme);
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOwnedOrganizations();
-    }
 
     public class RTObjectAdapter : MarshalByRefObject, global::omg.org.RTC.RTObject
     {
-        private IRTObject _target;
+        private RTObject _target;
 
-        public RTObjectAdapter(IRTObject target)
+        public RTObjectAdapter(RTObject target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ComponentProfile GetComponentProfile()
+        public global::omg.org.RTC.ComponentProfile get_component_profile()
         {
             var ret = _target.GetComponentProfile();
             return ((global::omg.org.RTC.ComponentProfile)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.PortService[] GetPorts()
+        public global::omg.org.RTC.PortService[] get_ports()
         {
             var ret = _target.GetPorts();
             return ret.Select(x=>((global::omg.org.RTC.PortService)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.String GetSdoId()
+        public System.String get_sdo_id()
         {
             var ret = _target.GetSdoId();
             return ret;
         }
-        public System.String GetSdoType()
+        public System.String get_sdo_type()
         {
             var ret = _target.GetSdoType();
             return ret;
         }
-        public global::org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
+        public global::org.omg.SDOPackage.DeviceProfile get_device_profile()
         {
             var ret = _target.GetDeviceProfile();
             return ((global::org.omg.SDOPackage.DeviceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.ServiceProfile[] GetServiceProfiles()
+        public global::org.omg.SDOPackage.ServiceProfile[] get_service_profiles()
         {
             var ret = _target.GetServiceProfiles();
             return ret.Select(x=>((global::org.omg.SDOPackage.ServiceProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        public global::org.omg.SDOPackage.ServiceProfile get_service_profile(System.String id)
         {
             var ret = _target.GetServiceProfile(id);
             return ((global::org.omg.SDOPackage.ServiceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.SDOService GetSdoService(System.String id)
+        public global::org.omg.SDOPackage.SDOService get_sdo_service(System.String id)
         {
             var ret = _target.GetSdoService(id);
             return ((global::org.omg.SDOPackage.SDOService)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Configuration GetConfiguration()
+        public global::org.omg.SDOPackage.Configuration get_configuration()
         {
             var ret = _target.GetConfiguration();
             return ((global::org.omg.SDOPackage.Configuration)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Monitoring GetMonitoring()
+        public global::org.omg.SDOPackage.Monitoring get_monitoring()
         {
             var ret = _target.GetMonitoring();
             return ((global::org.omg.SDOPackage.Monitoring)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Organization[] GetOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_organizations()
         {
             var ret = _target.GetOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.NameValue[] GetStatusList()
+        public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
             return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
         }
-        public global::System.Object GetStatus(System.String nme)
+        public global::System.Object get_status(System.String nme)
         {
             var ret = _target.GetStatus(nme);
             return (global::System.Object)ret;
         }
-        public global::org.omg.SDOPackage.Organization[] GetOwnedOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_owned_organizations()
         {
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
@@ -1257,42 +1047,31 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IPortService
-    {
-        ReactiveRTM.omg.org.RTC.PortProfile GetPortProfile();
-        List<ReactiveRTM.omg.org.RTC.ConnectorProfile> GetConnectorProfiles();
-        ReactiveRTM.omg.org.RTC.ConnectorProfile GetConnectorProfile(System.String connector_id);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Connect(ReactiveRTM.omg.org.RTC.ConnectorProfile connector_profile);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Disconnect(System.String connector_id);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DisconnectAll();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyConnect(ReactiveRTM.omg.org.RTC.ConnectorProfile connector_profile);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyDisconnect(System.String connector_id);
-    }
 
     public class PortServiceAdapter : MarshalByRefObject, global::omg.org.RTC.PortService
     {
-        private IPortService _target;
+        private PortService _target;
 
-        public PortServiceAdapter(IPortService target)
+        public PortServiceAdapter(PortService target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.PortProfile GetPortProfile()
+        public global::omg.org.RTC.PortProfile get_port_profile()
         {
             var ret = _target.GetPortProfile();
             return ((global::omg.org.RTC.PortProfile)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ConnectorProfile[] GetConnectorProfiles()
+        public global::omg.org.RTC.ConnectorProfile[] get_connector_profiles()
         {
             var ret = _target.GetConnectorProfiles();
             return ret.Select(x=>((global::omg.org.RTC.ConnectorProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ConnectorProfile GetConnectorProfile(System.String connector_id)
+        public global::omg.org.RTC.ConnectorProfile get_connector_profile(System.String connector_id)
         {
             var ret = _target.GetConnectorProfile(connector_id);
             return ((global::omg.org.RTC.ConnectorProfile)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ReturnCode_t Connect(global::omg.org.RTC.ConnectorProfile connector_profile)
+        public global::omg.org.RTC.ReturnCode_t connect(ref global::omg.org.RTC.ConnectorProfile connector_profile)
         {
  
             var tmpconnector_profile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(connector_profile);
@@ -1301,17 +1080,17 @@ namespace ReactiveRTM.omg.org.RTC
             connector_profile = ((global::omg.org.RTC.ConnectorProfile)((IStub)tmpconnector_profile).GetTarget());
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Disconnect(System.String connector_id)
+        public global::omg.org.RTC.ReturnCode_t disconnect(System.String connector_id)
         {
             var ret = _target.Disconnect(connector_id);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DisconnectAll()
+        public global::omg.org.RTC.ReturnCode_t disconnect_all()
         {
             var ret = _target.DisconnectAll();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t NotifyConnect(global::omg.org.RTC.ConnectorProfile connector_profile)
+        public global::omg.org.RTC.ReturnCode_t notify_connect(ref global::omg.org.RTC.ConnectorProfile connector_profile)
         {
  
             var tmpconnector_profile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(connector_profile);
@@ -1320,7 +1099,7 @@ namespace ReactiveRTM.omg.org.RTC
             connector_profile = ((global::omg.org.RTC.ConnectorProfile)((IStub)tmpconnector_profile).GetTarget());
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t NotifyDisconnect(System.String connector_id)
+        public global::omg.org.RTC.ReturnCode_t notify_disconnect(System.String connector_id)
         {
             var ret = _target.NotifyDisconnect(connector_id);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -1330,20 +1109,16 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IFsmObject
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 exec_handle);
-    }
 
     public class FsmObjectAdapter : MarshalByRefObject, global::omg.org.RTC.FsmObject
     {
-        private IFsmObject _target;
+        private FsmObject _target;
 
-        public FsmObjectAdapter(IFsmObject target)
+        public FsmObjectAdapter(FsmObject target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t send_stimulus(System.String message,System.Int32 exec_handle)
         {
             var ret = _target.SendStimulus(message,exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -1353,28 +1128,23 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IFsmService
-    {
-        ReactiveRTM.omg.org.RTC.FsmProfile GetFsmProfile();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetFsmProfile(ReactiveRTM.omg.org.RTC.FsmProfile fsm_profile);
-    }
 
     public class FsmServiceAdapter : MarshalByRefObject, global::omg.org.RTC.FsmService
     {
-        private IFsmService _target;
+        private FsmService _target;
 
-        public FsmServiceAdapter(IFsmService target)
+        public FsmServiceAdapter(FsmService target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.FsmProfile GetFsmProfile()
+        public global::omg.org.RTC.FsmProfile get_fsm_profile()
         {
             var ret = _target.GetFsmProfile();
             return ((global::omg.org.RTC.FsmProfile)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ReturnCode_t SetFsmProfile(global::omg.org.RTC.FsmProfile fsm_profile)
+        public global::omg.org.RTC.ReturnCode_t set_fsm_profile(global::omg.org.RTC.FsmProfile fsm_profile)
         {
-            var ret = _target.SetFsmProfile(fsm_profile);
+            var ret = _target.SetFsmProfile(new ReactiveRTM.omg.org.RTC.FsmProfile(fsm_profile));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
         public override object InitializeLifetimeService()
@@ -1382,92 +1152,76 @@ namespace ReactiveRTM.omg.org.RTC
             return null;
         }
     }
-    public interface IExecutionContextService
-    {
-        ReactiveRTM.omg.org.RTC.ExecutionContextProfile GetProfile();
-        System.Boolean IsRunning();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Start();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Stop();
-        System.Double GetRate();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ExecutionKind GetKind();
-    }
 
     public class ExecutionContextServiceAdapter : MarshalByRefObject, global::omg.org.RTC.ExecutionContextService
     {
-        private IExecutionContextService _target;
+        private ExecutionContextService _target;
 
-        public ExecutionContextServiceAdapter(IExecutionContextService target)
+        public ExecutionContextServiceAdapter(ExecutionContextService target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ExecutionContextProfile GetProfile()
+        public global::omg.org.RTC.ExecutionContextProfile get_profile()
         {
             var ret = _target.GetProfile();
             return ((global::omg.org.RTC.ExecutionContextProfile)((IStub)ret).GetTarget());
         }
-        public System.Boolean IsRunning()
+        public System.Boolean is_running()
         {
             var ret = _target.IsRunning();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Start()
+        public global::omg.org.RTC.ReturnCode_t start()
         {
             var ret = _target.Start();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Stop()
+        public global::omg.org.RTC.ReturnCode_t _stop()
         {
             var ret = _target.Stop();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Double GetRate()
+        public System.Double get_rate()
         {
             var ret = _target.GetRate();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
+        public global::omg.org.RTC.ReturnCode_t set_rate(System.Double rate)
         {
             var ret = _target.SetRate(rate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t AddComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t add_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.AddComponent(comp);
+            var ret = _target.AddComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t RemoveComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t remove_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.RemoveComponent(comp);
+            var ret = _target.RemoveComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ActivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t activate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ActivateComponent(comp);
+            var ret = _target.ActivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DeactivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t deactivate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.DeactivateComponent(comp);
+            var ret = _target.DeactivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ResetComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t reset_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ResetComponent(comp);
+            var ret = _target.ResetComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.LifeCycleState GetComponentState(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.LifeCycleState get_component_state(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.GetComponentState(comp);
+            var ret = _target.GetComponentState(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.LifeCycleState)ret;
         }
-        public global::omg.org.RTC.ExecutionKind GetKind()
+        public global::omg.org.RTC.ExecutionKind get_kind()
         {
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
@@ -1481,22 +1235,18 @@ namespace ReactiveRTM.omg.org.RTC
  
 namespace ReactiveRTM.OpenRTM
 {
-    public interface IComponentObserver
-    {
-        void UpdateStatus(ReactiveRTM.OpenRTM.StatusKind status_kind,System.String hint);
-    }
 
     public class ComponentObserverAdapter : MarshalByRefObject, global::OpenRTM.ComponentObserver
     {
-        private IComponentObserver _target;
+        private ComponentObserver _target;
 
-        public ComponentObserverAdapter(IComponentObserver target)
+        public ComponentObserverAdapter(ComponentObserver target)
         {
             _target = target;
         }
-        public void UpdateStatus(global::OpenRTM.StatusKind status_kind,System.String hint)
+        public void update_status(global::OpenRTM.StatusKind status_kind,System.String hint)
         {
-            _target.UpdateStatus(status_kind,hint);
+            _target.UpdateStatus((OpenRTM.StatusKind)status_kind,hint);
             return;
         }
         public override object InitializeLifetimeService()
@@ -1504,22 +1254,18 @@ namespace ReactiveRTM.OpenRTM
             return null;
         }
     }
-    public interface IInPortCdr
-    {
-        ReactiveRTM.OpenRTM.PortStatus Put(ReactiveRTM.System.Byte[] data);
-    }
 
     public class InPortCdrAdapter : MarshalByRefObject, global::OpenRTM.InPortCdr
     {
-        private IInPortCdr _target;
+        private InPortCdr _target;
 
-        public InPortCdrAdapter(IInPortCdr target)
+        public InPortCdrAdapter(InPortCdr target)
         {
             _target = target;
         }
-        public global::OpenRTM.PortStatus Put(global::System.Byte[] data)
+        public global::OpenRTM.PortStatus put(global::System.Byte[] data)
         {
-            var ret = _target.Put(data);
+            var ret = _target.Put(data.Select(x=>x).ToList());
             return (global::OpenRTM.PortStatus)ret;
         }
         public override object InitializeLifetimeService()
@@ -1527,20 +1273,16 @@ namespace ReactiveRTM.OpenRTM
             return null;
         }
     }
-    public interface IOutPortCdr
-    {
-        ReactiveRTM.OpenRTM.PortStatus Get(ReactiveRTM.System.Byte[] data);
-    }
 
     public class OutPortCdrAdapter : MarshalByRefObject, global::OpenRTM.OutPortCdr
     {
-        private IOutPortCdr _target;
+        private OutPortCdr _target;
 
-        public OutPortCdrAdapter(IOutPortCdr target)
+        public OutPortCdrAdapter(OutPortCdr target)
         {
             _target = target;
         }
-        public global::OpenRTM.PortStatus Get(global::System.Byte[] data)
+        public global::OpenRTM.PortStatus _get(out global::System.Byte[] data)
         {
  
             var tmpdata = data.Select(x=>x).ToList();
@@ -1554,26 +1296,21 @@ namespace ReactiveRTM.OpenRTM
             return null;
         }
     }
-    public interface ILogger
-    {
-        void Publish(ReactiveRTM.OpenRTM.LogRecord record);
-        void Close();
-    }
 
     public class LoggerAdapter : MarshalByRefObject, global::OpenRTM.Logger
     {
-        private ILogger _target;
+        private Logger _target;
 
-        public LoggerAdapter(ILogger target)
+        public LoggerAdapter(Logger target)
         {
             _target = target;
         }
-        public void Publish(global::OpenRTM.LogRecord record)
+        public void publish(global::OpenRTM.LogRecord record)
         {
-            _target.Publish(record);
+            _target.Publish(new ReactiveRTM.OpenRTM.LogRecord(record));
             return;
         }
-        public void Close()
+        public void close()
         {
             _target.Close();
             return;
@@ -1587,230 +1324,191 @@ namespace ReactiveRTM.OpenRTM
  
 namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
 {
-    public interface IDataFlowComponent
-    {
-        ReactiveRTM.omg.org.RTC.ComponentProfile GetComponentProfile();
-        List<ReactiveRTM.omg.org.RTC.PortServiceStub> GetPorts();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext exec_context);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ExecutionContextStub GetContext(System.Int32 exec_handle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContextStub> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle);
-        System.String GetSdoId();
-        System.String GetSdoType();
-        ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles();
-        ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.SDOServiceStub GetSdoService(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationStub GetConfiguration();
-        ReactiveRTM.org.omg.SDOPackage.MonitoringStub GetMonitoring();
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
-        System.Object GetStatus(System.String nme);
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOwnedOrganizations();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle);
-    }
 
     public class DataFlowComponentAdapter : MarshalByRefObject, global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent
     {
-        private IDataFlowComponent _target;
+        private DataFlowComponent _target;
 
-        public DataFlowComponentAdapter(IDataFlowComponent target)
+        public DataFlowComponentAdapter(DataFlowComponent target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ComponentProfile GetComponentProfile()
+        public global::omg.org.RTC.ComponentProfile get_component_profile()
         {
             var ret = _target.GetComponentProfile();
             return ((global::omg.org.RTC.ComponentProfile)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.PortService[] GetPorts()
+        public global::omg.org.RTC.PortService[] get_ports()
         {
             var ret = _target.GetPorts();
             return ret.Select(x=>((global::omg.org.RTC.PortService)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t Initialize()
+        public global::omg.org.RTC.ReturnCode_t initialize()
         {
             var ret = _target.Initialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Finalize()
+        public global::omg.org.RTC.ReturnCode_t _finalize()
         {
             var ret = _target.Finalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsAlive(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Boolean is_alive(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.IsAlive(exec_context);
+            var ret = _target.IsAlive(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Exit()
+        public global::omg.org.RTC.ReturnCode_t _exit()
         {
             var ret = _target.Exit();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Int32 AttachContext(global::omg.org.RTC.ExecutionContext exec_context)
+        public System.Int32 attach_context(global::omg.org.RTC.ExecutionContext exec_context)
         {
-            var ret = _target.AttachContext(exec_context);
+            var ret = _target.AttachContext(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(exec_context));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DetachContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t detach_context(System.Int32 exec_handle)
         {
             var ret = _target.DetachContext(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ExecutionContext GetContext(System.Int32 exec_handle)
+        public global::omg.org.RTC.ExecutionContext get_context(System.Int32 exec_handle)
         {
             var ret = _target.GetContext(exec_handle);
             return ((global::omg.org.RTC.ExecutionContext)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ExecutionContext[] GetOwnedContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_owned_contexts()
         {
             var ret = _target.GetOwnedContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ExecutionContext[] GetParticipatingContexts()
+        public global::omg.org.RTC.ExecutionContext[] get_participating_contexts()
         {
             var ret = _target.GetParticipatingContexts();
             return ret.Select(x=>((global::omg.org.RTC.ExecutionContext)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Int32 GetContextHandle(global::omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 get_context_handle(global::omg.org.RTC.ExecutionContext cxt)
         {
-            var ret = _target.GetContextHandle(cxt);
+            var ret = _target.GetContextHandle(new ReactiveRTM.omg.org.RTC.ExecutionContextStub(cxt));
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnInitialize()
+        public global::omg.org.RTC.ReturnCode_t on_initialize()
         {
             var ret = _target.OnInitialize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnFinalize()
+        public global::omg.org.RTC.ReturnCode_t on_finalize()
         {
             var ret = _target.OnFinalize();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStartup(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_startup(System.Int32 exec_handle)
         {
             var ret = _target.OnStartup(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_shutdown(System.Int32 exec_handle)
         {
             var ret = _target.OnShutdown(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnActivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_activated(System.Int32 exec_handle)
         {
             var ret = _target.OnActivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_deactivated(System.Int32 exec_handle)
         {
             var ret = _target.OnDeactivated(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnAborting(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_aborting(System.Int32 exec_handle)
         {
             var ret = _target.OnAborting(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnError(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_error(System.Int32 exec_handle)
         {
             var ret = _target.OnError(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnReset(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_reset(System.Int32 exec_handle)
         {
             var ret = _target.OnReset(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.String GetSdoId()
+        public System.String get_sdo_id()
         {
             var ret = _target.GetSdoId();
             return ret;
         }
-        public System.String GetSdoType()
+        public System.String get_sdo_type()
         {
             var ret = _target.GetSdoType();
             return ret;
         }
-        public global::org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
+        public global::org.omg.SDOPackage.DeviceProfile get_device_profile()
         {
             var ret = _target.GetDeviceProfile();
             return ((global::org.omg.SDOPackage.DeviceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.ServiceProfile[] GetServiceProfiles()
+        public global::org.omg.SDOPackage.ServiceProfile[] get_service_profiles()
         {
             var ret = _target.GetServiceProfiles();
             return ret.Select(x=>((global::org.omg.SDOPackage.ServiceProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        public global::org.omg.SDOPackage.ServiceProfile get_service_profile(System.String id)
         {
             var ret = _target.GetServiceProfile(id);
             return ((global::org.omg.SDOPackage.ServiceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.SDOService GetSdoService(System.String id)
+        public global::org.omg.SDOPackage.SDOService get_sdo_service(System.String id)
         {
             var ret = _target.GetSdoService(id);
             return ((global::org.omg.SDOPackage.SDOService)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Configuration GetConfiguration()
+        public global::org.omg.SDOPackage.Configuration get_configuration()
         {
             var ret = _target.GetConfiguration();
             return ((global::org.omg.SDOPackage.Configuration)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Monitoring GetMonitoring()
+        public global::org.omg.SDOPackage.Monitoring get_monitoring()
         {
             var ret = _target.GetMonitoring();
             return ((global::org.omg.SDOPackage.Monitoring)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Organization[] GetOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_organizations()
         {
             var ret = _target.GetOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.NameValue[] GetStatusList()
+        public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
             return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
         }
-        public global::System.Object GetStatus(System.String nme)
+        public global::System.Object get_status(System.String nme)
         {
             var ret = _target.GetStatus(nme);
             return (global::System.Object)ret;
         }
-        public global::org.omg.SDOPackage.Organization[] GetOwnedOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_owned_organizations()
         {
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t OnExecute(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_execute(System.Int32 exec_handle)
         {
             var ret = _target.OnExecute(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_state_update(System.Int32 exec_handle)
         {
             var ret = _target.OnStateUpdate(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 exec_handle)
+        public global::omg.org.RTC.ReturnCode_t on_rate_changed(System.Int32 exec_handle)
         {
             var ret = _target.OnRateChanged(exec_handle);
             return (global::omg.org.RTC.ReturnCode_t)ret;
@@ -1820,98 +1518,81 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return null;
         }
     }
-    public interface IExtTrigExecutionContextService
-    {
-        void Tick();
-        ReactiveRTM.omg.org.RTC.ExecutionContextProfile GetProfile();
-        System.Boolean IsRunning();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Start();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Stop();
-        System.Double GetRate();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ExecutionKind GetKind();
-    }
 
     public class ExtTrigExecutionContextServiceAdapter : MarshalByRefObject, global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService
     {
-        private IExtTrigExecutionContextService _target;
+        private ExtTrigExecutionContextService _target;
 
-        public ExtTrigExecutionContextServiceAdapter(IExtTrigExecutionContextService target)
+        public ExtTrigExecutionContextServiceAdapter(ExtTrigExecutionContextService target)
         {
             _target = target;
         }
-        public void Tick()
+        public void tick()
         {
             _target.Tick();
             return;
         }
-        public global::omg.org.RTC.ExecutionContextProfile GetProfile()
+        public global::omg.org.RTC.ExecutionContextProfile get_profile()
         {
             var ret = _target.GetProfile();
             return ((global::omg.org.RTC.ExecutionContextProfile)((IStub)ret).GetTarget());
         }
-        public System.Boolean IsRunning()
+        public System.Boolean is_running()
         {
             var ret = _target.IsRunning();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Start()
+        public global::omg.org.RTC.ReturnCode_t start()
         {
             var ret = _target.Start();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Stop()
+        public global::omg.org.RTC.ReturnCode_t _stop()
         {
             var ret = _target.Stop();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Double GetRate()
+        public System.Double get_rate()
         {
             var ret = _target.GetRate();
             return ret;
         }
-        public global::omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
+        public global::omg.org.RTC.ReturnCode_t set_rate(System.Double rate)
         {
             var ret = _target.SetRate(rate);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t AddComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t add_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.AddComponent(comp);
+            var ret = _target.AddComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t RemoveComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t remove_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.RemoveComponent(comp);
+            var ret = _target.RemoveComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ActivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t activate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ActivateComponent(comp);
+            var ret = _target.ActivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t DeactivateComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t deactivate_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.DeactivateComponent(comp);
+            var ret = _target.DeactivateComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t ResetComponent(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.ReturnCode_t reset_component(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.ResetComponent(comp);
+            var ret = _target.ResetComponent(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.LifeCycleState GetComponentState(global::omg.org.RTC.LightweightRTObject comp)
+        public global::omg.org.RTC.LifeCycleState get_component_state(global::omg.org.RTC.LightweightRTObject comp)
         {
-            var ret = _target.GetComponentState(comp);
+            var ret = _target.GetComponentState(new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(comp));
             return (global::omg.org.RTC.LifeCycleState)ret;
         }
-        public global::omg.org.RTC.ExecutionKind GetKind()
+        public global::omg.org.RTC.ExecutionKind get_kind()
         {
             var ret = _target.GetKind();
             return (global::omg.org.RTC.ExecutionKind)ret;
@@ -1925,86 +1606,71 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
  
 namespace ReactiveRTM.org.omg.SDOPackage
 {
-    public interface ISDO
-    {
-        System.String GetSdoId();
-        System.String GetSdoType();
-        ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles();
-        ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.SDOServiceStub GetSdoService(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationStub GetConfiguration();
-        ReactiveRTM.org.omg.SDOPackage.MonitoringStub GetMonitoring();
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
-        System.Object GetStatus(System.String nme);
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOwnedOrganizations();
-    }
 
     public class SDOAdapter : MarshalByRefObject, global::org.omg.SDOPackage.SDO
     {
-        private ISDO _target;
+        private SDO _target;
 
-        public SDOAdapter(ISDO target)
+        public SDOAdapter(SDO target)
         {
             _target = target;
         }
-        public System.String GetSdoId()
+        public System.String get_sdo_id()
         {
             var ret = _target.GetSdoId();
             return ret;
         }
-        public System.String GetSdoType()
+        public System.String get_sdo_type()
         {
             var ret = _target.GetSdoType();
             return ret;
         }
-        public global::org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
+        public global::org.omg.SDOPackage.DeviceProfile get_device_profile()
         {
             var ret = _target.GetDeviceProfile();
             return ((global::org.omg.SDOPackage.DeviceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.ServiceProfile[] GetServiceProfiles()
+        public global::org.omg.SDOPackage.ServiceProfile[] get_service_profiles()
         {
             var ret = _target.GetServiceProfiles();
             return ret.Select(x=>((global::org.omg.SDOPackage.ServiceProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        public global::org.omg.SDOPackage.ServiceProfile get_service_profile(System.String id)
         {
             var ret = _target.GetServiceProfile(id);
             return ((global::org.omg.SDOPackage.ServiceProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.SDOService GetSdoService(System.String id)
+        public global::org.omg.SDOPackage.SDOService get_sdo_service(System.String id)
         {
             var ret = _target.GetSdoService(id);
             return ((global::org.omg.SDOPackage.SDOService)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Configuration GetConfiguration()
+        public global::org.omg.SDOPackage.Configuration get_configuration()
         {
             var ret = _target.GetConfiguration();
             return ((global::org.omg.SDOPackage.Configuration)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Monitoring GetMonitoring()
+        public global::org.omg.SDOPackage.Monitoring get_monitoring()
         {
             var ret = _target.GetMonitoring();
             return ((global::org.omg.SDOPackage.Monitoring)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.Organization[] GetOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_organizations()
         {
             var ret = _target.GetOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.NameValue[] GetStatusList()
+        public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
             return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
         }
-        public global::System.Object GetStatus(System.String nme)
+        public global::System.Object get_status(System.String nme)
         {
             var ret = _target.GetStatus(nme);
             return (global::System.Object)ret;
         }
-        public global::org.omg.SDOPackage.Organization[] GetOwnedOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_owned_organizations()
         {
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
@@ -2013,16 +1679,13 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             return null;
         }
-    }
-    public interface ISDOService
-    {
     }
 
     public class SDOServiceAdapter : MarshalByRefObject, global::org.omg.SDOPackage.SDOService
     {
-        private ISDOService _target;
+        private SDOService _target;
 
-        public SDOServiceAdapter(ISDOService target)
+        public SDOServiceAdapter(SDOService target)
         {
             _target = target;
         }
@@ -2031,20 +1694,16 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return null;
         }
     }
-    public interface ISDOSystemElement
-    {
-        List<ReactiveRTM.org.omg.SDOPackage.OrganizationStub> GetOwnedOrganizations();
-    }
 
     public class SDOSystemElementAdapter : MarshalByRefObject, global::org.omg.SDOPackage.SDOSystemElement
     {
-        private ISDOSystemElement _target;
+        private SDOSystemElement _target;
 
-        public SDOSystemElementAdapter(ISDOSystemElement target)
+        public SDOSystemElementAdapter(SDOSystemElement target)
         {
             _target = target;
         }
-        public global::org.omg.SDOPackage.Organization[] GetOwnedOrganizations()
+        public global::org.omg.SDOPackage.Organization[] get_owned_organizations()
         {
             var ret = _target.GetOwnedOrganizations();
             return ret.Select(x=>((global::org.omg.SDOPackage.Organization)((IStub)x).GetTarget())).ToArray();
@@ -2054,110 +1713,91 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return null;
         }
     }
-    public interface IConfiguration
-    {
-        System.Boolean SetDeviceProfile(ReactiveRTM.org.omg.SDOPackage.DeviceProfile dProfile);
-        System.Boolean AddServiceProfile(ReactiveRTM.org.omg.SDOPackage.ServiceProfile sProfile);
-        System.Boolean AddOrganization(ReactiveRTM.org.omg.SDOPackage.Organization organization_object);
-        System.Boolean RemoveServiceProfile(System.String id);
-        System.Boolean RemoveOrganization(System.String organization_id);
-        List<ReactiveRTM.org.omg.SDOPackage.Parameter> GetConfigurationParameters();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfigurationParameterValues();
-        System.Object GetConfigurationParameterValue(System.String name);
-        System.Boolean SetConfigurationParameter(System.String name,ReactiveRTM.System.Object value);
-        List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSets();
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetConfigurationSet(System.String config_id);
-        System.Boolean SetConfigurationSetValues(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configuration_set);
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetActiveConfigurationSet();
-        System.Boolean AddConfigurationSet(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configuration_set);
-        System.Boolean RemoveConfigurationSet(System.String config_id);
-        System.Boolean ActivateConfigurationSet(System.String config_id);
-    }
 
     public class ConfigurationAdapter : MarshalByRefObject, global::org.omg.SDOPackage.Configuration
     {
-        private IConfiguration _target;
+        private Configuration _target;
 
-        public ConfigurationAdapter(IConfiguration target)
+        public ConfigurationAdapter(Configuration target)
         {
             _target = target;
         }
-        public System.Boolean SetDeviceProfile(global::org.omg.SDOPackage.DeviceProfile dProfile)
+        public System.Boolean set_device_profile(global::org.omg.SDOPackage.DeviceProfile dProfile)
         {
-            var ret = _target.SetDeviceProfile(dProfile);
+            var ret = _target.SetDeviceProfile(new ReactiveRTM.org.omg.SDOPackage.DeviceProfile(dProfile));
             return ret;
         }
-        public System.Boolean AddServiceProfile(global::org.omg.SDOPackage.ServiceProfile sProfile)
+        public System.Boolean add_service_profile(global::org.omg.SDOPackage.ServiceProfile sProfile)
         {
-            var ret = _target.AddServiceProfile(sProfile);
+            var ret = _target.AddServiceProfile(new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(sProfile));
             return ret;
         }
-        public System.Boolean AddOrganization(global::org.omg.SDOPackage.Organization organization_object)
+        public System.Boolean add_organization(global::org.omg.SDOPackage.Organization organization_object)
         {
-            var ret = _target.AddOrganization(organization_object);
+            var ret = _target.AddOrganization(new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(organization_object));
             return ret;
         }
-        public System.Boolean RemoveServiceProfile(System.String id)
+        public System.Boolean remove_service_profile(System.String id)
         {
             var ret = _target.RemoveServiceProfile(id);
             return ret;
         }
-        public System.Boolean RemoveOrganization(System.String organization_id)
+        public System.Boolean remove_organization(System.String organization_id)
         {
             var ret = _target.RemoveOrganization(organization_id);
             return ret;
         }
-        public global::org.omg.SDOPackage.Parameter[] GetConfigurationParameters()
+        public global::org.omg.SDOPackage.Parameter[] get_configuration_parameters()
         {
             var ret = _target.GetConfigurationParameters();
             return ret.Select(x=>((global::org.omg.SDOPackage.Parameter)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.NameValue[] GetConfigurationParameterValues()
+        public global::org.omg.SDOPackage.NameValue[] get_configuration_parameter_values()
         {
             var ret = _target.GetConfigurationParameterValues();
             return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
         }
-        public global::System.Object GetConfigurationParameterValue(System.String name)
+        public global::System.Object get_configuration_parameter_value(System.String name)
         {
             var ret = _target.GetConfigurationParameterValue(name);
             return (global::System.Object)ret;
         }
-        public System.Boolean SetConfigurationParameter(System.String name,global::System.Object value)
+        public System.Boolean set_configuration_parameter(System.String name,global::System.Object value)
         {
-            var ret = _target.SetConfigurationParameter(name,value);
+            var ret = _target.SetConfigurationParameter(name,(System.Object)value);
             return ret;
         }
-        public global::org.omg.SDOPackage.ConfigurationSet[] GetConfigurationSets()
+        public global::org.omg.SDOPackage.ConfigurationSet[] get_configuration_sets()
         {
             var ret = _target.GetConfigurationSets();
             return ret.Select(x=>((global::org.omg.SDOPackage.ConfigurationSet)((IStub)x).GetTarget())).ToArray();
         }
-        public global::org.omg.SDOPackage.ConfigurationSet GetConfigurationSet(System.String config_id)
+        public global::org.omg.SDOPackage.ConfigurationSet get_configuration_set(System.String config_id)
         {
             var ret = _target.GetConfigurationSet(config_id);
             return ((global::org.omg.SDOPackage.ConfigurationSet)((IStub)ret).GetTarget());
         }
-        public System.Boolean SetConfigurationSetValues(global::org.omg.SDOPackage.ConfigurationSet configuration_set)
+        public System.Boolean set_configuration_set_values(global::org.omg.SDOPackage.ConfigurationSet configuration_set)
         {
-            var ret = _target.SetConfigurationSetValues(configuration_set);
+            var ret = _target.SetConfigurationSetValues(new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(configuration_set));
             return ret;
         }
-        public global::org.omg.SDOPackage.ConfigurationSet GetActiveConfigurationSet()
+        public global::org.omg.SDOPackage.ConfigurationSet get_active_configuration_set()
         {
             var ret = _target.GetActiveConfigurationSet();
             return ((global::org.omg.SDOPackage.ConfigurationSet)((IStub)ret).GetTarget());
         }
-        public System.Boolean AddConfigurationSet(global::org.omg.SDOPackage.ConfigurationSet configuration_set)
+        public System.Boolean add_configuration_set(global::org.omg.SDOPackage.ConfigurationSet configuration_set)
         {
-            var ret = _target.AddConfigurationSet(configuration_set);
+            var ret = _target.AddConfigurationSet(new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(configuration_set));
             return ret;
         }
-        public System.Boolean RemoveConfigurationSet(System.String config_id)
+        public System.Boolean remove_configuration_set(System.String config_id)
         {
             var ret = _target.RemoveConfigurationSet(config_id);
             return ret;
         }
-        public System.Boolean ActivateConfigurationSet(System.String config_id)
+        public System.Boolean activate_configuration_set(System.String config_id)
         {
             var ret = _target.ActivateConfigurationSet(config_id);
             return ret;
@@ -2167,15 +1807,12 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return null;
         }
     }
-    public interface IMonitoring
-    {
-    }
 
     public class MonitoringAdapter : MarshalByRefObject, global::org.omg.SDOPackage.Monitoring
     {
-        private IMonitoring _target;
+        private Monitoring _target;
 
-        public MonitoringAdapter(IMonitoring target)
+        public MonitoringAdapter(Monitoring target)
         {
             _target = target;
         }
@@ -2184,100 +1821,83 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return null;
         }
     }
-    public interface IOrganization
-    {
-        System.String GetOrganizationId();
-        ReactiveRTM.org.omg.SDOPackage.OrganizationProperty GetOrganizationProperty();
-        System.Object GetOrganizationPropertyValue(System.String name);
-        System.Boolean AddOrganizationProperty(ReactiveRTM.org.omg.SDOPackage.OrganizationProperty organization_property);
-        System.Boolean SetOrganizationPropertyValue(System.String name,ReactiveRTM.System.Object value);
-        System.Boolean RemoveOrganizationProperty(System.String name);
-        ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub GetOwner();
-        System.Boolean SetOwner(ReactiveRTM.org.omg.SDOPackage.SDOSystemElement sdo);
-        List<ReactiveRTM.org.omg.SDOPackage.SDOStub> GetMembers();
-        System.Boolean SetMembers(ReactiveRTM.org.omg.SDOPackage.SDO[] sdos);
-        System.Boolean AddMembers(ReactiveRTM.org.omg.SDOPackage.SDO[] sdo_list);
-        System.Boolean RemoveMember(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.DependencyType GetDependency();
-        System.Boolean SetDependency(ReactiveRTM.org.omg.SDOPackage.DependencyType dependency);
-    }
 
     public class OrganizationAdapter : MarshalByRefObject, global::org.omg.SDOPackage.Organization
     {
-        private IOrganization _target;
+        private Organization _target;
 
-        public OrganizationAdapter(IOrganization target)
+        public OrganizationAdapter(Organization target)
         {
             _target = target;
         }
-        public System.String GetOrganizationId()
+        public System.String get_organization_id()
         {
             var ret = _target.GetOrganizationId();
             return ret;
         }
-        public global::org.omg.SDOPackage.OrganizationProperty GetOrganizationProperty()
+        public global::org.omg.SDOPackage.OrganizationProperty get_organization_property()
         {
             var ret = _target.GetOrganizationProperty();
             return ((global::org.omg.SDOPackage.OrganizationProperty)((IStub)ret).GetTarget());
         }
-        public global::System.Object GetOrganizationPropertyValue(System.String name)
+        public global::System.Object get_organization_property_value(System.String name)
         {
             var ret = _target.GetOrganizationPropertyValue(name);
             return (global::System.Object)ret;
         }
-        public System.Boolean AddOrganizationProperty(global::org.omg.SDOPackage.OrganizationProperty organization_property)
+        public System.Boolean add_organization_property(global::org.omg.SDOPackage.OrganizationProperty organization_property)
         {
-            var ret = _target.AddOrganizationProperty(organization_property);
+            var ret = _target.AddOrganizationProperty(new ReactiveRTM.org.omg.SDOPackage.OrganizationProperty(organization_property));
             return ret;
         }
-        public System.Boolean SetOrganizationPropertyValue(System.String name,global::System.Object value)
+        public System.Boolean set_organization_property_value(System.String name,global::System.Object value)
         {
-            var ret = _target.SetOrganizationPropertyValue(name,value);
+            var ret = _target.SetOrganizationPropertyValue(name,(System.Object)value);
             return ret;
         }
-        public System.Boolean RemoveOrganizationProperty(System.String name)
+        public System.Boolean remove_organization_property(System.String name)
         {
             var ret = _target.RemoveOrganizationProperty(name);
             return ret;
         }
-        public global::org.omg.SDOPackage.SDOSystemElement GetOwner()
+        public global::org.omg.SDOPackage.SDOSystemElement get_owner()
         {
             var ret = _target.GetOwner();
             return ((global::org.omg.SDOPackage.SDOSystemElement)((IStub)ret).GetTarget());
         }
-        public System.Boolean SetOwner(global::org.omg.SDOPackage.SDOSystemElement sdo)
+        public System.Boolean set_owner(global::org.omg.SDOPackage.SDOSystemElement sdo)
         {
-            var ret = _target.SetOwner(sdo);
+            var ret = _target.SetOwner(new ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub(sdo));
             return ret;
         }
-        public global::org.omg.SDOPackage.SDO[] GetMembers()
+        public global::org.omg.SDOPackage.SDO[] get_members()
         {
             var ret = _target.GetMembers();
             return ret.Select(x=>((global::org.omg.SDOPackage.SDO)((IStub)x).GetTarget())).ToArray();
         }
-        public System.Boolean SetMembers(global::org.omg.SDOPackage.SDO[] sdos)
+        public System.Boolean set_members(global::org.omg.SDOPackage.SDO[] sdos)
         {
-            var ret = _target.SetMembers(sdos);
+            var ret = _target.SetMembers(sdos.Select(x=>new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
             return ret;
         }
-        public System.Boolean AddMembers(global::org.omg.SDOPackage.SDO[] sdo_list)
+        public System.Boolean add_members(global::org.omg.SDOPackage.SDO[] sdo_list)
         {
-            var ret = _target.AddMembers(sdo_list);
+            var ret = _target.AddMembers(sdo_list.Select(x=>new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
             return ret;
         }
-        public System.Boolean RemoveMember(System.String id)
+        public System.Boolean remove_member(System.String id)
         {
             var ret = _target.RemoveMember(id);
             return ret;
         }
-        public global::org.omg.SDOPackage.DependencyType GetDependency()
+        public global::org.omg.SDOPackage.DependencyType get_dependency()
         {
             var ret = _target.GetDependency();
             return (global::org.omg.SDOPackage.DependencyType)ret;
         }
-        public System.Boolean SetDependency(global::org.omg.SDOPackage.DependencyType dependency)
+        public System.Boolean set_dependency(global::org.omg.SDOPackage.DependencyType dependency)
         {
-            var ret = _target.SetDependency(dependency);
+            var ret = _target.SetDependency((org.omg.SDOPackage.DependencyType)dependency);
             return ret;
         }
         public override object InitializeLifetimeService()
@@ -2289,21 +1909,12 @@ namespace ReactiveRTM.org.omg.SDOPackage
  
 namespace ReactiveRTM.RTC
 {
-    public interface IActArray
-    {
-        ReactiveRTM.RTC.ActArrayGeometry GetGeometry();
-        void GoHome(System.Int16 index);
-        void Power(System.Boolean enable);
-        void Brakes(System.Boolean engage);
-        void ConfigSpeed(System.Int16 index,System.Double speed);
-        void ConfigAccel(System.Int16 index,System.Double accel);
-    }
 
     public class ActArrayAdapter : MarshalByRefObject, global::RTC.ActArray
     {
-        private IActArray _target;
+        private ActArray _target;
 
-        public ActArrayAdapter(IActArray target)
+        public ActArrayAdapter(ActArray target)
         {
             _target = target;
         }
@@ -2342,18 +1953,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IAIO
-    {
-        System.Int16 NumChannels();
-        void SetReferenceLevel(System.Int16 index,System.Double level);
-        System.Double GetResolution(System.Int16 index);
-    }
 
     public class AIOAdapter : MarshalByRefObject, global::RTC.AIO
     {
-        private IAIO _target;
+        private AIO _target;
 
-        public AIOAdapter(IAIO target)
+        public AIOAdapter(AIO target)
         {
             _target = target;
         }
@@ -2377,16 +1982,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IBumper
-    {
-        ReactiveRTM.RTC.BumperGeometry GetGeometry();
-    }
 
     public class BumperAdapter : MarshalByRefObject, global::RTC.Bumper
     {
-        private IBumper _target;
+        private Bumper _target;
 
-        public BumperAdapter(IBumper target)
+        public BumperAdapter(Bumper target)
         {
             _target = target;
         }
@@ -2400,17 +2001,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface ICamera
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        ReactiveRTM.RTC.CameraInfo GetCameraInfo();
-    }
 
     public class CameraAdapter : MarshalByRefObject, global::RTC.Camera
     {
-        private ICamera _target;
+        private Camera _target;
 
-        public CameraAdapter(ICamera target)
+        public CameraAdapter(Camera target)
         {
             _target = target;
         }
@@ -2429,18 +2025,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IDIO
-    {
-        System.Int16 NumBits();
-        System.Boolean GetBit(System.Int16 index);
-        void SetBit(System.Int16 index,System.Boolean newValue);
-    }
 
     public class DIOAdapter : MarshalByRefObject, global::RTC.DIO
     {
-        private IDIO _target;
+        private DIO _target;
 
-        public DIOAdapter(IDIO target)
+        public DIOAdapter(DIO target)
         {
             _target = target;
         }
@@ -2464,18 +2054,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IFiducial
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        ReactiveRTM.RTC.FiducialFOV GetFOV();
-        void SetFOV(ReactiveRTM.RTC.FiducialFOV newFOV);
-    }
 
     public class FiducialAdapter : MarshalByRefObject, global::RTC.Fiducial
     {
-        private IFiducial _target;
+        private Fiducial _target;
 
-        public FiducialAdapter(IFiducial target)
+        public FiducialAdapter(Fiducial target)
         {
             _target = target;
         }
@@ -2491,7 +2075,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetFOV(global::RTC.FiducialFOV newFOV)
         {
-            _target.SetFOV(newFOV);
+            _target.SetFOV(new ReactiveRTM.RTC.FiducialFOV(newFOV));
             return;
         }
         public override object InitializeLifetimeService()
@@ -2499,16 +2083,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IGPS
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-    }
 
     public class GPSAdapter : MarshalByRefObject, global::RTC.GPS
     {
-        private IGPS _target;
+        private GPS _target;
 
-        public GPSAdapter(IGPS target)
+        public GPSAdapter(GPS target)
         {
             _target = target;
         }
@@ -2522,18 +2102,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IGripper
-    {
-        ReactiveRTM.RTC.GripperGeometry GetGeometry();
-        void Open();
-        void Close();
-    }
 
     public class GripperAdapter : MarshalByRefObject, global::RTC.Gripper
     {
-        private IGripper _target;
+        private Gripper _target;
 
-        public GripperAdapter(IGripper target)
+        public GripperAdapter(Gripper target)
         {
             _target = target;
         }
@@ -2557,16 +2131,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IIMU
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-    }
 
     public class IMUAdapter : MarshalByRefObject, global::RTC.IMU
     {
-        private IIMU _target;
+        private IMU _target;
 
-        public IMUAdapter(IIMU target)
+        public IMUAdapter(IMU target)
         {
             _target = target;
         }
@@ -2579,17 +2149,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface IINS
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
     }
 
     public class INSAdapter : MarshalByRefObject, global::RTC.INS
     {
-        private IINS _target;
+        private INS _target;
 
-        public INSAdapter(IINS target)
+        public INSAdapter(INS target)
         {
             _target = target;
         }
@@ -2603,19 +2169,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface ILimb
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        void Power(System.Boolean enable);
-        void Brakes(System.Boolean engage);
-        void SetSpeed(System.Double speed);
-    }
 
     public class LimbAdapter : MarshalByRefObject, global::RTC.Limb
     {
-        private ILimb _target;
+        private Limb _target;
 
-        public LimbAdapter(ILimb target)
+        public LimbAdapter(Limb target)
         {
             _target = target;
         }
@@ -2644,17 +2203,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IOGMap
-    {
-        ReactiveRTM.RTC.OGMapConfig GetConfig();
-        ReactiveRTM.RTC.OGMapTile GetTile(ReactiveRTM.RTC.OGMapTile tile);
-    }
 
     public class OGMapAdapter : MarshalByRefObject, global::RTC.OGMap
     {
-        private IOGMap _target;
+        private OGMap _target;
 
-        public OGMapAdapter(IOGMap target)
+        public OGMapAdapter(OGMap target)
         {
             _target = target;
         }
@@ -2665,7 +2219,7 @@ namespace ReactiveRTM.RTC
         }
         public global::RTC.OGMapTile GetTile(global::RTC.OGMapTile tile)
         {
-            var ret = _target.GetTile(tile);
+            var ret = _target.GetTile(new ReactiveRTM.RTC.OGMapTile(tile));
             return ((global::RTC.OGMapTile)((IStub)ret).GetTarget());
         }
         public override object InitializeLifetimeService()
@@ -2673,17 +2227,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IMulticamera
-    {
-        ReactiveRTM.RTC.MulticameraGeometry GetGeometry();
-        List<ReactiveRTM.RTC.CameraInfo> GetCameraInfos();
-    }
 
     public class MulticameraAdapter : MarshalByRefObject, global::RTC.Multicamera
     {
-        private IMulticamera _target;
+        private Multicamera _target;
 
-        public MulticameraAdapter(IMulticamera target)
+        public MulticameraAdapter(Multicamera target)
         {
             _target = target;
         }
@@ -2702,16 +2251,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPanTilt
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-    }
 
     public class PanTiltAdapter : MarshalByRefObject, global::RTC.PanTilt
     {
-        private IPanTilt _target;
+        private PanTilt _target;
 
-        public PanTiltAdapter(IPanTilt target)
+        public PanTiltAdapter(PanTilt target)
         {
             _target = target;
         }
@@ -2725,22 +2270,18 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPathPlanner2D
-    {
-        void SetTask(ReactiveRTM.RTC.Waypoint2D[] coarsePath);
-    }
 
     public class PathPlanner2DAdapter : MarshalByRefObject, global::RTC.PathPlanner2D
     {
-        private IPathPlanner2D _target;
+        private PathPlanner2D _target;
 
-        public PathPlanner2DAdapter(IPathPlanner2D target)
+        public PathPlanner2DAdapter(PathPlanner2D target)
         {
             _target = target;
         }
         public void SetTask(global::RTC.Waypoint2D[] coarsePath)
         {
-            _target.SetTask(coarsePath);
+            _target.SetTask(coarsePath.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
             return;
         }
         public override object InitializeLifetimeService()
@@ -2748,22 +2289,18 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPathPlanner3D
-    {
-        void SetTask(ReactiveRTM.RTC.Waypoint3D[] coarsePath);
-    }
 
     public class PathPlanner3DAdapter : MarshalByRefObject, global::RTC.PathPlanner3D
     {
-        private IPathPlanner3D _target;
+        private PathPlanner3D _target;
 
-        public PathPlanner3DAdapter(IPathPlanner3D target)
+        public PathPlanner3DAdapter(PathPlanner3D target)
         {
             _target = target;
         }
         public void SetTask(global::RTC.Waypoint3D[] coarsePath)
         {
-            _target.SetTask(coarsePath);
+            _target.SetTask(coarsePath.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
             return;
         }
         public override object InitializeLifetimeService()
@@ -2771,25 +2308,18 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPathFollower2D
-    {
-        void SetPath(ReactiveRTM.RTC.Waypoint2D[] path);
-        void Enable(System.Boolean enable);
-        System.Int16 GetCurrentWaypointIndex();
-        ReactiveRTM.RTC.Waypoint2D GetCurrentWaypoint();
-    }
 
     public class PathFollower2DAdapter : MarshalByRefObject, global::RTC.PathFollower2D
     {
-        private IPathFollower2D _target;
+        private PathFollower2D _target;
 
-        public PathFollower2DAdapter(IPathFollower2D target)
+        public PathFollower2DAdapter(PathFollower2D target)
         {
             _target = target;
         }
         public void SetPath(global::RTC.Waypoint2D[] path)
         {
-            _target.SetPath(path);
+            _target.SetPath(path.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
             return;
         }
         public void Enable(System.Boolean enable)
@@ -2812,25 +2342,18 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPathFollower3D
-    {
-        void SetPath(ReactiveRTM.RTC.Waypoint3D[] path);
-        void Enable(System.Boolean enable);
-        System.Int16 GetCurrentWaypointIndex();
-        ReactiveRTM.RTC.Waypoint3D GetCurrentWaypoint();
-    }
 
     public class PathFollower3DAdapter : MarshalByRefObject, global::RTC.PathFollower3D
     {
-        private IPathFollower3D _target;
+        private PathFollower3D _target;
 
-        public PathFollower3DAdapter(IPathFollower3D target)
+        public PathFollower3DAdapter(PathFollower3D target)
         {
             _target = target;
         }
         public void SetPath(global::RTC.Waypoint3D[] path)
         {
-            _target.SetPath(path);
+            _target.SetPath(path.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
             return;
         }
         public void Enable(System.Boolean enable)
@@ -2853,16 +2376,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IPointCloudServices
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-    }
 
     public class PointCloudServicesAdapter : MarshalByRefObject, global::RTC.PointCloudServices
     {
-        private IPointCloudServices _target;
+        private PointCloudServices _target;
 
-        public PointCloudServicesAdapter(IPointCloudServices target)
+        public PointCloudServicesAdapter(PointCloudServices target)
         {
             _target = target;
         }
@@ -2876,17 +2395,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IOdometry2D
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        void SetOdometry(ReactiveRTM.RTC.Pose2D newOdometry);
-    }
 
     public class Odometry2DAdapter : MarshalByRefObject, global::RTC.Odometry2D
     {
-        private IOdometry2D _target;
+        private Odometry2D _target;
 
-        public Odometry2DAdapter(IOdometry2D target)
+        public Odometry2DAdapter(Odometry2D target)
         {
             _target = target;
         }
@@ -2897,7 +2411,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetOdometry(global::RTC.Pose2D newOdometry)
         {
-            _target.SetOdometry(newOdometry);
+            _target.SetOdometry(new ReactiveRTM.RTC.Pose2D(newOdometry));
             return;
         }
         public override object InitializeLifetimeService()
@@ -2905,17 +2419,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IOdometry3D
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        void SetOdometry(ReactiveRTM.RTC.Pose3D newOdometry);
-    }
 
     public class Odometry3DAdapter : MarshalByRefObject, global::RTC.Odometry3D
     {
-        private IOdometry3D _target;
+        private Odometry3D _target;
 
-        public Odometry3DAdapter(IOdometry3D target)
+        public Odometry3DAdapter(Odometry3D target)
         {
             _target = target;
         }
@@ -2926,7 +2435,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetOdometry(global::RTC.Pose3D newOdometry)
         {
-            _target.SetOdometry(newOdometry);
+            _target.SetOdometry(new ReactiveRTM.RTC.Pose3D(newOdometry));
             return;
         }
         public override object InitializeLifetimeService()
@@ -2934,16 +2443,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IVelocityControl2D
-    {
-        ReactiveRTM.RTC.Geometry2D GetGeometry();
-    }
 
     public class VelocityControl2DAdapter : MarshalByRefObject, global::RTC.VelocityControl2D
     {
-        private IVelocityControl2D _target;
+        private VelocityControl2D _target;
 
-        public VelocityControl2DAdapter(IVelocityControl2D target)
+        public VelocityControl2DAdapter(VelocityControl2D target)
         {
             _target = target;
         }
@@ -2956,17 +2461,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface IVelocityControl3D
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
     }
 
     public class VelocityControl3DAdapter : MarshalByRefObject, global::RTC.VelocityControl3D
     {
-        private IVelocityControl3D _target;
+        private VelocityControl3D _target;
 
-        public VelocityControl3DAdapter(IVelocityControl3D target)
+        public VelocityControl3DAdapter(VelocityControl3D target)
         {
             _target = target;
         }
@@ -2979,17 +2480,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface IPoseControl2D
-    {
-        ReactiveRTM.RTC.Geometry2D GetGeometry();
     }
 
     public class PoseControl2DAdapter : MarshalByRefObject, global::RTC.PoseControl2D
     {
-        private IPoseControl2D _target;
+        private PoseControl2D _target;
 
-        public PoseControl2DAdapter(IPoseControl2D target)
+        public PoseControl2DAdapter(PoseControl2D target)
         {
             _target = target;
         }
@@ -3002,17 +2499,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface IPoseControl3D
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
     }
 
     public class PoseControl3DAdapter : MarshalByRefObject, global::RTC.PoseControl3D
     {
-        private IPoseControl3D _target;
+        private PoseControl3D _target;
 
-        public PoseControl3DAdapter(IPoseControl3D target)
+        public PoseControl3DAdapter(PoseControl3D target)
         {
             _target = target;
         }
@@ -3025,17 +2518,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface ICarlikeControl
-    {
-        ReactiveRTM.RTC.Geometry2D GetGeometry();
     }
 
     public class CarlikeControlAdapter : MarshalByRefObject, global::RTC.CarlikeControl
     {
-        private ICarlikeControl _target;
+        private CarlikeControl _target;
 
-        public CarlikeControlAdapter(ICarlikeControl target)
+        public CarlikeControlAdapter(CarlikeControl target)
         {
             _target = target;
         }
@@ -3048,17 +2537,13 @@ namespace ReactiveRTM.RTC
         {
             return null;
         }
-    }
-    public interface IHeadingControl2D
-    {
-        ReactiveRTM.RTC.Geometry2D GetGeometry();
     }
 
     public class HeadingControl2DAdapter : MarshalByRefObject, global::RTC.HeadingControl2D
     {
-        private IHeadingControl2D _target;
+        private HeadingControl2D _target;
 
-        public HeadingControl2DAdapter(IHeadingControl2D target)
+        public HeadingControl2DAdapter(HeadingControl2D target)
         {
             _target = target;
         }
@@ -3072,16 +2557,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IHeadingControl3D
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-    }
 
     public class HeadingControl3DAdapter : MarshalByRefObject, global::RTC.HeadingControl3D
     {
-        private IHeadingControl3D _target;
+        private HeadingControl3D _target;
 
-        public HeadingControl3DAdapter(IHeadingControl3D target)
+        public HeadingControl3DAdapter(HeadingControl3D target)
         {
             _target = target;
         }
@@ -3095,20 +2576,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IRanger
-    {
-        ReactiveRTM.RTC.RangerGeometry GetGeometry();
-        void Power(System.Boolean enable);
-        void EnableIntensities(System.Boolean enable);
-        ReactiveRTM.RTC.RangerConfig GetConfig();
-        void SetConfig(ReactiveRTM.RTC.RangerConfig newConfig);
-    }
 
     public class RangerAdapter : MarshalByRefObject, global::RTC.Ranger
     {
-        private IRanger _target;
+        private Ranger _target;
 
-        public RangerAdapter(IRanger target)
+        public RangerAdapter(Ranger target)
         {
             _target = target;
         }
@@ -3134,7 +2607,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetConfig(global::RTC.RangerConfig newConfig)
         {
-            _target.SetConfig(newConfig);
+            _target.SetConfig(new ReactiveRTM.RTC.RangerConfig(newConfig));
             return;
         }
         public override object InitializeLifetimeService()
@@ -3142,18 +2615,12 @@ namespace ReactiveRTM.RTC
             return null;
         }
     }
-    public interface IRFID
-    {
-        ReactiveRTM.RTC.Geometry3D GetGeometry();
-        void Write(System.String GUID,ReactiveRTM.System.Byte[] data);
-        List<System.Byte> Read(System.String GUID);
-    }
 
     public class RFIDAdapter : MarshalByRefObject, global::RTC.RFID
     {
-        private IRFID _target;
+        private RFID _target;
 
-        public RFIDAdapter(IRFID target)
+        public RFIDAdapter(RFID target)
         {
             _target = target;
         }
@@ -3164,7 +2631,7 @@ namespace ReactiveRTM.RTC
         }
         public void Write(System.String GUID,global::System.Byte[] data)
         {
-            _target.Write(GUID,data);
+            _target.Write(GUID,data.Select(x=>x).ToList());
             return;
         }
         public global::System.Byte[] Read(System.String GUID)
@@ -3181,152 +2648,126 @@ namespace ReactiveRTM.RTC
  
 namespace ReactiveRTM.RTM
 {
-    public interface IManager
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t UnloadModule(System.String pathname);
-        List<ReactiveRTM.RTM.ModuleProfile> GetLoadableModules();
-        List<ReactiveRTM.RTM.ModuleProfile> GetLoadedModules();
-        List<ReactiveRTM.RTM.ModuleProfile> GetFactoryProfiles();
-        ReactiveRTM.omg.org.RTC.RTObjectStub CreateComponent(System.String module_name);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeleteComponent(System.String instance_name);
-        List<ReactiveRTM.omg.org.RTC.RTObjectStub> GetComponents();
-        List<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfiles();
-        ReactiveRTM.RTM.ManagerProfile GetProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfiguration();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value);
-        System.Boolean IsMaster();
-        List<ReactiveRTM.RTM.ManagerStub> GetMasterManagers();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveMasterManager(ReactiveRTM.RTM.Manager mgr);
-        List<ReactiveRTM.RTM.ManagerStub> GetSlaveManagers();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveSlaveManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Fork();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Shutdown();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Restart();
-        System.Object GetService(System.String name);
-    }
 
     public class ManagerAdapter : MarshalByRefObject, global::RTM.Manager
     {
-        private IManager _target;
+        private Manager _target;
 
-        public ManagerAdapter(IManager target)
+        public ManagerAdapter(Manager target)
         {
             _target = target;
         }
-        public global::omg.org.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc)
+        public global::omg.org.RTC.ReturnCode_t load_module(System.String pathname,System.String initfunc)
         {
             var ret = _target.LoadModule(pathname,initfunc);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t UnloadModule(System.String pathname)
+        public global::omg.org.RTC.ReturnCode_t unload_module(System.String pathname)
         {
             var ret = _target.UnloadModule(pathname);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::RTM.ModuleProfile[] GetLoadableModules()
+        public global::RTM.ModuleProfile[] get_loadable_modules()
         {
             var ret = _target.GetLoadableModules();
             return ret.Select(x=>((global::RTM.ModuleProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::RTM.ModuleProfile[] GetLoadedModules()
+        public global::RTM.ModuleProfile[] get_loaded_modules()
         {
             var ret = _target.GetLoadedModules();
             return ret.Select(x=>((global::RTM.ModuleProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::RTM.ModuleProfile[] GetFactoryProfiles()
+        public global::RTM.ModuleProfile[] get_factory_profiles()
         {
             var ret = _target.GetFactoryProfiles();
             return ret.Select(x=>((global::RTM.ModuleProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.RTObject CreateComponent(System.String module_name)
+        public global::omg.org.RTC.RTObject create_component(System.String module_name)
         {
             var ret = _target.CreateComponent(module_name);
             return ((global::omg.org.RTC.RTObject)((IStub)ret).GetTarget());
         }
-        public global::omg.org.RTC.ReturnCode_t DeleteComponent(System.String instance_name)
+        public global::omg.org.RTC.ReturnCode_t delete_component(System.String instance_name)
         {
             var ret = _target.DeleteComponent(instance_name);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.RTObject[] GetComponents()
+        public global::omg.org.RTC.RTObject[] get_components()
         {
             var ret = _target.GetComponents();
             return ret.Select(x=>((global::omg.org.RTC.RTObject)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ComponentProfile[] GetComponentProfiles()
+        public global::omg.org.RTC.ComponentProfile[] get_component_profiles()
         {
             var ret = _target.GetComponentProfiles();
             return ret.Select(x=>((global::omg.org.RTC.ComponentProfile)((IStub)x).GetTarget())).ToArray();
         }
-        public global::RTM.ManagerProfile GetProfile()
+        public global::RTM.ManagerProfile get_profile()
         {
             var ret = _target.GetProfile();
             return ((global::RTM.ManagerProfile)((IStub)ret).GetTarget());
         }
-        public global::org.omg.SDOPackage.NameValue[] GetConfiguration()
+        public global::org.omg.SDOPackage.NameValue[] get_configuration()
         {
             var ret = _target.GetConfiguration();
             return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value)
+        public global::omg.org.RTC.ReturnCode_t set_configuration(System.String name,System.String value)
         {
             var ret = _target.SetConfiguration(name,value);
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public System.Boolean IsMaster()
+        public System.Boolean is_master()
         {
             var ret = _target.IsMaster();
             return ret;
         }
-        public global::RTM.Manager[] GetMasterManagers()
+        public global::RTM.Manager[] get_master_managers()
         {
             var ret = _target.GetMasterManagers();
             return ret.Select(x=>((global::RTM.Manager)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t AddMasterManager(global::RTM.Manager mgr)
+        public global::omg.org.RTC.ReturnCode_t add_master_manager(global::RTM.Manager mgr)
         {
-            var ret = _target.AddMasterManager(mgr);
+            var ret = _target.AddMasterManager(new ReactiveRTM.RTM.ManagerStub(mgr));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t RemoveMasterManager(global::RTM.Manager mgr)
+        public global::omg.org.RTC.ReturnCode_t remove_master_manager(global::RTM.Manager mgr)
         {
-            var ret = _target.RemoveMasterManager(mgr);
+            var ret = _target.RemoveMasterManager(new ReactiveRTM.RTM.ManagerStub(mgr));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::RTM.Manager[] GetSlaveManagers()
+        public global::RTM.Manager[] get_slave_managers()
         {
             var ret = _target.GetSlaveManagers();
             return ret.Select(x=>((global::RTM.Manager)((IStub)x).GetTarget())).ToArray();
         }
-        public global::omg.org.RTC.ReturnCode_t AddSlaveManager(global::RTM.Manager mgr)
+        public global::omg.org.RTC.ReturnCode_t add_slave_manager(global::RTM.Manager mgr)
         {
-            var ret = _target.AddSlaveManager(mgr);
+            var ret = _target.AddSlaveManager(new ReactiveRTM.RTM.ManagerStub(mgr));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t RemoveSlaveManager(global::RTM.Manager mgr)
+        public global::omg.org.RTC.ReturnCode_t remove_slave_manager(global::RTM.Manager mgr)
         {
-            var ret = _target.RemoveSlaveManager(mgr);
+            var ret = _target.RemoveSlaveManager(new ReactiveRTM.RTM.ManagerStub(mgr));
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Fork()
+        public global::omg.org.RTC.ReturnCode_t fork()
         {
             var ret = _target.Fork();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Shutdown()
+        public global::omg.org.RTC.ReturnCode_t shutdown()
         {
             var ret = _target.Shutdown();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::omg.org.RTC.ReturnCode_t Restart()
+        public global::omg.org.RTC.ReturnCode_t restart()
         {
             var ret = _target.Restart();
             return (global::omg.org.RTC.ReturnCode_t)ret;
         }
-        public global::System.MarshalByRefObject GetService(System.String name)
+        public global::System.MarshalByRefObject get_service(System.String name)
         {
             var ret = _target.GetService(name);
             return (global::System.MarshalByRefObject)ret;

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
@@ -49,8 +48,8 @@ namespace ReactiveRTM.Core
             set { _profile.port_ref = value; }
         }
 
-        public List<ConnectorProfileHolder> ConnectorProfiles {
-            get { return _profile.connector_profiles.Select(x => new ConnectorProfileHolder(x)).ToList(); }
+        public List<ConnectorProfile> ConnectorProfiles {
+            get { return _profile.connector_profiles.Select(x => new ConnectorProfile(x)).ToList(); }
         }
 
         public string DataType

@@ -19,9 +19,9 @@ namespace ReactiveRTM.Core
         {
             Name = name;
 
-            _component = new DataFlowComponentAdapter(this, name);
+            _component = new DataFlowComponentImpl(this, name);
 
-            Component.initialize();
+            Component.Initialize();
 
         }
 
@@ -32,7 +32,7 @@ namespace ReactiveRTM.Core
             set { _component.ExecutionContextScheduler = value;}
         }
 
-        private DataFlowComponentAdapter _component;
+        private DataFlowComponent _component;
 
 
         internal void RaiseStateChanged(LifeCycleState state)

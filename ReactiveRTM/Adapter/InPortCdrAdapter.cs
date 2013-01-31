@@ -12,7 +12,7 @@ namespace ReactiveRTM.Adapter
         public byte[] Data { get; set; }
     }
 
-    public class InPortCdrAdapter : IInPortCdr
+    public class InPortCdrImpl : InPortCdr
     {
         public override object InitializeLifetimeService()
         {
@@ -22,12 +22,12 @@ namespace ReactiveRTM.Adapter
         //ここにイベントを置く？
         public event EventHandler<DataReceivedEventArgs> DataReceived;
 
-        public InPortCdrAdapter()
+        public InPortCdrImpl()
         {
             
         }
 
-        public PortStatus put(byte[] data)
+        public PortStatus Put(List<byte> data)
         {
             var handler = DataReceived;
             if (handler != null)

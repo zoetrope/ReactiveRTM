@@ -13,10 +13,12 @@ using ReactiveRTM.omg.org.RTC;
 using ReactiveRTM.org.omg.SDOPackage;
 using ReactiveRTM.OpenRTM;
 
+using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+
 namespace ReactiveRTM.Adapter
 {
 
-    public class DataFlowComponentAdapter : IDataFlowComponent
+    public class DataFlowComponentImpl : DataFlowComponent
     {
         public override object InitializeLifetimeService()
         {
@@ -24,15 +26,15 @@ namespace ReactiveRTM.Adapter
         }
 
         private IComponentActionListener _listener;
-        private ConfigurationAdapter _configuration;
+        private Configuration _configuration;
 
-        internal DataFlowComponentAdapter(IComponentActionListener listener, string name)
+        internal DataFlowComponentImpl(IComponentActionListener listener, string name)
         {
             _profile = new ComponentProfile();
             
             _listener = listener;
 
-            _configuration = new ConfigurationAdapter(this);
+            _configuration = new ConfigurationImpl(this);
         }
         
         public IScheduler ExecutionContextScheduler {
@@ -48,215 +50,10 @@ namespace ReactiveRTM.Adapter
             _observers.Add(observer);
         }
 
-        private ExecutionContextServiceAdapter _context;
+        private ExecutionContextServiceImpl _context;
 
-        public ReturnCode_t OnInitialize()
-        {
-            _observers.ForEach(observer => 
-                observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
-                .ToObservable()//TODO:
-                .SubscribeOn(ExecutionContextScheduler)
-                );
-            return _listener.RaiseOnInitialize();
-        }
-
-        public ReturnCode_t on_finalize()
-        {
-            return _listener.RaiseOnFinalize();
-        }
-
-        public ReturnCode_t on_startup(int exec_handle)
-        {
-            return _listener.RaiseOnStartup(exec_handle);
-        }
-
-        public ReturnCode_t on_shutdown(int exec_handle)
-        {
-            return _listener.RaiseOnShutdown(exec_handle);
-        }
-
-        public ReturnCode_t on_activated(int exec_handle)
-        {
-            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ACTIVE:0")
-                                               .ToObservable() //TODO:
-                                               .SubscribeOn(ExecutionContextScheduler));
-                
-            return _listener.RaiseOnActivated(exec_handle);
-        }
-
-        public ReturnCode_t on_deactivated(int exec_handle)
-        {
-            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
-                .ToObservable()//TODO:
-                .SubscribeOn(ExecutionContextScheduler));
-            return _listener.RaiseOnDeactivated(exec_handle);
-        }
-
-        public ReturnCode_t on_aborting(int exec_handle)
-        {
-            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ERROR:0")
-                .ToObservable()//TODO:
-                .SubscribeOn(ExecutionContextScheduler));
-            return _listener.RaiseOnAborting(exec_handle);
-            
-        }
-
-        public ReturnCode_t on_error(int exec_handle)
-        {
-            return _listener.RaiseOnError(exec_handle);
-        }
-
-        public ReturnCode_t on_reset(int exec_handle)
-        {
-            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
-                .ToObservable()//TODO:
-                .SubscribeOn(ExecutionContextScheduler));
-            return _listener.RaiseOnReset(exec_handle);
-        }
-
-        public ReturnCode_t initialize()
-        {
-            _context = new ExecutionContextServiceAdapter();
-            
-
-            _context.add_component(this);
-
-            return ReturnCode_t.RTC_OK;
-        }
-
-        public ReturnCode_t _finalize()
-        {
-            return ReturnCode_t.RTC_OK;
-        }
-
-        public bool is_alive(ExecutionContext exec_context)
-        {
-            return true;
-        }
-
-        public ReturnCode_t _exit()
-        {
-            return ReturnCode_t.RTC_OK;
-        }
-
-        public int attach_context(ExecutionContext exec_context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ReturnCode_t detach_context(int exec_handle)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ExecutionContext get_context(int exec_handle)
-        {
-            return _context;
-        }
-
-        public ExecutionContext[] get_owned_contexts()
-        {
-            return new ExecutionContext[] { _context };
-        }
-
-        public ExecutionContext[] get_participating_contexts()
-        {
-            return new ExecutionContext[0];
-        }
-
-        public int get_context_handle(ExecutionContext cxt)
-        {
-            return 0;
-        }
-
-        public Organization[] get_owned_organizations()
-        {
-            return new Organization[0];
-        }
-
-        public string get_sdo_id()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string get_sdo_type()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DeviceProfile get_device_profile()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ServiceProfile[] get_service_profiles()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ServiceProfile get_service_profile(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SDOService get_sdo_service(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Configuration get_configuration()
-        {
-            return _configuration;
-        }
-
-        public Monitoring get_monitoring()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Organization[] get_organizations()
-        {
-            throw new NotImplementedException();
-        }
-
-        public NameValue[] get_status_list()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object get_status(string nme)
-        {
-            throw new NotImplementedException();
-        }
 
         private ComponentProfile _profile;
-
-        public ComponentProfile get_component_profile()
-        {
-            _profile.port_profiles = _reactivePorts.Select(p => p.PortService.get_port_profile()).ToArray();
-
-            return _profile;
-        }
-
-        public PortService[] get_ports()
-        {
-            return _reactivePorts.Select(p => p.PortService).ToArray();
-        }
-
-        public ReturnCode_t on_execute(int exec_handle)
-        {
-            return _listener.RaiseOnExecute(exec_handle);
-        }
-
-        public ReturnCode_t on_state_update(int exec_handle)
-        {
-            return _listener.RaiseOnStateUpdate(exec_handle);
-        }
-
-        public ReturnCode_t on_rate_changed(int exec_handle)
-        {
-            return _listener.RaiseOnRateChanged(exec_handle);
-        }
 
         private List<ReactivePortBase> _reactivePorts = new List<ReactivePortBase>();
 
@@ -267,6 +64,212 @@ namespace ReactiveRTM.Adapter
         public void RemovePort(ReactivePortBase reactivePort)
         {
             _reactivePorts.Remove(reactivePort);
+        }
+
+        public ReturnCode_t Initialize()
+        {
+            _context = new ExecutionContextServiceImpl();
+
+
+            _context.AddComponent(this);
+
+            return ReturnCode_t.RTC_OK;
+        }
+
+        public ReturnCode_t Finalize()
+        {
+            return ReturnCode_t.RTC_OK;
+        }
+
+        public bool IsAlive(ExecutionContext execContext)
+        {
+            return true;
+        }
+
+        public ReturnCode_t Exit()
+        {
+            return ReturnCode_t.RTC_OK;
+        }
+
+        public int AttachContext(ExecutionContext execContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ReturnCode_t DetachContext(int execHandle)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ExecutionContext GetContext(int execHandle)
+        {
+            return _context;
+        }
+
+        public List<ExecutionContext> GetOwnedContexts()
+        {
+            return new List<ExecutionContext> { _context };
+        }
+
+        public List<ExecutionContext> GetParticipatingContexts()
+        {
+            return new List<ExecutionContext>();
+        }
+
+        public int GetContextHandle(ExecutionContext cxt)
+        {
+            return 0;
+        }
+        public ReturnCode_t OnInitialize()
+        {
+            _observers.ForEach(observer =>
+                observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler)
+                );
+            return _listener.RaiseOnInitialize();
+        }
+
+
+
+        public ReturnCode_t OnFinalize()
+        {
+            return _listener.RaiseOnFinalize();
+        }
+
+        public ReturnCode_t OnStartup(int execHandle)
+        {
+            return _listener.RaiseOnStartup(execHandle);
+        }
+
+        public ReturnCode_t OnShutdown(int execHandle)
+        {
+            return _listener.RaiseOnShutdown(execHandle);
+        }
+
+        public ReturnCode_t OnActivated(int execHandle)
+        {
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ACTIVE:0")
+                                               .ToObservable() //TODO:
+                                               .SubscribeOn(ExecutionContextScheduler));
+
+            return _listener.RaiseOnActivated(execHandle);
+        }
+
+        public ReturnCode_t OnDeactivated(int execHandle)
+        {
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
+            return _listener.RaiseOnDeactivated(execHandle);
+        }
+
+        public ReturnCode_t OnAborting(int execHandle)
+        {
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "ERROR:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
+            return _listener.RaiseOnAborting(execHandle);
+        }
+
+        public ReturnCode_t OnError(int execHandle)
+        {
+            return _listener.RaiseOnError(execHandle);
+        }
+
+        public ReturnCode_t OnReset(int execHandle)
+        {
+            _observers.ForEach(observer => observer.UpdateStatusAsync(StatusKind.RTC_STATUS, "INACTIVE:0")
+                .ToObservable()//TODO:
+                .SubscribeOn(ExecutionContextScheduler));
+            return _listener.RaiseOnReset(execHandle);
+        }
+
+        public ReturnCode_t OnExecute(int execHandle)
+        {
+            return _listener.RaiseOnExecute(execHandle);
+        }
+
+        public ReturnCode_t OnStateUpdate(int execHandle)
+        {
+            return _listener.RaiseOnStateUpdate(execHandle);
+        }
+
+        public ReturnCode_t OnRateChanged(int execHandle)
+        {
+            return _listener.RaiseOnRateChanged(execHandle);
+        }
+
+        public ComponentProfile GetComponentProfile()
+        {
+            _profile.PortProfiles = _reactivePorts.Select(p => p.PortService.GetPortProfile()).ToList();
+
+            return _profile;
+        }
+
+        public List<PortService> GetPorts()
+        {
+            return _reactivePorts.Select(p => p.PortService).ToList();
+        }
+
+        public string GetSdoId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetSdoType()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DeviceProfile GetDeviceProfile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ServiceProfile> GetServiceProfiles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceProfile GetServiceProfile(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SDOService GetSdoService(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Configuration GetConfiguration()
+        {
+            return _configuration;
+        }
+
+        public Monitoring GetMonitoring()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Organization> GetOrganizations()
+        {
+            return new List<Organization>();
+        }
+
+        public List<NameValue> GetStatusList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetStatus(string nme)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Organization> GetOwnedOrganizations()
+        {
+            throw new NotImplementedException();
         }
     }
 

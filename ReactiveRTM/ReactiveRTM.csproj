@@ -73,7 +73,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="CodeGenerator\Extension.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Extension.tt</DependentUpon>
+    </Compile>
     <Compile Include="CodeGenerator\FormalType.cs" />
+    <Compile Include="CodeGenerator\Interface.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interface.tt</DependentUpon>
+    </Compile>
     <Compile Include="CodeGenerator\IStub.cs" />
     <Compile Include="CodeGenerator\NotifyPropertyChangedBase.cs" />
     <Compile Include="CodeGenerator\Stub.generated.cs">
@@ -136,6 +146,14 @@
     <None Include="CodeGenerator\Data.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Data.generated.cs</LastGenOutput>
+    </None>
+    <None Include="CodeGenerator\Extension.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Extension.generated.cs</LastGenOutput>
+    </None>
+    <None Include="CodeGenerator\Interface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Interface.generated.cs</LastGenOutput>
     </None>
     <None Include="CodeGenerator\Stub.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

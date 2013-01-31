@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
-using org.omg.SDOPackage;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
@@ -13,38 +12,46 @@ namespace ReactiveRTM.Core
         /// <summary>
         /// push/pull
         /// </summary>
-        public string DataFlowType
+        public static string GetDataFlowType(this ConnectorProfile profile)
         {
-            get { return _profile.properties.GetStringValue("dataport.dataflow_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.dataflow_type", value); }
+            return profile.Properties.GetStringValue("dataport.dataflow_type"); 
+        }
+            public static void SetDataFlowType(this ConnectorProfile profile, string value)
+        {
+            NameValueExtensions.AddStringValue(ref profile.Properties, "dataport.dataflow_type", value); 
         }
 
         /// <summary>
         /// corba_cdr
-        /// </summary>
-        public string InterfaceType
-        {
-            get { return _profile.properties.GetStringValue("dataport.interface_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.interface_type", value); }
-        }
+            /// </summary>
+            public static string GetInterfaceType(this ConnectorProfile profile)
+            {
+                return profile.Properties.GetStringValue("dataport.interface_type");
+            }
+            public static void SetInterfaceType(this ConnectorProfile profile, string value)
+            {
+                NameValueExtensions.AddStringValue(ref profile.Properties, "dataport.interface_type", value);
+            }
 
         /// <summary>
         /// new/flush/periodic
-        /// </summary>
-        public string SubscriptionType
-        {
-            get { return _profile.properties.GetStringValue("dataport.subscription_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.subscription_type", value); }
-        }
-        public string InPortIor
-        {
-            get { return _profile.properties.GetStringValue("dataport.corba_cdr.inport_ior"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.corba_cdr.inport_ior", value); }
-        }
+            /// </summary>
+            public static string GetSubscriptionType(this ConnectorProfile profile)
+            {
+                return profile.Properties.GetStringValue("dataport.subscription_type");
+            }
+            public static void SetSubscriptionType(this ConnectorProfile profile, string value)
+            {
+                NameValueExtensions.AddStringValue(ref profile.Properties, "dataport.subscription_type", value);
+            }
+            public static string GetInPortIor(this ConnectorProfile profile)
+            {
+                return profile.Properties.GetStringValue("dataport.corba_cdr.inport_ior");
+            }
+            public static void SetInPortIor(this ConnectorProfile profile, string value)
+            {
+                NameValueExtensions.AddStringValue(ref profile.Properties, "dataport.corba_cdr.inport_ior", value);
+            }
 
-        internal ConnectorProfile GetConnectorProfile()
-        {
-            return _profile;
-        }
     }
 }

@@ -8,6 +8,8 @@ using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
+using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.OpenRTM;
 
 namespace ReactiveRTM.Core
 {
@@ -15,7 +17,7 @@ namespace ReactiveRTM.Core
     {
         private Subject<TDataType> _source;
         private CdrSerializer<TDataType> _serializer;
-        private InPortCdrAdapter _adapter;
+        private InPortCdr _adapter;
 
         public ReactiveInPort(string name)
             : base(name)
@@ -24,7 +26,7 @@ namespace ReactiveRTM.Core
             var factory = new CdrSerializerFactory();
             _serializer = factory.GetSerializer<TDataType>();
 
-            _adapter = new InPortCdrAdapter();
+            _adapter = new InPortCdrImpl();
 
             _source = new Subject<TDataType>();
 
@@ -57,18 +59,18 @@ namespace ReactiveRTM.Core
 
         #region Overrides of ReactivePortBase 
 
-        public override ReturnCode_t SetConnectionInfo(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t SetConnectionInfo(ConnectorProfile connectorProfile)
         {
             connectorProfile.InPortIor = CorbaUtility.GetIor(_adapter);
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Connect(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t Connect(ConnectorProfile connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }
 
-        public override ReturnCode_t Disconnect(ConnectorProfileHolder connectorProfile)
+        public override ReturnCode_t Disconnect(ConnectorProfile connectorProfile)
         {
             return ReturnCode_t.RTC_OK;
         }

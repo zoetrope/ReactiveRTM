@@ -13,7 +13,7 @@ namespace ReactiveRTM.Adapter
         public string Hint { get; set; }
     }
 
-    public class ComponentObserverAdapter : IComponentObserver, IObservable<UpdateStatus>
+    public class ComponentObserverImpl: ComponentObserver, IObservable<UpdateStatus>
     {
         private Subject<UpdateStatus> _subject;
 
@@ -22,7 +22,7 @@ namespace ReactiveRTM.Adapter
             return null;
         }
 
-        public ComponentObserverAdapter()
+        public ComponentObserverImpl()
         {
 
             _subject = new Subject<UpdateStatus>();

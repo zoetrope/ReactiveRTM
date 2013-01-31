@@ -25,34 +25,13 @@ using ReactiveRTM.Generated;
  
 namespace <#= x.Namespace #>
 {
-<# foreach(var ct in x.ClassTemplates) {#>
-
-    public class <#= ct.ClassName #>Adapter : MarshalByRefObject, <#= ct.IiopClassName #>
+<#   foreach(var ct in x.ClassTemplates) {#>
+    public interface <#= ct.ClassName #> <#= ct.Parents.Length == 0 ? "" : ": " + string.Join(",", ct.Parents.Select(p=>p.Name)) #>
     {
-        private <#= ct.ClassName #> _target;
-
-        public <#= ct.ClassName #>Adapter(<#= ct.ClassName #> target)
-        {
-            _target = target;
-        }
-<# foreach(var method in ct.MethodTemplates) {#>
-        public <#= method.IiopReturnType #> <#= method.IiopName #>(<#= method.IiopDecArgs #>)
-        {
-<#     foreach(var param in method.AdapterBeforeCall) {#> 
-            <#= param #>;
+<#     foreach(var method in ct.MethodTemplates) {#>
+        <#= method.ReturnType #> <#= method.Name #>(<#= method.DecArgs #>);
 <#     } #>
-            <#= method.AdapterCallMethod #>
-<#     foreach(var param in method.AdapterAfterCall) {#> 
-            <#= param #>;
-<#     } #>
-            <#= method.AdapterReturnValue #>
-        }
-<# } #>
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
     }
-<# }#>
+<#   } #>
 }
-<# }#>
+<# } #>
