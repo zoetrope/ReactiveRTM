@@ -11,11 +11,6 @@ namespace ReactiveRTM.Adapter
 
     public class ExecutionContextServiceImpl : ExecutionContextService
     {
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
         private DataFlowComponent _component;
         private IDisposable _executor;
         private TimeSpan _timeSpan;

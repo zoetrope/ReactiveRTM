@@ -8,6 +8,30 @@ using ReactiveRTM.Corba;
 using ReactiveRTM.Generated;
 
  
+namespace ReactiveRTM.omg.org.CORBA
+{
+    public interface TypeCode 
+    {
+        System.Boolean Equal(ReactiveRTM.omg.org.CORBA.TypeCode tc);
+        System.Boolean Equivalent(ReactiveRTM.omg.org.CORBA.TypeCode tc);
+        ReactiveRTM.omg.org.CORBA.TypeCode GetCompactTypecode();
+        ReactiveRTM.omg.org.CORBA.TCKind Kind();
+        System.String Id();
+        System.String Name();
+        System.Int32 MemberCount();
+        System.String MemberName(System.Int32 index);
+        ReactiveRTM.omg.org.CORBA.TypeCode MemberType(System.Int32 index);
+        System.Object MemberLabel(System.Int32 index);
+        ReactiveRTM.omg.org.CORBA.TypeCode DiscriminatorType();
+        System.Int32 DefaultIndex();
+        System.Int32 Length();
+        ReactiveRTM.omg.org.CORBA.TypeCode ContentType();
+        System.Int16 MemberVisibility(System.Int32 index);
+        System.Int16 TypeModifier();
+        ReactiveRTM.omg.org.CORBA.TypeCode ConcreteBaseType();
+    }
+}
+ 
 namespace ReactiveRTM.omg.org.RTC
 {
     public interface ExecutionContext 
@@ -216,7 +240,7 @@ namespace ReactiveRTM.omg.org.RTC
         ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration();
         ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring();
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
+        System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList();
         System.Object GetStatus(System.String nme);
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations();
     }
@@ -313,7 +337,7 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration();
         ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring();
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
+        System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList();
         System.Object GetStatus(System.String nme);
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations();
         ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle);
@@ -352,7 +376,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration();
         ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring();
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList();
+        System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList();
         System.Object GetStatus(System.String nme);
         List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations();
     }
@@ -371,7 +395,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         System.Boolean RemoveServiceProfile(System.String id);
         System.Boolean RemoveOrganization(System.String organizationId);
         List<ReactiveRTM.org.omg.SDOPackage.Parameter> GetConfigurationParameters();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfigurationParameterValues();
+        System.Collections.Generic.Dictionary<System.String,System.Object> GetConfigurationParameterValues();
         System.Object GetConfigurationParameterValue(System.String name);
         System.Boolean SetConfigurationParameter(System.String name,System.Object value);
         List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSets();
@@ -575,7 +599,7 @@ namespace ReactiveRTM.RTM
         List<ReactiveRTM.omg.org.RTC.RTObject> GetComponents();
         List<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfiles();
         ReactiveRTM.RTM.ManagerProfile GetProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfiguration();
+        System.Collections.Generic.Dictionary<System.String,System.Object> GetConfiguration();
         ReactiveRTM.omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value);
         System.Boolean IsMaster();
         List<ReactiveRTM.RTM.Manager> GetMasterManagers();

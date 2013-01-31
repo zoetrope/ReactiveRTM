@@ -34,15 +34,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll</HintPath>
     </Reference>
+    <Reference Include="RTC.IDL">
+      <HintPath>..\idl\RTC.IDL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdapterGenerator.cs" />
     <Compile Include="DataGenerator.cs" />
     <Compile Include="GeneratorUtility.cs" />
-    <Compile Include="StubGenerator.cs" />
+    <Compile Include="ClassGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

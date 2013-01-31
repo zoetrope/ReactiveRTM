@@ -20,10 +20,6 @@ namespace ReactiveRTM.Adapter
 
     public class DataFlowComponentImpl : DataFlowComponent
     {
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
 
         private IComponentActionListener _listener;
         private Configuration _configuration;
@@ -257,7 +253,7 @@ namespace ReactiveRTM.Adapter
             return new List<Organization>();
         }
 
-        public List<NameValue> GetStatusList()
+        public Dictionary<string, object> GetStatusList()
         {
             throw new NotImplementedException();
         }
@@ -271,6 +267,7 @@ namespace ReactiveRTM.Adapter
         {
             throw new NotImplementedException();
         }
+
     }
 
 }

@@ -10,7 +10,7 @@ namespace ReactiveRTM.Support
     using GU = GeneratorUtility;
     public static class ClassGenerator
     {
-        public static IEnumerable<ClassesTemplate> GenerateTemplates(Type[] types)
+        public static IEnumerable<ClassesTemplate> GenerateTemplates(IEnumerable<Type> types)
         {
             return types.Where(GU.IsInterface)
                 .Distinct()

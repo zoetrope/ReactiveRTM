@@ -9,12 +9,6 @@ namespace ReactiveRTM.Core
     /// </summary>
     public class DelegateInPortCdr : InPortCdr
     {
-        public override object InitializeLifetimeService()
-        {
-            // CORBAメソッドがタイムアウトしないようにnullを返す
-            return null;
-        }
-
         private readonly Func<Byte[], PortStatus> _action;
 
 

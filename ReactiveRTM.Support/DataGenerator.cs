@@ -11,7 +11,7 @@ namespace ReactiveRTM.Support
     
     public static class DataGenerator
     {
-        public static IEnumerable<DataTemplate> GenerateTemplates(Type[] types)
+        public static IEnumerable<DataTemplate> GenerateTemplates(IEnumerable<Type> types)
         {
             return types
                 .Distinct()
@@ -26,7 +26,7 @@ namespace ReactiveRTM.Support
                         .Select(t => new EnumTemplate(t))
                         .ToArray()
                 })
-                .Where(a => a.StructTemplates.Any())
+                //.Where(a => a.StructTemplates.Any())
                 .OrderBy(a => a.Namespace);
         }
 

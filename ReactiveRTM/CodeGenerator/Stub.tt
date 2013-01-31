@@ -10,7 +10,8 @@
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="ReactiveRTM.Support" #>
 <#
-    var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes();
+    var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes().ToList();
+    types.Add(typeof(omg.org.CORBA.TypeCode));
 #>
 using System;
 using System.Collections.Generic;

@@ -1,9 +1,9 @@
 ﻿using System;
-using OpenRTM;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.CORBA;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
+using System.Collections.Generic;
+using ReactiveRTM.OpenRTM;
 
 namespace ReactiveRTM.Mock
 {
@@ -20,12 +20,13 @@ namespace ReactiveRTM.Mock
             return _inPortCdr;
         }
 
-        public override ReturnCode_t connect(ref ConnectorProfile connector_profile)
+        public override ReturnCode_t Connect(ref ConnectorProfile connectorProfile)
         {
-            var ior = new ConnectorProfileHolder(connector_profile).InPortIor;
+            var ior = connectorProfile.GetInPortIor();
 
 
-            var orb = OrbServices.GetSingleton();
+            
+            var orb = global::omg.org.CORBA.OrbServices.GetSingleton();
 
             _inPortCdr = (InPortCdr)orb.string_to_object(ior);
 
@@ -42,72 +43,62 @@ namespace ReactiveRTM.Mock
             _inPortCdrMock = mock;
         }
 
-        public override ReturnCode_t connect(ref ConnectorProfile connector_profile)
+        public override ReturnCode_t Connect(ref ConnectorProfile connectorProfile)
         {
-            var orb = OrbServices.GetSingleton();
+            var orb = global::omg.org.CORBA.OrbServices.GetSingleton();
 
-            var prof = new ConnectorProfileHolder(connector_profile);
-            prof.InPortIor = orb.object_to_string(_inPortCdrMock);
-
-            connector_profile = prof.GetConnectorProfile();
+            connectorProfile.SetInPortIor(orb.object_to_string(_inPortCdrMock));
 
             return ReturnCode_t.RTC_OK;
         }
     }
 
-    public abstract class PortServiceMock : MarshalByRefObject, PortService
+    public abstract class PortServiceMock : PortService
     {
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
         private PortProfile _profile;
 
         public PortServiceMock(PortProfile prof)
         {
             _profile = prof;
         }
+        
 
-        public abstract ReturnCode_t connect(ref ConnectorProfile connector_profile);
-
-        public ReturnCode_t disconnect(string connector_id)
-        {
-            return ReturnCode_t.RTC_OK;
-        }
-
-        public PortProfile get_port_profile()
+        public PortProfile GetPortProfile()
         {
             return _profile;
         }
 
-        #region NotImplementation
-        public ReturnCode_t disconnect_all()
+        public List<ConnectorProfile> GetConnectorProfiles()
         {
             throw new NotImplementedException();
         }
 
-        public ConnectorProfile get_connector_profile(string connector_id)
+        public ConnectorProfile GetConnectorProfile(string connectorId)
         {
             throw new NotImplementedException();
         }
 
-        public ConnectorProfile[] get_connector_profiles()
+        public abstract ReturnCode_t Connect(ref ConnectorProfile connectorProfile);
+
+        public ReturnCode_t Disconnect(string connectorId)
+        {
+            return ReturnCode_t.RTC_OK;
+        }
+
+        public ReturnCode_t DisconnectAll()
         {
             throw new NotImplementedException();
         }
 
-
-        public ReturnCode_t notify_connect(ref ConnectorProfile connector_profile)
+        public ReturnCode_t NotifyConnect(ref ConnectorProfile connectorProfile)
         {
             throw new NotImplementedException();
         }
 
-        public ReturnCode_t notify_disconnect(string connector_id)
+        public ReturnCode_t NotifyDisconnect(string connectorId)
         {
             throw new NotImplementedException();
         }
-
-        #endregion
     }
 
 }

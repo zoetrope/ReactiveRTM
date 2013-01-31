@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Adapter.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Converter.cs" />
     <Compile Include="CodeGenerator\Data.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,14 +79,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Extension.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\FormalType.cs" />
+    <Compile Include="Data\FormalType.cs" />
     <Compile Include="CodeGenerator\Interface.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Interface.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\IStub.cs" />
-    <Compile Include="CodeGenerator\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Data\IStub.cs" />
+    <Compile Include="Data\NotifyPropertyChangedBase.cs" />
     <Compile Include="CodeGenerator\Stub.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

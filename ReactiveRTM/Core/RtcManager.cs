@@ -6,6 +6,7 @@ using System.Threading;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
+using ReactiveRTM.openrtm.aist.go.jp.OpenRTM;
 
 namespace ReactiveRTM.Core
 {

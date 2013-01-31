@@ -11,6 +11,8 @@ using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.omg.org.RTC;
 
+using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+
 namespace ReactiveRTM.Core
 {
     public abstract class ReactiveComponentBase : IObservableComponent, IComponentActionListener
@@ -32,7 +34,7 @@ namespace ReactiveRTM.Core
             set { _component.ExecutionContextScheduler = value;}
         }
 
-        private DataFlowComponent _component;
+        private DataFlowComponentImpl _component;
 
 
         internal void RaiseStateChanged(LifeCycleState state)

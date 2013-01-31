@@ -12,6 +12,9 @@ using ReactiveRTM.Extensions;
 using ReactiveRTM.org.omg.SDOPackage;
 using ReactiveRTM.OpenRTM;
 using ReactiveRTM.omg.org.RTC;
+using System.Collections.Generic;
+
+using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {
@@ -25,22 +28,22 @@ namespace ReactiveRTM.Core
         {
             _component = comp;
 
-            var observer = new ComponentObserverAdapter();
+            var observer = new ComponentObserverImpl();
 
-            var conf = Component.get_configuration();
+            var conf = _component.GetConfiguration();
 
             _profile = new ServiceProfile();
-            _profile.id = Guid.NewGuid().ToString();
-            _profile.interface_type = "IDL:OpenRTM/ComponentObserver:1.0";
-            _profile.properties = new NameValue[0];
+            _profile.Id = Guid.NewGuid().ToString();
+            _profile.InterfaceType = "IDL:OpenRTM/ComponentObserver:1.0";
+            _profile.Properties = new Dictionary<string, object>();
 
-            NameValueExtensions.AddStringValue(ref _profile.properties, "observed_status", "ALL");
-            NameValueExtensions.AddStringValue(ref _profile.properties, "heartbeat.enable", "YES");
-            NameValueExtensions.AddStringValue(ref _profile.properties, "heartbeat.interval", "1");
+            _profile.Properties["observed_status"] = "ALL";
+            _profile.Properties["heartbeat.enable"] = "YES";
+            _profile.Properties["heartbeat.interval"] = "1";
 
-            _profile.service = observer;
+            _profile.Service = observer;
 
-            if (conf.add_service_profile(_profile))
+            if (conf.AddServiceProfile(_profile))
             {
                 observer.Subscribe(Notify);
             }

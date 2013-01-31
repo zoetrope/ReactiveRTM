@@ -15,24 +15,23 @@ namespace ReactiveRTM.Core
     public class PortConnector
     {
         private ConnectorProfile _profile;
-        private readonly List<PortServiceStub> _portServices;
+        private readonly List<PortService> _portServices;
         private string _connectorId;
 
         /// <summary>
         /// <see cref="PortConnector"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="ports">接続対象のポート</param>
-        public PortConnector(params PortServiceStub[] ports)
+        public PortConnector(params PortService[] ports)
         {
             _portServices = new List<PortService>(ports);
 
             _profile = new ConnectorProfile();
             _profile.Ports = ports.ToList();
 
-            _profile.DataFlowType = "push";
-            _profile.InterfaceType = "corba_cdr";
-            _profile.SubscriptionType = "flush";
-
+            _profile.SetDataFlowType("push");
+            _profile.SetInterfaceType("corba_cdr");
+            _profile.SetSubscriptionType("flush");
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace ReactiveRTM.Core
         {
             _portServices = profile.Ports;
             _profile = profile;
-            _connectorId = _profile.ConnectorID;
+            _connectorId = _profile.ConnectorId;
             IsConnected = true;
         }
 
@@ -51,13 +50,13 @@ namespace ReactiveRTM.Core
         {
             if (IsConnected) return ReturnCode_t.PRECONDITION_NOT_MET;
 
-            var prof = _profile.GetConnectorProfile();
-            ReturnCode_t ret = await _portServices[0].ConnectAsync(ref prof);
-            _profile = new ConnectorProfileHolder(prof);
-            _connectorId = _profile.ConnectorID;
-            if (ret == ReturnCode_t.RTC_OK) IsConnected = true;
+            var ret = await _portServices[0].ConnectAsync(_profile);
+            
+            _profile = ret.Item2;
+            _connectorId = _profile.ConnectorId;
+            if (ret.Item1 == ReturnCode_t.RTC_OK) IsConnected = true;
             //todo:仮実装。
-            return ret;
+            return ret.Item1;
         }
 
         public async Task<ReturnCode_t> DisconnectAsync()
@@ -69,7 +68,7 @@ namespace ReactiveRTM.Core
             {
                 IsConnected = false;
                 _connectorId = "";
-                _profile.ConnectorID = "";
+                _profile.ConnectorId = "";
 
             }
             //todo:仮実装。

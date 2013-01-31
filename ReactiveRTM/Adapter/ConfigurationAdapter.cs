@@ -2,15 +2,16 @@
 using OpenRTM;
 using ReactiveRTM.org.omg.SDOPackage;
 using ReactiveRTM.omg.org.RTC;
+using System.Collections.Generic;
 
 namespace ReactiveRTM.Adapter
 {
     public class ConfigurationImpl : Configuration
     {
-        private DataFlowComponent _owner;
+        private DataFlowComponentImpl _owner;
         private ComponentObserver _observer;
 
-        public ConfigurationImpl(DataFlowComponent owner)
+        public ConfigurationImpl(DataFlowComponentImpl owner)
         {
             _owner = owner;
         }
@@ -31,6 +32,8 @@ namespace ReactiveRTM.Adapter
             return false;
         }
 
+
+
         public bool AddOrganization(Organization organizationObject)
         {
             throw new NotImplementedException();
@@ -46,12 +49,12 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public System.Collections.Generic.List<Parameter> GetConfigurationParameters()
+        public List<Parameter> GetConfigurationParameters()
         {
             throw new NotImplementedException();
         }
 
-        public System.Collections.Generic.List<NameValue> GetConfigurationParameterValues()
+        public Dictionary<string, object> GetConfigurationParameterValues()
         {
             throw new NotImplementedException();
         }
@@ -66,7 +69,7 @@ namespace ReactiveRTM.Adapter
             throw new NotImplementedException();
         }
 
-        public System.Collections.Generic.List<ConfigurationSet> GetConfigurationSets()
+        public List<ConfigurationSet> GetConfigurationSets()
         {
             throw new NotImplementedException();
         }

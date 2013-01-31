@@ -10,6 +10,48 @@ using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
+namespace ReactiveRTM.omg.org.CORBA
+{
+    public enum TCKind
+    {
+        tk_null = 0,
+        tk_void = 1,
+        tk_short = 2,
+        tk_long = 3,
+        tk_ushort = 4,
+        tk_ulong = 5,
+        tk_float = 6,
+        tk_double = 7,
+        tk_boolean = 8,
+        tk_char = 9,
+        tk_octet = 10,
+        tk_any = 11,
+        tk_TypeCode = 12,
+        tk_Principal = 13,
+        tk_objref = 14,
+        tk_struct = 15,
+        tk_union = 16,
+        tk_enum = 17,
+        tk_string = 18,
+        tk_sequence = 19,
+        tk_array = 20,
+        tk_alias = 21,
+        tk_except = 22,
+        tk_longlong = 23,
+        tk_ulonglong = 24,
+        tk_longdouble = 25,
+        tk_wchar = 26,
+        tk_wstring = 27,
+        tk_fixed = 28,
+        tk_value = 29,
+        tk_value_box = 30,
+        tk_native = 31,
+        tk_abstract_interface = 32,
+        tk_local_interface = 33,
+    }
+    
+}
+ 
 namespace ReactiveRTM.omg.org.RTC
 {
     public enum ReturnCode_t
@@ -103,6 +145,7 @@ namespace ReactiveRTM.omg.org.RTC
         }
         public PortInterfaceProfile ()
         {
+            //TODO: 初期化
         }
         public PortInterfaceProfile (global::omg.org.RTC.PortInterfaceProfile source)
         {
@@ -176,10 +219,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.omg.org.RTC.PortServiceStub> _Ports;
+        private List<ReactiveRTM.omg.org.RTC.PortService> _Ports;
             
         ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.PortServiceStub> Ports
+        public List<ReactiveRTM.omg.org.RTC.PortService> Ports
         {
             get { return _Ports; }
             set 
@@ -191,10 +234,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -217,18 +260,19 @@ namespace ReactiveRTM.omg.org.RTC
             instance.name =  source._Name;
             instance.connector_id =  source._ConnectorId;
             instance.ports =  source._Ports.Select(x=>((global::omg.org.RTC.PortService)((IStub)x).GetTarget())).ToArray();
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public ConnectorProfile ()
         {
+            //TODO: 初期化
         }
         public ConnectorProfile (global::omg.org.RTC.ConnectorProfile source)
         {
             _Name = source.name;
             _ConnectorId = source.connector_id;
             _Ports = source.ports.Select(x=>new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -298,10 +342,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private ReactiveRTM.omg.org.RTC.PortServiceStub _PortRef;
+        private ReactiveRTM.omg.org.RTC.PortService _PortRef;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.PortServiceStub PortRef
+        public ReactiveRTM.omg.org.RTC.PortService PortRef
         {
             get { return _PortRef; }
             set 
@@ -328,10 +372,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private ReactiveRTM.omg.org.RTC.RTObjectStub _Owner;
+        private ReactiveRTM.omg.org.RTC.RTObject _Owner;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObjectStub Owner
+        public ReactiveRTM.omg.org.RTC.RTObject Owner
         {
             get { return _Owner; }
             set 
@@ -343,10 +387,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -371,11 +415,12 @@ namespace ReactiveRTM.omg.org.RTC
             instance.port_ref =  ((global::omg.org.RTC.PortService)((IStub)source._PortRef).GetTarget());
             instance.connector_profiles =  source._ConnectorProfiles.Select(x=>((global::omg.org.RTC.ConnectorProfile)((IStub)x).GetTarget())).ToArray();
             instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public PortProfile ()
         {
+            //TODO: 初期化
         }
         public PortProfile (global::omg.org.RTC.PortProfile source)
         {
@@ -384,7 +429,7 @@ namespace ReactiveRTM.omg.org.RTC
             _PortRef = new ReactiveRTM.omg.org.RTC.PortServiceStub(source.port_ref);
             _ConnectorProfiles = source.connector_profiles.Select(x=>new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
             _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -458,10 +503,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private ReactiveRTM.omg.org.RTC.RTObjectStub _Owner;
+        private ReactiveRTM.omg.org.RTC.RTObject _Owner;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObjectStub Owner
+        public ReactiveRTM.omg.org.RTC.RTObject Owner
         {
             get { return _Owner; }
             set 
@@ -473,10 +518,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.omg.org.RTC.RTObjectStub> _Participants;
+        private List<ReactiveRTM.omg.org.RTC.RTObject> _Participants;
             
         ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.RTObjectStub> Participants
+        public List<ReactiveRTM.omg.org.RTC.RTObject> Participants
         {
             get { return _Participants; }
             set 
@@ -488,10 +533,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -515,11 +560,12 @@ namespace ReactiveRTM.omg.org.RTC
             instance.rate =  source._Rate;
             instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
             instance.participants =  source._Participants.Select(x=>((global::omg.org.RTC.RTObject)((IStub)x).GetTarget())).ToArray();
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public ExecutionContextProfile ()
         {
+            //TODO: 初期化
         }
         public ExecutionContextProfile (global::omg.org.RTC.ExecutionContextProfile source)
         {
@@ -527,7 +573,7 @@ namespace ReactiveRTM.omg.org.RTC
             _Rate = source.rate;
             _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
             _Participants = source.participants.Select(x=>new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -569,10 +615,10 @@ namespace ReactiveRTM.omg.org.RTC
  
     public class FsmBehaviorProfile : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.omg.org.RTC.FsmParticipantActionStub _ActionComponent;
+        private ReactiveRTM.omg.org.RTC.FsmParticipantAction _ActionComponent;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.FsmParticipantActionStub ActionComponent
+        public ReactiveRTM.omg.org.RTC.FsmParticipantAction ActionComponent
         {
             get { return _ActionComponent; }
             set 
@@ -613,6 +659,7 @@ namespace ReactiveRTM.omg.org.RTC
         }
         public FsmBehaviorProfile ()
         {
+            //TODO: 初期化
         }
         public FsmBehaviorProfile (global::omg.org.RTC.FsmBehaviorProfile source)
         {
@@ -681,6 +728,7 @@ namespace ReactiveRTM.omg.org.RTC
         }
         public FsmProfile ()
         {
+            //TODO: 初期化
         }
         public FsmProfile (global::omg.org.RTC.FsmProfile source)
         {
@@ -823,10 +871,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private ReactiveRTM.omg.org.RTC.RTObjectStub _Parent;
+        private ReactiveRTM.omg.org.RTC.RTObject _Parent;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObjectStub Parent
+        public ReactiveRTM.omg.org.RTC.RTObject Parent
         {
             get { return _Parent; }
             set 
@@ -838,10 +886,10 @@ namespace ReactiveRTM.omg.org.RTC
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -869,11 +917,12 @@ namespace ReactiveRTM.omg.org.RTC
             instance.category =  source._Category;
             instance.port_profiles =  source._PortProfiles.Select(x=>((global::omg.org.RTC.PortProfile)((IStub)x).GetTarget())).ToArray();
             instance.parent =  ((global::omg.org.RTC.RTObject)((IStub)source._Parent).GetTarget());
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public ComponentProfile ()
         {
+            //TODO: 初期化
         }
         public ComponentProfile (global::omg.org.RTC.ComponentProfile source)
         {
@@ -885,7 +934,7 @@ namespace ReactiveRTM.omg.org.RTC
             _Category = source.category;
             _PortProfiles = source.port_profiles.Select(x=>new ReactiveRTM.omg.org.RTC.PortProfile(x)).ToList();
             _Parent = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.parent);
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -971,10 +1020,10 @@ namespace ReactiveRTM.OpenRTM
  
     public class LogRecord : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Time;
+        private System.DateTime _Time;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Time
+        public System.DateTime Time
         {
             get { return _Time; }
             set 
@@ -1039,7 +1088,7 @@ namespace ReactiveRTM.OpenRTM
         public static explicit operator global::OpenRTM.LogRecord (ReactiveRTM.OpenRTM.LogRecord source)
         {
             var instance = new global::OpenRTM.LogRecord();
-            instance.time =  ((global::RTC.Time)((IStub)source._Time).GetTarget());
+            instance.time =  Converter.DateTimeToRtcTime(source._Time);
             instance.loggername =  source._Loggername;
             instance.level =  (global::OpenRTM.LogLevel)source._Level;
             instance.message =  source._Message;
@@ -1047,10 +1096,11 @@ namespace ReactiveRTM.OpenRTM
         }
         public LogRecord ()
         {
+            //TODO: 初期化
         }
         public LogRecord (global::OpenRTM.LogRecord source)
         {
-            _Time = new ReactiveRTM.RTC.Time(source.time);
+            _Time = Converter.RtcTimeToDateTime(source.time);
             _Loggername = source.loggername;
             _Level = (OpenRTM.LogLevel)source.level;
             _Message = source.message;
@@ -1090,6 +1140,11 @@ namespace ReactiveRTM.OpenRTM
             }
         }
     }
+}
+ 
+namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
+{
+    
 }
  
 namespace ReactiveRTM.org.omg.SDOPackage
@@ -1161,6 +1216,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public NameValue ()
         {
+            //TODO: 初期化
         }
         public NameValue (global::org.omg.SDOPackage.NameValue source)
         {
@@ -1229,6 +1285,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public EnumerationType ()
         {
+            //TODO: 初期化
         }
         public EnumerationType (global::org.omg.SDOPackage.EnumerationType source)
         {
@@ -1342,6 +1399,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public RangeType ()
         {
+            //TODO: 初期化
         }
         public RangeType (global::org.omg.SDOPackage.RangeType source)
         {
@@ -1480,6 +1538,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public IntervalType ()
         {
+            //TODO: 初期化
         }
         public IntervalType (global::org.omg.SDOPackage.IntervalType source)
         {
@@ -1544,10 +1603,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
                 }
             }
         }
-        private ReactiveRTM.omg.org.CORBA.TypeCodeStub _Type;
+        private ReactiveRTM.omg.org.CORBA.TypeCode _Type;
             
         ///<exclude/>
-        public ReactiveRTM.omg.org.CORBA.TypeCodeStub Type
+        public ReactiveRTM.omg.org.CORBA.TypeCode Type
         {
             get { return _Type; }
             set 
@@ -1589,6 +1648,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public Parameter ()
         {
+            //TODO: 初期化
         }
         public Parameter (global::org.omg.SDOPackage.Parameter source)
         {
@@ -1632,10 +1692,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
  
     public class OrganizationProperty : NotifyPropertyChangedBase
     {
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -1655,15 +1715,16 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public static explicit operator global::org.omg.SDOPackage.OrganizationProperty (ReactiveRTM.org.omg.SDOPackage.OrganizationProperty source)
         {
             var instance = new global::org.omg.SDOPackage.OrganizationProperty();
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public OrganizationProperty ()
         {
+            //TODO: 初期化
         }
         public OrganizationProperty (global::org.omg.SDOPackage.OrganizationProperty source)
         {
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -1757,10 +1818,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -1784,11 +1845,12 @@ namespace ReactiveRTM.org.omg.SDOPackage
             instance.manufacturer =  source._Manufacturer;
             instance.model =  source._Model;
             instance.version =  source._Version;
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public DeviceProfile ()
         {
+            //TODO: 初期化
         }
         public DeviceProfile (global::org.omg.SDOPackage.DeviceProfile source)
         {
@@ -1796,7 +1858,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             _Manufacturer = source.manufacturer;
             _Model = source.model;
             _Version = source.version;
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -1868,10 +1930,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -1883,10 +1945,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
                 }
             }
         }
-        private ReactiveRTM.org.omg.SDOPackage.SDOServiceStub _Service;
+        private ReactiveRTM.org.omg.SDOPackage.SDOService _Service;
             
         ///<exclude/>
-        public ReactiveRTM.org.omg.SDOPackage.SDOServiceStub Service
+        public ReactiveRTM.org.omg.SDOPackage.SDOService Service
         {
             get { return _Service; }
             set 
@@ -1908,18 +1970,19 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var instance = new global::org.omg.SDOPackage.ServiceProfile();
             instance.id =  source._Id;
             instance.interface_type =  source._InterfaceType;
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             instance.service =  ((global::org.omg.SDOPackage.SDOService)((IStub)source._Service).GetTarget());
             return instance;
         }
         public ServiceProfile ()
         {
+            //TODO: 初期化
         }
         public ServiceProfile (global::org.omg.SDOPackage.ServiceProfile source)
         {
             _Id = source.id;
             _InterfaceType = source.interface_type;
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
             _Service = new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(source.service);
         }
 
@@ -1990,10 +2053,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
                 }
             }
         }
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _ConfigurationData;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _ConfigurationData;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> ConfigurationData
+        public System.Collections.Generic.Dictionary<System.String,System.Object> ConfigurationData
         {
             get { return _ConfigurationData; }
             set 
@@ -2015,17 +2078,18 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var instance = new global::org.omg.SDOPackage.ConfigurationSet();
             instance.id =  source._Id;
             instance.description =  source._Description;
-            instance.configuration_data =  source._ConfigurationData.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.configuration_data =  Converter.DictionaryToNVList(source._ConfigurationData);
             return instance;
         }
         public ConfigurationSet ()
         {
+            //TODO: 初期化
         }
         public ConfigurationSet (global::org.omg.SDOPackage.ConfigurationSet source)
         {
             _Id = source.id;
             _Description = source.description;
-            _ConfigurationData = source.configuration_data.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _ConfigurationData = Converter.NVListToDictionary(source.configuration_data);
         }
 
         ///<exclude/>
@@ -2145,6 +2209,7 @@ namespace ReactiveRTM.RTC
         }
         public Time ()
         {
+            //TODO: 初期化
         }
         public Time (global::RTC.Time source)
         {
@@ -2185,10 +2250,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedState : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2223,16 +2288,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedState (ReactiveRTM.RTC.TimedState source)
         {
             var instance = new global::RTC.TimedState();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedState ()
         {
+            //TODO: 初期化
         }
         public TimedState (global::RTC.TimedState source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2269,10 +2335,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedShort : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2307,16 +2373,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedShort (ReactiveRTM.RTC.TimedShort source)
         {
             var instance = new global::RTC.TimedShort();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedShort ()
         {
+            //TODO: 初期化
         }
         public TimedShort (global::RTC.TimedShort source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2353,10 +2420,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedLong : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2391,16 +2458,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedLong (ReactiveRTM.RTC.TimedLong source)
         {
             var instance = new global::RTC.TimedLong();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedLong ()
         {
+            //TODO: 初期化
         }
         public TimedLong (global::RTC.TimedLong source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2437,10 +2505,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedUShort : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2475,16 +2543,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedUShort (ReactiveRTM.RTC.TimedUShort source)
         {
             var instance = new global::RTC.TimedUShort();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedUShort ()
         {
+            //TODO: 初期化
         }
         public TimedUShort (global::RTC.TimedUShort source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2521,10 +2590,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedULong : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2559,16 +2628,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedULong (ReactiveRTM.RTC.TimedULong source)
         {
             var instance = new global::RTC.TimedULong();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedULong ()
         {
+            //TODO: 初期化
         }
         public TimedULong (global::RTC.TimedULong source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2605,10 +2675,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedFloat : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2643,16 +2713,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedFloat (ReactiveRTM.RTC.TimedFloat source)
         {
             var instance = new global::RTC.TimedFloat();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedFloat ()
         {
+            //TODO: 初期化
         }
         public TimedFloat (global::RTC.TimedFloat source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2689,10 +2760,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedDouble : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2727,16 +2798,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedDouble (ReactiveRTM.RTC.TimedDouble source)
         {
             var instance = new global::RTC.TimedDouble();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedDouble ()
         {
+            //TODO: 初期化
         }
         public TimedDouble (global::RTC.TimedDouble source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2773,10 +2845,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedChar : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2811,16 +2883,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedChar (ReactiveRTM.RTC.TimedChar source)
         {
             var instance = new global::RTC.TimedChar();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedChar ()
         {
+            //TODO: 初期化
         }
         public TimedChar (global::RTC.TimedChar source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2857,10 +2930,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedWChar : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2895,16 +2968,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedWChar (ReactiveRTM.RTC.TimedWChar source)
         {
             var instance = new global::RTC.TimedWChar();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedWChar ()
         {
+            //TODO: 初期化
         }
         public TimedWChar (global::RTC.TimedWChar source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -2941,10 +3015,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedBoolean : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -2979,16 +3053,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedBoolean (ReactiveRTM.RTC.TimedBoolean source)
         {
             var instance = new global::RTC.TimedBoolean();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedBoolean ()
         {
+            //TODO: 初期化
         }
         public TimedBoolean (global::RTC.TimedBoolean source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -3025,10 +3100,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedOctet : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3063,16 +3138,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedOctet (ReactiveRTM.RTC.TimedOctet source)
         {
             var instance = new global::RTC.TimedOctet();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedOctet ()
         {
+            //TODO: 初期化
         }
         public TimedOctet (global::RTC.TimedOctet source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -3109,10 +3185,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedString : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3147,16 +3223,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedString (ReactiveRTM.RTC.TimedString source)
         {
             var instance = new global::RTC.TimedString();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedString ()
         {
+            //TODO: 初期化
         }
         public TimedString (global::RTC.TimedString source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -3193,10 +3270,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedWString : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3231,16 +3308,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedWString (ReactiveRTM.RTC.TimedWString source)
         {
             var instance = new global::RTC.TimedWString();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data;
             return instance;
         }
         public TimedWString ()
         {
+            //TODO: 初期化
         }
         public TimedWString (global::RTC.TimedWString source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data;
         }
 
@@ -3277,10 +3355,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedShortSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3315,16 +3393,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedShortSeq (ReactiveRTM.RTC.TimedShortSeq source)
         {
             var instance = new global::RTC.TimedShortSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedShortSeq ()
         {
+            //TODO: 初期化
         }
         public TimedShortSeq (global::RTC.TimedShortSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3361,10 +3440,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedLongSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3399,16 +3478,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedLongSeq (ReactiveRTM.RTC.TimedLongSeq source)
         {
             var instance = new global::RTC.TimedLongSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedLongSeq ()
         {
+            //TODO: 初期化
         }
         public TimedLongSeq (global::RTC.TimedLongSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3445,10 +3525,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedUShortSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3483,16 +3563,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedUShortSeq (ReactiveRTM.RTC.TimedUShortSeq source)
         {
             var instance = new global::RTC.TimedUShortSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedUShortSeq ()
         {
+            //TODO: 初期化
         }
         public TimedUShortSeq (global::RTC.TimedUShortSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3529,10 +3610,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedULongSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3567,16 +3648,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedULongSeq (ReactiveRTM.RTC.TimedULongSeq source)
         {
             var instance = new global::RTC.TimedULongSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedULongSeq ()
         {
+            //TODO: 初期化
         }
         public TimedULongSeq (global::RTC.TimedULongSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3613,10 +3695,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedFloatSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3651,16 +3733,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedFloatSeq (ReactiveRTM.RTC.TimedFloatSeq source)
         {
             var instance = new global::RTC.TimedFloatSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedFloatSeq ()
         {
+            //TODO: 初期化
         }
         public TimedFloatSeq (global::RTC.TimedFloatSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3697,10 +3780,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedDoubleSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3735,16 +3818,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedDoubleSeq (ReactiveRTM.RTC.TimedDoubleSeq source)
         {
             var instance = new global::RTC.TimedDoubleSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedDoubleSeq ()
         {
+            //TODO: 初期化
         }
         public TimedDoubleSeq (global::RTC.TimedDoubleSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3781,10 +3865,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedCharSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3819,16 +3903,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedCharSeq (ReactiveRTM.RTC.TimedCharSeq source)
         {
             var instance = new global::RTC.TimedCharSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedCharSeq ()
         {
+            //TODO: 初期化
         }
         public TimedCharSeq (global::RTC.TimedCharSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3865,10 +3950,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedWCharSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3903,16 +3988,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedWCharSeq (ReactiveRTM.RTC.TimedWCharSeq source)
         {
             var instance = new global::RTC.TimedWCharSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedWCharSeq ()
         {
+            //TODO: 初期化
         }
         public TimedWCharSeq (global::RTC.TimedWCharSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -3949,10 +4035,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedBooleanSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -3987,16 +4073,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedBooleanSeq (ReactiveRTM.RTC.TimedBooleanSeq source)
         {
             var instance = new global::RTC.TimedBooleanSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedBooleanSeq ()
         {
+            //TODO: 初期化
         }
         public TimedBooleanSeq (global::RTC.TimedBooleanSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -4033,10 +4120,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedOctetSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -4071,16 +4158,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedOctetSeq (ReactiveRTM.RTC.TimedOctetSeq source)
         {
             var instance = new global::RTC.TimedOctetSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedOctetSeq ()
         {
+            //TODO: 初期化
         }
         public TimedOctetSeq (global::RTC.TimedOctetSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -4117,10 +4205,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedStringSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -4155,16 +4243,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedStringSeq (ReactiveRTM.RTC.TimedStringSeq source)
         {
             var instance = new global::RTC.TimedStringSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedStringSeq ()
         {
+            //TODO: 初期化
         }
         public TimedStringSeq (global::RTC.TimedStringSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -4201,10 +4290,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedWStringSeq : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -4239,16 +4328,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedWStringSeq (ReactiveRTM.RTC.TimedWStringSeq source)
         {
             var instance = new global::RTC.TimedWStringSeq();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  source._Data.Select(x=>x).ToArray();
             return instance;
         }
         public TimedWStringSeq ()
         {
+            //TODO: 初期化
         }
         public TimedWStringSeq (global::RTC.TimedWStringSeq source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = source.data.Select(x=>x).ToList();
         }
 
@@ -4345,6 +4435,7 @@ namespace ReactiveRTM.RTC
         }
         public RGBColour ()
         {
+            //TODO: 初期化
         }
         public RGBColour (global::RTC.RGBColour source)
         {
@@ -4432,6 +4523,7 @@ namespace ReactiveRTM.RTC
         }
         public Point2D ()
         {
+            //TODO: 初期化
         }
         public Point2D (global::RTC.Point2D source)
         {
@@ -4516,6 +4608,7 @@ namespace ReactiveRTM.RTC
         }
         public Vector2D ()
         {
+            //TODO: 初期化
         }
         public Vector2D (global::RTC.Vector2D source)
         {
@@ -4600,6 +4693,7 @@ namespace ReactiveRTM.RTC
         }
         public Pose2D ()
         {
+            //TODO: 初期化
         }
         public Pose2D (global::RTC.Pose2D source)
         {
@@ -4700,6 +4794,7 @@ namespace ReactiveRTM.RTC
         }
         public Velocity2D ()
         {
+            //TODO: 初期化
         }
         public Velocity2D (global::RTC.Velocity2D source)
         {
@@ -4787,6 +4882,7 @@ namespace ReactiveRTM.RTC
         }
         public Acceleration2D ()
         {
+            //TODO: 初期化
         }
         public Acceleration2D (global::RTC.Acceleration2D source)
         {
@@ -4871,6 +4967,7 @@ namespace ReactiveRTM.RTC
         }
         public PoseVel2D ()
         {
+            //TODO: 初期化
         }
         public PoseVel2D (global::RTC.PoseVel2D source)
         {
@@ -4955,6 +5052,7 @@ namespace ReactiveRTM.RTC
         }
         public Size2D ()
         {
+            //TODO: 初期化
         }
         public Size2D (global::RTC.Size2D source)
         {
@@ -5039,6 +5137,7 @@ namespace ReactiveRTM.RTC
         }
         public Geometry2D ()
         {
+            //TODO: 初期化
         }
         public Geometry2D (global::RTC.Geometry2D source)
         {
@@ -5187,6 +5286,7 @@ namespace ReactiveRTM.RTC
         }
         public Covariance2D ()
         {
+            //TODO: 初期化
         }
         public Covariance2D (global::RTC.Covariance2D source)
         {
@@ -5299,6 +5399,7 @@ namespace ReactiveRTM.RTC
         }
         public PointCovariance2D ()
         {
+            //TODO: 初期化
         }
         public PointCovariance2D (global::RTC.PointCovariance2D source)
         {
@@ -5386,6 +5487,7 @@ namespace ReactiveRTM.RTC
         }
         public Carlike ()
         {
+            //TODO: 初期化
         }
         public Carlike (global::RTC.Carlike source)
         {
@@ -5470,6 +5572,7 @@ namespace ReactiveRTM.RTC
         }
         public SpeedHeading2D ()
         {
+            //TODO: 初期化
         }
         public SpeedHeading2D (global::RTC.SpeedHeading2D source)
         {
@@ -5570,6 +5673,7 @@ namespace ReactiveRTM.RTC
         }
         public Point3D ()
         {
+            //TODO: 初期化
         }
         public Point3D (global::RTC.Point3D source)
         {
@@ -5673,6 +5777,7 @@ namespace ReactiveRTM.RTC
         }
         public Vector3D ()
         {
+            //TODO: 初期化
         }
         public Vector3D (global::RTC.Vector3D source)
         {
@@ -5776,6 +5881,7 @@ namespace ReactiveRTM.RTC
         }
         public Orientation3D ()
         {
+            //TODO: 初期化
         }
         public Orientation3D (global::RTC.Orientation3D source)
         {
@@ -5863,6 +5969,7 @@ namespace ReactiveRTM.RTC
         }
         public Pose3D ()
         {
+            //TODO: 初期化
         }
         public Pose3D (global::RTC.Pose3D source)
         {
@@ -6011,6 +6118,7 @@ namespace ReactiveRTM.RTC
         }
         public Velocity3D ()
         {
+            //TODO: 初期化
         }
         public Velocity3D (global::RTC.Velocity3D source)
         {
@@ -6123,6 +6231,7 @@ namespace ReactiveRTM.RTC
         }
         public AngularVelocity3D ()
         {
+            //TODO: 初期化
         }
         public AngularVelocity3D (global::RTC.AngularVelocity3D source)
         {
@@ -6226,6 +6335,7 @@ namespace ReactiveRTM.RTC
         }
         public Acceleration3D ()
         {
+            //TODO: 初期化
         }
         public Acceleration3D (global::RTC.Acceleration3D source)
         {
@@ -6329,6 +6439,7 @@ namespace ReactiveRTM.RTC
         }
         public AngularAcceleration3D ()
         {
+            //TODO: 初期化
         }
         public AngularAcceleration3D (global::RTC.AngularAcceleration3D source)
         {
@@ -6416,6 +6527,7 @@ namespace ReactiveRTM.RTC
         }
         public PoseVel3D ()
         {
+            //TODO: 初期化
         }
         public PoseVel3D (global::RTC.PoseVel3D source)
         {
@@ -6516,6 +6628,7 @@ namespace ReactiveRTM.RTC
         }
         public Size3D ()
         {
+            //TODO: 初期化
         }
         public Size3D (global::RTC.Size3D source)
         {
@@ -6603,6 +6716,7 @@ namespace ReactiveRTM.RTC
         }
         public Geometry3D ()
         {
+            //TODO: 初期化
         }
         public Geometry3D (global::RTC.Geometry3D source)
         {
@@ -6991,6 +7105,7 @@ namespace ReactiveRTM.RTC
         }
         public Covariance3D ()
         {
+            //TODO: 初期化
         }
         public Covariance3D (global::RTC.Covariance3D source)
         {
@@ -7132,6 +7247,7 @@ namespace ReactiveRTM.RTC
         }
         public SpeedHeading3D ()
         {
+            //TODO: 初期化
         }
         public SpeedHeading3D (global::RTC.SpeedHeading3D source)
         {
@@ -7232,6 +7348,7 @@ namespace ReactiveRTM.RTC
         }
         public OAP ()
         {
+            //TODO: 初期化
         }
         public OAP (global::RTC.OAP source)
         {
@@ -7275,10 +7392,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedRGBColour : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7313,16 +7430,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedRGBColour (ReactiveRTM.RTC.TimedRGBColour source)
         {
             var instance = new global::RTC.TimedRGBColour();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.RGBColour)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedRGBColour ()
         {
+            //TODO: 初期化
         }
         public TimedRGBColour (global::RTC.TimedRGBColour source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.RGBColour(source.data);
         }
 
@@ -7359,10 +7477,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPoint2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7397,16 +7515,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPoint2D (ReactiveRTM.RTC.TimedPoint2D source)
         {
             var instance = new global::RTC.TimedPoint2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Point2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPoint2D ()
         {
+            //TODO: 初期化
         }
         public TimedPoint2D (global::RTC.TimedPoint2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Point2D(source.data);
         }
 
@@ -7443,10 +7562,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedVector2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7481,16 +7600,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedVector2D (ReactiveRTM.RTC.TimedVector2D source)
         {
             var instance = new global::RTC.TimedVector2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Vector2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedVector2D ()
         {
+            //TODO: 初期化
         }
         public TimedVector2D (global::RTC.TimedVector2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Vector2D(source.data);
         }
 
@@ -7527,10 +7647,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPose2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7565,16 +7685,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPose2D (ReactiveRTM.RTC.TimedPose2D source)
         {
             var instance = new global::RTC.TimedPose2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Pose2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPose2D ()
         {
+            //TODO: 初期化
         }
         public TimedPose2D (global::RTC.TimedPose2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Pose2D(source.data);
         }
 
@@ -7611,10 +7732,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedVelocity2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7649,16 +7770,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedVelocity2D (ReactiveRTM.RTC.TimedVelocity2D source)
         {
             var instance = new global::RTC.TimedVelocity2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Velocity2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedVelocity2D ()
         {
+            //TODO: 初期化
         }
         public TimedVelocity2D (global::RTC.TimedVelocity2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Velocity2D(source.data);
         }
 
@@ -7695,10 +7817,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedAcceleration2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7733,16 +7855,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedAcceleration2D (ReactiveRTM.RTC.TimedAcceleration2D source)
         {
             var instance = new global::RTC.TimedAcceleration2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Acceleration2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedAcceleration2D ()
         {
+            //TODO: 初期化
         }
         public TimedAcceleration2D (global::RTC.TimedAcceleration2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Acceleration2D(source.data);
         }
 
@@ -7779,10 +7902,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPoseVel2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7817,16 +7940,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPoseVel2D (ReactiveRTM.RTC.TimedPoseVel2D source)
         {
             var instance = new global::RTC.TimedPoseVel2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.PoseVel2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPoseVel2D ()
         {
+            //TODO: 初期化
         }
         public TimedPoseVel2D (global::RTC.TimedPoseVel2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.PoseVel2D(source.data);
         }
 
@@ -7863,10 +7987,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedSize2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7901,16 +8025,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedSize2D (ReactiveRTM.RTC.TimedSize2D source)
         {
             var instance = new global::RTC.TimedSize2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Size2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedSize2D ()
         {
+            //TODO: 初期化
         }
         public TimedSize2D (global::RTC.TimedSize2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Size2D(source.data);
         }
 
@@ -7947,10 +8072,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedGeometry2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -7985,16 +8110,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedGeometry2D (ReactiveRTM.RTC.TimedGeometry2D source)
         {
             var instance = new global::RTC.TimedGeometry2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Geometry2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedGeometry2D ()
         {
+            //TODO: 初期化
         }
         public TimedGeometry2D (global::RTC.TimedGeometry2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Geometry2D(source.data);
         }
 
@@ -8031,10 +8157,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedCovariance2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8069,16 +8195,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedCovariance2D (ReactiveRTM.RTC.TimedCovariance2D source)
         {
             var instance = new global::RTC.TimedCovariance2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Covariance2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedCovariance2D ()
         {
+            //TODO: 初期化
         }
         public TimedCovariance2D (global::RTC.TimedCovariance2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Covariance2D(source.data);
         }
 
@@ -8115,10 +8242,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPointCovariance2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8153,16 +8280,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPointCovariance2D (ReactiveRTM.RTC.TimedPointCovariance2D source)
         {
             var instance = new global::RTC.TimedPointCovariance2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.PointCovariance2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPointCovariance2D ()
         {
+            //TODO: 初期化
         }
         public TimedPointCovariance2D (global::RTC.TimedPointCovariance2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.PointCovariance2D(source.data);
         }
 
@@ -8199,10 +8327,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedCarlike : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8237,16 +8365,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedCarlike (ReactiveRTM.RTC.TimedCarlike source)
         {
             var instance = new global::RTC.TimedCarlike();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Carlike)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedCarlike ()
         {
+            //TODO: 初期化
         }
         public TimedCarlike (global::RTC.TimedCarlike source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Carlike(source.data);
         }
 
@@ -8283,10 +8412,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedSpeedHeading2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8321,16 +8450,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedSpeedHeading2D (ReactiveRTM.RTC.TimedSpeedHeading2D source)
         {
             var instance = new global::RTC.TimedSpeedHeading2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.SpeedHeading2D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedSpeedHeading2D ()
         {
+            //TODO: 初期化
         }
         public TimedSpeedHeading2D (global::RTC.TimedSpeedHeading2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.SpeedHeading2D(source.data);
         }
 
@@ -8367,10 +8497,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPoint3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8405,16 +8535,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPoint3D (ReactiveRTM.RTC.TimedPoint3D source)
         {
             var instance = new global::RTC.TimedPoint3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Point3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPoint3D ()
         {
+            //TODO: 初期化
         }
         public TimedPoint3D (global::RTC.TimedPoint3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Point3D(source.data);
         }
 
@@ -8451,10 +8582,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedVector3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8489,16 +8620,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedVector3D (ReactiveRTM.RTC.TimedVector3D source)
         {
             var instance = new global::RTC.TimedVector3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Vector3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedVector3D ()
         {
+            //TODO: 初期化
         }
         public TimedVector3D (global::RTC.TimedVector3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Vector3D(source.data);
         }
 
@@ -8535,10 +8667,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedOrientation3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8573,16 +8705,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedOrientation3D (ReactiveRTM.RTC.TimedOrientation3D source)
         {
             var instance = new global::RTC.TimedOrientation3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Orientation3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedOrientation3D ()
         {
+            //TODO: 初期化
         }
         public TimedOrientation3D (global::RTC.TimedOrientation3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Orientation3D(source.data);
         }
 
@@ -8619,10 +8752,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPose3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8657,16 +8790,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPose3D (ReactiveRTM.RTC.TimedPose3D source)
         {
             var instance = new global::RTC.TimedPose3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Pose3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPose3D ()
         {
+            //TODO: 初期化
         }
         public TimedPose3D (global::RTC.TimedPose3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Pose3D(source.data);
         }
 
@@ -8703,10 +8837,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedVelocity3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8741,16 +8875,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedVelocity3D (ReactiveRTM.RTC.TimedVelocity3D source)
         {
             var instance = new global::RTC.TimedVelocity3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Velocity3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedVelocity3D ()
         {
+            //TODO: 初期化
         }
         public TimedVelocity3D (global::RTC.TimedVelocity3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Velocity3D(source.data);
         }
 
@@ -8787,10 +8922,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedAngularVelocity3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8825,16 +8960,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedAngularVelocity3D (ReactiveRTM.RTC.TimedAngularVelocity3D source)
         {
             var instance = new global::RTC.TimedAngularVelocity3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.AngularVelocity3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedAngularVelocity3D ()
         {
+            //TODO: 初期化
         }
         public TimedAngularVelocity3D (global::RTC.TimedAngularVelocity3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.AngularVelocity3D(source.data);
         }
 
@@ -8871,10 +9007,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedAcceleration3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8909,16 +9045,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedAcceleration3D (ReactiveRTM.RTC.TimedAcceleration3D source)
         {
             var instance = new global::RTC.TimedAcceleration3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Acceleration3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedAcceleration3D ()
         {
+            //TODO: 初期化
         }
         public TimedAcceleration3D (global::RTC.TimedAcceleration3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Acceleration3D(source.data);
         }
 
@@ -8955,10 +9092,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedAngularAcceleration3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -8993,16 +9130,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedAngularAcceleration3D (ReactiveRTM.RTC.TimedAngularAcceleration3D source)
         {
             var instance = new global::RTC.TimedAngularAcceleration3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.AngularAcceleration3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedAngularAcceleration3D ()
         {
+            //TODO: 初期化
         }
         public TimedAngularAcceleration3D (global::RTC.TimedAngularAcceleration3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.AngularAcceleration3D(source.data);
         }
 
@@ -9039,10 +9177,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedPoseVel3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9077,16 +9215,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedPoseVel3D (ReactiveRTM.RTC.TimedPoseVel3D source)
         {
             var instance = new global::RTC.TimedPoseVel3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.PoseVel3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedPoseVel3D ()
         {
+            //TODO: 初期化
         }
         public TimedPoseVel3D (global::RTC.TimedPoseVel3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.PoseVel3D(source.data);
         }
 
@@ -9123,10 +9262,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedSize3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9161,16 +9300,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedSize3D (ReactiveRTM.RTC.TimedSize3D source)
         {
             var instance = new global::RTC.TimedSize3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Size3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedSize3D ()
         {
+            //TODO: 初期化
         }
         public TimedSize3D (global::RTC.TimedSize3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Size3D(source.data);
         }
 
@@ -9207,10 +9347,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedGeometry3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9245,16 +9385,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedGeometry3D (ReactiveRTM.RTC.TimedGeometry3D source)
         {
             var instance = new global::RTC.TimedGeometry3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Geometry3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedGeometry3D ()
         {
+            //TODO: 初期化
         }
         public TimedGeometry3D (global::RTC.TimedGeometry3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Geometry3D(source.data);
         }
 
@@ -9291,10 +9432,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedCovariance3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9329,16 +9470,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedCovariance3D (ReactiveRTM.RTC.TimedCovariance3D source)
         {
             var instance = new global::RTC.TimedCovariance3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.Covariance3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedCovariance3D ()
         {
+            //TODO: 初期化
         }
         public TimedCovariance3D (global::RTC.TimedCovariance3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.Covariance3D(source.data);
         }
 
@@ -9375,10 +9517,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedSpeedHeading3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9413,16 +9555,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedSpeedHeading3D (ReactiveRTM.RTC.TimedSpeedHeading3D source)
         {
             var instance = new global::RTC.TimedSpeedHeading3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.SpeedHeading3D)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedSpeedHeading3D ()
         {
+            //TODO: 初期化
         }
         public TimedSpeedHeading3D (global::RTC.TimedSpeedHeading3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.SpeedHeading3D(source.data);
         }
 
@@ -9459,10 +9602,10 @@ namespace ReactiveRTM.RTC
  
     public class TimedOAP : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9497,16 +9640,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.TimedOAP (ReactiveRTM.RTC.TimedOAP source)
         {
             var instance = new global::RTC.TimedOAP();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.data =  ((global::RTC.OAP)((IStub)source._Data).GetTarget());
             return instance;
         }
         public TimedOAP ()
         {
+            //TODO: 初期化
         }
         public TimedOAP (global::RTC.TimedOAP source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Data = new ReactiveRTM.RTC.OAP(source.data);
         }
 
@@ -9543,10 +9687,10 @@ namespace ReactiveRTM.RTC
  
     public class ActArrayActuatorPos : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9596,17 +9740,18 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.ActArrayActuatorPos (ReactiveRTM.RTC.ActArrayActuatorPos source)
         {
             var instance = new global::RTC.ActArrayActuatorPos();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.index =  source._Index;
             instance.position =  source._Position;
             return instance;
         }
         public ActArrayActuatorPos ()
         {
+            //TODO: 初期化
         }
         public ActArrayActuatorPos (global::RTC.ActArrayActuatorPos source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Index = source.index;
             _Position = source.position;
         }
@@ -9646,10 +9791,10 @@ namespace ReactiveRTM.RTC
  
     public class ActArrayActuatorSpeed : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9699,17 +9844,18 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.ActArrayActuatorSpeed (ReactiveRTM.RTC.ActArrayActuatorSpeed source)
         {
             var instance = new global::RTC.ActArrayActuatorSpeed();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.index =  source._Index;
             instance.speed =  source._Speed;
             return instance;
         }
         public ActArrayActuatorSpeed ()
         {
+            //TODO: 初期化
         }
         public ActArrayActuatorSpeed (global::RTC.ActArrayActuatorSpeed source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Index = source.index;
             _Speed = source.speed;
         }
@@ -9749,10 +9895,10 @@ namespace ReactiveRTM.RTC
  
     public class ActArrayActuatorCurrent : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -9802,17 +9948,18 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.ActArrayActuatorCurrent (ReactiveRTM.RTC.ActArrayActuatorCurrent source)
         {
             var instance = new global::RTC.ActArrayActuatorCurrent();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.index =  source._Index;
             instance.current =  source._Current;
             return instance;
         }
         public ActArrayActuatorCurrent ()
         {
+            //TODO: 初期化
         }
         public ActArrayActuatorCurrent (global::RTC.ActArrayActuatorCurrent source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Index = source.index;
             _Current = source.current;
         }
@@ -9944,6 +10091,7 @@ namespace ReactiveRTM.RTC
         }
         public Actuator ()
         {
+            //TODO: 初期化
         }
         public Actuator (global::RTC.Actuator source)
         {
@@ -9993,10 +10141,10 @@ namespace ReactiveRTM.RTC
  
     public class ActArrayState : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -10031,16 +10179,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.ActArrayState (ReactiveRTM.RTC.ActArrayState source)
         {
             var instance = new global::RTC.ActArrayState();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.actuators =  source._Actuators.Select(x=>((global::RTC.Actuator)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public ActArrayState ()
         {
+            //TODO: 初期化
         }
         public ActArrayState (global::RTC.ActArrayState source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Actuators = source.actuators.Select(x=>new ReactiveRTM.RTC.Actuator(x)).ToList();
         }
 
@@ -10233,6 +10382,7 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorGeometry ()
         {
+            //TODO: 初期化
         }
         public ActArrayActuatorGeometry (global::RTC.ActArrayActuatorGeometry source)
         {
@@ -10338,6 +10488,7 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayGeometry ()
         {
+            //TODO: 初期化
         }
         public ActArrayGeometry (global::RTC.ActArrayGeometry source)
         {
@@ -10438,6 +10589,7 @@ namespace ReactiveRTM.RTC
         }
         public BumperGeometry ()
         {
+            //TODO: 初期化
         }
         public BumperGeometry (global::RTC.BumperGeometry source)
         {
@@ -10525,6 +10677,7 @@ namespace ReactiveRTM.RTC
         }
         public BumperArrayGeometry ()
         {
+            //TODO: 初期化
         }
         public BumperArrayGeometry (global::RTC.BumperArrayGeometry source)
         {
@@ -10565,10 +10718,10 @@ namespace ReactiveRTM.RTC
  
     public class CameraImage : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -10678,7 +10831,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.CameraImage (ReactiveRTM.RTC.CameraImage source)
         {
             var instance = new global::RTC.CameraImage();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.width =  source._Width;
             instance.height =  source._Height;
             instance.bpp =  source._Bpp;
@@ -10689,10 +10842,11 @@ namespace ReactiveRTM.RTC
         }
         public CameraImage ()
         {
+            //TODO: 初期化
         }
         public CameraImage (global::RTC.CameraImage source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Width = source.width;
             _Height = source.height;
             _Bpp = source.bpp;
@@ -10852,6 +11006,7 @@ namespace ReactiveRTM.RTC
         }
         public CameraInfo ()
         {
+            //TODO: 初期化
         }
         public CameraInfo (global::RTC.CameraInfo source)
         {
@@ -10996,6 +11151,7 @@ namespace ReactiveRTM.RTC
         }
         public FiducialInfo ()
         {
+            //TODO: 初期化
         }
         public FiducialInfo (global::RTC.FiducialInfo source)
         {
@@ -11045,10 +11201,10 @@ namespace ReactiveRTM.RTC
  
     public class Fiducials : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -11083,16 +11239,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Fiducials (ReactiveRTM.RTC.Fiducials source)
         {
             var instance = new global::RTC.Fiducials();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.fiducialsList =  source._FiducialsList.Select(x=>((global::RTC.FiducialInfo)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public Fiducials ()
         {
+            //TODO: 初期化
         }
         public Fiducials (global::RTC.Fiducials source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _FiducialsList = source.fiducialsList.Select(x=>new ReactiveRTM.RTC.FiducialInfo(x)).ToList();
         }
 
@@ -11189,6 +11346,7 @@ namespace ReactiveRTM.RTC
         }
         public FiducialFOV ()
         {
+            //TODO: 初期化
         }
         public FiducialFOV (global::RTC.FiducialFOV source)
         {
@@ -11276,6 +11434,7 @@ namespace ReactiveRTM.RTC
         }
         public GPSTime ()
         {
+            //TODO: 初期化
         }
         public GPSTime (global::RTC.GPSTime source)
         {
@@ -11316,10 +11475,10 @@ namespace ReactiveRTM.RTC
  
     public class GPSData : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -11504,7 +11663,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.GPSData (ReactiveRTM.RTC.GPSData source)
         {
             var instance = new global::RTC.GPSData();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.timeFromGPS =  ((global::RTC.GPSTime)((IStub)source._TimeFromGPS).GetTarget());
             instance.latitude =  source._Latitude;
             instance.longitude =  source._Longitude;
@@ -11520,10 +11679,11 @@ namespace ReactiveRTM.RTC
         }
         public GPSData ()
         {
+            //TODO: 初期化
         }
         public GPSData (global::RTC.GPSData source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _TimeFromGPS = new ReactiveRTM.RTC.GPSTime(source.timeFromGPS);
             _Latitude = source.latitude;
             _Longitude = source.longitude;
@@ -11590,10 +11750,10 @@ namespace ReactiveRTM.RTC
  
     public class GripperState : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -11628,16 +11788,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.GripperState (ReactiveRTM.RTC.GripperState source)
         {
             var instance = new global::RTC.GripperState();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.status =  (global::RTC.GripperStatus)source._Status;
             return instance;
         }
         public GripperState ()
         {
+            //TODO: 初期化
         }
         public GripperState (global::RTC.GripperState source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Status = (RTC.GripperStatus)source.status;
         }
 
@@ -11718,6 +11879,7 @@ namespace ReactiveRTM.RTC
         }
         public GripperGeometry ()
         {
+            //TODO: 初期化
         }
         public GripperGeometry (global::RTC.GripperGeometry source)
         {
@@ -11758,10 +11920,10 @@ namespace ReactiveRTM.RTC
  
     public class INSData : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -11871,7 +12033,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.INSData (ReactiveRTM.RTC.INSData source)
         {
             var instance = new global::RTC.INSData();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.latitude =  source._Latitude;
             instance.longitude =  source._Longitude;
             instance.altitude =  source._Altitude;
@@ -11882,10 +12044,11 @@ namespace ReactiveRTM.RTC
         }
         public INSData ()
         {
+            //TODO: 初期化
         }
         public INSData (global::RTC.INSData source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Latitude = source.latitude;
             _Longitude = source.longitude;
             _Altitude = source.altitude;
@@ -11937,10 +12100,10 @@ namespace ReactiveRTM.RTC
  
     public class LimbState : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -11990,17 +12153,18 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.LimbState (ReactiveRTM.RTC.LimbState source)
         {
             var instance = new global::RTC.LimbState();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.oapMatrix =  ((global::RTC.OAP)((IStub)source._OapMatrix).GetTarget());
             instance.status =  (global::RTC.LimbStatus)source._Status;
             return instance;
         }
         public LimbState ()
         {
+            //TODO: 初期化
         }
         public LimbState (global::RTC.LimbState source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _OapMatrix = new ReactiveRTM.RTC.OAP(source.oapMatrix);
             _Status = (RTC.LimbStatus)source.status;
         }
@@ -12100,6 +12264,7 @@ namespace ReactiveRTM.RTC
         }
         public Hypothesis2D ()
         {
+            //TODO: 初期化
         }
         public Hypothesis2D (global::RTC.Hypothesis2D source)
         {
@@ -12143,10 +12308,10 @@ namespace ReactiveRTM.RTC
  
     public class Hypotheses2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -12181,16 +12346,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Hypotheses2D (ReactiveRTM.RTC.Hypotheses2D source)
         {
             var instance = new global::RTC.Hypotheses2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.hypotheses =  source._Hypotheses.Select(x=>((global::RTC.Hypothesis2D)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public Hypotheses2D ()
         {
+            //TODO: 初期化
         }
         public Hypotheses2D (global::RTC.Hypotheses2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Hypotheses = source.hypotheses.Select(x=>new ReactiveRTM.RTC.Hypothesis2D(x)).ToList();
         }
 
@@ -12287,6 +12453,7 @@ namespace ReactiveRTM.RTC
         }
         public Hypothesis3D ()
         {
+            //TODO: 初期化
         }
         public Hypothesis3D (global::RTC.Hypothesis3D source)
         {
@@ -12330,10 +12497,10 @@ namespace ReactiveRTM.RTC
  
     public class Hypotheses3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -12368,16 +12535,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Hypotheses3D (ReactiveRTM.RTC.Hypotheses3D source)
         {
             var instance = new global::RTC.Hypotheses3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.hypotheses =  source._Hypotheses.Select(x=>((global::RTC.Hypothesis3D)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public Hypotheses3D ()
         {
+            //TODO: 初期化
         }
         public Hypotheses3D (global::RTC.Hypotheses3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Hypotheses = source.hypotheses.Select(x=>new ReactiveRTM.RTC.Hypothesis3D(x)).ToList();
         }
 
@@ -12506,6 +12674,7 @@ namespace ReactiveRTM.RTC
         }
         public OGMapConfig ()
         {
+            //TODO: 初期化
         }
         public OGMapConfig (global::RTC.OGMapConfig source)
         {
@@ -12647,6 +12816,7 @@ namespace ReactiveRTM.RTC
         }
         public OGMapTile ()
         {
+            //TODO: 初期化
         }
         public OGMapTile (global::RTC.OGMapTile source)
         {
@@ -12756,6 +12926,7 @@ namespace ReactiveRTM.RTC
         }
         public PointFeature ()
         {
+            //TODO: 初期化
         }
         public PointFeature (global::RTC.PointFeature source)
         {
@@ -12859,6 +13030,7 @@ namespace ReactiveRTM.RTC
         }
         public PoseFeature ()
         {
+            //TODO: 初期化
         }
         public PoseFeature (global::RTC.PoseFeature source)
         {
@@ -13042,6 +13214,7 @@ namespace ReactiveRTM.RTC
         }
         public LineFeature ()
         {
+            //TODO: 初期化
         }
         public LineFeature (global::RTC.LineFeature source)
         {
@@ -13100,10 +13273,10 @@ namespace ReactiveRTM.RTC
  
     public class Features : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -13168,7 +13341,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Features (ReactiveRTM.RTC.Features source)
         {
             var instance = new global::RTC.Features();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.pointFeatures =  source._PointFeatures.Select(x=>((global::RTC.PointFeature)((IStub)x).GetTarget())).ToArray();
             instance.poseFeatures =  source._PoseFeatures.Select(x=>((global::RTC.PoseFeature)((IStub)x).GetTarget())).ToArray();
             instance.lineFeatures =  source._LineFeatures.Select(x=>((global::RTC.LineFeature)((IStub)x).GetTarget())).ToArray();
@@ -13176,10 +13349,11 @@ namespace ReactiveRTM.RTC
         }
         public Features ()
         {
+            //TODO: 初期化
         }
         public Features (global::RTC.Features source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _PointFeatures = source.pointFeatures.Select(x=>new ReactiveRTM.RTC.PointFeature(x)).ToList();
             _PoseFeatures = source.poseFeatures.Select(x=>new ReactiveRTM.RTC.PoseFeature(x)).ToList();
             _LineFeatures = source.lineFeatures.Select(x=>new ReactiveRTM.RTC.LineFeature(x)).ToList();
@@ -13222,10 +13396,10 @@ namespace ReactiveRTM.RTC
  
     public class MultiCameraImages : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -13260,16 +13434,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.MultiCameraImages (ReactiveRTM.RTC.MultiCameraImages source)
         {
             var instance = new global::RTC.MultiCameraImages();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.images =  source._Images.Select(x=>((global::RTC.CameraImage)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public MultiCameraImages ()
         {
+            //TODO: 初期化
         }
         public MultiCameraImages (global::RTC.MultiCameraImages source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Images = source.images.Select(x=>new ReactiveRTM.RTC.CameraImage(x)).ToList();
         }
 
@@ -13350,6 +13525,7 @@ namespace ReactiveRTM.RTC
         }
         public MulticameraGeometry ()
         {
+            //TODO: 初期化
         }
         public MulticameraGeometry (global::RTC.MulticameraGeometry source)
         {
@@ -13435,10 +13611,10 @@ namespace ReactiveRTM.RTC
                 }
             }
         }
-        private ReactiveRTM.RTC.Time _TimeLimit;
+        private System.DateTime _TimeLimit;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time TimeLimit
+        public System.DateTime TimeLimit
         {
             get { return _TimeLimit; }
             set 
@@ -13476,19 +13652,20 @@ namespace ReactiveRTM.RTC
             instance.target =  ((global::RTC.Pose2D)((IStub)source._Target).GetTarget());
             instance.distanceTolerance =  source._DistanceTolerance;
             instance.headingTolerance =  source._HeadingTolerance;
-            instance.timeLimit =  ((global::RTC.Time)((IStub)source._TimeLimit).GetTarget());
+            instance.timeLimit =  Converter.DateTimeToRtcTime(source._TimeLimit);
             instance.maxSpeed =  ((global::RTC.Velocity2D)((IStub)source._MaxSpeed).GetTarget());
             return instance;
         }
         public Waypoint2D ()
         {
+            //TODO: 初期化
         }
         public Waypoint2D (global::RTC.Waypoint2D source)
         {
             _Target = new ReactiveRTM.RTC.Pose2D(source.target);
             _DistanceTolerance = source.distanceTolerance;
             _HeadingTolerance = source.headingTolerance;
-            _TimeLimit = new ReactiveRTM.RTC.Time(source.timeLimit);
+            _TimeLimit = Converter.RtcTimeToDateTime(source.timeLimit);
             _MaxSpeed = new ReactiveRTM.RTC.Velocity2D(source.maxSpeed);
         }
 
@@ -13531,10 +13708,10 @@ namespace ReactiveRTM.RTC
  
     public class Path2D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -13569,16 +13746,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Path2D (ReactiveRTM.RTC.Path2D source)
         {
             var instance = new global::RTC.Path2D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.waypoints =  source._Waypoints.Select(x=>((global::RTC.Waypoint2D)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public Path2D ()
         {
+            //TODO: 初期化
         }
         public Path2D (global::RTC.Path2D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Waypoints = source.waypoints.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList();
         }
 
@@ -13660,10 +13838,10 @@ namespace ReactiveRTM.RTC
                 }
             }
         }
-        private ReactiveRTM.RTC.Time _TimeLimit;
+        private System.DateTime _TimeLimit;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time TimeLimit
+        public System.DateTime TimeLimit
         {
             get { return _TimeLimit; }
             set 
@@ -13701,19 +13879,20 @@ namespace ReactiveRTM.RTC
             instance.target =  ((global::RTC.Pose3D)((IStub)source._Target).GetTarget());
             instance.distanceTolerance =  source._DistanceTolerance;
             instance.headingTolerance =  source._HeadingTolerance;
-            instance.timeLimit =  ((global::RTC.Time)((IStub)source._TimeLimit).GetTarget());
+            instance.timeLimit =  Converter.DateTimeToRtcTime(source._TimeLimit);
             instance.maxSpeed =  ((global::RTC.Velocity3D)((IStub)source._MaxSpeed).GetTarget());
             return instance;
         }
         public Waypoint3D ()
         {
+            //TODO: 初期化
         }
         public Waypoint3D (global::RTC.Waypoint3D source)
         {
             _Target = new ReactiveRTM.RTC.Pose3D(source.target);
             _DistanceTolerance = source.distanceTolerance;
             _HeadingTolerance = source.headingTolerance;
-            _TimeLimit = new ReactiveRTM.RTC.Time(source.timeLimit);
+            _TimeLimit = Converter.RtcTimeToDateTime(source.timeLimit);
             _MaxSpeed = new ReactiveRTM.RTC.Velocity3D(source.maxSpeed);
         }
 
@@ -13756,10 +13935,10 @@ namespace ReactiveRTM.RTC
  
     public class Path3D : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -13794,16 +13973,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.Path3D (ReactiveRTM.RTC.Path3D source)
         {
             var instance = new global::RTC.Path3D();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.waypoints =  source._Waypoints.Select(x=>((global::RTC.Waypoint3D)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public Path3D ()
         {
+            //TODO: 初期化
         }
         public Path3D (global::RTC.Path3D source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Waypoints = source.waypoints.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList();
         }
 
@@ -13884,6 +14064,7 @@ namespace ReactiveRTM.RTC
         }
         public PointCloudPoint ()
         {
+            //TODO: 初期化
         }
         public PointCloudPoint (global::RTC.PointCloudPoint source)
         {
@@ -13924,10 +14105,10 @@ namespace ReactiveRTM.RTC
  
     public class PointCloud : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -13962,16 +14143,17 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.PointCloud (ReactiveRTM.RTC.PointCloud source)
         {
             var instance = new global::RTC.PointCloud();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.points =  source._Points.Select(x=>((global::RTC.PointCloudPoint)((IStub)x).GetTarget())).ToArray();
             return instance;
         }
         public PointCloud ()
         {
+            //TODO: 初期化
         }
         public PointCloud (global::RTC.PointCloud source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Points = source.points.Select(x=>new ReactiveRTM.RTC.PointCloudPoint(x)).ToList();
         }
 
@@ -14008,10 +14190,10 @@ namespace ReactiveRTM.RTC
  
     public class PanTiltAngles : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -14061,17 +14243,18 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.PanTiltAngles (ReactiveRTM.RTC.PanTiltAngles source)
         {
             var instance = new global::RTC.PanTiltAngles();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.pan =  source._Pan;
             instance.tilt =  source._Tilt;
             return instance;
         }
         public PanTiltAngles ()
         {
+            //TODO: 初期化
         }
         public PanTiltAngles (global::RTC.PanTiltAngles source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Pan = source.pan;
             _Tilt = source.tilt;
         }
@@ -14111,10 +14294,10 @@ namespace ReactiveRTM.RTC
  
     public class PanTiltState : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -14179,7 +14362,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.PanTiltState (ReactiveRTM.RTC.PanTiltState source)
         {
             var instance = new global::RTC.PanTiltState();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.angles =  ((global::RTC.PanTiltAngles)((IStub)source._Angles).GetTarget());
             instance.panSpeed =  source._PanSpeed;
             instance.tiltSpeed =  source._TiltSpeed;
@@ -14187,10 +14370,11 @@ namespace ReactiveRTM.RTC
         }
         public PanTiltState ()
         {
+            //TODO: 初期化
         }
         public PanTiltState (global::RTC.PanTiltState source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Angles = new ReactiveRTM.RTC.PanTiltAngles(source.angles);
             _PanSpeed = source.panSpeed;
             _TiltSpeed = source.tiltSpeed;
@@ -14277,6 +14461,7 @@ namespace ReactiveRTM.RTC
         }
         public RangerGeometry ()
         {
+            //TODO: 初期化
         }
         public RangerGeometry (global::RTC.RangerGeometry source)
         {
@@ -14441,6 +14626,7 @@ namespace ReactiveRTM.RTC
         }
         public RangerConfig ()
         {
+            //TODO: 初期化
         }
         public RangerConfig (global::RTC.RangerConfig source)
         {
@@ -14496,10 +14682,10 @@ namespace ReactiveRTM.RTC
  
     public class RangeData : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -14564,7 +14750,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.RangeData (ReactiveRTM.RTC.RangeData source)
         {
             var instance = new global::RTC.RangeData();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.ranges =  source._Ranges.Select(x=>x).ToArray();
             instance.geometry =  ((global::RTC.RangerGeometry)((IStub)source._Geometry).GetTarget());
             instance.config =  ((global::RTC.RangerConfig)((IStub)source._Config).GetTarget());
@@ -14572,10 +14758,11 @@ namespace ReactiveRTM.RTC
         }
         public RangeData ()
         {
+            //TODO: 初期化
         }
         public RangeData (global::RTC.RangeData source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Ranges = source.ranges.Select(x=>x).ToList();
             _Geometry = new ReactiveRTM.RTC.RangerGeometry(source.geometry);
             _Config = new ReactiveRTM.RTC.RangerConfig(source.config);
@@ -14618,10 +14805,10 @@ namespace ReactiveRTM.RTC
  
     public class IntensityData : NotifyPropertyChangedBase
     {
-        private ReactiveRTM.RTC.Time _Tm;
+        private System.DateTime _Tm;
             
         ///<exclude/>
-        public ReactiveRTM.RTC.Time Tm
+        public System.DateTime Tm
         {
             get { return _Tm; }
             set 
@@ -14686,7 +14873,7 @@ namespace ReactiveRTM.RTC
         public static explicit operator global::RTC.IntensityData (ReactiveRTM.RTC.IntensityData source)
         {
             var instance = new global::RTC.IntensityData();
-            instance.tm =  ((global::RTC.Time)((IStub)source._Tm).GetTarget());
+            instance.tm =  Converter.DateTimeToRtcTime(source._Tm);
             instance.intensities =  source._Intensities.Select(x=>x).ToArray();
             instance.geometry =  ((global::RTC.RangerGeometry)((IStub)source._Geometry).GetTarget());
             instance.config =  ((global::RTC.RangerConfig)((IStub)source._Config).GetTarget());
@@ -14694,10 +14881,11 @@ namespace ReactiveRTM.RTC
         }
         public IntensityData ()
         {
+            //TODO: 初期化
         }
         public IntensityData (global::RTC.IntensityData source)
         {
-            _Tm = new ReactiveRTM.RTC.Time(source.tm);
+            _Tm = Converter.RtcTimeToDateTime(source.tm);
             _Intensities = source.intensities.Select(x=>x).ToList();
             _Geometry = new ReactiveRTM.RTC.RangerGeometry(source.geometry);
             _Config = new ReactiveRTM.RTC.RangerConfig(source.config);
@@ -14745,10 +14933,10 @@ namespace ReactiveRTM.RTM
  
     public class ModuleProfile : NotifyPropertyChangedBase
     {
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -14768,15 +14956,16 @@ namespace ReactiveRTM.RTM
         public static explicit operator global::RTM.ModuleProfile (ReactiveRTM.RTM.ModuleProfile source)
         {
             var instance = new global::RTM.ModuleProfile();
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public ModuleProfile ()
         {
+            //TODO: 初期化
         }
         public ModuleProfile (global::RTM.ModuleProfile source)
         {
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>
@@ -14810,10 +14999,10 @@ namespace ReactiveRTM.RTM
  
     public class ManagerProfile : NotifyPropertyChangedBase
     {
-        private List<ReactiveRTM.org.omg.SDOPackage.NameValue> _Properties;
+        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
             
         ///<exclude/>
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> Properties
+        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
         {
             get { return _Properties; }
             set 
@@ -14833,15 +15022,16 @@ namespace ReactiveRTM.RTM
         public static explicit operator global::RTM.ManagerProfile (ReactiveRTM.RTM.ManagerProfile source)
         {
             var instance = new global::RTM.ManagerProfile();
-            instance.properties =  source._Properties.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
             return instance;
         }
         public ManagerProfile ()
         {
+            //TODO: 初期化
         }
         public ManagerProfile (global::RTM.ManagerProfile source)
         {
-            _Properties = source.properties.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
         }
 
         ///<exclude/>

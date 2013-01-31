@@ -8,6 +8,135 @@ using ReactiveRTM.Corba;
 using ReactiveRTM.Generated;
 
  
+namespace ReactiveRTM.omg.org.CORBA
+{
+    public class TypeCodeStub : IStub, ReactiveRTM.omg.org.CORBA.TypeCode
+    {
+        private global::omg.org.CORBA.TypeCode _target;
+
+        public TypeCodeStub()
+        {
+        }
+
+        public TypeCodeStub(global::omg.org.CORBA.TypeCode target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.CORBA.TypeCode)target;
+        }
+
+ 
+        public System.Boolean Equal(ReactiveRTM.omg.org.CORBA.TypeCode tc)
+        {
+            var ret = _target.equal(((global::omg.org.CORBA.TypeCode)((IStub)tc).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean Equivalent(ReactiveRTM.omg.org.CORBA.TypeCode tc)
+        {
+            var ret = _target.equivalent(((global::omg.org.CORBA.TypeCode)((IStub)tc).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TypeCode GetCompactTypecode()
+        {
+            var ret = _target.get_compact_typecode();
+            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TCKind Kind()
+        {
+            var ret = _target.kind();
+            return (omg.org.CORBA.TCKind)ret;
+        }
+ 
+        public System.String Id()
+        {
+            var ret = _target.id();
+            return ret;
+        }
+ 
+        public System.String Name()
+        {
+            var ret = _target.name();
+            return ret;
+        }
+ 
+        public System.Int32 MemberCount()
+        {
+            var ret = _target.member_count();
+            return ret;
+        }
+ 
+        public System.String MemberName(System.Int32 index)
+        {
+            var ret = _target.member_name(index);
+            return ret;
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TypeCode MemberType(System.Int32 index)
+        {
+            var ret = _target.member_type(index);
+            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+        }
+ 
+        public System.Object MemberLabel(System.Int32 index)
+        {
+            var ret = _target.member_label(index);
+            return (System.Object)ret;
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TypeCode DiscriminatorType()
+        {
+            var ret = _target.discriminator_type();
+            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+        }
+ 
+        public System.Int32 DefaultIndex()
+        {
+            var ret = _target.default_index();
+            return ret;
+        }
+ 
+        public System.Int32 Length()
+        {
+            var ret = _target.length();
+            return ret;
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TypeCode ContentType()
+        {
+            var ret = _target.content_type();
+            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+        }
+ 
+        public System.Int16 MemberVisibility(System.Int32 index)
+        {
+            var ret = _target.member_visibility(index);
+            return ret;
+        }
+ 
+        public System.Int16 TypeModifier()
+        {
+            var ret = _target.type_modifier();
+            return ret;
+        }
+ 
+        public ReactiveRTM.omg.org.CORBA.TypeCode ConcreteBaseType()
+        {
+            var ret = _target.concrete_base_type();
+            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+        }
+    }
+}
+ 
 namespace ReactiveRTM.omg.org.RTC
 {
     public class ExecutionContextStub : IStub, ReactiveRTM.omg.org.RTC.ExecutionContext
@@ -1470,10 +1599,10 @@ namespace ReactiveRTM.omg.org.RTC
             return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList()
+        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
         {
             var ret = _target.get_status_list();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            return Converter.NVListToDictionary(ret);
         }
  
         public System.Object GetStatus(System.String nme)
@@ -2186,10 +2315,10 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList()
+        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
         {
             var ret = _target.get_status_list();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            return Converter.NVListToDictionary(ret);
         }
  
         public System.Object GetStatus(System.String nme)
@@ -2446,10 +2575,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetStatusList()
+        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
         {
             var ret = _target.get_status_list();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            return Converter.NVListToDictionary(ret);
         }
  
         public System.Object GetStatus(System.String nme)
@@ -2575,10 +2704,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.Parameter(x)).ToList();
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfigurationParameterValues()
+        public System.Collections.Generic.Dictionary<System.String,System.Object> GetConfigurationParameterValues()
         {
             var ret = _target.get_configuration_parameter_values();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            return Converter.NVListToDictionary(ret);
         }
  
         public System.Object GetConfigurationParameterValue(System.String name)
@@ -3924,10 +4053,10 @@ namespace ReactiveRTM.RTM
             return new ReactiveRTM.RTM.ManagerProfile(ret);
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.NameValue> GetConfiguration()
+        public System.Collections.Generic.Dictionary<System.String,System.Object> GetConfiguration()
         {
             var ret = _target.get_configuration();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.NameValue(x)).ToList();
+            return Converter.NVListToDictionary(ret);
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value)

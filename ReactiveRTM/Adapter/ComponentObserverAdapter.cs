@@ -17,11 +17,6 @@ namespace ReactiveRTM.Adapter
     {
         private Subject<UpdateStatus> _subject;
 
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
         public ComponentObserverImpl()
         {
 

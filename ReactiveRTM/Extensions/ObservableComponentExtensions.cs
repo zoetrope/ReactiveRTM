@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Extensions
 {

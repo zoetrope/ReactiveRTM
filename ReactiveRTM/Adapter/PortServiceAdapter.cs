@@ -23,12 +23,6 @@ namespace ReactiveRTM.Adapter
             _profile.PortRef = this;
         }
 
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
-
         public PortProfile GetPortProfile()
         {
             return _profile;

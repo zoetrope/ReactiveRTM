@@ -23,17 +23,17 @@ namespace ReactiveRTM.Core
         public ReactiveOutPort(string name)
             : base(name)
         {
-            var prof = new PortProfileHolder() { Name = name };
+            var prof = new PortProfile() { Name = name };
 
             var factory = new CdrSerializerFactory();
             _serializer = factory.GetSerializer<TDataType>();
 
-            prof.DataflowType = "push";
-            prof.SubscriptionType = "flush";
-            prof.InterfaceType = "corba_cdr";
+            prof.SetDataflowType("push");
+            prof.SetSubscriptionType("flush");
+            prof.SetInterfaceType("corba_cdr");
 
-            prof.PortType = PortType.DataOutPort;
-            prof.DataType = CorbaUtility.GetRepositoryId(typeof(TDataType));
+            prof.SetPortType(PortType.DataOutPort);
+            prof.SetDataType(CorbaUtility.GetRepositoryId(typeof(TDataType)));
                 
 
             Initialize(prof);

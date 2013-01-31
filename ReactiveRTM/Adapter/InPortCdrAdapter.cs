@@ -9,16 +9,11 @@ namespace ReactiveRTM.Adapter
 {
     public class DataReceivedEventArgs : EventArgs
     {
-        public byte[] Data { get; set; }
+        public List<byte> Data { get; set; }
     }
 
     public class InPortCdrImpl : InPortCdr
     {
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
         //ここにイベントを置く？
         public event EventHandler<DataReceivedEventArgs> DataReceived;
 
@@ -42,7 +37,7 @@ namespace ReactiveRTM.Adapter
     
     internal static class ReactiveComponentExtension
     {
-        internal static IObservable<byte[]> DataReceivedAsObservable(this InPortCdrAdapter target)
+        internal static IObservable<byte[]> DataReceivedAsObservable(this InPortCdr target)
         {
             return Observable.FromEvent<EventHandler<DataReceivedEventArgs>, DataReceivedEventArgs>(
                     h => (sender, e) => h(e),

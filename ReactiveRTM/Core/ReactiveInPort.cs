@@ -34,14 +34,14 @@ namespace ReactiveRTM.Core
                 .Select(x => _serializer.Deserialize(new MemoryStream(x)))
                 .Subscribe(x => _source.OnNext(x));
 
-            var prof = new PortProfileHolder() { Name = name };
+            var prof = new PortProfile() { Name = name };
 
-            prof.DataflowType = "push";
-            prof.SubscriptionType= "flush";
-            prof.InterfaceType= "corba_cdr";
+            prof.SetDataflowType ("push");
+            prof.SetSubscriptionType("flush");
+            prof.SetInterfaceType("corba_cdr");
 
-            prof.PortType = PortType.DataInPort;
-            prof.DataType = CorbaUtility.GetRepositoryId(typeof(TDataType));
+            prof.SetPortType(PortType.DataInPort);
+            prof.SetDataType(CorbaUtility.GetRepositoryId(typeof(TDataType)));
 
             Initialize(prof);
         }

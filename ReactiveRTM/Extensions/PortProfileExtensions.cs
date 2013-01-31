@@ -15,113 +15,75 @@ namespace ReactiveRTM.Core
         ServiceProvider,
         ServiceConsumer
     }
-    public class PortProfileHolder
+    public static class PortProfileExtensions
     {
-
-        private PortProfile _profile;
-
-        public PortProfileHolder()
+        public static string GetDataType(this PortProfile profile)
         {
-            _profile.connector_profiles = new ConnectorProfile[0];
-            _profile.interfaces = new PortInterfaceProfile[0];
-            _profile.properties = new NameValue[0];
-        }
+            var portType = profile.Properties["port.port_type"] as string;
 
-        public PortProfileHolder(PortProfile prof)
-        {
-            _profile = prof;
-        }
-
-        public string Name
-        {
-            get { return _profile.name; }
-            set { _profile.name = value; }
-        }
-        public RTObject Owner
-        {
-            get { return _profile.owner; }
-            set { _profile.owner = value; }
-        }
-        public PortService PortRef
-        {
-            get { return _profile.port_ref; }
-            set { _profile.port_ref = value; }
-        }
-
-        public List<ConnectorProfile> ConnectorProfiles {
-            get { return _profile.connector_profiles.Select(x => new ConnectorProfile(x)).ToList(); }
-        }
-
-        public string DataType
-        {
-            get
+            switch (portType)
             {
-                var portType = _profile.properties.GetStringValue("port.port_type");
-
-                switch (portType)
-                {
-                    case "DataInPort":
-                        return _profile.properties.GetStringValue("dataport.data_type");
-                    case "DataOutPort":
-                        return _profile.properties.GetStringValue("dataport.data_type");
-                    case "CorbaPort":
-                        return _profile.interfaces.First().type_name;
-                    default:
-                        throw new ArgumentException();
-                }
-            }
-            set {
-                NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.data_type", value);
+                case "DataInPort":
+                    return profile.Properties["dataport.data_type"] as string;
+                case "DataOutPort":
+                    return profile.Properties["dataport.data_type"] as string;
+                case "CorbaPort":
+                    return profile.Interfaces.First().TypeName;
+                default:
+                    throw new ArgumentException();
             }
         }
-
-        public PortType PortType
+        public static void SetDataType(this PortProfile profile, string value)
         {
-            get
-            {
-                var portType = _profile.properties.GetStringValue("port.port_type");
-
-                switch (portType)
-                {
-                    case "DataInPort":
-                        return PortType.DataInPort;
-                    case "DataOutPort":
-                        return PortType.DataOutPort;
-                    case "CorbaPort":
-                        switch (_profile.interfaces.First().polarity)
-                        {
-                            case PortInterfacePolarity.PROVIDED:
-                                return PortType.ServiceProvider;
-                            case PortInterfacePolarity.REQUIRED:
-                                return PortType.ServiceConsumer;
-                            default:
-                                throw new ArgumentException();
-                        }
-                    default:
-                        throw new ArgumentException();
-                }
-            }
-            set
-            {
-                string portType;
-                switch (value)
-                {
-                    case PortType.DataInPort:
-                        portType = "DataInPort";
-                        break;
-                    case PortType.DataOutPort:
-                        portType = "DataOutPort";
-                        break;
-                    default:
-                        throw new InvalidParameter();
-                }
-                NameValueExtensions.AddStringValue(ref _profile.properties, "port.port_type", portType);
-            }
+            profile.Properties["dataport.data_type"] = value;
         }
 
-        public PortType GetPartnerType()
+
+        public static PortType GetPortType(this PortProfile profile)
         {
-            PortType type = PortType;
+            var portType = profile.Properties["port.port_type"] as string;
+
+            switch (portType)
+            {
+                case "DataInPort":
+                    return PortType.DataInPort;
+                case "DataOutPort":
+                    return PortType.DataOutPort;
+                case "CorbaPort":
+                    switch (profile.Interfaces.First().Polarity)
+                    {
+                        case PortInterfacePolarity.PROVIDED:
+                            return PortType.ServiceProvider;
+                        case PortInterfacePolarity.REQUIRED:
+                            return PortType.ServiceConsumer;
+                        default:
+                            throw new ArgumentException();
+                    }
+                default:
+                    throw new ArgumentException();
+            }
+        }
+        public static void SetPortType(this PortProfile profile, PortType value)
+        {
+            string portType;
+            switch (value)
+            {
+                case PortType.DataInPort:
+                    portType = "DataInPort";
+                    break;
+                case PortType.DataOutPort:
+                    portType = "DataOutPort";
+                    break;
+                default:
+                    throw new ArgumentException();
+            }
+            profile.Properties["port.port_type"] = portType;
+        }
+
+
+        public static PortType GetPartnerType(this PortProfile profile)
+        {
+            PortType type = profile.GetPortType();
 
             switch (type)
             {
@@ -141,27 +103,33 @@ namespace ReactiveRTM.Core
             throw new ArgumentException();
         }
 
-        public string SubscriptionType
+        public static string GetSubscriptionType(this PortProfile profile)
         {
-            get { return _profile.properties.GetStringValue("dataport.subscription_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.subscription_type", value); }
+            return profile.Properties["dataport.subscription_type"] as string;
         }
-        public string DataflowType
+        public static void SetSubscriptionType(this PortProfile profile, string value)
         {
-            get { return _profile.properties.GetStringValue("dataport.dataflow_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.dataflow_type", value); }
-        }
-        public string InterfaceType
-        {
-            get { return _profile.properties.GetStringValue("dataport.interface_type"); }
-            set { NameValueExtensions.AddStringValue(ref _profile.properties, "dataport.interface_type", value); }
+            profile.Properties["dataport.subscription_type"] = value;
         }
 
-
-        internal PortProfile GetPortProfile()
+        public static string GetDataflowType(this PortProfile profile)
         {
-            return _profile;
+            return profile.Properties["dataport.dataflow_type"] as string;
         }
+        public static void SetDataflowType(this PortProfile profile, string value)
+        {
+            profile.Properties["dataport.dataflow_type"] = value;
+        }
+
+        public static string GetInterfaceType(this PortProfile profile)
+        {
+            return profile.Properties["dataport.interface_type"] as string;
+        }
+        public static void SetInterfaceType(this PortProfile profile, string value)
+        {
+            profile.Properties["dataport.interface_type"] = value;
+        }
+
 
     }
 }

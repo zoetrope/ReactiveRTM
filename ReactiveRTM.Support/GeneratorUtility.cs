@@ -74,6 +74,7 @@ namespace ReactiveRTM.Support
                 return GetIiopName(type.GetElementType());
             }
             if (IsPrimitive(type)) return type.FullName;
+            
             return "global::" + type.FullName;
         }
 
@@ -87,6 +88,7 @@ namespace ReactiveRTM.Support
         public static string GetFullDataName(Type type)
         {
             if (type == typeof(void)) return "void";
+
             if (type.IsByRef)
             {
                 return GetFullDataName(type.GetElementType());
@@ -104,9 +106,14 @@ namespace ReactiveRTM.Support
             }
             if (type.IsArray)
             {
+                if (type.GetElementType() == typeof(global::org.omg.SDOPackage.NameValue))
+                {
+                    return "System.Collections.Generic.Dictionary<System.String,System.Object>";
+                }
                 return "List<" + GetFullRefTypeName(type.GetElementType()) + ">";
             }
 
+            if (type == typeof(RTC.Time)) return typeof(DateTime).FullName;
             if (IsPrimitive(type)) return type.FullName;
             if (IsEnum(type) || IsStruct(type)) return GetFullDataName(type);
             if (IsInterface(type)) return GetFullName(type);
@@ -123,11 +130,15 @@ namespace ReactiveRTM.Support
             }
             if (type.IsArray)
             {
-                return name + ".Select(x=>" +  ToIiop(type.GetElementType(), "x") + ").ToArray()";
+                if (type.GetElementType() == typeof(global::org.omg.SDOPackage.NameValue))
+                {
+                    return "Converter.DictionaryToNVList(" + name + ")";
+                }
+                return name + ".Select(x=>" + ToIiop(type.GetElementType(), "x") + ").ToArray()";
             }
 
+            if (type == typeof(RTC.Time)) return "Converter.DateTimeToRtcTime(" + name + ")";
             if (IsPrimitive(type)) return name;
-
             if (IsStruct(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
             if (IsInterface(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
 
@@ -146,11 +157,15 @@ namespace ReactiveRTM.Support
 
             if (type.IsArray)
             {
+                if (type.GetElementType() == typeof(global::org.omg.SDOPackage.NameValue))
+                {
+                    return "Converter.NVListToDictionary(" + name + ")";
+                }
                 return name + ".Select(x=>" + FromIiop(type.GetElementType(), "x") + ").ToList()";
             }
 
             if (IsPrimitive(type)) return name;
-
+            if (type == typeof(RTC.Time)) return "Converter.RtcTimeToDateTime(" + name + ")";
             if (IsStruct(type)) return "new " + GetFullDataName(type) + "(" + name + ")";
             if (IsInterface(type)) return "new " + GetFullName(type) + "Stub(" + name + ")";
 

@@ -20,9 +20,9 @@ namespace ReactiveRTM.Core
             Name = name;
         }
 
-        public void Initialize(PortProfileHolder prof)
+        public void Initialize(PortProfile prof)
         {
-            PortService = new PortServiceAdapter(this, prof);
+            PortService = new PortServiceImpl(this, prof);
         }
 
         public string Name { get; set; }
@@ -32,10 +32,10 @@ namespace ReactiveRTM.Core
             var prof = new ConnectorProfile();
             prof.Ports.Add(PortService);
             prof.Name = "dummy"; //名前見直し？
-            prof.ConnectorID = "";
-            prof.DataFlowType="push";
-            prof.InterfaceType= "corba_cdr";
-            prof.SubscriptionType="flush";
+            prof.ConnectorId = "";
+            prof.SetDataFlowType("push");
+            prof.SetInterfaceType("corba_cdr");
+            prof.SetSubscriptionType("flush");
         }
 
         public void SetOwner(DataFlowComponent comp)
