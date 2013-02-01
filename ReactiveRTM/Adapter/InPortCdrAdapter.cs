@@ -37,13 +37,13 @@ namespace ReactiveRTM.Adapter
     
     internal static class ReactiveComponentExtension
     {
-        internal static IObservable<byte[]> DataReceivedAsObservable(this InPortCdr target)
+        internal static IObservable<List<byte>> DataReceivedAsObservable(this InPortCdrImpl target)
         {
-            return Observable.FromEvent<EventHandler<DataReceivedEventArgs>, DataReceivedEventArgs>(
-                    h => (sender, e) => h(e),
+            return Observable.FromEventPattern<EventHandler<DataReceivedEventArgs>, DataReceivedEventArgs>(
+                    h => h.Invoke,
                     h => target.DataReceived += h,
                     h => target.DataReceived -= h)
-                .Select(e => e.Data);
+                .Select(e => e.EventArgs.Data);
         }
 
     }

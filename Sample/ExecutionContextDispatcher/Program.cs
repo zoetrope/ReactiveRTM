@@ -7,10 +7,10 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using System.Threading;
-using RTC;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 /// <summary>
 /// 実行スレッドを実行コンテキストのスレッドに切り替えるサンプル
@@ -28,7 +28,7 @@ class Program
 
         foreach (var i in Enumerable.Range(0,1000))
         {
-            subject.OnNext(new TimedLong(new Time(), i));
+            subject.OnNext(new TimedLong() { Tm = DateTime.Now, Data = i });
             Thread.Sleep(500);
         }
         

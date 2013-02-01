@@ -50,7 +50,7 @@ namespace <#= x.Namespace #>
             get { return _<#= prop.Name #>; }
             set 
             {
-                if(_<#= prop.Name #> != value)
+                if(!_<#= prop.Name #>.<#= prop.EqualsMethod #>(value))
                 {
                     _<#= prop.Name #>  = value;
                     RaisePropertyChanged("<#= prop.Name #>");
@@ -87,8 +87,7 @@ namespace <#= x.Namespace #>
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return <# for(var i = 0; i < ct.PropertyTemplates.Length; i++) {#><#= i==0? "" : " && " #>other._<#= ct.PropertyTemplates[i].Name #>.Equals(_<#= ct.PropertyTemplates[i].Name #>)<# } #>;
+            return <# for(var i = 0; i < ct.PropertyTemplates.Length; i++) {#><#= i==0? "" : " && " #>other._<#= ct.PropertyTemplates[i].Name #>.<#= ct.PropertyTemplates[i].EqualsMethod #>(_<#= ct.PropertyTemplates[i].Name #>)<# } #>;
         }
         ///<exclude/>
         public override bool Equals(object obj)

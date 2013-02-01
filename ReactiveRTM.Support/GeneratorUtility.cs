@@ -94,6 +94,7 @@ namespace ReactiveRTM.Support
                 return GetFullDataName(type.GetElementType());
             }
             if (IsPrimitive(type)) return type.FullName;
+            if (IsUnion(type)) return GetIiopName(type);
             return Join(BaseNamespace, type.FullName);
         }
 
@@ -108,8 +109,9 @@ namespace ReactiveRTM.Support
             {
                 if (type.GetElementType() == typeof(global::org.omg.SDOPackage.NameValue))
                 {
-                    return "System.Collections.Generic.Dictionary<System.String,System.Object>";
+                    return "Dictionary<string,object>";
                 }
+                //return "ObservableCollection<" + GetFullRefTypeName(type.GetElementType()) + ">";
                 return "List<" + GetFullRefTypeName(type.GetElementType()) + ">";
             }
 
@@ -117,8 +119,16 @@ namespace ReactiveRTM.Support
             if (IsPrimitive(type)) return type.FullName;
             if (IsEnum(type) || IsStruct(type)) return GetFullDataName(type);
             if (IsInterface(type)) return GetFullName(type);
+            if (IsUnion(type)) return GetIiopName(type);
 
             return typeof(object).FullName;
+        }
+
+
+        public static string GetEqualsMethod(Type type)
+        {
+            if (type.IsArray) return "SequenceEqual";
+            return "Equals";
         }
         
         public static string ToIiop(Type type, string name)
@@ -141,6 +151,7 @@ namespace ReactiveRTM.Support
             if (IsPrimitive(type)) return name;
             if (IsStruct(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
             if (IsInterface(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
+            if (IsUnion(type)) return name;
 
             //if (IsEnum(type)) 
             return "(" + GetIiopName(type) + ")" + name;
@@ -161,13 +172,14 @@ namespace ReactiveRTM.Support
                 {
                     return "Converter.NVListToDictionary(" + name + ")";
                 }
-                return name + ".Select(x=>" + FromIiop(type.GetElementType(), "x") + ").ToList()";
+                return name + ".Select(x => (" + GetFullRefTypeName(type.GetElementType()) + ")" + FromIiop(type.GetElementType(), "x") + ").ToList()";
             }
 
             if (IsPrimitive(type)) return name;
             if (type == typeof(RTC.Time)) return "Converter.RtcTimeToDateTime(" + name + ")";
             if (IsStruct(type)) return "new " + GetFullDataName(type) + "(" + name + ")";
             if (IsInterface(type)) return "new " + GetFullName(type) + "Stub(" + name + ")";
+            if (IsUnion(type)) return name;
 
             //if (IsEnum(type)) 
             return "(" + type.FullName + ")" + name;

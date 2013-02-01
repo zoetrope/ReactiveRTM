@@ -2,7 +2,6 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Codeplex.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Core;
 

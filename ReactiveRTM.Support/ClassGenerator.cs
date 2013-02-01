@@ -37,6 +37,7 @@ namespace ReactiveRTM.Support
             public string IiopClassName { get; set; }
             public InterfaceTemplate[] Parents { get; set; }
             public MethodTemplate[] MethodTemplates { get; set; }
+            public MethodTemplate[] AllMethodTemplates { get; set; }
 
             public ClassTemplate(Type type)
             {
@@ -52,34 +53,12 @@ namespace ReactiveRTM.Support
                     }).ToArray();
 
                 MethodTemplates = type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                    .Select(mi => new MethodTemplate(type, mi))
+                    .ToArray();
+
+                AllMethodTemplates = type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
                     .Concat(type.GetInterfaces().SelectMany(i => i.GetMethods(BindingFlags.Public | BindingFlags.Instance)))
-                    .Select(mi => new MethodTemplate
-                    {
-                        Name = GeneratorUtility.SnakeCaseToCamelCase(mi.Name),
-                        ReturnType = GU.GetFullRefTypeName(mi.ReturnType),
-                        DecArgs = string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.GetFullRefTypeName(p.ParameterType) + " " + GU.SnakeCaseToCamelCase(p.Name,false))),
-
-                        ExtReturnType = GetExtReturnType(mi),
-                        ExtDecArgs = string.Join(",", new[] { "this " + type.Name + " target" }.Concat(mi.GetParameters().Select(p => GU.GetFullRefTypeName(p.ParameterType) + " " + GU.SnakeCaseToCamelCase(p.Name, false)))),
-
-                        IiopName = mi.Name,
-                        IiopReturnType = GU.GetIiopName(mi.ReturnType),
-                        IiopDecArgs = string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.GetIiopName(p.ParameterType) + " " + p.Name)),
-                        
-                        StubBeforeCall = mi.GetParameters().Where(p=>p.IsOut || p.ParameterType.IsByRef).Select(p=> "var tmp" + p.Name + " = " + GU.ToIiop(p.ParameterType, p.Name)).ToArray(),
-                        StubCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "_target." + mi.Name + "(" + GetStubCallArgs(mi) + ");",
-                        StubAfterCall = mi.GetParameters().Where(p=>p.IsOut || p.ParameterType.IsByRef).Select(p=> p.Name + " = " + GU.FromIiop(p.ParameterType, "tmp"+p.Name)).ToArray(),
-                        StubReturnValue = "return" + (mi.ReturnType == typeof(void) ? "" : " " + GU.FromIiop(mi.ReturnType, "ret")) + ";",
-                        
-                        AdapterBeforeCall = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef).Select(p => "var tmp" + p.Name + " = " + GU.FromIiop(p.ParameterType, p.Name)).ToArray(),
-                        AdapterCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "_target." + GU.SnakeCaseToCamelCase(mi.Name) + "(" + GetAdapterCallArgs(mi) + ");",
-                        AdapterAfterCall = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef).Select(p => p.Name + " = " + GU.ToIiop(p.ParameterType, "tmp" + p.Name)).ToArray(),
-                        AdapterReturnValue = "return" + (mi.ReturnType == typeof(void) ? "" : " " + GU.ToIiop(mi.ReturnType, "ret")) + ";",
-
-                        ExtCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "target." + GU.SnakeCaseToCamelCase(mi.Name) + "(" + GetExtCallArgs(mi) + ");",
-                        ExtReturnValue = GetExtReturnValue(mi),
-                        
-                    })
+                    .Select(mi => new MethodTemplate(type, mi))
                     .ToArray();
             }
 
@@ -89,77 +68,6 @@ namespace ReactiveRTM.Support
                 public string IiopName { get; set; }
             }
             
-            private static string GetAdapterCallArgs(MethodInfo mi)
-            {
-                return string.Join(",", mi.GetParameters()
-                    .Select(p =>
-                    {
-                        if (p.IsOut)
-                        {
-                            return "out tmp" + p.Name;
-                        }
-                        else if (p.ParameterType.IsByRef)
-                        {
-                            return "ref tmp" + p.Name;
-                        }
-                        else
-                        {
-                            return GU.FromIiop(p.ParameterType, p.Name);
-                        }
-                    }));
-            }
-            private static string GetStubCallArgs(MethodInfo mi)
-            {
-                return string.Join(",", mi.GetParameters()
-                    .Select(p =>
-                    {
-                        if (p.IsOut)
-                        {
-                            return "out tmp" + p.Name;
-                        }
-                        else if (p.ParameterType.IsByRef)
-                        {
-                            return "ref tmp" + p.Name;
-                        }
-                        else
-                        {
-                            return GU.ToIiop(p.ParameterType, GU.SnakeCaseToCamelCase(p.Name, false));
-                        }
-                    }));
-            }
-            private static string GetExtReturnType(MethodInfo mi)
-            {
-                var refParams = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef);
-                if (refParams.Any())
-                {
-                    return "Task<Tuple<" + 
-                        (mi.ReturnType == typeof(void) ? "" : GU.GetFullRefTypeName(mi.ReturnType) + ",")
-                        + string.Join(",", refParams.Select(p => GU.GetFullRefTypeName(p.ParameterType))) + ">>";
-                }
-                else
-                {
-                    return mi.ReturnType == typeof(void) ? "Task" : "Task<" + GU.GetFullRefTypeName(mi.ReturnType) + ">";
-                }
-                
-            }
-            
-            private static string GetExtCallArgs(MethodInfo mi)
-            {
-                return string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.SnakeCaseToCamelCase(p.Name, false)));
-            }
-
-            private static string GetExtReturnValue(MethodInfo mi)
-            {
-                var refParams = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef);
-                if (refParams.Any())
-                {
-                    return "return Tuple.Create(" + (mi.ReturnType == typeof(void) ? "" : "ret,") + string.Join(",", refParams.Select(p => GU.SnakeCaseToCamelCase(p.Name, false))) + ");";
-                }
-                else
-                {
-                    return "return" + (mi.ReturnType == typeof(void) ? "" : " ret") + ";";
-                }
-            }
         }
 
         public class MethodTemplate
@@ -188,6 +96,120 @@ namespace ReactiveRTM.Support
 
             public string ExtCallMethod { get; set; }
             public string ExtReturnValue { get; set; }
+
+            public MethodTemplate(Type type, MethodInfo mi)
+            {
+                
+                        Name = GeneratorUtility.SnakeCaseToCamelCase(mi.Name);
+                        ReturnType = GU.GetFullRefTypeName(mi.ReturnType);
+                        DecArgs = string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.GetFullRefTypeName(p.ParameterType) + " " + GU.SnakeCaseToCamelCase(p.Name,false)));
+            
+                        ExtReturnType = GetExtReturnType(mi);
+                        ExtDecArgs = string.Join(",", new[] { "this " + type.Name + " target" }.Concat(mi.GetParameters().Select(p => GU.GetFullRefTypeName(p.ParameterType) + " " + GU.SnakeCaseToCamelCase(p.Name, false))));
+
+                        IiopName = mi.Name;
+                        IiopReturnType = GU.GetIiopName(mi.ReturnType);
+                        IiopDecArgs = string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.GetIiopName(p.ParameterType) + " " + p.Name));
+                        
+                        StubBeforeCall = mi.GetParameters().Where(p=>p.IsOut || p.ParameterType.IsByRef).Select(p=>{
+                            if(p.IsOut){
+                                return GU.GetIiopName(p.ParameterType) + " tmp" +  GU.SnakeCaseToCamelCase(p.Name,false);
+                            }
+                            else{
+                                return "var tmp" +  GU.SnakeCaseToCamelCase(p.Name,false) + " = " + GU.ToIiop(p.ParameterType,  GU.SnakeCaseToCamelCase(p.Name,false));
+                            }
+                        }).ToArray();
+                        StubCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "_target." + mi.Name + "(" + GetStubCallArgs(mi) + ");";
+                        StubAfterCall = mi.GetParameters().Where(p=>p.IsOut || p.ParameterType.IsByRef).Select(p=> GU.SnakeCaseToCamelCase(p.Name,false) + " = " + GU.FromIiop(p.ParameterType, "tmp"+GU.SnakeCaseToCamelCase(p.Name,false))).ToArray();
+                        StubReturnValue = "return" + (mi.ReturnType == typeof(void) ? "" : " " + GU.FromIiop(mi.ReturnType, "ret")) + ";";
+
+                        AdapterBeforeCall = mi.GetParameters().Where(p => p.ParameterType.IsByRef).Select(p => {
+                            if(p.IsOut){
+                                return GU.GetFullRefTypeName(p.ParameterType) + " tmp" + p.Name;
+                            }
+                            else{
+                                return "var tmp" + p.Name + " = " + GU.FromIiop(p.ParameterType, p.Name);
+                            }
+                        }).ToArray();
+                        AdapterCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "_target." + GU.SnakeCaseToCamelCase(mi.Name) + "(" + GetAdapterCallArgs(mi) + ");";
+                        AdapterAfterCall = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef).Select(p => p.Name + " = " + GU.ToIiop(p.ParameterType, "tmp" + p.Name)).ToArray();
+                        AdapterReturnValue = "return" + (mi.ReturnType == typeof(void) ? "" : " " + GU.ToIiop(mi.ReturnType, "ret")) + ";";
+
+                        ExtCallMethod = (mi.ReturnType == typeof(void) ? "" : "var ret = ") + "target." + GU.SnakeCaseToCamelCase(mi.Name) + "(" + GetExtCallArgs(mi) + ");";
+                        ExtReturnValue = GetExtReturnValue(mi);
+            }
+
+            private static string GetAdapterCallArgs(MethodInfo mi)
+            {
+                return string.Join(",", mi.GetParameters()
+                    .Select(p =>
+                    {
+                        if (p.IsOut)
+                        {
+                            return "out tmp" + p.Name;
+                        }
+                        else if (p.ParameterType.IsByRef)
+                        {
+                            return "ref tmp" + p.Name;
+                        }
+                        else
+                        {
+                            return GU.FromIiop(p.ParameterType, p.Name);
+                        }
+                    }));
+            }
+            private static string GetStubCallArgs(MethodInfo mi)
+            {
+                return string.Join(",", mi.GetParameters()
+                    .Select(p =>
+                    {
+                        if (p.IsOut)
+                        {
+                            return "out tmp" + GU.SnakeCaseToCamelCase(p.Name,false);
+                        }
+                        else if (p.ParameterType.IsByRef)
+                        {
+                            return "ref tmp" + GU.SnakeCaseToCamelCase(p.Name,false);
+                        }
+                        else
+                        {
+                            return GU.ToIiop(p.ParameterType, GU.SnakeCaseToCamelCase(p.Name, false));
+                        }
+                    }));
+            }
+            private static string GetExtReturnType(MethodInfo mi)
+            {
+                var refParams = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef);
+                if (refParams.Any())
+                {
+                    return "Task<Tuple<" +
+                        (mi.ReturnType == typeof(void) ? "" : GU.GetFullRefTypeName(mi.ReturnType) + ",")
+                        + string.Join(",", refParams.Select(p => GU.GetFullRefTypeName(p.ParameterType))) + ">>";
+                }
+                else
+                {
+                    return mi.ReturnType == typeof(void) ? "Task" : "Task<" + GU.GetFullRefTypeName(mi.ReturnType) + ">";
+                }
+
+            }
+
+            private static string GetExtCallArgs(MethodInfo mi)
+            {
+                return string.Join(",", mi.GetParameters().Select(p => (p.IsOut ? "out " : p.ParameterType.IsByRef ? "ref " : "") + GU.SnakeCaseToCamelCase(p.Name, false)));
+            }
+
+            private static string GetExtReturnValue(MethodInfo mi)
+            {
+                var refParams = mi.GetParameters().Where(p => p.IsOut || p.ParameterType.IsByRef);
+                if (refParams.Any())
+                {
+                    return "return Tuple.Create(" + (mi.ReturnType == typeof(void) ? "" : "ret,") + string.Join(",", refParams.Select(p => GU.SnakeCaseToCamelCase(p.Name, false))) + ");";
+                }
+                else
+                {
+                    return "return" + (mi.ReturnType == typeof(void) ? "" : " ret") + ";";
+                }
+            }
         }
 
     }

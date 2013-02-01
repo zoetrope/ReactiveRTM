@@ -8,8 +8,8 @@ using Microsoft.Reactive.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
 using System.Reactive.Threading.Tasks;
+using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Test
 {

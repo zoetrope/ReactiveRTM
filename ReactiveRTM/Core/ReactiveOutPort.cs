@@ -5,13 +5,13 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
-using Codeplex.Data;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.OpenRTM;
 using ReactiveRTM.RTC;
 using ReactiveRTM.omg.org.RTC;
+using Newtonsoft.Json.Linq;
 
 namespace ReactiveRTM.Core
 {
@@ -70,14 +70,14 @@ namespace ReactiveRTM.Core
 
         public override ReturnCode_t Connect(ConnectorProfile connectorProfile)
         {
-            var ior = connectorProfile.InPortIor;
+            var ior = connectorProfile.GetInPortIor();
             var proxy = CorbaUtility.ToObject<InPortCdr>(ior);
 
             var observer = Observer.Create((TDataType data) =>
             {
                 var stream = new MemoryStream();
                 _serializer.Serialize(data, stream);
-                proxy.Put(stream.ToArray());
+                proxy.Put(stream.ToArray().ToList());
             });
 
             _observers.Add(observer);
@@ -117,7 +117,7 @@ namespace ReactiveRTM.Core
         
         public void Write(object data)
         {
-            var json = DynamicJson.Serialize(data);
+            var json = JObject.FromObject(data).ToString();
 
             TimedWString ts = new TimedWString();
             ts.Data = json;
@@ -127,7 +127,7 @@ namespace ReactiveRTM.Core
         
         public void WriteAsync(object data)
         {
-            var json = DynamicJson.Serialize(data);
+            var json = JObject.FromObject(data).ToString();
 
             TimedWString ts = new TimedWString();
             ts.Data = json;

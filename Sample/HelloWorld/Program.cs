@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ReactiveRTM;
 using ReactiveRTM.Core;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// 周期的にHello Worldを表示するサンプル

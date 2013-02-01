@@ -57,7 +57,8 @@ namespace ReactiveRTM.Support
                         Name = GU.SnakeCaseToCamelCase(a.Name),
                         TypeName = GU.GetFullRefTypeName(a.FieldType),
                         IiopName = a.Name,
-                        IiopTypeName = GU.GetIiopName(a.FieldType)
+                        IiopTypeName = GU.GetIiopName(a.FieldType),
+                        EqualsMethod = GU.GetEqualsMethod(a.FieldType)
                     })
                     .ToArray();
             }
@@ -72,6 +73,8 @@ namespace ReactiveRTM.Support
 
             public string IiopName { get; set; }
             public string IiopTypeName { get; set; }
+            
+            public string EqualsMethod { get; set; }
         }
 
         public class EnumTemplate

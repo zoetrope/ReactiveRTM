@@ -93,7 +93,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _InstanceName; }
             set 
             {
-                if(_InstanceName != value)
+                if(!_InstanceName.Equals(value))
                 {
                     _InstanceName  = value;
                     RaisePropertyChanged("InstanceName");
@@ -108,7 +108,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _TypeName; }
             set 
             {
-                if(_TypeName != value)
+                if(!_TypeName.Equals(value))
                 {
                     _TypeName  = value;
                     RaisePropertyChanged("TypeName");
@@ -123,7 +123,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Polarity; }
             set 
             {
-                if(_Polarity != value)
+                if(!_Polarity.Equals(value))
                 {
                     _Polarity  = value;
                     RaisePropertyChanged("Polarity");
@@ -159,7 +159,6 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Polarity.Equals(_Polarity);
         }
         ///<exclude/>
@@ -197,7 +196,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Name; }
             set 
             {
-                if(_Name != value)
+                if(!_Name.Equals(value))
                 {
                     _Name  = value;
                     RaisePropertyChanged("Name");
@@ -212,7 +211,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _ConnectorId; }
             set 
             {
-                if(_ConnectorId != value)
+                if(!_ConnectorId.Equals(value))
                 {
                     _ConnectorId  = value;
                     RaisePropertyChanged("ConnectorId");
@@ -227,22 +226,22 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Ports; }
             set 
             {
-                if(_Ports != value)
+                if(!_Ports.SequenceEqual(value))
                 {
                     _Ports  = value;
                     RaisePropertyChanged("Ports");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -271,7 +270,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             _Name = source.name;
             _ConnectorId = source.connector_id;
-            _Ports = source.ports.Select(x=>new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
+            _Ports = source.ports.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
             _Properties = Converter.NVListToDictionary(source.properties);
         }
 
@@ -280,8 +279,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Name.Equals(_Name) && other._ConnectorId.Equals(_ConnectorId) && other._Ports.Equals(_Ports) && other._Properties.Equals(_Properties);
+            return other._Name.Equals(_Name) && other._ConnectorId.Equals(_ConnectorId) && other._Ports.SequenceEqual(_Ports) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -320,7 +318,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Name; }
             set 
             {
-                if(_Name != value)
+                if(!_Name.Equals(value))
                 {
                     _Name  = value;
                     RaisePropertyChanged("Name");
@@ -335,7 +333,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Interfaces; }
             set 
             {
-                if(_Interfaces != value)
+                if(!_Interfaces.SequenceEqual(value))
                 {
                     _Interfaces  = value;
                     RaisePropertyChanged("Interfaces");
@@ -350,7 +348,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _PortRef; }
             set 
             {
-                if(_PortRef != value)
+                if(!_PortRef.Equals(value))
                 {
                     _PortRef  = value;
                     RaisePropertyChanged("PortRef");
@@ -365,7 +363,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _ConnectorProfiles; }
             set 
             {
-                if(_ConnectorProfiles != value)
+                if(!_ConnectorProfiles.SequenceEqual(value))
                 {
                     _ConnectorProfiles  = value;
                     RaisePropertyChanged("ConnectorProfiles");
@@ -380,22 +378,22 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Owner; }
             set 
             {
-                if(_Owner != value)
+                if(!_Owner.Equals(value))
                 {
                     _Owner  = value;
                     RaisePropertyChanged("Owner");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -425,9 +423,9 @@ namespace ReactiveRTM.omg.org.RTC
         public PortProfile (global::omg.org.RTC.PortProfile source)
         {
             _Name = source.name;
-            _Interfaces = source.interfaces.Select(x=>new ReactiveRTM.omg.org.RTC.PortInterfaceProfile(x)).ToList();
+            _Interfaces = source.interfaces.Select(x => (ReactiveRTM.omg.org.RTC.PortInterfaceProfile)new ReactiveRTM.omg.org.RTC.PortInterfaceProfile(x)).ToList();
             _PortRef = new ReactiveRTM.omg.org.RTC.PortServiceStub(source.port_ref);
-            _ConnectorProfiles = source.connector_profiles.Select(x=>new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
+            _ConnectorProfiles = source.connector_profiles.Select(x => (ReactiveRTM.omg.org.RTC.ConnectorProfile)new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
             _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
             _Properties = Converter.NVListToDictionary(source.properties);
         }
@@ -437,8 +435,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Name.Equals(_Name) && other._Interfaces.Equals(_Interfaces) && other._PortRef.Equals(_PortRef) && other._ConnectorProfiles.Equals(_ConnectorProfiles) && other._Owner.Equals(_Owner) && other._Properties.Equals(_Properties);
+            return other._Name.Equals(_Name) && other._Interfaces.SequenceEqual(_Interfaces) && other._PortRef.Equals(_PortRef) && other._ConnectorProfiles.SequenceEqual(_ConnectorProfiles) && other._Owner.Equals(_Owner) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -481,7 +478,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Kind; }
             set 
             {
-                if(_Kind != value)
+                if(!_Kind.Equals(value))
                 {
                     _Kind  = value;
                     RaisePropertyChanged("Kind");
@@ -496,7 +493,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Rate; }
             set 
             {
-                if(_Rate != value)
+                if(!_Rate.Equals(value))
                 {
                     _Rate  = value;
                     RaisePropertyChanged("Rate");
@@ -511,7 +508,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Owner; }
             set 
             {
-                if(_Owner != value)
+                if(!_Owner.Equals(value))
                 {
                     _Owner  = value;
                     RaisePropertyChanged("Owner");
@@ -526,22 +523,22 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Participants; }
             set 
             {
-                if(_Participants != value)
+                if(!_Participants.SequenceEqual(value))
                 {
                     _Participants  = value;
                     RaisePropertyChanged("Participants");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -572,7 +569,7 @@ namespace ReactiveRTM.omg.org.RTC
             _Kind = (omg.org.RTC.ExecutionKind)source.kind;
             _Rate = source.rate;
             _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
-            _Participants = source.participants.Select(x=>new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
+            _Participants = source.participants.Select(x => (ReactiveRTM.omg.org.RTC.RTObject)new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
             _Properties = Converter.NVListToDictionary(source.properties);
         }
 
@@ -581,8 +578,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner.Equals(_Owner) && other._Participants.Equals(_Participants) && other._Properties.Equals(_Properties);
+            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner.Equals(_Owner) && other._Participants.SequenceEqual(_Participants) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -623,7 +619,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _ActionComponent; }
             set 
             {
-                if(_ActionComponent != value)
+                if(!_ActionComponent.Equals(value))
                 {
                     _ActionComponent  = value;
                     RaisePropertyChanged("ActionComponent");
@@ -638,7 +634,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Id; }
             set 
             {
-                if(_Id != value)
+                if(!_Id.Equals(value))
                 {
                     _Id  = value;
                     RaisePropertyChanged("Id");
@@ -672,7 +668,6 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._ActionComponent.Equals(_ActionComponent) && other._Id.Equals(_Id);
         }
         ///<exclude/>
@@ -708,7 +703,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _BehaviorProfiles; }
             set 
             {
-                if(_BehaviorProfiles != value)
+                if(!_BehaviorProfiles.SequenceEqual(value))
                 {
                     _BehaviorProfiles  = value;
                     RaisePropertyChanged("BehaviorProfiles");
@@ -732,7 +727,7 @@ namespace ReactiveRTM.omg.org.RTC
         }
         public FsmProfile (global::omg.org.RTC.FsmProfile source)
         {
-            _BehaviorProfiles = source.behavior_profiles.Select(x=>new ReactiveRTM.omg.org.RTC.FsmBehaviorProfile(x)).ToList();
+            _BehaviorProfiles = source.behavior_profiles.Select(x => (ReactiveRTM.omg.org.RTC.FsmBehaviorProfile)new ReactiveRTM.omg.org.RTC.FsmBehaviorProfile(x)).ToList();
         }
 
         ///<exclude/>
@@ -740,8 +735,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._BehaviorProfiles.Equals(_BehaviorProfiles);
+            return other._BehaviorProfiles.SequenceEqual(_BehaviorProfiles);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -774,7 +768,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _InstanceName; }
             set 
             {
-                if(_InstanceName != value)
+                if(!_InstanceName.Equals(value))
                 {
                     _InstanceName  = value;
                     RaisePropertyChanged("InstanceName");
@@ -789,7 +783,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _TypeName; }
             set 
             {
-                if(_TypeName != value)
+                if(!_TypeName.Equals(value))
                 {
                     _TypeName  = value;
                     RaisePropertyChanged("TypeName");
@@ -804,7 +798,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Description; }
             set 
             {
-                if(_Description != value)
+                if(!_Description.Equals(value))
                 {
                     _Description  = value;
                     RaisePropertyChanged("Description");
@@ -819,7 +813,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Version; }
             set 
             {
-                if(_Version != value)
+                if(!_Version.Equals(value))
                 {
                     _Version  = value;
                     RaisePropertyChanged("Version");
@@ -834,7 +828,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Vendor; }
             set 
             {
-                if(_Vendor != value)
+                if(!_Vendor.Equals(value))
                 {
                     _Vendor  = value;
                     RaisePropertyChanged("Vendor");
@@ -849,7 +843,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Category; }
             set 
             {
-                if(_Category != value)
+                if(!_Category.Equals(value))
                 {
                     _Category  = value;
                     RaisePropertyChanged("Category");
@@ -864,7 +858,7 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _PortProfiles; }
             set 
             {
-                if(_PortProfiles != value)
+                if(!_PortProfiles.SequenceEqual(value))
                 {
                     _PortProfiles  = value;
                     RaisePropertyChanged("PortProfiles");
@@ -879,22 +873,22 @@ namespace ReactiveRTM.omg.org.RTC
             get { return _Parent; }
             set 
             {
-                if(_Parent != value)
+                if(!_Parent.Equals(value))
                 {
                     _Parent  = value;
                     RaisePropertyChanged("Parent");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -932,7 +926,7 @@ namespace ReactiveRTM.omg.org.RTC
             _Version = source.version;
             _Vendor = source.vendor;
             _Category = source.category;
-            _PortProfiles = source.port_profiles.Select(x=>new ReactiveRTM.omg.org.RTC.PortProfile(x)).ToList();
+            _PortProfiles = source.port_profiles.Select(x => (ReactiveRTM.omg.org.RTC.PortProfile)new ReactiveRTM.omg.org.RTC.PortProfile(x)).ToList();
             _Parent = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.parent);
             _Properties = Converter.NVListToDictionary(source.properties);
         }
@@ -942,8 +936,7 @@ namespace ReactiveRTM.omg.org.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Description.Equals(_Description) && other._Version.Equals(_Version) && other._Vendor.Equals(_Vendor) && other._Category.Equals(_Category) && other._PortProfiles.Equals(_PortProfiles) && other._Parent.Equals(_Parent) && other._Properties.Equals(_Properties);
+            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Description.Equals(_Description) && other._Version.Equals(_Version) && other._Vendor.Equals(_Vendor) && other._Category.Equals(_Category) && other._PortProfiles.SequenceEqual(_PortProfiles) && other._Parent.Equals(_Parent) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1028,7 +1021,7 @@ namespace ReactiveRTM.OpenRTM
             get { return _Time; }
             set 
             {
-                if(_Time != value)
+                if(!_Time.Equals(value))
                 {
                     _Time  = value;
                     RaisePropertyChanged("Time");
@@ -1043,7 +1036,7 @@ namespace ReactiveRTM.OpenRTM
             get { return _Loggername; }
             set 
             {
-                if(_Loggername != value)
+                if(!_Loggername.Equals(value))
                 {
                     _Loggername  = value;
                     RaisePropertyChanged("Loggername");
@@ -1058,7 +1051,7 @@ namespace ReactiveRTM.OpenRTM
             get { return _Level; }
             set 
             {
-                if(_Level != value)
+                if(!_Level.Equals(value))
                 {
                     _Level  = value;
                     RaisePropertyChanged("Level");
@@ -1073,7 +1066,7 @@ namespace ReactiveRTM.OpenRTM
             get { return _Message; }
             set 
             {
-                if(_Message != value)
+                if(!_Message.Equals(value))
                 {
                     _Message  = value;
                     RaisePropertyChanged("Message");
@@ -1111,7 +1104,6 @@ namespace ReactiveRTM.OpenRTM
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Time.Equals(_Time) && other._Loggername.Equals(_Loggername) && other._Level.Equals(_Level) && other._Message.Equals(_Message);
         }
         ///<exclude/>
@@ -1180,7 +1172,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Name; }
             set 
             {
-                if(_Name != value)
+                if(!_Name.Equals(value))
                 {
                     _Name  = value;
                     RaisePropertyChanged("Name");
@@ -1195,7 +1187,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Value; }
             set 
             {
-                if(_Value != value)
+                if(!_Value.Equals(value))
                 {
                     _Value  = value;
                     RaisePropertyChanged("Value");
@@ -1229,7 +1221,6 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Name.Equals(_Name) && other._Value.Equals(_Value);
         }
         ///<exclude/>
@@ -1265,7 +1256,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _EnumeratedValues; }
             set 
             {
-                if(_EnumeratedValues != value)
+                if(!_EnumeratedValues.SequenceEqual(value))
                 {
                     _EnumeratedValues  = value;
                     RaisePropertyChanged("EnumeratedValues");
@@ -1289,7 +1280,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public EnumerationType (global::org.omg.SDOPackage.EnumerationType source)
         {
-            _EnumeratedValues = source.enumerated_values.Select(x=>x).ToList();
+            _EnumeratedValues = source.enumerated_values.Select(x => (System.String)x).ToList();
         }
 
         ///<exclude/>
@@ -1297,8 +1288,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._EnumeratedValues.Equals(_EnumeratedValues);
+            return other._EnumeratedValues.SequenceEqual(_EnumeratedValues);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1323,30 +1313,30 @@ namespace ReactiveRTM.org.omg.SDOPackage
  
     public class RangeType : NotifyPropertyChangedBase
     {
-        private System.Object _Min;
+        private global::org.omg.SDOPackage.Numeric _Min;
             
         ///<exclude/>
-        public System.Object Min
+        public global::org.omg.SDOPackage.Numeric Min
         {
             get { return _Min; }
             set 
             {
-                if(_Min != value)
+                if(!_Min.Equals(value))
                 {
                     _Min  = value;
                     RaisePropertyChanged("Min");
                 }
             }
         }
-        private System.Object _Max;
+        private global::org.omg.SDOPackage.Numeric _Max;
             
         ///<exclude/>
-        public System.Object Max
+        public global::org.omg.SDOPackage.Numeric Max
         {
             get { return _Max; }
             set 
             {
-                if(_Max != value)
+                if(!_Max.Equals(value))
                 {
                     _Max  = value;
                     RaisePropertyChanged("Max");
@@ -1361,7 +1351,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _MinInclusive; }
             set 
             {
-                if(_MinInclusive != value)
+                if(!_MinInclusive.Equals(value))
                 {
                     _MinInclusive  = value;
                     RaisePropertyChanged("MinInclusive");
@@ -1376,7 +1366,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _MaxInclusive; }
             set 
             {
-                if(_MaxInclusive != value)
+                if(!_MaxInclusive.Equals(value))
                 {
                     _MaxInclusive  = value;
                     RaisePropertyChanged("MaxInclusive");
@@ -1391,8 +1381,8 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public static explicit operator global::org.omg.SDOPackage.RangeType (ReactiveRTM.org.omg.SDOPackage.RangeType source)
         {
             var instance = new global::org.omg.SDOPackage.RangeType();
-            instance.min =  (global::org.omg.SDOPackage.Numeric)source._Min;
-            instance.max =  (global::org.omg.SDOPackage.Numeric)source._Max;
+            instance.min =  source._Min;
+            instance.max =  source._Max;
             instance.min_inclusive =  source._MinInclusive;
             instance.max_inclusive =  source._MaxInclusive;
             return instance;
@@ -1403,8 +1393,8 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public RangeType (global::org.omg.SDOPackage.RangeType source)
         {
-            _Min = (org.omg.SDOPackage.Numeric)source.min;
-            _Max = (org.omg.SDOPackage.Numeric)source.max;
+            _Min = source.min;
+            _Max = source.max;
             _MinInclusive = source.min_inclusive;
             _MaxInclusive = source.max_inclusive;
         }
@@ -1414,7 +1404,6 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive);
         }
         ///<exclude/>
@@ -1446,30 +1435,30 @@ namespace ReactiveRTM.org.omg.SDOPackage
  
     public class IntervalType : NotifyPropertyChangedBase
     {
-        private System.Object _Min;
+        private global::org.omg.SDOPackage.Numeric _Min;
             
         ///<exclude/>
-        public System.Object Min
+        public global::org.omg.SDOPackage.Numeric Min
         {
             get { return _Min; }
             set 
             {
-                if(_Min != value)
+                if(!_Min.Equals(value))
                 {
                     _Min  = value;
                     RaisePropertyChanged("Min");
                 }
             }
         }
-        private System.Object _Max;
+        private global::org.omg.SDOPackage.Numeric _Max;
             
         ///<exclude/>
-        public System.Object Max
+        public global::org.omg.SDOPackage.Numeric Max
         {
             get { return _Max; }
             set 
             {
-                if(_Max != value)
+                if(!_Max.Equals(value))
                 {
                     _Max  = value;
                     RaisePropertyChanged("Max");
@@ -1484,7 +1473,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _MinInclusive; }
             set 
             {
-                if(_MinInclusive != value)
+                if(!_MinInclusive.Equals(value))
                 {
                     _MinInclusive  = value;
                     RaisePropertyChanged("MinInclusive");
@@ -1499,22 +1488,22 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _MaxInclusive; }
             set 
             {
-                if(_MaxInclusive != value)
+                if(!_MaxInclusive.Equals(value))
                 {
                     _MaxInclusive  = value;
                     RaisePropertyChanged("MaxInclusive");
                 }
             }
         }
-        private System.Object _Step;
+        private global::org.omg.SDOPackage.Numeric _Step;
             
         ///<exclude/>
-        public System.Object Step
+        public global::org.omg.SDOPackage.Numeric Step
         {
             get { return _Step; }
             set 
             {
-                if(_Step != value)
+                if(!_Step.Equals(value))
                 {
                     _Step  = value;
                     RaisePropertyChanged("Step");
@@ -1529,11 +1518,11 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public static explicit operator global::org.omg.SDOPackage.IntervalType (ReactiveRTM.org.omg.SDOPackage.IntervalType source)
         {
             var instance = new global::org.omg.SDOPackage.IntervalType();
-            instance.min =  (global::org.omg.SDOPackage.Numeric)source._Min;
-            instance.max =  (global::org.omg.SDOPackage.Numeric)source._Max;
+            instance.min =  source._Min;
+            instance.max =  source._Max;
             instance.min_inclusive =  source._MinInclusive;
             instance.max_inclusive =  source._MaxInclusive;
-            instance._step =  (global::org.omg.SDOPackage.Numeric)source._Step;
+            instance._step =  source._Step;
             return instance;
         }
         public IntervalType ()
@@ -1542,11 +1531,11 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public IntervalType (global::org.omg.SDOPackage.IntervalType source)
         {
-            _Min = (org.omg.SDOPackage.Numeric)source.min;
-            _Max = (org.omg.SDOPackage.Numeric)source.max;
+            _Min = source.min;
+            _Max = source.max;
             _MinInclusive = source.min_inclusive;
             _MaxInclusive = source.max_inclusive;
-            _Step = (org.omg.SDOPackage.Numeric)source._step;
+            _Step = source._step;
         }
 
         ///<exclude/>
@@ -1554,7 +1543,6 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive) && other._Step.Equals(_Step);
         }
         ///<exclude/>
@@ -1596,7 +1584,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Name; }
             set 
             {
-                if(_Name != value)
+                if(!_Name.Equals(value))
                 {
                     _Name  = value;
                     RaisePropertyChanged("Name");
@@ -1611,22 +1599,22 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Type; }
             set 
             {
-                if(_Type != value)
+                if(!_Type.Equals(value))
                 {
                     _Type  = value;
                     RaisePropertyChanged("Type");
                 }
             }
         }
-        private System.Object _AllowedValues;
+        private global::org.omg.SDOPackage.AllowedValues _AllowedValues;
             
         ///<exclude/>
-        public System.Object AllowedValues
+        public global::org.omg.SDOPackage.AllowedValues AllowedValues
         {
             get { return _AllowedValues; }
             set 
             {
-                if(_AllowedValues != value)
+                if(!_AllowedValues.Equals(value))
                 {
                     _AllowedValues  = value;
                     RaisePropertyChanged("AllowedValues");
@@ -1643,7 +1631,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             var instance = new global::org.omg.SDOPackage.Parameter();
             instance.name =  source._Name;
             instance.type =  ((global::omg.org.CORBA.TypeCode)((IStub)source._Type).GetTarget());
-            instance.allowed_values =  (global::org.omg.SDOPackage.AllowedValues)source._AllowedValues;
+            instance.allowed_values =  source._AllowedValues;
             return instance;
         }
         public Parameter ()
@@ -1654,7 +1642,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             _Name = source.name;
             _Type = new ReactiveRTM.omg.org.CORBA.TypeCodeStub(source.type);
-            _AllowedValues = (org.omg.SDOPackage.AllowedValues)source.allowed_values;
+            _AllowedValues = source.allowed_values;
         }
 
         ///<exclude/>
@@ -1662,7 +1650,6 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Name.Equals(_Name) && other._Type.Equals(_Type) && other._AllowedValues.Equals(_AllowedValues);
         }
         ///<exclude/>
@@ -1692,15 +1679,15 @@ namespace ReactiveRTM.org.omg.SDOPackage
  
     public class OrganizationProperty : NotifyPropertyChangedBase
     {
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -1732,8 +1719,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Properties.Equals(_Properties);
+            return other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1766,7 +1752,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _DeviceType; }
             set 
             {
-                if(_DeviceType != value)
+                if(!_DeviceType.Equals(value))
                 {
                     _DeviceType  = value;
                     RaisePropertyChanged("DeviceType");
@@ -1781,7 +1767,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Manufacturer; }
             set 
             {
-                if(_Manufacturer != value)
+                if(!_Manufacturer.Equals(value))
                 {
                     _Manufacturer  = value;
                     RaisePropertyChanged("Manufacturer");
@@ -1796,7 +1782,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Model; }
             set 
             {
-                if(_Model != value)
+                if(!_Model.Equals(value))
                 {
                     _Model  = value;
                     RaisePropertyChanged("Model");
@@ -1811,22 +1797,22 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Version; }
             set 
             {
-                if(_Version != value)
+                if(!_Version.Equals(value))
                 {
                     _Version  = value;
                     RaisePropertyChanged("Version");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -1866,8 +1852,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._DeviceType.Equals(_DeviceType) && other._Manufacturer.Equals(_Manufacturer) && other._Model.Equals(_Model) && other._Version.Equals(_Version) && other._Properties.Equals(_Properties);
+            return other._DeviceType.Equals(_DeviceType) && other._Manufacturer.Equals(_Manufacturer) && other._Model.Equals(_Model) && other._Version.Equals(_Version) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1908,7 +1893,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Id; }
             set 
             {
-                if(_Id != value)
+                if(!_Id.Equals(value))
                 {
                     _Id  = value;
                     RaisePropertyChanged("Id");
@@ -1923,22 +1908,22 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _InterfaceType; }
             set 
             {
-                if(_InterfaceType != value)
+                if(!_InterfaceType.Equals(value))
                 {
                     _InterfaceType  = value;
                     RaisePropertyChanged("InterfaceType");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -1953,7 +1938,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Service; }
             set 
             {
-                if(_Service != value)
+                if(!_Service.Equals(value))
                 {
                     _Service  = value;
                     RaisePropertyChanged("Service");
@@ -1991,8 +1976,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Id.Equals(_Id) && other._InterfaceType.Equals(_InterfaceType) && other._Properties.Equals(_Properties) && other._Service.Equals(_Service);
+            return other._Id.Equals(_Id) && other._InterfaceType.Equals(_InterfaceType) && other._Properties.SequenceEqual(_Properties) && other._Service.Equals(_Service);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -2031,7 +2015,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Id; }
             set 
             {
-                if(_Id != value)
+                if(!_Id.Equals(value))
                 {
                     _Id  = value;
                     RaisePropertyChanged("Id");
@@ -2046,22 +2030,22 @@ namespace ReactiveRTM.org.omg.SDOPackage
             get { return _Description; }
             set 
             {
-                if(_Description != value)
+                if(!_Description.Equals(value))
                 {
                     _Description  = value;
                     RaisePropertyChanged("Description");
                 }
             }
         }
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _ConfigurationData;
+        private Dictionary<string,object> _ConfigurationData;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> ConfigurationData
+        public Dictionary<string,object> ConfigurationData
         {
             get { return _ConfigurationData; }
             set 
             {
-                if(_ConfigurationData != value)
+                if(!_ConfigurationData.SequenceEqual(value))
                 {
                     _ConfigurationData  = value;
                     RaisePropertyChanged("ConfigurationData");
@@ -2097,8 +2081,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Id.Equals(_Id) && other._Description.Equals(_Description) && other._ConfigurationData.Equals(_ConfigurationData);
+            return other._Id.Equals(_Id) && other._Description.Equals(_Description) && other._ConfigurationData.SequenceEqual(_ConfigurationData);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -2173,7 +2156,7 @@ namespace ReactiveRTM.RTC
             get { return _Sec; }
             set 
             {
-                if(_Sec != value)
+                if(!_Sec.Equals(value))
                 {
                     _Sec  = value;
                     RaisePropertyChanged("Sec");
@@ -2188,7 +2171,7 @@ namespace ReactiveRTM.RTC
             get { return _Nsec; }
             set 
             {
-                if(_Nsec != value)
+                if(!_Nsec.Equals(value))
                 {
                     _Nsec  = value;
                     RaisePropertyChanged("Nsec");
@@ -2222,7 +2205,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Sec.Equals(_Sec) && other._Nsec.Equals(_Nsec);
         }
         ///<exclude/>
@@ -2258,7 +2240,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2273,7 +2255,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2307,7 +2289,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2343,7 +2324,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2358,7 +2339,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2392,7 +2373,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2428,7 +2408,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2443,7 +2423,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2477,7 +2457,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2513,7 +2492,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2528,7 +2507,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2562,7 +2541,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2598,7 +2576,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2613,7 +2591,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2647,7 +2625,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2683,7 +2660,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2698,7 +2675,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2732,7 +2709,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2768,7 +2744,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2783,7 +2759,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2817,7 +2793,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2853,7 +2828,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2868,7 +2843,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2902,7 +2877,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -2938,7 +2912,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -2953,7 +2927,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -2987,7 +2961,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -3023,7 +2996,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3038,7 +3011,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3072,7 +3045,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -3108,7 +3080,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3123,7 +3095,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3157,7 +3129,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -3193,7 +3164,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3208,7 +3179,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3242,7 +3213,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -3278,7 +3248,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3293,7 +3263,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3327,7 +3297,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -3363,7 +3332,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3378,7 +3347,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3404,7 +3373,7 @@ namespace ReactiveRTM.RTC
         public TimedShortSeq (global::RTC.TimedShortSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Int16)x).ToList();
         }
 
         ///<exclude/>
@@ -3412,8 +3381,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3448,7 +3416,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3463,7 +3431,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3489,7 +3457,7 @@ namespace ReactiveRTM.RTC
         public TimedLongSeq (global::RTC.TimedLongSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Int32)x).ToList();
         }
 
         ///<exclude/>
@@ -3497,8 +3465,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3533,7 +3500,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3548,7 +3515,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3574,7 +3541,7 @@ namespace ReactiveRTM.RTC
         public TimedUShortSeq (global::RTC.TimedUShortSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Int16)x).ToList();
         }
 
         ///<exclude/>
@@ -3582,8 +3549,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3618,7 +3584,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3633,7 +3599,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3659,7 +3625,7 @@ namespace ReactiveRTM.RTC
         public TimedULongSeq (global::RTC.TimedULongSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Int32)x).ToList();
         }
 
         ///<exclude/>
@@ -3667,8 +3633,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3703,7 +3668,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3718,7 +3683,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3744,7 +3709,7 @@ namespace ReactiveRTM.RTC
         public TimedFloatSeq (global::RTC.TimedFloatSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Single)x).ToList();
         }
 
         ///<exclude/>
@@ -3752,8 +3717,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3788,7 +3752,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3803,7 +3767,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3829,7 +3793,7 @@ namespace ReactiveRTM.RTC
         public TimedDoubleSeq (global::RTC.TimedDoubleSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Double)x).ToList();
         }
 
         ///<exclude/>
@@ -3837,8 +3801,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3873,7 +3836,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3888,7 +3851,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3914,7 +3877,7 @@ namespace ReactiveRTM.RTC
         public TimedCharSeq (global::RTC.TimedCharSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Char)x).ToList();
         }
 
         ///<exclude/>
@@ -3922,8 +3885,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -3958,7 +3920,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -3973,7 +3935,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -3999,7 +3961,7 @@ namespace ReactiveRTM.RTC
         public TimedWCharSeq (global::RTC.TimedWCharSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Char)x).ToList();
         }
 
         ///<exclude/>
@@ -4007,8 +3969,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -4043,7 +4004,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -4058,7 +4019,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -4084,7 +4045,7 @@ namespace ReactiveRTM.RTC
         public TimedBooleanSeq (global::RTC.TimedBooleanSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Boolean)x).ToList();
         }
 
         ///<exclude/>
@@ -4092,8 +4053,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -4128,7 +4088,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -4143,7 +4103,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -4169,7 +4129,7 @@ namespace ReactiveRTM.RTC
         public TimedOctetSeq (global::RTC.TimedOctetSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.Byte)x).ToList();
         }
 
         ///<exclude/>
@@ -4177,8 +4137,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -4213,7 +4172,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -4228,7 +4187,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -4254,7 +4213,7 @@ namespace ReactiveRTM.RTC
         public TimedStringSeq (global::RTC.TimedStringSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.String)x).ToList();
         }
 
         ///<exclude/>
@@ -4262,8 +4221,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -4298,7 +4256,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -4313,7 +4271,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.SequenceEqual(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -4339,7 +4297,7 @@ namespace ReactiveRTM.RTC
         public TimedWStringSeq (global::RTC.TimedWStringSeq source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Data = source.data.Select(x=>x).ToList();
+            _Data = source.data.Select(x => (System.String)x).ToList();
         }
 
         ///<exclude/>
@@ -4347,8 +4305,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data.SequenceEqual(_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -4383,7 +4340,7 @@ namespace ReactiveRTM.RTC
             get { return _R; }
             set 
             {
-                if(_R != value)
+                if(!_R.Equals(value))
                 {
                     _R  = value;
                     RaisePropertyChanged("R");
@@ -4398,7 +4355,7 @@ namespace ReactiveRTM.RTC
             get { return _G; }
             set 
             {
-                if(_G != value)
+                if(!_G.Equals(value))
                 {
                     _G  = value;
                     RaisePropertyChanged("G");
@@ -4413,7 +4370,7 @@ namespace ReactiveRTM.RTC
             get { return _B; }
             set 
             {
-                if(_B != value)
+                if(!_B.Equals(value))
                 {
                     _B  = value;
                     RaisePropertyChanged("B");
@@ -4449,7 +4406,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._R.Equals(_R) && other._G.Equals(_G) && other._B.Equals(_B);
         }
         ///<exclude/>
@@ -4487,7 +4443,7 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(_X != value)
+                if(!_X.Equals(value))
                 {
                     _X  = value;
                     RaisePropertyChanged("X");
@@ -4502,7 +4458,7 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(_Y != value)
+                if(!_Y.Equals(value))
                 {
                     _Y  = value;
                     RaisePropertyChanged("Y");
@@ -4536,7 +4492,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._X.Equals(_X) && other._Y.Equals(_Y);
         }
         ///<exclude/>
@@ -4572,7 +4527,7 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(_X != value)
+                if(!_X.Equals(value))
                 {
                     _X  = value;
                     RaisePropertyChanged("X");
@@ -4587,7 +4542,7 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(_Y != value)
+                if(!_Y.Equals(value))
                 {
                     _Y  = value;
                     RaisePropertyChanged("Y");
@@ -4621,7 +4576,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._X.Equals(_X) && other._Y.Equals(_Y);
         }
         ///<exclude/>
@@ -4657,7 +4611,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -4672,7 +4626,7 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(_Heading != value)
+                if(!_Heading.Equals(value))
                 {
                     _Heading  = value;
                     RaisePropertyChanged("Heading");
@@ -4706,7 +4660,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Position.Equals(_Position) && other._Heading.Equals(_Heading);
         }
         ///<exclude/>
@@ -4742,7 +4695,7 @@ namespace ReactiveRTM.RTC
             get { return _Vx; }
             set 
             {
-                if(_Vx != value)
+                if(!_Vx.Equals(value))
                 {
                     _Vx  = value;
                     RaisePropertyChanged("Vx");
@@ -4757,7 +4710,7 @@ namespace ReactiveRTM.RTC
             get { return _Vy; }
             set 
             {
-                if(_Vy != value)
+                if(!_Vy.Equals(value))
                 {
                     _Vy  = value;
                     RaisePropertyChanged("Vy");
@@ -4772,7 +4725,7 @@ namespace ReactiveRTM.RTC
             get { return _Va; }
             set 
             {
-                if(_Va != value)
+                if(!_Va.Equals(value))
                 {
                     _Va  = value;
                     RaisePropertyChanged("Va");
@@ -4808,7 +4761,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Vx.Equals(_Vx) && other._Vy.Equals(_Vy) && other._Va.Equals(_Va);
         }
         ///<exclude/>
@@ -4846,7 +4798,7 @@ namespace ReactiveRTM.RTC
             get { return _Ax; }
             set 
             {
-                if(_Ax != value)
+                if(!_Ax.Equals(value))
                 {
                     _Ax  = value;
                     RaisePropertyChanged("Ax");
@@ -4861,7 +4813,7 @@ namespace ReactiveRTM.RTC
             get { return _Ay; }
             set 
             {
-                if(_Ay != value)
+                if(!_Ay.Equals(value))
                 {
                     _Ay  = value;
                     RaisePropertyChanged("Ay");
@@ -4895,7 +4847,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Ax.Equals(_Ax) && other._Ay.Equals(_Ay);
         }
         ///<exclude/>
@@ -4931,7 +4882,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -4946,7 +4897,7 @@ namespace ReactiveRTM.RTC
             get { return _Velocities; }
             set 
             {
-                if(_Velocities != value)
+                if(!_Velocities.Equals(value))
                 {
                     _Velocities  = value;
                     RaisePropertyChanged("Velocities");
@@ -4980,7 +4931,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Pose.Equals(_Pose) && other._Velocities.Equals(_Velocities);
         }
         ///<exclude/>
@@ -5016,7 +4966,7 @@ namespace ReactiveRTM.RTC
             get { return _L; }
             set 
             {
-                if(_L != value)
+                if(!_L.Equals(value))
                 {
                     _L  = value;
                     RaisePropertyChanged("L");
@@ -5031,7 +4981,7 @@ namespace ReactiveRTM.RTC
             get { return _W; }
             set 
             {
-                if(_W != value)
+                if(!_W.Equals(value))
                 {
                     _W  = value;
                     RaisePropertyChanged("W");
@@ -5065,7 +5015,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._L.Equals(_L) && other._W.Equals(_W);
         }
         ///<exclude/>
@@ -5101,7 +5050,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -5116,7 +5065,7 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(_Size != value)
+                if(!_Size.Equals(value))
                 {
                     _Size  = value;
                     RaisePropertyChanged("Size");
@@ -5150,7 +5099,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Pose.Equals(_Pose) && other._Size.Equals(_Size);
         }
         ///<exclude/>
@@ -5186,7 +5134,7 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(_Xx != value)
+                if(!_Xx.Equals(value))
                 {
                     _Xx  = value;
                     RaisePropertyChanged("Xx");
@@ -5201,7 +5149,7 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(_Xy != value)
+                if(!_Xy.Equals(value))
                 {
                     _Xy  = value;
                     RaisePropertyChanged("Xy");
@@ -5216,7 +5164,7 @@ namespace ReactiveRTM.RTC
             get { return _Xt; }
             set 
             {
-                if(_Xt != value)
+                if(!_Xt.Equals(value))
                 {
                     _Xt  = value;
                     RaisePropertyChanged("Xt");
@@ -5231,7 +5179,7 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(_Yy != value)
+                if(!_Yy.Equals(value))
                 {
                     _Yy  = value;
                     RaisePropertyChanged("Yy");
@@ -5246,7 +5194,7 @@ namespace ReactiveRTM.RTC
             get { return _Yt; }
             set 
             {
-                if(_Yt != value)
+                if(!_Yt.Equals(value))
                 {
                     _Yt  = value;
                     RaisePropertyChanged("Yt");
@@ -5261,7 +5209,7 @@ namespace ReactiveRTM.RTC
             get { return _Tt; }
             set 
             {
-                if(_Tt != value)
+                if(!_Tt.Equals(value))
                 {
                     _Tt  = value;
                     RaisePropertyChanged("Tt");
@@ -5303,7 +5251,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Xx.Equals(_Xx) && other._Xy.Equals(_Xy) && other._Xt.Equals(_Xt) && other._Yy.Equals(_Yy) && other._Yt.Equals(_Yt) && other._Tt.Equals(_Tt);
         }
         ///<exclude/>
@@ -5347,7 +5294,7 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(_Xx != value)
+                if(!_Xx.Equals(value))
                 {
                     _Xx  = value;
                     RaisePropertyChanged("Xx");
@@ -5362,7 +5309,7 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(_Xy != value)
+                if(!_Xy.Equals(value))
                 {
                     _Xy  = value;
                     RaisePropertyChanged("Xy");
@@ -5377,7 +5324,7 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(_Yy != value)
+                if(!_Yy.Equals(value))
                 {
                     _Yy  = value;
                     RaisePropertyChanged("Yy");
@@ -5413,7 +5360,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Xx.Equals(_Xx) && other._Xy.Equals(_Xy) && other._Yy.Equals(_Yy);
         }
         ///<exclude/>
@@ -5451,7 +5397,7 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(_Speed != value)
+                if(!_Speed.Equals(value))
                 {
                     _Speed  = value;
                     RaisePropertyChanged("Speed");
@@ -5466,7 +5412,7 @@ namespace ReactiveRTM.RTC
             get { return _SteeringAngle; }
             set 
             {
-                if(_SteeringAngle != value)
+                if(!_SteeringAngle.Equals(value))
                 {
                     _SteeringAngle  = value;
                     RaisePropertyChanged("SteeringAngle");
@@ -5500,7 +5446,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Speed.Equals(_Speed) && other._SteeringAngle.Equals(_SteeringAngle);
         }
         ///<exclude/>
@@ -5536,7 +5481,7 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(_Speed != value)
+                if(!_Speed.Equals(value))
                 {
                     _Speed  = value;
                     RaisePropertyChanged("Speed");
@@ -5551,7 +5496,7 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(_Heading != value)
+                if(!_Heading.Equals(value))
                 {
                     _Heading  = value;
                     RaisePropertyChanged("Heading");
@@ -5585,7 +5530,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Speed.Equals(_Speed) && other._Heading.Equals(_Heading);
         }
         ///<exclude/>
@@ -5621,7 +5565,7 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(_X != value)
+                if(!_X.Equals(value))
                 {
                     _X  = value;
                     RaisePropertyChanged("X");
@@ -5636,7 +5580,7 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(_Y != value)
+                if(!_Y.Equals(value))
                 {
                     _Y  = value;
                     RaisePropertyChanged("Y");
@@ -5651,7 +5595,7 @@ namespace ReactiveRTM.RTC
             get { return _Z; }
             set 
             {
-                if(_Z != value)
+                if(!_Z.Equals(value))
                 {
                     _Z  = value;
                     RaisePropertyChanged("Z");
@@ -5687,7 +5631,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._X.Equals(_X) && other._Y.Equals(_Y) && other._Z.Equals(_Z);
         }
         ///<exclude/>
@@ -5725,7 +5668,7 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(_X != value)
+                if(!_X.Equals(value))
                 {
                     _X  = value;
                     RaisePropertyChanged("X");
@@ -5740,7 +5683,7 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(_Y != value)
+                if(!_Y.Equals(value))
                 {
                     _Y  = value;
                     RaisePropertyChanged("Y");
@@ -5755,7 +5698,7 @@ namespace ReactiveRTM.RTC
             get { return _Z; }
             set 
             {
-                if(_Z != value)
+                if(!_Z.Equals(value))
                 {
                     _Z  = value;
                     RaisePropertyChanged("Z");
@@ -5791,7 +5734,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._X.Equals(_X) && other._Y.Equals(_Y) && other._Z.Equals(_Z);
         }
         ///<exclude/>
@@ -5829,7 +5771,7 @@ namespace ReactiveRTM.RTC
             get { return _R; }
             set 
             {
-                if(_R != value)
+                if(!_R.Equals(value))
                 {
                     _R  = value;
                     RaisePropertyChanged("R");
@@ -5844,7 +5786,7 @@ namespace ReactiveRTM.RTC
             get { return _P; }
             set 
             {
-                if(_P != value)
+                if(!_P.Equals(value))
                 {
                     _P  = value;
                     RaisePropertyChanged("P");
@@ -5859,7 +5801,7 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(_Y != value)
+                if(!_Y.Equals(value))
                 {
                     _Y  = value;
                     RaisePropertyChanged("Y");
@@ -5895,7 +5837,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._R.Equals(_R) && other._P.Equals(_P) && other._Y.Equals(_Y);
         }
         ///<exclude/>
@@ -5933,7 +5874,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -5948,7 +5889,7 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(_Orientation != value)
+                if(!_Orientation.Equals(value))
                 {
                     _Orientation  = value;
                     RaisePropertyChanged("Orientation");
@@ -5982,7 +5923,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Position.Equals(_Position) && other._Orientation.Equals(_Orientation);
         }
         ///<exclude/>
@@ -6018,7 +5958,7 @@ namespace ReactiveRTM.RTC
             get { return _Vx; }
             set 
             {
-                if(_Vx != value)
+                if(!_Vx.Equals(value))
                 {
                     _Vx  = value;
                     RaisePropertyChanged("Vx");
@@ -6033,7 +5973,7 @@ namespace ReactiveRTM.RTC
             get { return _Vy; }
             set 
             {
-                if(_Vy != value)
+                if(!_Vy.Equals(value))
                 {
                     _Vy  = value;
                     RaisePropertyChanged("Vy");
@@ -6048,7 +5988,7 @@ namespace ReactiveRTM.RTC
             get { return _Vz; }
             set 
             {
-                if(_Vz != value)
+                if(!_Vz.Equals(value))
                 {
                     _Vz  = value;
                     RaisePropertyChanged("Vz");
@@ -6063,7 +6003,7 @@ namespace ReactiveRTM.RTC
             get { return _Vr; }
             set 
             {
-                if(_Vr != value)
+                if(!_Vr.Equals(value))
                 {
                     _Vr  = value;
                     RaisePropertyChanged("Vr");
@@ -6078,7 +6018,7 @@ namespace ReactiveRTM.RTC
             get { return _Vp; }
             set 
             {
-                if(_Vp != value)
+                if(!_Vp.Equals(value))
                 {
                     _Vp  = value;
                     RaisePropertyChanged("Vp");
@@ -6093,7 +6033,7 @@ namespace ReactiveRTM.RTC
             get { return _Va; }
             set 
             {
-                if(_Va != value)
+                if(!_Va.Equals(value))
                 {
                     _Va  = value;
                     RaisePropertyChanged("Va");
@@ -6135,7 +6075,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Vx.Equals(_Vx) && other._Vy.Equals(_Vy) && other._Vz.Equals(_Vz) && other._Vr.Equals(_Vr) && other._Vp.Equals(_Vp) && other._Va.Equals(_Va);
         }
         ///<exclude/>
@@ -6179,7 +6118,7 @@ namespace ReactiveRTM.RTC
             get { return _Avx; }
             set 
             {
-                if(_Avx != value)
+                if(!_Avx.Equals(value))
                 {
                     _Avx  = value;
                     RaisePropertyChanged("Avx");
@@ -6194,7 +6133,7 @@ namespace ReactiveRTM.RTC
             get { return _Avy; }
             set 
             {
-                if(_Avy != value)
+                if(!_Avy.Equals(value))
                 {
                     _Avy  = value;
                     RaisePropertyChanged("Avy");
@@ -6209,7 +6148,7 @@ namespace ReactiveRTM.RTC
             get { return _Avz; }
             set 
             {
-                if(_Avz != value)
+                if(!_Avz.Equals(value))
                 {
                     _Avz  = value;
                     RaisePropertyChanged("Avz");
@@ -6245,7 +6184,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Avx.Equals(_Avx) && other._Avy.Equals(_Avy) && other._Avz.Equals(_Avz);
         }
         ///<exclude/>
@@ -6283,7 +6221,7 @@ namespace ReactiveRTM.RTC
             get { return _Ax; }
             set 
             {
-                if(_Ax != value)
+                if(!_Ax.Equals(value))
                 {
                     _Ax  = value;
                     RaisePropertyChanged("Ax");
@@ -6298,7 +6236,7 @@ namespace ReactiveRTM.RTC
             get { return _Ay; }
             set 
             {
-                if(_Ay != value)
+                if(!_Ay.Equals(value))
                 {
                     _Ay  = value;
                     RaisePropertyChanged("Ay");
@@ -6313,7 +6251,7 @@ namespace ReactiveRTM.RTC
             get { return _Az; }
             set 
             {
-                if(_Az != value)
+                if(!_Az.Equals(value))
                 {
                     _Az  = value;
                     RaisePropertyChanged("Az");
@@ -6349,7 +6287,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Ax.Equals(_Ax) && other._Ay.Equals(_Ay) && other._Az.Equals(_Az);
         }
         ///<exclude/>
@@ -6387,7 +6324,7 @@ namespace ReactiveRTM.RTC
             get { return _Aax; }
             set 
             {
-                if(_Aax != value)
+                if(!_Aax.Equals(value))
                 {
                     _Aax  = value;
                     RaisePropertyChanged("Aax");
@@ -6402,7 +6339,7 @@ namespace ReactiveRTM.RTC
             get { return _Aay; }
             set 
             {
-                if(_Aay != value)
+                if(!_Aay.Equals(value))
                 {
                     _Aay  = value;
                     RaisePropertyChanged("Aay");
@@ -6417,7 +6354,7 @@ namespace ReactiveRTM.RTC
             get { return _Aaz; }
             set 
             {
-                if(_Aaz != value)
+                if(!_Aaz.Equals(value))
                 {
                     _Aaz  = value;
                     RaisePropertyChanged("Aaz");
@@ -6453,7 +6390,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Aax.Equals(_Aax) && other._Aay.Equals(_Aay) && other._Aaz.Equals(_Aaz);
         }
         ///<exclude/>
@@ -6491,7 +6427,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -6506,7 +6442,7 @@ namespace ReactiveRTM.RTC
             get { return _Velocities; }
             set 
             {
-                if(_Velocities != value)
+                if(!_Velocities.Equals(value))
                 {
                     _Velocities  = value;
                     RaisePropertyChanged("Velocities");
@@ -6540,7 +6476,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Pose.Equals(_Pose) && other._Velocities.Equals(_Velocities);
         }
         ///<exclude/>
@@ -6576,7 +6511,7 @@ namespace ReactiveRTM.RTC
             get { return _L; }
             set 
             {
-                if(_L != value)
+                if(!_L.Equals(value))
                 {
                     _L  = value;
                     RaisePropertyChanged("L");
@@ -6591,7 +6526,7 @@ namespace ReactiveRTM.RTC
             get { return _W; }
             set 
             {
-                if(_W != value)
+                if(!_W.Equals(value))
                 {
                     _W  = value;
                     RaisePropertyChanged("W");
@@ -6606,7 +6541,7 @@ namespace ReactiveRTM.RTC
             get { return _H; }
             set 
             {
-                if(_H != value)
+                if(!_H.Equals(value))
                 {
                     _H  = value;
                     RaisePropertyChanged("H");
@@ -6642,7 +6577,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._L.Equals(_L) && other._W.Equals(_W) && other._H.Equals(_H);
         }
         ///<exclude/>
@@ -6680,7 +6614,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -6695,7 +6629,7 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(_Size != value)
+                if(!_Size.Equals(value))
                 {
                     _Size  = value;
                     RaisePropertyChanged("Size");
@@ -6729,7 +6663,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Pose.Equals(_Pose) && other._Size.Equals(_Size);
         }
         ///<exclude/>
@@ -6765,7 +6698,7 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(_Xx != value)
+                if(!_Xx.Equals(value))
                 {
                     _Xx  = value;
                     RaisePropertyChanged("Xx");
@@ -6780,7 +6713,7 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(_Xy != value)
+                if(!_Xy.Equals(value))
                 {
                     _Xy  = value;
                     RaisePropertyChanged("Xy");
@@ -6795,7 +6728,7 @@ namespace ReactiveRTM.RTC
             get { return _Xz; }
             set 
             {
-                if(_Xz != value)
+                if(!_Xz.Equals(value))
                 {
                     _Xz  = value;
                     RaisePropertyChanged("Xz");
@@ -6810,7 +6743,7 @@ namespace ReactiveRTM.RTC
             get { return _Xr; }
             set 
             {
-                if(_Xr != value)
+                if(!_Xr.Equals(value))
                 {
                     _Xr  = value;
                     RaisePropertyChanged("Xr");
@@ -6825,7 +6758,7 @@ namespace ReactiveRTM.RTC
             get { return _Xp; }
             set 
             {
-                if(_Xp != value)
+                if(!_Xp.Equals(value))
                 {
                     _Xp  = value;
                     RaisePropertyChanged("Xp");
@@ -6840,7 +6773,7 @@ namespace ReactiveRTM.RTC
             get { return _Xa; }
             set 
             {
-                if(_Xa != value)
+                if(!_Xa.Equals(value))
                 {
                     _Xa  = value;
                     RaisePropertyChanged("Xa");
@@ -6855,7 +6788,7 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(_Yy != value)
+                if(!_Yy.Equals(value))
                 {
                     _Yy  = value;
                     RaisePropertyChanged("Yy");
@@ -6870,7 +6803,7 @@ namespace ReactiveRTM.RTC
             get { return _Yz; }
             set 
             {
-                if(_Yz != value)
+                if(!_Yz.Equals(value))
                 {
                     _Yz  = value;
                     RaisePropertyChanged("Yz");
@@ -6885,7 +6818,7 @@ namespace ReactiveRTM.RTC
             get { return _Yr; }
             set 
             {
-                if(_Yr != value)
+                if(!_Yr.Equals(value))
                 {
                     _Yr  = value;
                     RaisePropertyChanged("Yr");
@@ -6900,7 +6833,7 @@ namespace ReactiveRTM.RTC
             get { return _Yp; }
             set 
             {
-                if(_Yp != value)
+                if(!_Yp.Equals(value))
                 {
                     _Yp  = value;
                     RaisePropertyChanged("Yp");
@@ -6915,7 +6848,7 @@ namespace ReactiveRTM.RTC
             get { return _Ya; }
             set 
             {
-                if(_Ya != value)
+                if(!_Ya.Equals(value))
                 {
                     _Ya  = value;
                     RaisePropertyChanged("Ya");
@@ -6930,7 +6863,7 @@ namespace ReactiveRTM.RTC
             get { return _Zz; }
             set 
             {
-                if(_Zz != value)
+                if(!_Zz.Equals(value))
                 {
                     _Zz  = value;
                     RaisePropertyChanged("Zz");
@@ -6945,7 +6878,7 @@ namespace ReactiveRTM.RTC
             get { return _Zr; }
             set 
             {
-                if(_Zr != value)
+                if(!_Zr.Equals(value))
                 {
                     _Zr  = value;
                     RaisePropertyChanged("Zr");
@@ -6960,7 +6893,7 @@ namespace ReactiveRTM.RTC
             get { return _Zp; }
             set 
             {
-                if(_Zp != value)
+                if(!_Zp.Equals(value))
                 {
                     _Zp  = value;
                     RaisePropertyChanged("Zp");
@@ -6975,7 +6908,7 @@ namespace ReactiveRTM.RTC
             get { return _Za; }
             set 
             {
-                if(_Za != value)
+                if(!_Za.Equals(value))
                 {
                     _Za  = value;
                     RaisePropertyChanged("Za");
@@ -6990,7 +6923,7 @@ namespace ReactiveRTM.RTC
             get { return _Rr; }
             set 
             {
-                if(_Rr != value)
+                if(!_Rr.Equals(value))
                 {
                     _Rr  = value;
                     RaisePropertyChanged("Rr");
@@ -7005,7 +6938,7 @@ namespace ReactiveRTM.RTC
             get { return _Rp; }
             set 
             {
-                if(_Rp != value)
+                if(!_Rp.Equals(value))
                 {
                     _Rp  = value;
                     RaisePropertyChanged("Rp");
@@ -7020,7 +6953,7 @@ namespace ReactiveRTM.RTC
             get { return _Ra; }
             set 
             {
-                if(_Ra != value)
+                if(!_Ra.Equals(value))
                 {
                     _Ra  = value;
                     RaisePropertyChanged("Ra");
@@ -7035,7 +6968,7 @@ namespace ReactiveRTM.RTC
             get { return _Pp; }
             set 
             {
-                if(_Pp != value)
+                if(!_Pp.Equals(value))
                 {
                     _Pp  = value;
                     RaisePropertyChanged("Pp");
@@ -7050,7 +6983,7 @@ namespace ReactiveRTM.RTC
             get { return _Pa; }
             set 
             {
-                if(_Pa != value)
+                if(!_Pa.Equals(value))
                 {
                     _Pa  = value;
                     RaisePropertyChanged("Pa");
@@ -7065,7 +6998,7 @@ namespace ReactiveRTM.RTC
             get { return _Aa; }
             set 
             {
-                if(_Aa != value)
+                if(!_Aa.Equals(value))
                 {
                     _Aa  = value;
                     RaisePropertyChanged("Aa");
@@ -7137,7 +7070,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Xx.Equals(_Xx) && other._Xy.Equals(_Xy) && other._Xz.Equals(_Xz) && other._Xr.Equals(_Xr) && other._Xp.Equals(_Xp) && other._Xa.Equals(_Xa) && other._Yy.Equals(_Yy) && other._Yz.Equals(_Yz) && other._Yr.Equals(_Yr) && other._Yp.Equals(_Yp) && other._Ya.Equals(_Ya) && other._Zz.Equals(_Zz) && other._Zr.Equals(_Zr) && other._Zp.Equals(_Zp) && other._Za.Equals(_Za) && other._Rr.Equals(_Rr) && other._Rp.Equals(_Rp) && other._Ra.Equals(_Ra) && other._Pp.Equals(_Pp) && other._Pa.Equals(_Pa) && other._Aa.Equals(_Aa);
         }
         ///<exclude/>
@@ -7211,7 +7143,7 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(_Speed != value)
+                if(!_Speed.Equals(value))
                 {
                     _Speed  = value;
                     RaisePropertyChanged("Speed");
@@ -7226,7 +7158,7 @@ namespace ReactiveRTM.RTC
             get { return _Direction; }
             set 
             {
-                if(_Direction != value)
+                if(!_Direction.Equals(value))
                 {
                     _Direction  = value;
                     RaisePropertyChanged("Direction");
@@ -7260,7 +7192,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Speed.Equals(_Speed) && other._Direction.Equals(_Direction);
         }
         ///<exclude/>
@@ -7296,7 +7227,7 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(_Orientation != value)
+                if(!_Orientation.Equals(value))
                 {
                     _Orientation  = value;
                     RaisePropertyChanged("Orientation");
@@ -7311,7 +7242,7 @@ namespace ReactiveRTM.RTC
             get { return _Approach; }
             set 
             {
-                if(_Approach != value)
+                if(!_Approach.Equals(value))
                 {
                     _Approach  = value;
                     RaisePropertyChanged("Approach");
@@ -7326,7 +7257,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -7362,7 +7293,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Orientation.Equals(_Orientation) && other._Approach.Equals(_Approach) && other._Position.Equals(_Position);
         }
         ///<exclude/>
@@ -7400,7 +7330,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7415,7 +7345,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7449,7 +7379,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7485,7 +7414,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7500,7 +7429,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7534,7 +7463,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7570,7 +7498,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7585,7 +7513,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7619,7 +7547,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7655,7 +7582,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7670,7 +7597,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7704,7 +7631,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7740,7 +7666,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7755,7 +7681,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7789,7 +7715,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7825,7 +7750,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7840,7 +7765,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7874,7 +7799,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7910,7 +7834,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -7925,7 +7849,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -7959,7 +7883,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -7995,7 +7918,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8010,7 +7933,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8044,7 +7967,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8080,7 +8002,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8095,7 +8017,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8129,7 +8051,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8165,7 +8086,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8180,7 +8101,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8214,7 +8135,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8250,7 +8170,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8265,7 +8185,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8299,7 +8219,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8335,7 +8254,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8350,7 +8269,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8384,7 +8303,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8420,7 +8338,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8435,7 +8353,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8469,7 +8387,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8505,7 +8422,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8520,7 +8437,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8554,7 +8471,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8590,7 +8506,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8605,7 +8521,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8639,7 +8555,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8675,7 +8590,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8690,7 +8605,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8724,7 +8639,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8760,7 +8674,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8775,7 +8689,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8809,7 +8723,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8845,7 +8758,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8860,7 +8773,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8894,7 +8807,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -8930,7 +8842,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -8945,7 +8857,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -8979,7 +8891,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9015,7 +8926,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9030,7 +8941,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9064,7 +8975,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9100,7 +9010,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9115,7 +9025,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9149,7 +9059,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9185,7 +9094,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9200,7 +9109,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9234,7 +9143,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9270,7 +9178,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9285,7 +9193,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9319,7 +9227,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9355,7 +9262,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9370,7 +9277,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9404,7 +9311,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9440,7 +9346,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9455,7 +9361,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9489,7 +9395,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9525,7 +9430,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9540,7 +9445,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9574,7 +9479,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9610,7 +9514,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9625,7 +9529,7 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(_Data != value)
+                if(!_Data.Equals(value))
                 {
                     _Data  = value;
                     RaisePropertyChanged("Data");
@@ -9659,7 +9563,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
         }
         ///<exclude/>
@@ -9695,7 +9598,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9710,7 +9613,7 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(_Index != value)
+                if(!_Index.Equals(value))
                 {
                     _Index  = value;
                     RaisePropertyChanged("Index");
@@ -9725,7 +9628,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -9761,7 +9664,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Index.Equals(_Index) && other._Position.Equals(_Position);
         }
         ///<exclude/>
@@ -9799,7 +9701,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9814,7 +9716,7 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(_Index != value)
+                if(!_Index.Equals(value))
                 {
                     _Index  = value;
                     RaisePropertyChanged("Index");
@@ -9829,7 +9731,7 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(_Speed != value)
+                if(!_Speed.Equals(value))
                 {
                     _Speed  = value;
                     RaisePropertyChanged("Speed");
@@ -9865,7 +9767,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Index.Equals(_Index) && other._Speed.Equals(_Speed);
         }
         ///<exclude/>
@@ -9903,7 +9804,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -9918,7 +9819,7 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(_Index != value)
+                if(!_Index.Equals(value))
                 {
                     _Index  = value;
                     RaisePropertyChanged("Index");
@@ -9933,7 +9834,7 @@ namespace ReactiveRTM.RTC
             get { return _Current; }
             set 
             {
-                if(_Current != value)
+                if(!_Current.Equals(value))
                 {
                     _Current  = value;
                     RaisePropertyChanged("Current");
@@ -9969,7 +9870,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Index.Equals(_Index) && other._Current.Equals(_Current);
         }
         ///<exclude/>
@@ -10007,7 +9907,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -10022,7 +9922,7 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(_Speed != value)
+                if(!_Speed.Equals(value))
                 {
                     _Speed  = value;
                     RaisePropertyChanged("Speed");
@@ -10037,7 +9937,7 @@ namespace ReactiveRTM.RTC
             get { return _Accel; }
             set 
             {
-                if(_Accel != value)
+                if(!_Accel.Equals(value))
                 {
                     _Accel  = value;
                     RaisePropertyChanged("Accel");
@@ -10052,7 +9952,7 @@ namespace ReactiveRTM.RTC
             get { return _Current; }
             set 
             {
-                if(_Current != value)
+                if(!_Current.Equals(value))
                 {
                     _Current  = value;
                     RaisePropertyChanged("Current");
@@ -10067,7 +9967,7 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(_Status != value)
+                if(!_Status.Equals(value))
                 {
                     _Status  = value;
                     RaisePropertyChanged("Status");
@@ -10107,7 +10007,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Position.Equals(_Position) && other._Speed.Equals(_Speed) && other._Accel.Equals(_Accel) && other._Current.Equals(_Current) && other._Status.Equals(_Status);
         }
         ///<exclude/>
@@ -10149,7 +10048,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -10164,7 +10063,7 @@ namespace ReactiveRTM.RTC
             get { return _Actuators; }
             set 
             {
-                if(_Actuators != value)
+                if(!_Actuators.SequenceEqual(value))
                 {
                     _Actuators  = value;
                     RaisePropertyChanged("Actuators");
@@ -10190,7 +10089,7 @@ namespace ReactiveRTM.RTC
         public ActArrayState (global::RTC.ActArrayState source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Actuators = source.actuators.Select(x=>new ReactiveRTM.RTC.Actuator(x)).ToList();
+            _Actuators = source.actuators.Select(x => (ReactiveRTM.RTC.Actuator)new ReactiveRTM.RTC.Actuator(x)).ToList();
         }
 
         ///<exclude/>
@@ -10198,8 +10097,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Actuators.Equals(_Actuators);
+            return other._Tm.Equals(_Tm) && other._Actuators.SequenceEqual(_Actuators);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -10234,7 +10132,7 @@ namespace ReactiveRTM.RTC
             get { return _Type; }
             set 
             {
-                if(_Type != value)
+                if(!_Type.Equals(value))
                 {
                     _Type  = value;
                     RaisePropertyChanged("Type");
@@ -10249,7 +10147,7 @@ namespace ReactiveRTM.RTC
             get { return _Length; }
             set 
             {
-                if(_Length != value)
+                if(!_Length.Equals(value))
                 {
                     _Length  = value;
                     RaisePropertyChanged("Length");
@@ -10264,7 +10162,7 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(_Orientation != value)
+                if(!_Orientation.Equals(value))
                 {
                     _Orientation  = value;
                     RaisePropertyChanged("Orientation");
@@ -10279,7 +10177,7 @@ namespace ReactiveRTM.RTC
             get { return _Axis; }
             set 
             {
-                if(_Axis != value)
+                if(!_Axis.Equals(value))
                 {
                     _Axis  = value;
                     RaisePropertyChanged("Axis");
@@ -10294,7 +10192,7 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(_MinRange != value)
+                if(!_MinRange.Equals(value))
                 {
                     _MinRange  = value;
                     RaisePropertyChanged("MinRange");
@@ -10309,7 +10207,7 @@ namespace ReactiveRTM.RTC
             get { return _Centre; }
             set 
             {
-                if(_Centre != value)
+                if(!_Centre.Equals(value))
                 {
                     _Centre  = value;
                     RaisePropertyChanged("Centre");
@@ -10324,7 +10222,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(_MaxRange != value)
+                if(!_MaxRange.Equals(value))
                 {
                     _MaxRange  = value;
                     RaisePropertyChanged("MaxRange");
@@ -10339,7 +10237,7 @@ namespace ReactiveRTM.RTC
             get { return _HomePosition; }
             set 
             {
-                if(_HomePosition != value)
+                if(!_HomePosition.Equals(value))
                 {
                     _HomePosition  = value;
                     RaisePropertyChanged("HomePosition");
@@ -10354,7 +10252,7 @@ namespace ReactiveRTM.RTC
             get { return _HasBrakes; }
             set 
             {
-                if(_HasBrakes != value)
+                if(!_HasBrakes.Equals(value))
                 {
                     _HasBrakes  = value;
                     RaisePropertyChanged("HasBrakes");
@@ -10402,7 +10300,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Type.Equals(_Type) && other._Length.Equals(_Length) && other._Orientation.Equals(_Orientation) && other._Axis.Equals(_Axis) && other._MinRange.Equals(_MinRange) && other._Centre.Equals(_Centre) && other._MaxRange.Equals(_MaxRange) && other._HomePosition.Equals(_HomePosition) && other._HasBrakes.Equals(_HasBrakes);
         }
         ///<exclude/>
@@ -10452,7 +10349,7 @@ namespace ReactiveRTM.RTC
             get { return _ArrayGeometry; }
             set 
             {
-                if(_ArrayGeometry != value)
+                if(!_ArrayGeometry.Equals(value))
                 {
                     _ArrayGeometry  = value;
                     RaisePropertyChanged("ArrayGeometry");
@@ -10467,7 +10364,7 @@ namespace ReactiveRTM.RTC
             get { return _ActuatorGeometry; }
             set 
             {
-                if(_ActuatorGeometry != value)
+                if(!_ActuatorGeometry.SequenceEqual(value))
                 {
                     _ActuatorGeometry  = value;
                     RaisePropertyChanged("ActuatorGeometry");
@@ -10493,7 +10390,7 @@ namespace ReactiveRTM.RTC
         public ActArrayGeometry (global::RTC.ActArrayGeometry source)
         {
             _ArrayGeometry = new ReactiveRTM.RTC.Geometry3D(source.arrayGeometry);
-            _ActuatorGeometry = source.actuatorGeometry.Select(x=>new ReactiveRTM.RTC.ActArrayActuatorGeometry(x)).ToList();
+            _ActuatorGeometry = source.actuatorGeometry.Select(x => (ReactiveRTM.RTC.ActArrayActuatorGeometry)new ReactiveRTM.RTC.ActArrayActuatorGeometry(x)).ToList();
         }
 
         ///<exclude/>
@@ -10501,8 +10398,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._ArrayGeometry.Equals(_ArrayGeometry) && other._ActuatorGeometry.Equals(_ActuatorGeometry);
+            return other._ArrayGeometry.Equals(_ArrayGeometry) && other._ActuatorGeometry.SequenceEqual(_ActuatorGeometry);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -10537,7 +10433,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -10552,7 +10448,7 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(_Size != value)
+                if(!_Size.Equals(value))
                 {
                     _Size  = value;
                     RaisePropertyChanged("Size");
@@ -10567,7 +10463,7 @@ namespace ReactiveRTM.RTC
             get { return _Roc; }
             set 
             {
-                if(_Roc != value)
+                if(!_Roc.Equals(value))
                 {
                     _Roc  = value;
                     RaisePropertyChanged("Roc");
@@ -10603,7 +10499,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Pose.Equals(_Pose) && other._Size.Equals(_Size) && other._Roc.Equals(_Roc);
         }
         ///<exclude/>
@@ -10641,7 +10536,7 @@ namespace ReactiveRTM.RTC
             get { return _ArrayGeometry; }
             set 
             {
-                if(_ArrayGeometry != value)
+                if(!_ArrayGeometry.Equals(value))
                 {
                     _ArrayGeometry  = value;
                     RaisePropertyChanged("ArrayGeometry");
@@ -10656,7 +10551,7 @@ namespace ReactiveRTM.RTC
             get { return _BumperGeometry; }
             set 
             {
-                if(_BumperGeometry != value)
+                if(!_BumperGeometry.SequenceEqual(value))
                 {
                     _BumperGeometry  = value;
                     RaisePropertyChanged("BumperGeometry");
@@ -10682,7 +10577,7 @@ namespace ReactiveRTM.RTC
         public BumperArrayGeometry (global::RTC.BumperArrayGeometry source)
         {
             _ArrayGeometry = new ReactiveRTM.RTC.Geometry3D(source.arrayGeometry);
-            _BumperGeometry = source.bumperGeometry.Select(x=>new ReactiveRTM.RTC.BumperGeometry(x)).ToList();
+            _BumperGeometry = source.bumperGeometry.Select(x => (ReactiveRTM.RTC.BumperGeometry)new ReactiveRTM.RTC.BumperGeometry(x)).ToList();
         }
 
         ///<exclude/>
@@ -10690,8 +10585,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._ArrayGeometry.Equals(_ArrayGeometry) && other._BumperGeometry.Equals(_BumperGeometry);
+            return other._ArrayGeometry.Equals(_ArrayGeometry) && other._BumperGeometry.SequenceEqual(_BumperGeometry);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -10726,7 +10620,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -10741,7 +10635,7 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(_Width != value)
+                if(!_Width.Equals(value))
                 {
                     _Width  = value;
                     RaisePropertyChanged("Width");
@@ -10756,7 +10650,7 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(_Height != value)
+                if(!_Height.Equals(value))
                 {
                     _Height  = value;
                     RaisePropertyChanged("Height");
@@ -10771,7 +10665,7 @@ namespace ReactiveRTM.RTC
             get { return _Bpp; }
             set 
             {
-                if(_Bpp != value)
+                if(!_Bpp.Equals(value))
                 {
                     _Bpp  = value;
                     RaisePropertyChanged("Bpp");
@@ -10786,7 +10680,7 @@ namespace ReactiveRTM.RTC
             get { return _Format; }
             set 
             {
-                if(_Format != value)
+                if(!_Format.Equals(value))
                 {
                     _Format  = value;
                     RaisePropertyChanged("Format");
@@ -10801,7 +10695,7 @@ namespace ReactiveRTM.RTC
             get { return _FDiv; }
             set 
             {
-                if(_FDiv != value)
+                if(!_FDiv.Equals(value))
                 {
                     _FDiv  = value;
                     RaisePropertyChanged("FDiv");
@@ -10816,7 +10710,7 @@ namespace ReactiveRTM.RTC
             get { return _Pixels; }
             set 
             {
-                if(_Pixels != value)
+                if(!_Pixels.SequenceEqual(value))
                 {
                     _Pixels  = value;
                     RaisePropertyChanged("Pixels");
@@ -10852,7 +10746,7 @@ namespace ReactiveRTM.RTC
             _Bpp = source.bpp;
             _Format = source.format;
             _FDiv = source.fDiv;
-            _Pixels = source.pixels.Select(x=>x).ToList();
+            _Pixels = source.pixels.Select(x => (System.Byte)x).ToList();
         }
 
         ///<exclude/>
@@ -10860,8 +10754,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Bpp.Equals(_Bpp) && other._Format.Equals(_Format) && other._FDiv.Equals(_FDiv) && other._Pixels.Equals(_Pixels);
+            return other._Tm.Equals(_Tm) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Bpp.Equals(_Bpp) && other._Format.Equals(_Format) && other._FDiv.Equals(_FDiv) && other._Pixels.SequenceEqual(_Pixels);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -10906,7 +10799,7 @@ namespace ReactiveRTM.RTC
             get { return _FocalLength; }
             set 
             {
-                if(_FocalLength != value)
+                if(!_FocalLength.Equals(value))
                 {
                     _FocalLength  = value;
                     RaisePropertyChanged("FocalLength");
@@ -10921,7 +10814,7 @@ namespace ReactiveRTM.RTC
             get { return _PrincipalPoint; }
             set 
             {
-                if(_PrincipalPoint != value)
+                if(!_PrincipalPoint.Equals(value))
                 {
                     _PrincipalPoint  = value;
                     RaisePropertyChanged("PrincipalPoint");
@@ -10936,7 +10829,7 @@ namespace ReactiveRTM.RTC
             get { return _K1; }
             set 
             {
-                if(_K1 != value)
+                if(!_K1.Equals(value))
                 {
                     _K1  = value;
                     RaisePropertyChanged("K1");
@@ -10951,7 +10844,7 @@ namespace ReactiveRTM.RTC
             get { return _K2; }
             set 
             {
-                if(_K2 != value)
+                if(!_K2.Equals(value))
                 {
                     _K2  = value;
                     RaisePropertyChanged("K2");
@@ -10966,7 +10859,7 @@ namespace ReactiveRTM.RTC
             get { return _P1; }
             set 
             {
-                if(_P1 != value)
+                if(!_P1.Equals(value))
                 {
                     _P1  = value;
                     RaisePropertyChanged("P1");
@@ -10981,7 +10874,7 @@ namespace ReactiveRTM.RTC
             get { return _P2; }
             set 
             {
-                if(_P2 != value)
+                if(!_P2.Equals(value))
                 {
                     _P2  = value;
                     RaisePropertyChanged("P2");
@@ -11023,7 +10916,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._FocalLength.Equals(_FocalLength) && other._PrincipalPoint.Equals(_PrincipalPoint) && other._K1.Equals(_K1) && other._K2.Equals(_K2) && other._P1.Equals(_P1) && other._P2.Equals(_P2);
         }
         ///<exclude/>
@@ -11067,7 +10959,7 @@ namespace ReactiveRTM.RTC
             get { return _Id; }
             set 
             {
-                if(_Id != value)
+                if(!_Id.Equals(value))
                 {
                     _Id  = value;
                     RaisePropertyChanged("Id");
@@ -11082,7 +10974,7 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(_Pose != value)
+                if(!_Pose.Equals(value))
                 {
                     _Pose  = value;
                     RaisePropertyChanged("Pose");
@@ -11097,7 +10989,7 @@ namespace ReactiveRTM.RTC
             get { return _PoseUncertainty; }
             set 
             {
-                if(_PoseUncertainty != value)
+                if(!_PoseUncertainty.Equals(value))
                 {
                     _PoseUncertainty  = value;
                     RaisePropertyChanged("PoseUncertainty");
@@ -11112,7 +11004,7 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(_Size != value)
+                if(!_Size.Equals(value))
                 {
                     _Size  = value;
                     RaisePropertyChanged("Size");
@@ -11127,7 +11019,7 @@ namespace ReactiveRTM.RTC
             get { return _SizeUncertainty; }
             set 
             {
-                if(_SizeUncertainty != value)
+                if(!_SizeUncertainty.Equals(value))
                 {
                     _SizeUncertainty  = value;
                     RaisePropertyChanged("SizeUncertainty");
@@ -11167,7 +11059,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Id.Equals(_Id) && other._Pose.Equals(_Pose) && other._PoseUncertainty.Equals(_PoseUncertainty) && other._Size.Equals(_Size) && other._SizeUncertainty.Equals(_SizeUncertainty);
         }
         ///<exclude/>
@@ -11209,7 +11100,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -11224,7 +11115,7 @@ namespace ReactiveRTM.RTC
             get { return _FiducialsList; }
             set 
             {
-                if(_FiducialsList != value)
+                if(!_FiducialsList.SequenceEqual(value))
                 {
                     _FiducialsList  = value;
                     RaisePropertyChanged("FiducialsList");
@@ -11250,7 +11141,7 @@ namespace ReactiveRTM.RTC
         public Fiducials (global::RTC.Fiducials source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _FiducialsList = source.fiducialsList.Select(x=>new ReactiveRTM.RTC.FiducialInfo(x)).ToList();
+            _FiducialsList = source.fiducialsList.Select(x => (ReactiveRTM.RTC.FiducialInfo)new ReactiveRTM.RTC.FiducialInfo(x)).ToList();
         }
 
         ///<exclude/>
@@ -11258,8 +11149,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._FiducialsList.Equals(_FiducialsList);
+            return other._Tm.Equals(_Tm) && other._FiducialsList.SequenceEqual(_FiducialsList);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -11294,7 +11184,7 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(_MinRange != value)
+                if(!_MinRange.Equals(value))
                 {
                     _MinRange  = value;
                     RaisePropertyChanged("MinRange");
@@ -11309,7 +11199,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(_MaxRange != value)
+                if(!_MaxRange.Equals(value))
                 {
                     _MaxRange  = value;
                     RaisePropertyChanged("MaxRange");
@@ -11324,7 +11214,7 @@ namespace ReactiveRTM.RTC
             get { return _ViewAngle; }
             set 
             {
-                if(_ViewAngle != value)
+                if(!_ViewAngle.Equals(value))
                 {
                     _ViewAngle  = value;
                     RaisePropertyChanged("ViewAngle");
@@ -11360,7 +11250,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._MinRange.Equals(_MinRange) && other._MaxRange.Equals(_MaxRange) && other._ViewAngle.Equals(_ViewAngle);
         }
         ///<exclude/>
@@ -11398,7 +11287,7 @@ namespace ReactiveRTM.RTC
             get { return _Sec; }
             set 
             {
-                if(_Sec != value)
+                if(!_Sec.Equals(value))
                 {
                     _Sec  = value;
                     RaisePropertyChanged("Sec");
@@ -11413,7 +11302,7 @@ namespace ReactiveRTM.RTC
             get { return _Msec; }
             set 
             {
-                if(_Msec != value)
+                if(!_Msec.Equals(value))
                 {
                     _Msec  = value;
                     RaisePropertyChanged("Msec");
@@ -11447,7 +11336,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Sec.Equals(_Sec) && other._Msec.Equals(_Msec);
         }
         ///<exclude/>
@@ -11483,7 +11371,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -11498,7 +11386,7 @@ namespace ReactiveRTM.RTC
             get { return _TimeFromGPS; }
             set 
             {
-                if(_TimeFromGPS != value)
+                if(!_TimeFromGPS.Equals(value))
                 {
                     _TimeFromGPS  = value;
                     RaisePropertyChanged("TimeFromGPS");
@@ -11513,7 +11401,7 @@ namespace ReactiveRTM.RTC
             get { return _Latitude; }
             set 
             {
-                if(_Latitude != value)
+                if(!_Latitude.Equals(value))
                 {
                     _Latitude  = value;
                     RaisePropertyChanged("Latitude");
@@ -11528,7 +11416,7 @@ namespace ReactiveRTM.RTC
             get { return _Longitude; }
             set 
             {
-                if(_Longitude != value)
+                if(!_Longitude.Equals(value))
                 {
                     _Longitude  = value;
                     RaisePropertyChanged("Longitude");
@@ -11543,7 +11431,7 @@ namespace ReactiveRTM.RTC
             get { return _Altitude; }
             set 
             {
-                if(_Altitude != value)
+                if(!_Altitude.Equals(value))
                 {
                     _Altitude  = value;
                     RaisePropertyChanged("Altitude");
@@ -11558,7 +11446,7 @@ namespace ReactiveRTM.RTC
             get { return _HorizontalError; }
             set 
             {
-                if(_HorizontalError != value)
+                if(!_HorizontalError.Equals(value))
                 {
                     _HorizontalError  = value;
                     RaisePropertyChanged("HorizontalError");
@@ -11573,7 +11461,7 @@ namespace ReactiveRTM.RTC
             get { return _VerticalError; }
             set 
             {
-                if(_VerticalError != value)
+                if(!_VerticalError.Equals(value))
                 {
                     _VerticalError  = value;
                     RaisePropertyChanged("VerticalError");
@@ -11588,7 +11476,7 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(_Heading != value)
+                if(!_Heading.Equals(value))
                 {
                     _Heading  = value;
                     RaisePropertyChanged("Heading");
@@ -11603,7 +11491,7 @@ namespace ReactiveRTM.RTC
             get { return _HorizontalSpeed; }
             set 
             {
-                if(_HorizontalSpeed != value)
+                if(!_HorizontalSpeed.Equals(value))
                 {
                     _HorizontalSpeed  = value;
                     RaisePropertyChanged("HorizontalSpeed");
@@ -11618,7 +11506,7 @@ namespace ReactiveRTM.RTC
             get { return _VerticalSpeed; }
             set 
             {
-                if(_VerticalSpeed != value)
+                if(!_VerticalSpeed.Equals(value))
                 {
                     _VerticalSpeed  = value;
                     RaisePropertyChanged("VerticalSpeed");
@@ -11633,7 +11521,7 @@ namespace ReactiveRTM.RTC
             get { return _NumSatellites; }
             set 
             {
-                if(_NumSatellites != value)
+                if(!_NumSatellites.Equals(value))
                 {
                     _NumSatellites  = value;
                     RaisePropertyChanged("NumSatellites");
@@ -11648,7 +11536,7 @@ namespace ReactiveRTM.RTC
             get { return _FixType; }
             set 
             {
-                if(_FixType != value)
+                if(!_FixType.Equals(value))
                 {
                     _FixType  = value;
                     RaisePropertyChanged("FixType");
@@ -11702,7 +11590,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._TimeFromGPS.Equals(_TimeFromGPS) && other._Latitude.Equals(_Latitude) && other._Longitude.Equals(_Longitude) && other._Altitude.Equals(_Altitude) && other._HorizontalError.Equals(_HorizontalError) && other._VerticalError.Equals(_VerticalError) && other._Heading.Equals(_Heading) && other._HorizontalSpeed.Equals(_HorizontalSpeed) && other._VerticalSpeed.Equals(_VerticalSpeed) && other._NumSatellites.Equals(_NumSatellites) && other._FixType.Equals(_FixType);
         }
         ///<exclude/>
@@ -11758,7 +11645,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -11773,7 +11660,7 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(_Status != value)
+                if(!_Status.Equals(value))
                 {
                     _Status  = value;
                     RaisePropertyChanged("Status");
@@ -11807,7 +11694,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Status.Equals(_Status);
         }
         ///<exclude/>
@@ -11843,7 +11729,7 @@ namespace ReactiveRTM.RTC
             get { return _Exterior; }
             set 
             {
-                if(_Exterior != value)
+                if(!_Exterior.Equals(value))
                 {
                     _Exterior  = value;
                     RaisePropertyChanged("Exterior");
@@ -11858,7 +11744,7 @@ namespace ReactiveRTM.RTC
             get { return _Interior; }
             set 
             {
-                if(_Interior != value)
+                if(!_Interior.Equals(value))
                 {
                     _Interior  = value;
                     RaisePropertyChanged("Interior");
@@ -11892,7 +11778,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Exterior.Equals(_Exterior) && other._Interior.Equals(_Interior);
         }
         ///<exclude/>
@@ -11928,7 +11813,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -11943,7 +11828,7 @@ namespace ReactiveRTM.RTC
             get { return _Latitude; }
             set 
             {
-                if(_Latitude != value)
+                if(!_Latitude.Equals(value))
                 {
                     _Latitude  = value;
                     RaisePropertyChanged("Latitude");
@@ -11958,7 +11843,7 @@ namespace ReactiveRTM.RTC
             get { return _Longitude; }
             set 
             {
-                if(_Longitude != value)
+                if(!_Longitude.Equals(value))
                 {
                     _Longitude  = value;
                     RaisePropertyChanged("Longitude");
@@ -11973,7 +11858,7 @@ namespace ReactiveRTM.RTC
             get { return _Altitude; }
             set 
             {
-                if(_Altitude != value)
+                if(!_Altitude.Equals(value))
                 {
                     _Altitude  = value;
                     RaisePropertyChanged("Altitude");
@@ -11988,7 +11873,7 @@ namespace ReactiveRTM.RTC
             get { return _HeightAMSL; }
             set 
             {
-                if(_HeightAMSL != value)
+                if(!_HeightAMSL.Equals(value))
                 {
                     _HeightAMSL  = value;
                     RaisePropertyChanged("HeightAMSL");
@@ -12003,7 +11888,7 @@ namespace ReactiveRTM.RTC
             get { return _VelocityENU; }
             set 
             {
-                if(_VelocityENU != value)
+                if(!_VelocityENU.Equals(value))
                 {
                     _VelocityENU  = value;
                     RaisePropertyChanged("VelocityENU");
@@ -12018,7 +11903,7 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(_Orientation != value)
+                if(!_Orientation.Equals(value))
                 {
                     _Orientation  = value;
                     RaisePropertyChanged("Orientation");
@@ -12062,7 +11947,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Latitude.Equals(_Latitude) && other._Longitude.Equals(_Longitude) && other._Altitude.Equals(_Altitude) && other._HeightAMSL.Equals(_HeightAMSL) && other._VelocityENU.Equals(_VelocityENU) && other._Orientation.Equals(_Orientation);
         }
         ///<exclude/>
@@ -12108,7 +11992,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -12123,7 +12007,7 @@ namespace ReactiveRTM.RTC
             get { return _OapMatrix; }
             set 
             {
-                if(_OapMatrix != value)
+                if(!_OapMatrix.Equals(value))
                 {
                     _OapMatrix  = value;
                     RaisePropertyChanged("OapMatrix");
@@ -12138,7 +12022,7 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(_Status != value)
+                if(!_Status.Equals(value))
                 {
                     _Status  = value;
                     RaisePropertyChanged("Status");
@@ -12174,7 +12058,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._OapMatrix.Equals(_OapMatrix) && other._Status.Equals(_Status);
         }
         ///<exclude/>
@@ -12212,7 +12095,7 @@ namespace ReactiveRTM.RTC
             get { return _Mean; }
             set 
             {
-                if(_Mean != value)
+                if(!_Mean.Equals(value))
                 {
                     _Mean  = value;
                     RaisePropertyChanged("Mean");
@@ -12227,7 +12110,7 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(_Covariance != value)
+                if(!_Covariance.Equals(value))
                 {
                     _Covariance  = value;
                     RaisePropertyChanged("Covariance");
@@ -12242,7 +12125,7 @@ namespace ReactiveRTM.RTC
             get { return _Weight; }
             set 
             {
-                if(_Weight != value)
+                if(!_Weight.Equals(value))
                 {
                     _Weight  = value;
                     RaisePropertyChanged("Weight");
@@ -12278,7 +12161,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Mean.Equals(_Mean) && other._Covariance.Equals(_Covariance) && other._Weight.Equals(_Weight);
         }
         ///<exclude/>
@@ -12316,7 +12198,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -12331,7 +12213,7 @@ namespace ReactiveRTM.RTC
             get { return _Hypotheses; }
             set 
             {
-                if(_Hypotheses != value)
+                if(!_Hypotheses.SequenceEqual(value))
                 {
                     _Hypotheses  = value;
                     RaisePropertyChanged("Hypotheses");
@@ -12357,7 +12239,7 @@ namespace ReactiveRTM.RTC
         public Hypotheses2D (global::RTC.Hypotheses2D source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Hypotheses = source.hypotheses.Select(x=>new ReactiveRTM.RTC.Hypothesis2D(x)).ToList();
+            _Hypotheses = source.hypotheses.Select(x => (ReactiveRTM.RTC.Hypothesis2D)new ReactiveRTM.RTC.Hypothesis2D(x)).ToList();
         }
 
         ///<exclude/>
@@ -12365,8 +12247,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Hypotheses.Equals(_Hypotheses);
+            return other._Tm.Equals(_Tm) && other._Hypotheses.SequenceEqual(_Hypotheses);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -12401,7 +12282,7 @@ namespace ReactiveRTM.RTC
             get { return _Mean; }
             set 
             {
-                if(_Mean != value)
+                if(!_Mean.Equals(value))
                 {
                     _Mean  = value;
                     RaisePropertyChanged("Mean");
@@ -12416,7 +12297,7 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(_Covariance != value)
+                if(!_Covariance.Equals(value))
                 {
                     _Covariance  = value;
                     RaisePropertyChanged("Covariance");
@@ -12431,7 +12312,7 @@ namespace ReactiveRTM.RTC
             get { return _Weight; }
             set 
             {
-                if(_Weight != value)
+                if(!_Weight.Equals(value))
                 {
                     _Weight  = value;
                     RaisePropertyChanged("Weight");
@@ -12467,7 +12348,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Mean.Equals(_Mean) && other._Covariance.Equals(_Covariance) && other._Weight.Equals(_Weight);
         }
         ///<exclude/>
@@ -12505,7 +12385,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -12520,7 +12400,7 @@ namespace ReactiveRTM.RTC
             get { return _Hypotheses; }
             set 
             {
-                if(_Hypotheses != value)
+                if(!_Hypotheses.SequenceEqual(value))
                 {
                     _Hypotheses  = value;
                     RaisePropertyChanged("Hypotheses");
@@ -12546,7 +12426,7 @@ namespace ReactiveRTM.RTC
         public Hypotheses3D (global::RTC.Hypotheses3D source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Hypotheses = source.hypotheses.Select(x=>new ReactiveRTM.RTC.Hypothesis3D(x)).ToList();
+            _Hypotheses = source.hypotheses.Select(x => (ReactiveRTM.RTC.Hypothesis3D)new ReactiveRTM.RTC.Hypothesis3D(x)).ToList();
         }
 
         ///<exclude/>
@@ -12554,8 +12434,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Hypotheses.Equals(_Hypotheses);
+            return other._Tm.Equals(_Tm) && other._Hypotheses.SequenceEqual(_Hypotheses);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -12590,7 +12469,7 @@ namespace ReactiveRTM.RTC
             get { return _XScale; }
             set 
             {
-                if(_XScale != value)
+                if(!_XScale.Equals(value))
                 {
                     _XScale  = value;
                     RaisePropertyChanged("XScale");
@@ -12605,7 +12484,7 @@ namespace ReactiveRTM.RTC
             get { return _YScale; }
             set 
             {
-                if(_YScale != value)
+                if(!_YScale.Equals(value))
                 {
                     _YScale  = value;
                     RaisePropertyChanged("YScale");
@@ -12620,7 +12499,7 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(_Width != value)
+                if(!_Width.Equals(value))
                 {
                     _Width  = value;
                     RaisePropertyChanged("Width");
@@ -12635,7 +12514,7 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(_Height != value)
+                if(!_Height.Equals(value))
                 {
                     _Height  = value;
                     RaisePropertyChanged("Height");
@@ -12650,7 +12529,7 @@ namespace ReactiveRTM.RTC
             get { return _Origin; }
             set 
             {
-                if(_Origin != value)
+                if(!_Origin.Equals(value))
                 {
                     _Origin  = value;
                     RaisePropertyChanged("Origin");
@@ -12690,7 +12569,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._XScale.Equals(_XScale) && other._YScale.Equals(_YScale) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Origin.Equals(_Origin);
         }
         ///<exclude/>
@@ -12732,7 +12610,7 @@ namespace ReactiveRTM.RTC
             get { return _Column; }
             set 
             {
-                if(_Column != value)
+                if(!_Column.Equals(value))
                 {
                     _Column  = value;
                     RaisePropertyChanged("Column");
@@ -12747,7 +12625,7 @@ namespace ReactiveRTM.RTC
             get { return _Row; }
             set 
             {
-                if(_Row != value)
+                if(!_Row.Equals(value))
                 {
                     _Row  = value;
                     RaisePropertyChanged("Row");
@@ -12762,7 +12640,7 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(_Width != value)
+                if(!_Width.Equals(value))
                 {
                     _Width  = value;
                     RaisePropertyChanged("Width");
@@ -12777,7 +12655,7 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(_Height != value)
+                if(!_Height.Equals(value))
                 {
                     _Height  = value;
                     RaisePropertyChanged("Height");
@@ -12792,7 +12670,7 @@ namespace ReactiveRTM.RTC
             get { return _Cells; }
             set 
             {
-                if(_Cells != value)
+                if(!_Cells.SequenceEqual(value))
                 {
                     _Cells  = value;
                     RaisePropertyChanged("Cells");
@@ -12824,7 +12702,7 @@ namespace ReactiveRTM.RTC
             _Row = source.row;
             _Width = source.width;
             _Height = source.height;
-            _Cells = source.cells.Select(x=>x).ToList();
+            _Cells = source.cells.Select(x => (System.Byte)x).ToList();
         }
 
         ///<exclude/>
@@ -12832,8 +12710,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Column.Equals(_Column) && other._Row.Equals(_Row) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Cells.Equals(_Cells);
+            return other._Column.Equals(_Column) && other._Row.Equals(_Row) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Cells.SequenceEqual(_Cells);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -12874,7 +12751,7 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(_Probability != value)
+                if(!_Probability.Equals(value))
                 {
                     _Probability  = value;
                     RaisePropertyChanged("Probability");
@@ -12889,7 +12766,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -12904,7 +12781,7 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(_Covariance != value)
+                if(!_Covariance.Equals(value))
                 {
                     _Covariance  = value;
                     RaisePropertyChanged("Covariance");
@@ -12940,7 +12817,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Probability.Equals(_Probability) && other._Position.Equals(_Position) && other._Covariance.Equals(_Covariance);
         }
         ///<exclude/>
@@ -12978,7 +12854,7 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(_Probability != value)
+                if(!_Probability.Equals(value))
                 {
                     _Probability  = value;
                     RaisePropertyChanged("Probability");
@@ -12993,7 +12869,7 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(_Position != value)
+                if(!_Position.Equals(value))
                 {
                     _Position  = value;
                     RaisePropertyChanged("Position");
@@ -13008,7 +12884,7 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(_Covariance != value)
+                if(!_Covariance.Equals(value))
                 {
                     _Covariance  = value;
                     RaisePropertyChanged("Covariance");
@@ -13044,7 +12920,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Probability.Equals(_Probability) && other._Position.Equals(_Position) && other._Covariance.Equals(_Covariance);
         }
         ///<exclude/>
@@ -13082,7 +12957,7 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(_Probability != value)
+                if(!_Probability.Equals(value))
                 {
                     _Probability  = value;
                     RaisePropertyChanged("Probability");
@@ -13097,7 +12972,7 @@ namespace ReactiveRTM.RTC
             get { return _Rho; }
             set 
             {
-                if(_Rho != value)
+                if(!_Rho.Equals(value))
                 {
                     _Rho  = value;
                     RaisePropertyChanged("Rho");
@@ -13112,7 +12987,7 @@ namespace ReactiveRTM.RTC
             get { return _Alpha; }
             set 
             {
-                if(_Alpha != value)
+                if(!_Alpha.Equals(value))
                 {
                     _Alpha  = value;
                     RaisePropertyChanged("Alpha");
@@ -13127,7 +13002,7 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(_Covariance != value)
+                if(!_Covariance.Equals(value))
                 {
                     _Covariance  = value;
                     RaisePropertyChanged("Covariance");
@@ -13142,7 +13017,7 @@ namespace ReactiveRTM.RTC
             get { return _Start; }
             set 
             {
-                if(_Start != value)
+                if(!_Start.Equals(value))
                 {
                     _Start  = value;
                     RaisePropertyChanged("Start");
@@ -13157,7 +13032,7 @@ namespace ReactiveRTM.RTC
             get { return _End; }
             set 
             {
-                if(_End != value)
+                if(!_End.Equals(value))
                 {
                     _End  = value;
                     RaisePropertyChanged("End");
@@ -13172,7 +13047,7 @@ namespace ReactiveRTM.RTC
             get { return _StartSighted; }
             set 
             {
-                if(_StartSighted != value)
+                if(!_StartSighted.Equals(value))
                 {
                     _StartSighted  = value;
                     RaisePropertyChanged("StartSighted");
@@ -13187,7 +13062,7 @@ namespace ReactiveRTM.RTC
             get { return _EndSighted; }
             set 
             {
-                if(_EndSighted != value)
+                if(!_EndSighted.Equals(value))
                 {
                     _EndSighted  = value;
                     RaisePropertyChanged("EndSighted");
@@ -13233,7 +13108,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Probability.Equals(_Probability) && other._Rho.Equals(_Rho) && other._Alpha.Equals(_Alpha) && other._Covariance.Equals(_Covariance) && other._Start.Equals(_Start) && other._End.Equals(_End) && other._StartSighted.Equals(_StartSighted) && other._EndSighted.Equals(_EndSighted);
         }
         ///<exclude/>
@@ -13281,7 +13155,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -13296,7 +13170,7 @@ namespace ReactiveRTM.RTC
             get { return _PointFeatures; }
             set 
             {
-                if(_PointFeatures != value)
+                if(!_PointFeatures.SequenceEqual(value))
                 {
                     _PointFeatures  = value;
                     RaisePropertyChanged("PointFeatures");
@@ -13311,7 +13185,7 @@ namespace ReactiveRTM.RTC
             get { return _PoseFeatures; }
             set 
             {
-                if(_PoseFeatures != value)
+                if(!_PoseFeatures.SequenceEqual(value))
                 {
                     _PoseFeatures  = value;
                     RaisePropertyChanged("PoseFeatures");
@@ -13326,7 +13200,7 @@ namespace ReactiveRTM.RTC
             get { return _LineFeatures; }
             set 
             {
-                if(_LineFeatures != value)
+                if(!_LineFeatures.SequenceEqual(value))
                 {
                     _LineFeatures  = value;
                     RaisePropertyChanged("LineFeatures");
@@ -13354,9 +13228,9 @@ namespace ReactiveRTM.RTC
         public Features (global::RTC.Features source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _PointFeatures = source.pointFeatures.Select(x=>new ReactiveRTM.RTC.PointFeature(x)).ToList();
-            _PoseFeatures = source.poseFeatures.Select(x=>new ReactiveRTM.RTC.PoseFeature(x)).ToList();
-            _LineFeatures = source.lineFeatures.Select(x=>new ReactiveRTM.RTC.LineFeature(x)).ToList();
+            _PointFeatures = source.pointFeatures.Select(x => (ReactiveRTM.RTC.PointFeature)new ReactiveRTM.RTC.PointFeature(x)).ToList();
+            _PoseFeatures = source.poseFeatures.Select(x => (ReactiveRTM.RTC.PoseFeature)new ReactiveRTM.RTC.PoseFeature(x)).ToList();
+            _LineFeatures = source.lineFeatures.Select(x => (ReactiveRTM.RTC.LineFeature)new ReactiveRTM.RTC.LineFeature(x)).ToList();
         }
 
         ///<exclude/>
@@ -13364,8 +13238,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._PointFeatures.Equals(_PointFeatures) && other._PoseFeatures.Equals(_PoseFeatures) && other._LineFeatures.Equals(_LineFeatures);
+            return other._Tm.Equals(_Tm) && other._PointFeatures.SequenceEqual(_PointFeatures) && other._PoseFeatures.SequenceEqual(_PoseFeatures) && other._LineFeatures.SequenceEqual(_LineFeatures);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13404,7 +13277,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -13419,7 +13292,7 @@ namespace ReactiveRTM.RTC
             get { return _Images; }
             set 
             {
-                if(_Images != value)
+                if(!_Images.SequenceEqual(value))
                 {
                     _Images  = value;
                     RaisePropertyChanged("Images");
@@ -13445,7 +13318,7 @@ namespace ReactiveRTM.RTC
         public MultiCameraImages (global::RTC.MultiCameraImages source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Images = source.images.Select(x=>new ReactiveRTM.RTC.CameraImage(x)).ToList();
+            _Images = source.images.Select(x => (ReactiveRTM.RTC.CameraImage)new ReactiveRTM.RTC.CameraImage(x)).ToList();
         }
 
         ///<exclude/>
@@ -13453,8 +13326,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Images.Equals(_Images);
+            return other._Tm.Equals(_Tm) && other._Images.SequenceEqual(_Images);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13489,7 +13361,7 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(_Geometry != value)
+                if(!_Geometry.Equals(value))
                 {
                     _Geometry  = value;
                     RaisePropertyChanged("Geometry");
@@ -13504,7 +13376,7 @@ namespace ReactiveRTM.RTC
             get { return _CameraGeometries; }
             set 
             {
-                if(_CameraGeometries != value)
+                if(!_CameraGeometries.SequenceEqual(value))
                 {
                     _CameraGeometries  = value;
                     RaisePropertyChanged("CameraGeometries");
@@ -13530,7 +13402,7 @@ namespace ReactiveRTM.RTC
         public MulticameraGeometry (global::RTC.MulticameraGeometry source)
         {
             _Geometry = new ReactiveRTM.RTC.Geometry3D(source.geometry);
-            _CameraGeometries = source.cameraGeometries.Select(x=>new ReactiveRTM.RTC.Geometry3D(x)).ToList();
+            _CameraGeometries = source.cameraGeometries.Select(x => (ReactiveRTM.RTC.Geometry3D)new ReactiveRTM.RTC.Geometry3D(x)).ToList();
         }
 
         ///<exclude/>
@@ -13538,8 +13410,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Geometry.Equals(_Geometry) && other._CameraGeometries.Equals(_CameraGeometries);
+            return other._Geometry.Equals(_Geometry) && other._CameraGeometries.SequenceEqual(_CameraGeometries);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13574,7 +13445,7 @@ namespace ReactiveRTM.RTC
             get { return _Target; }
             set 
             {
-                if(_Target != value)
+                if(!_Target.Equals(value))
                 {
                     _Target  = value;
                     RaisePropertyChanged("Target");
@@ -13589,7 +13460,7 @@ namespace ReactiveRTM.RTC
             get { return _DistanceTolerance; }
             set 
             {
-                if(_DistanceTolerance != value)
+                if(!_DistanceTolerance.Equals(value))
                 {
                     _DistanceTolerance  = value;
                     RaisePropertyChanged("DistanceTolerance");
@@ -13604,7 +13475,7 @@ namespace ReactiveRTM.RTC
             get { return _HeadingTolerance; }
             set 
             {
-                if(_HeadingTolerance != value)
+                if(!_HeadingTolerance.Equals(value))
                 {
                     _HeadingTolerance  = value;
                     RaisePropertyChanged("HeadingTolerance");
@@ -13619,7 +13490,7 @@ namespace ReactiveRTM.RTC
             get { return _TimeLimit; }
             set 
             {
-                if(_TimeLimit != value)
+                if(!_TimeLimit.Equals(value))
                 {
                     _TimeLimit  = value;
                     RaisePropertyChanged("TimeLimit");
@@ -13634,7 +13505,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxSpeed; }
             set 
             {
-                if(_MaxSpeed != value)
+                if(!_MaxSpeed.Equals(value))
                 {
                     _MaxSpeed  = value;
                     RaisePropertyChanged("MaxSpeed");
@@ -13674,7 +13545,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Target.Equals(_Target) && other._DistanceTolerance.Equals(_DistanceTolerance) && other._HeadingTolerance.Equals(_HeadingTolerance) && other._TimeLimit.Equals(_TimeLimit) && other._MaxSpeed.Equals(_MaxSpeed);
         }
         ///<exclude/>
@@ -13716,7 +13586,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -13731,7 +13601,7 @@ namespace ReactiveRTM.RTC
             get { return _Waypoints; }
             set 
             {
-                if(_Waypoints != value)
+                if(!_Waypoints.SequenceEqual(value))
                 {
                     _Waypoints  = value;
                     RaisePropertyChanged("Waypoints");
@@ -13757,7 +13627,7 @@ namespace ReactiveRTM.RTC
         public Path2D (global::RTC.Path2D source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Waypoints = source.waypoints.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList();
+            _Waypoints = source.waypoints.Select(x => (ReactiveRTM.RTC.Waypoint2D)new ReactiveRTM.RTC.Waypoint2D(x)).ToList();
         }
 
         ///<exclude/>
@@ -13765,8 +13635,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Waypoints.Equals(_Waypoints);
+            return other._Tm.Equals(_Tm) && other._Waypoints.SequenceEqual(_Waypoints);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13801,7 +13670,7 @@ namespace ReactiveRTM.RTC
             get { return _Target; }
             set 
             {
-                if(_Target != value)
+                if(!_Target.Equals(value))
                 {
                     _Target  = value;
                     RaisePropertyChanged("Target");
@@ -13816,7 +13685,7 @@ namespace ReactiveRTM.RTC
             get { return _DistanceTolerance; }
             set 
             {
-                if(_DistanceTolerance != value)
+                if(!_DistanceTolerance.Equals(value))
                 {
                     _DistanceTolerance  = value;
                     RaisePropertyChanged("DistanceTolerance");
@@ -13831,7 +13700,7 @@ namespace ReactiveRTM.RTC
             get { return _HeadingTolerance; }
             set 
             {
-                if(_HeadingTolerance != value)
+                if(!_HeadingTolerance.Equals(value))
                 {
                     _HeadingTolerance  = value;
                     RaisePropertyChanged("HeadingTolerance");
@@ -13846,7 +13715,7 @@ namespace ReactiveRTM.RTC
             get { return _TimeLimit; }
             set 
             {
-                if(_TimeLimit != value)
+                if(!_TimeLimit.Equals(value))
                 {
                     _TimeLimit  = value;
                     RaisePropertyChanged("TimeLimit");
@@ -13861,7 +13730,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxSpeed; }
             set 
             {
-                if(_MaxSpeed != value)
+                if(!_MaxSpeed.Equals(value))
                 {
                     _MaxSpeed  = value;
                     RaisePropertyChanged("MaxSpeed");
@@ -13901,7 +13770,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Target.Equals(_Target) && other._DistanceTolerance.Equals(_DistanceTolerance) && other._HeadingTolerance.Equals(_HeadingTolerance) && other._TimeLimit.Equals(_TimeLimit) && other._MaxSpeed.Equals(_MaxSpeed);
         }
         ///<exclude/>
@@ -13943,7 +13811,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -13958,7 +13826,7 @@ namespace ReactiveRTM.RTC
             get { return _Waypoints; }
             set 
             {
-                if(_Waypoints != value)
+                if(!_Waypoints.SequenceEqual(value))
                 {
                     _Waypoints  = value;
                     RaisePropertyChanged("Waypoints");
@@ -13984,7 +13852,7 @@ namespace ReactiveRTM.RTC
         public Path3D (global::RTC.Path3D source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Waypoints = source.waypoints.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList();
+            _Waypoints = source.waypoints.Select(x => (ReactiveRTM.RTC.Waypoint3D)new ReactiveRTM.RTC.Waypoint3D(x)).ToList();
         }
 
         ///<exclude/>
@@ -13992,8 +13860,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Waypoints.Equals(_Waypoints);
+            return other._Tm.Equals(_Tm) && other._Waypoints.SequenceEqual(_Waypoints);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14028,7 +13895,7 @@ namespace ReactiveRTM.RTC
             get { return _Point; }
             set 
             {
-                if(_Point != value)
+                if(!_Point.Equals(value))
                 {
                     _Point  = value;
                     RaisePropertyChanged("Point");
@@ -14043,7 +13910,7 @@ namespace ReactiveRTM.RTC
             get { return _Colour; }
             set 
             {
-                if(_Colour != value)
+                if(!_Colour.Equals(value))
                 {
                     _Colour  = value;
                     RaisePropertyChanged("Colour");
@@ -14077,7 +13944,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Point.Equals(_Point) && other._Colour.Equals(_Colour);
         }
         ///<exclude/>
@@ -14113,7 +13979,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -14128,7 +13994,7 @@ namespace ReactiveRTM.RTC
             get { return _Points; }
             set 
             {
-                if(_Points != value)
+                if(!_Points.SequenceEqual(value))
                 {
                     _Points  = value;
                     RaisePropertyChanged("Points");
@@ -14154,7 +14020,7 @@ namespace ReactiveRTM.RTC
         public PointCloud (global::RTC.PointCloud source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Points = source.points.Select(x=>new ReactiveRTM.RTC.PointCloudPoint(x)).ToList();
+            _Points = source.points.Select(x => (ReactiveRTM.RTC.PointCloudPoint)new ReactiveRTM.RTC.PointCloudPoint(x)).ToList();
         }
 
         ///<exclude/>
@@ -14162,8 +14028,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Points.Equals(_Points);
+            return other._Tm.Equals(_Tm) && other._Points.SequenceEqual(_Points);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14198,7 +14063,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -14213,7 +14078,7 @@ namespace ReactiveRTM.RTC
             get { return _Pan; }
             set 
             {
-                if(_Pan != value)
+                if(!_Pan.Equals(value))
                 {
                     _Pan  = value;
                     RaisePropertyChanged("Pan");
@@ -14228,7 +14093,7 @@ namespace ReactiveRTM.RTC
             get { return _Tilt; }
             set 
             {
-                if(_Tilt != value)
+                if(!_Tilt.Equals(value))
                 {
                     _Tilt  = value;
                     RaisePropertyChanged("Tilt");
@@ -14264,7 +14129,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Pan.Equals(_Pan) && other._Tilt.Equals(_Tilt);
         }
         ///<exclude/>
@@ -14302,7 +14166,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -14317,7 +14181,7 @@ namespace ReactiveRTM.RTC
             get { return _Angles; }
             set 
             {
-                if(_Angles != value)
+                if(!_Angles.Equals(value))
                 {
                     _Angles  = value;
                     RaisePropertyChanged("Angles");
@@ -14332,7 +14196,7 @@ namespace ReactiveRTM.RTC
             get { return _PanSpeed; }
             set 
             {
-                if(_PanSpeed != value)
+                if(!_PanSpeed.Equals(value))
                 {
                     _PanSpeed  = value;
                     RaisePropertyChanged("PanSpeed");
@@ -14347,7 +14211,7 @@ namespace ReactiveRTM.RTC
             get { return _TiltSpeed; }
             set 
             {
-                if(_TiltSpeed != value)
+                if(!_TiltSpeed.Equals(value))
                 {
                     _TiltSpeed  = value;
                     RaisePropertyChanged("TiltSpeed");
@@ -14385,7 +14249,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._Tm.Equals(_Tm) && other._Angles.Equals(_Angles) && other._PanSpeed.Equals(_PanSpeed) && other._TiltSpeed.Equals(_TiltSpeed);
         }
         ///<exclude/>
@@ -14425,7 +14288,7 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(_Geometry != value)
+                if(!_Geometry.Equals(value))
                 {
                     _Geometry  = value;
                     RaisePropertyChanged("Geometry");
@@ -14440,7 +14303,7 @@ namespace ReactiveRTM.RTC
             get { return _ElementGeometries; }
             set 
             {
-                if(_ElementGeometries != value)
+                if(!_ElementGeometries.SequenceEqual(value))
                 {
                     _ElementGeometries  = value;
                     RaisePropertyChanged("ElementGeometries");
@@ -14466,7 +14329,7 @@ namespace ReactiveRTM.RTC
         public RangerGeometry (global::RTC.RangerGeometry source)
         {
             _Geometry = new ReactiveRTM.RTC.Geometry3D(source.geometry);
-            _ElementGeometries = source.elementGeometries.Select(x=>new ReactiveRTM.RTC.Geometry3D(x)).ToList();
+            _ElementGeometries = source.elementGeometries.Select(x => (ReactiveRTM.RTC.Geometry3D)new ReactiveRTM.RTC.Geometry3D(x)).ToList();
         }
 
         ///<exclude/>
@@ -14474,8 +14337,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Geometry.Equals(_Geometry) && other._ElementGeometries.Equals(_ElementGeometries);
+            return other._Geometry.Equals(_Geometry) && other._ElementGeometries.SequenceEqual(_ElementGeometries);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14510,7 +14372,7 @@ namespace ReactiveRTM.RTC
             get { return _MinAngle; }
             set 
             {
-                if(_MinAngle != value)
+                if(!_MinAngle.Equals(value))
                 {
                     _MinAngle  = value;
                     RaisePropertyChanged("MinAngle");
@@ -14525,7 +14387,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxAngle; }
             set 
             {
-                if(_MaxAngle != value)
+                if(!_MaxAngle.Equals(value))
                 {
                     _MaxAngle  = value;
                     RaisePropertyChanged("MaxAngle");
@@ -14540,7 +14402,7 @@ namespace ReactiveRTM.RTC
             get { return _AngularRes; }
             set 
             {
-                if(_AngularRes != value)
+                if(!_AngularRes.Equals(value))
                 {
                     _AngularRes  = value;
                     RaisePropertyChanged("AngularRes");
@@ -14555,7 +14417,7 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(_MinRange != value)
+                if(!_MinRange.Equals(value))
                 {
                     _MinRange  = value;
                     RaisePropertyChanged("MinRange");
@@ -14570,7 +14432,7 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(_MaxRange != value)
+                if(!_MaxRange.Equals(value))
                 {
                     _MaxRange  = value;
                     RaisePropertyChanged("MaxRange");
@@ -14585,7 +14447,7 @@ namespace ReactiveRTM.RTC
             get { return _RangeRes; }
             set 
             {
-                if(_RangeRes != value)
+                if(!_RangeRes.Equals(value))
                 {
                     _RangeRes  = value;
                     RaisePropertyChanged("RangeRes");
@@ -14600,7 +14462,7 @@ namespace ReactiveRTM.RTC
             get { return _Frequency; }
             set 
             {
-                if(_Frequency != value)
+                if(!_Frequency.Equals(value))
                 {
                     _Frequency  = value;
                     RaisePropertyChanged("Frequency");
@@ -14644,7 +14506,6 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
             return other._MinAngle.Equals(_MinAngle) && other._MaxAngle.Equals(_MaxAngle) && other._AngularRes.Equals(_AngularRes) && other._MinRange.Equals(_MinRange) && other._MaxRange.Equals(_MaxRange) && other._RangeRes.Equals(_RangeRes) && other._Frequency.Equals(_Frequency);
         }
         ///<exclude/>
@@ -14690,7 +14551,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -14705,7 +14566,7 @@ namespace ReactiveRTM.RTC
             get { return _Ranges; }
             set 
             {
-                if(_Ranges != value)
+                if(!_Ranges.SequenceEqual(value))
                 {
                     _Ranges  = value;
                     RaisePropertyChanged("Ranges");
@@ -14720,7 +14581,7 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(_Geometry != value)
+                if(!_Geometry.Equals(value))
                 {
                     _Geometry  = value;
                     RaisePropertyChanged("Geometry");
@@ -14735,7 +14596,7 @@ namespace ReactiveRTM.RTC
             get { return _Config; }
             set 
             {
-                if(_Config != value)
+                if(!_Config.Equals(value))
                 {
                     _Config  = value;
                     RaisePropertyChanged("Config");
@@ -14763,7 +14624,7 @@ namespace ReactiveRTM.RTC
         public RangeData (global::RTC.RangeData source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Ranges = source.ranges.Select(x=>x).ToList();
+            _Ranges = source.ranges.Select(x => (System.Double)x).ToList();
             _Geometry = new ReactiveRTM.RTC.RangerGeometry(source.geometry);
             _Config = new ReactiveRTM.RTC.RangerConfig(source.config);
         }
@@ -14773,8 +14634,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Ranges.Equals(_Ranges) && other._Geometry.Equals(_Geometry) && other._Config.Equals(_Config);
+            return other._Tm.Equals(_Tm) && other._Ranges.SequenceEqual(_Ranges) && other._Geometry.Equals(_Geometry) && other._Config.Equals(_Config);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14813,7 +14673,7 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(_Tm != value)
+                if(!_Tm.Equals(value))
                 {
                     _Tm  = value;
                     RaisePropertyChanged("Tm");
@@ -14828,7 +14688,7 @@ namespace ReactiveRTM.RTC
             get { return _Intensities; }
             set 
             {
-                if(_Intensities != value)
+                if(!_Intensities.SequenceEqual(value))
                 {
                     _Intensities  = value;
                     RaisePropertyChanged("Intensities");
@@ -14843,7 +14703,7 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(_Geometry != value)
+                if(!_Geometry.Equals(value))
                 {
                     _Geometry  = value;
                     RaisePropertyChanged("Geometry");
@@ -14858,7 +14718,7 @@ namespace ReactiveRTM.RTC
             get { return _Config; }
             set 
             {
-                if(_Config != value)
+                if(!_Config.Equals(value))
                 {
                     _Config  = value;
                     RaisePropertyChanged("Config");
@@ -14886,7 +14746,7 @@ namespace ReactiveRTM.RTC
         public IntensityData (global::RTC.IntensityData source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Intensities = source.intensities.Select(x=>x).ToList();
+            _Intensities = source.intensities.Select(x => (System.Double)x).ToList();
             _Geometry = new ReactiveRTM.RTC.RangerGeometry(source.geometry);
             _Config = new ReactiveRTM.RTC.RangerConfig(source.config);
         }
@@ -14896,8 +14756,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Tm.Equals(_Tm) && other._Intensities.Equals(_Intensities) && other._Geometry.Equals(_Geometry) && other._Config.Equals(_Config);
+            return other._Tm.Equals(_Tm) && other._Intensities.SequenceEqual(_Intensities) && other._Geometry.Equals(_Geometry) && other._Config.Equals(_Config);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14933,15 +14792,15 @@ namespace ReactiveRTM.RTM
  
     public class ModuleProfile : NotifyPropertyChangedBase
     {
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -14973,8 +14832,7 @@ namespace ReactiveRTM.RTM
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Properties.Equals(_Properties);
+            return other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14999,15 +14857,15 @@ namespace ReactiveRTM.RTM
  
     public class ManagerProfile : NotifyPropertyChangedBase
     {
-        private System.Collections.Generic.Dictionary<System.String,System.Object> _Properties;
+        private Dictionary<string,object> _Properties;
             
         ///<exclude/>
-        public System.Collections.Generic.Dictionary<System.String,System.Object> Properties
+        public Dictionary<string,object> Properties
         {
             get { return _Properties; }
             set 
             {
-                if(_Properties != value)
+                if(!_Properties.SequenceEqual(value))
                 {
                     _Properties  = value;
                     RaisePropertyChanged("Properties");
@@ -15039,8 +14897,7 @@ namespace ReactiveRTM.RTM
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            //TODO: SequenceEquals
-            return other._Properties.Equals(_Properties);
+            return other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)

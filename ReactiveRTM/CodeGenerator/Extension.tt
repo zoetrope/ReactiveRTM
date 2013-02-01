@@ -19,6 +19,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
+using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
 <# foreach(var x in ClassGenerator.GenerateTemplates(types)) {#>

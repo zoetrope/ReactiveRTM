@@ -62,6 +62,19 @@ namespace ReactiveRTM.Adapter
             _reactivePorts.Remove(reactivePort);
         }
 
+        public TPortType CreatePort<TPortType, TDataType>(string name)
+            where TPortType : PortServiceBase<TDataType>, new()
+        {
+            var port = new TPortType();
+            port.Initialize(name);
+
+            port.SetDisposing(() => { RemovePort(port); });
+
+            return port;
+        }
+
+
+
         public ReturnCode_t Initialize()
         {
             _context = new ExecutionContextServiceImpl();

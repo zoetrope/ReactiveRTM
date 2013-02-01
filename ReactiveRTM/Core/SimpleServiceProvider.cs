@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Codeplex.Data;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.IDL;
+using Newtonsoft.Json.Linq;
 
 namespace ReactiveRTM.Core
 {
@@ -64,11 +64,11 @@ namespace ReactiveRTM.Core
 
             //キャストしたい・・・
             //var p = methodInfo.Method.GetParameters().Select(param=>param.ParameterType);
-            var argObjs = args.Select(DynamicJson.Parse);//.Cast<>();
+            var argObjs = args.Select(JObject.Parse);//.Cast<>();
 
             var ret = methodInfo.DynamicInvoke(argObjs.ToArray());
 
-            return DynamicJson.Serialize(ret);
+            return JObject.FromObject(ret).ToString();
         }
     }
 }

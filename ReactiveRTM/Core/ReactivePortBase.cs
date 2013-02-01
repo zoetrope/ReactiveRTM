@@ -5,6 +5,25 @@ using ReactiveRTM.omg.org.RTC;
 
 namespace ReactiveRTM.Core
 {
+    public abstract class PortServiceBase<TDataType> :ReactivePortBase, IDisposable
+    {
+        public void Initialize(string name)
+        {
+        }
+
+        private Action _action;
+        public void SetDisposing(Action action)
+        {
+            _action = action;
+        }
+
+        public void Dispose()
+        {
+            _action();
+        }
+    }
+
+
     public abstract class ReactivePortBase : IConnectable
     {
 
@@ -13,6 +32,10 @@ namespace ReactiveRTM.Core
         public IObservable<ConnectorProfile> ConnectionChangedAsObservable()
         {
             throw new NotImplementedException();
+        }
+
+        protected ReactivePortBase()
+        { 
         }
 
         protected ReactivePortBase(string name)

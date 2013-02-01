@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Text;
-using RTC;
 using ReactiveRTM.Core;
-using omg.org.RTC;
+using ReactiveRTM.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// データポートの合成のサンプル
@@ -43,8 +43,8 @@ class PortCombination : ReactiveComponent
         switch (combinationType)
         {
             case "Zip":
-                d = Observable.Zip(_inport1, _inport2, 
-                    (indata1, indata2) => new TimedLong(new Time(), indata1.data + indata2.data))
+                d = Observable.Zip(_inport1, _inport2,
+                    (indata1, indata2) => new TimedLong() { Tm = DateTime.Now, Data = indata1.Data + indata2.Data })
                     .Subscribe(data => _outport.WriteAsync(data));
                 break;
 
@@ -54,8 +54,8 @@ class PortCombination : ReactiveComponent
                 break;
 
             case "CombineLatest":
-                d = Observable.CombineLatest(_inport1, _inport2, 
-                    (indata1, indata2) => new TimedLong(new Time(), indata1.data + indata2.data))
+                d = Observable.CombineLatest(_inport1, _inport2,
+                    (indata1, indata2) => new TimedLong() { Tm = DateTime.Now, Data = indata1.Data + indata2.Data })
                     .Subscribe(data => _outport.WriteAsync(data));
                 break;
             default:

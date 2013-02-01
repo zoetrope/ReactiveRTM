@@ -1,13 +1,7 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ch.Elca.Iiop.Services;
-using omg.org.CosNaming;
-using omg.org.CosNaming.NamingContext_package;
-
-#endregion
 
 namespace ReactiveRTM.Corba
 {
@@ -16,7 +10,7 @@ namespace ReactiveRTM.Corba
     /// </summary>
     public class NamingServiceClient : INamingServiceClient
     {
-        private readonly NamingContext _rootContext;
+        private readonly global::omg.org.CosNaming.NamingContext _rootContext;
 
         /// <summary>
         ///   <see cref = "NamingServiceClient" />のインスタンス生成<br />  
@@ -141,7 +135,7 @@ namespace ReactiveRTM.Corba
                 {
                     obj = _rootContext.resolve(StringToNameComponents(name));
                 }
-                catch (NotFound)
+                catch (global::omg.org.CosNaming.NamingContext_package.NotFound)
                 {
                     continue;
                 }
@@ -153,39 +147,39 @@ namespace ReactiveRTM.Corba
                         continue;
                     }
                 }
-                catch (omg.org.CORBA.TRANSIENT)
+                catch (global::omg.org.CORBA.TRANSIENT)
                 {
                     try
                     {
                         UnregisterObject(name);
                     }
-                    catch (NotFound)
+                    catch (global::omg.org.CosNaming.NamingContext_package.NotFound)
                     {
                     }
                 }
             }
         }
 
-        private void BindObject(NameComponent[] name, MarshalByRefObject obj)
+        private void BindObject(global::omg.org.CosNaming.NameComponent[] name, MarshalByRefObject obj)
         {
             try
             {
                 _rootContext.rebind(name, obj);
             }
-            catch (NotFound)
+            catch (global::omg.org.CosNaming.NamingContext_package.NotFound)
             {
                 BindObjectRecursive(_rootContext, name, obj);
             }
-            catch (CannotProceed ex)
+            catch (global::omg.org.CosNaming.NamingContext_package.CannotProceed ex)
             {
                 BindObjectRecursive(ex.cxt, ex.rest_of_name, obj);
             }
         }
 
-        private void BindObjectRecursive(NamingContext context, NameComponent[] name, MarshalByRefObject obj)
+        private void BindObjectRecursive(global::omg.org.CosNaming.NamingContext context, global::omg.org.CosNaming.NameComponent[] name, MarshalByRefObject obj)
         {
             int len = name.Length;
-            NamingContext cxt = context;
+            var cxt = context;
 
             for (int i = 0; i < len; i++)
             {
@@ -201,9 +195,9 @@ namespace ReactiveRTM.Corba
                     {
                         cxt = cxt.bind_new_context(contextName);
                     }
-                    catch (AlreadyBound)
+                    catch (global::omg.org.CosNaming.NamingContext_package.AlreadyBound)
                     {
-                        cxt = (NamingContext) cxt.resolve(contextName);
+                        cxt = (global::omg.org.CosNaming.NamingContext)cxt.resolve(contextName);
                     }
                 }
             }
@@ -217,13 +211,13 @@ namespace ReactiveRTM.Corba
         {
             try
             {
-                omg.org.CORBA.OrbServices orb = omg.org.CORBA.OrbServices.GetSingleton();
+                var orb = global::omg.org.CORBA.OrbServices.GetSingleton();
                 if (!orb.is_a(obj, typeof (TObject)))
                 {
                     return false;
                 }
             }
-            catch (omg.org.CORBA.TRANSIENT)
+            catch (global::omg.org.CORBA.TRANSIENT)
             {
                 return false;
             }
@@ -231,11 +225,11 @@ namespace ReactiveRTM.Corba
             return true;
         }
 
-        private IEnumerable<string> GetObjectNamesRecursive(NamingContext context, string name)
+        private IEnumerable<string> GetObjectNamesRecursive(global::omg.org.CosNaming.NamingContext context, string name)
         {
             const int lote = 10;
-            Binding[] bindList;
-            BindingIterator bindIter;
+            global::omg.org.CosNaming.Binding[] bindList;
+            global::omg.org.CosNaming.BindingIterator bindIter;
 
             // 現在の階層に登録されているコンテキストをlote個ずつ取得する
             context.list(lote, out bindList, out bindIter);
@@ -251,7 +245,7 @@ namespace ReactiveRTM.Corba
                     newName += NameDelimiter;
                     newName += bindList[i].binding_name[0].kind;
 
-                    if (bindList[i].binding_type == BindingType.ncontext)
+                    if (bindList[i].binding_type == global::omg.org.CosNaming.BindingType.ncontext)
                     {
                         // バインドされているものがコンテキストでない場合は
                         // さらに下の階層がある。
@@ -261,7 +255,7 @@ namespace ReactiveRTM.Corba
 
                         // 一つ下の階層のネーミングコンテキストを取得する
                         MarshalByRefObject obj = context.resolve(bindList[i].binding_name);
-                        var nc = (NamingContext) obj;
+                        var nc = (global::omg.org.CosNaming.NamingContext)obj;
 
                         // 次の階層へ
                         foreach (var n in GetObjectNamesRecursive(nc, newName))
@@ -285,15 +279,15 @@ namespace ReactiveRTM.Corba
         }
 
 
-        private NameComponent[] StringToNameComponents(string stringName)
+        private global::omg.org.CosNaming.NameComponent[] StringToNameComponents(string stringName)
         {
             if (stringName == string.Empty)
             {
-                throw new InvalidName("stringName is empty.");
+                throw new global::omg.org.CosNaming.NamingContext_package.InvalidName("stringName is empty.");
             }
 
             string[] subcol = stringName.Split(new[] {TreeDelimiter});
-            var context = new NameComponent[subcol.Length];
+            var context = new global::omg.org.CosNaming.NameComponent[subcol.Length];
             int index = 0;
 
             foreach (string sub in subcol)
@@ -301,11 +295,11 @@ namespace ReactiveRTM.Corba
                 string[] subsubcol = sub.Split(new[] {NameDelimiter});
                 if (subsubcol.Length == 2)
                 {
-                    context[index++] = new NameComponent(subsubcol[0], subsubcol[1]);
+                    context[index++] = new global::omg.org.CosNaming.NameComponent(subsubcol[0], subsubcol[1]);
                 }
                 else
                 {
-                    context[index++] = new NameComponent(sub, "");
+                    context[index++] = new global::omg.org.CosNaming.NameComponent(sub, "");
                 }
             }
 
@@ -328,7 +322,7 @@ namespace ReactiveRTM.Corba
     public abstract class NamingInfoBase
     {
         private NamingContextInfo _parent;
-        private NameComponent[] _name;
+        private global::omg.org.CosNaming.NameComponent[] _name;
 
         /// <summary>
         /// オブジェクトの名前を文字列で表現するときのIDとKINDの区切り文字。
@@ -348,7 +342,7 @@ namespace ReactiveRTM.Corba
             TreeDelimiter = '/';
         }
 
-        protected NamingInfoBase(NamingContextInfo parent, NameComponent[] name)
+        protected NamingInfoBase(NamingContextInfo parent, global::omg.org.CosNaming.NameComponent[] name)
         {
             _parent = parent;
             _name = name;
@@ -370,9 +364,9 @@ namespace ReactiveRTM.Corba
 
     public class NamingContextInfo : NamingInfoBase
     {
-        private NamingContext _context;
+        private global::omg.org.CosNaming.NamingContext _context;
 
-        public NamingContextInfo(NamingContextInfo parent, NameComponent[] name, NamingContext context)
+        public NamingContextInfo(NamingContextInfo parent, global::omg.org.CosNaming.NameComponent[] name, global::omg.org.CosNaming.NamingContext context)
             : base(parent, name)
         {
             _context = context;
@@ -384,8 +378,8 @@ namespace ReactiveRTM.Corba
             get
             {
                 const int lote = 10;
-                Binding[] bindList;
-                BindingIterator bindIter;
+                global::omg.org.CosNaming.Binding[] bindList;
+                global::omg.org.CosNaming.BindingIterator bindIter;
 
                 // 現在の階層に登録されているコンテキストをlote個ずつ取得する
                 _context.list(lote, out bindList, out bindIter);
@@ -394,11 +388,11 @@ namespace ReactiveRTM.Corba
                 {
                     for (int i = 0; i < bindList.Length; i++)
                     {
-                        if (bindList[i].binding_type == BindingType.ncontext)
+                        if (bindList[i].binding_type == global::omg.org.CosNaming.BindingType.ncontext)
                         {
                             var name = bindList[i].binding_name;
                             MarshalByRefObject obj = _context.resolve(name);
-                            var nc = (NamingContext) obj;
+                            var nc = (global::omg.org.CosNaming.NamingContext)obj;
                             yield return new NamingContextInfo(this, name, nc);
                         }
                     }
@@ -418,8 +412,8 @@ namespace ReactiveRTM.Corba
             get
             {
                 const int lote = 10;
-                Binding[] bindList;
-                BindingIterator bindIter;
+                global::omg.org.CosNaming.Binding[] bindList;
+                global::omg.org.CosNaming.BindingIterator bindIter;
 
                 // 現在の階層に登録されているコンテキストをlote個ずつ取得する
                 _context.list(lote, out bindList, out bindIter);
@@ -428,7 +422,7 @@ namespace ReactiveRTM.Corba
                 {
                     for (int i = 0; i < bindList.Length; i++)
                     {
-                        if (bindList[i].binding_type == BindingType.nobject)
+                        if (bindList[i].binding_type == global::omg.org.CosNaming.BindingType.nobject)
                         {
                             var name = bindList[i].binding_name;
                             MarshalByRefObject obj = _context.resolve(name);
@@ -451,7 +445,7 @@ namespace ReactiveRTM.Corba
     {
         private MarshalByRefObject _object;
 
-        public NamingObjectInfo(NamingContextInfo parent, NameComponent[] name, MarshalByRefObject obj)
+        public NamingObjectInfo(NamingContextInfo parent, global::omg.org.CosNaming.NameComponent[] name, MarshalByRefObject obj)
             : base(parent, name)
         {
             _object = obj;

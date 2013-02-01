@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RTC;
 using ReactiveRTM.Core;
-using omg.org.RTC;
+using ReactiveRTM.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// データポートからの入力データをコンソールに出力する
@@ -37,7 +37,7 @@ class ConsoleOut : ReactiveComponent
     private IDisposable _disposer;
     protected override ReturnCode_t OnActivated(int execHandle)
     {
-        _disposer = _inport.Subscribe(x => Console.WriteLine(x.data));
+        _disposer = _inport.Subscribe(x => Console.WriteLine(x.Data));
 
         return ReturnCode_t.RTC_OK;
     }

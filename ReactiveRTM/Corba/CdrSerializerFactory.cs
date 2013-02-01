@@ -3,6 +3,7 @@ using Ch.Elca.Iiop;
 using Ch.Elca.Iiop.Util;
 using ReactiveRTM.Utility;
 using omg.org.IOP;
+using System;
 
 namespace ReactiveRTM.Corba
 {
@@ -39,5 +40,12 @@ namespace ReactiveRTM.Corba
             var serializer = _factory.Create(typeof(T), AttributeExtCollection.EmptyCollection);
             return new CdrSerializer<T>(serializer, isLittleEndian);
         }
+        /*
+        public CdrSerializer GetSerializer(Type type, bool isLittleEndian = true)
+        {
+            var serializer = _factory.Create(type, AttributeExtCollection.EmptyCollection);
+            return new CdrSerializer<T>(serializer, isLittleEndian);
+        }
+        */
     }
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using Codeplex.Data;
 using ReactiveRTM.IDL;
+using Newtonsoft.Json.Linq;
 
 namespace ReactiveRTM.Core
 {
@@ -25,11 +25,11 @@ namespace ReactiveRTM.Core
         {
             var methodName = binder.Name;
 
-            var jsonArgs = args.Select(DynamicJson.Serialize);
+            var jsonArgs = args.Select(JObject.FromObject);
 
-            var ret = _service.Invoke(methodName, jsonArgs.ToArray());
+            var ret = _service.Invoke(methodName, jsonArgs.Select(j => j.ToString()).ToArray());
 
-            result = DynamicJson.Parse(ret.First());
+            result = JObject.Parse(ret.First());
 
             return true;
         }

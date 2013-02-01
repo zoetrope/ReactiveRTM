@@ -19,6 +19,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
+using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
 <# foreach(var x in ClassGenerator.GenerateTemplates(types)) {#>
@@ -35,7 +36,7 @@ namespace <#= x.Namespace #>
         {
             _target = target;
         }
-<# foreach(var method in ct.MethodTemplates) {#>
+<# foreach(var method in ct.AllMethodTemplates) {#>
         public <#= method.IiopReturnType #> <#= method.IiopName #>(<#= method.IiopDecArgs #>)
         {
 <#     foreach(var param in method.AdapterBeforeCall) {#> 

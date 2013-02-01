@@ -5,6 +5,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
+using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
@@ -1030,7 +1031,7 @@ namespace ReactiveRTM.omg.org.RTC
         public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
-            return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            return Converter.DictionaryToNVList(ret);
         }
         public global::System.Object get_status(System.String nme)
         {
@@ -1265,7 +1266,7 @@ namespace ReactiveRTM.OpenRTM
         }
         public global::OpenRTM.PortStatus put(global::System.Byte[] data)
         {
-            var ret = _target.Put(data.Select(x=>x).ToList());
+            var ret = _target.Put(data.Select(x => (System.Byte)x).ToList());
             return (global::OpenRTM.PortStatus)ret;
         }
         public override object InitializeLifetimeService()
@@ -1285,7 +1286,7 @@ namespace ReactiveRTM.OpenRTM
         public global::OpenRTM.PortStatus _get(out global::System.Byte[] data)
         {
  
-            var tmpdata = data.Select(x=>x).ToList();
+            List<System.Byte> tmpdata;
             var ret = _target.Get(out tmpdata);
  
             data = tmpdata.Select(x=>x).ToArray();
@@ -1486,7 +1487,7 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
-            return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            return Converter.DictionaryToNVList(ret);
         }
         public global::System.Object get_status(System.String nme)
         {
@@ -1663,7 +1664,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public global::org.omg.SDOPackage.NameValue[] get_status_list()
         {
             var ret = _target.GetStatusList();
-            return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            return Converter.DictionaryToNVList(ret);
         }
         public global::System.Object get_status(System.String nme)
         {
@@ -1755,7 +1756,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public global::org.omg.SDOPackage.NameValue[] get_configuration_parameter_values()
         {
             var ret = _target.GetConfigurationParameterValues();
-            return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            return Converter.DictionaryToNVList(ret);
         }
         public global::System.Object get_configuration_parameter_value(System.String name)
         {
@@ -1877,12 +1878,12 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         public System.Boolean set_members(global::org.omg.SDOPackage.SDO[] sdos)
         {
-            var ret = _target.SetMembers(sdos.Select(x=>new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
+            var ret = _target.SetMembers(sdos.Select(x => (ReactiveRTM.org.omg.SDOPackage.SDO)new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
             return ret;
         }
         public System.Boolean add_members(global::org.omg.SDOPackage.SDO[] sdo_list)
         {
-            var ret = _target.AddMembers(sdo_list.Select(x=>new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
+            var ret = _target.AddMembers(sdo_list.Select(x => (ReactiveRTM.org.omg.SDOPackage.SDO)new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList());
             return ret;
         }
         public System.Boolean remove_member(System.String id)
@@ -2281,7 +2282,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetTask(global::RTC.Waypoint2D[] coarsePath)
         {
-            _target.SetTask(coarsePath.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
+            _target.SetTask(coarsePath.Select(x => (ReactiveRTM.RTC.Waypoint2D)new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
             return;
         }
         public override object InitializeLifetimeService()
@@ -2300,7 +2301,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetTask(global::RTC.Waypoint3D[] coarsePath)
         {
-            _target.SetTask(coarsePath.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
+            _target.SetTask(coarsePath.Select(x => (ReactiveRTM.RTC.Waypoint3D)new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
             return;
         }
         public override object InitializeLifetimeService()
@@ -2319,7 +2320,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetPath(global::RTC.Waypoint2D[] path)
         {
-            _target.SetPath(path.Select(x=>new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
+            _target.SetPath(path.Select(x => (ReactiveRTM.RTC.Waypoint2D)new ReactiveRTM.RTC.Waypoint2D(x)).ToList());
             return;
         }
         public void Enable(System.Boolean enable)
@@ -2353,7 +2354,7 @@ namespace ReactiveRTM.RTC
         }
         public void SetPath(global::RTC.Waypoint3D[] path)
         {
-            _target.SetPath(path.Select(x=>new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
+            _target.SetPath(path.Select(x => (ReactiveRTM.RTC.Waypoint3D)new ReactiveRTM.RTC.Waypoint3D(x)).ToList());
             return;
         }
         public void Enable(System.Boolean enable)
@@ -2631,7 +2632,7 @@ namespace ReactiveRTM.RTC
         }
         public void Write(System.String GUID,global::System.Byte[] data)
         {
-            _target.Write(GUID,data.Select(x=>x).ToList());
+            _target.Write(GUID,data.Select(x => (System.Byte)x).ToList());
             return;
         }
         public global::System.Byte[] Read(System.String GUID)
@@ -2710,7 +2711,7 @@ namespace ReactiveRTM.RTM
         public global::org.omg.SDOPackage.NameValue[] get_configuration()
         {
             var ret = _target.GetConfiguration();
-            return ret.Select(x=>((global::org.omg.SDOPackage.NameValue)((IStub)x).GetTarget())).ToArray();
+            return Converter.DictionaryToNVList(ret);
         }
         public global::omg.org.RTC.ReturnCode_t set_configuration(System.String name,System.String value)
         {

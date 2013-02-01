@@ -68,7 +68,7 @@ namespace ReactiveRTM.Adapter
         public ReturnCode_t NotifyConnect(ref ConnectorProfile connectorProfile)
         {
 
-            if (connectorProfile.InterfaceType != "corba_cdr")
+            if (connectorProfile.GetInterfaceType() != "corba_cdr")
             {
                 throw new NotSupportedException();
             }

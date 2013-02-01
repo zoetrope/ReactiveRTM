@@ -1,15 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using Codeplex.Data;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
 using ReactiveRTM.omg.org.RTC;
 using ReactiveRTM.OpenRTM;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace ReactiveRTM.Core
 {
@@ -17,7 +19,7 @@ namespace ReactiveRTM.Core
     {
         private Subject<TDataType> _source;
         private CdrSerializer<TDataType> _serializer;
-        private InPortCdr _adapter;
+        private InPortCdrImpl _adapter;
 
         public ReactiveInPort(string name)
             : base(name)
@@ -31,7 +33,7 @@ namespace ReactiveRTM.Core
             _source = new Subject<TDataType>();
 
             _adapter.DataReceivedAsObservable()
-                .Select(x => _serializer.Deserialize(new MemoryStream(x)))
+                .Select(x => _serializer.Deserialize(new MemoryStream(x.ToArray())))
                 .Subscribe(x => _source.OnNext(x));
 
             var prof = new PortProfile() { Name = name };
@@ -61,7 +63,7 @@ namespace ReactiveRTM.Core
 
         public override ReturnCode_t SetConnectionInfo(ConnectorProfile connectorProfile)
         {
-            connectorProfile.InPortIor = CorbaUtility.GetIor(_adapter);
+            connectorProfile.SetInPortIor(CorbaUtility.GetIor(_adapter));
             return ReturnCode_t.RTC_OK;
         }
 
@@ -91,7 +93,7 @@ namespace ReactiveRTM.Core
 
             _source = new Subject<TimedWString>();
 
-            var cdr = new InPortCdrAdapter();
+            var cdr = new InPortCdrImpl();
 
             cdr.DataReceivedAsObservable()
                 .Subscribe(x => _source.OnNext(Parse(x)));
@@ -101,27 +103,31 @@ namespace ReactiveRTM.Core
 
         }
 
-        private TimedWString Parse(byte[] data)
+        private TimedWString Parse(IEnumerable<byte> data)
         {
-            return _serializer.Deserialize(new MemoryStream(data));
+            return _serializer.Deserialize(new MemoryStream(data.ToArray()));
         }
 
 
         public IDisposable Subscribe(IObserver<dynamic> observer)
         {
-            return _source.Select(x => DynamicJson.Parse(x.data)).Subscribe(observer);
+            return _source.Select(x => JObject.Parse(x.Data)).Subscribe(observer);
         }
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void Push(object data)
         {
-            var json = DynamicJson.Serialize(data);
+            var json = JObject.FromObject(data).ToString();
             var ts = new TimedWString();
-            ts.data = json;
+            ts.Data = json;
 
             _source.OnNext(ts);
         }
 
     }
-
+    /*
+    public class ClassicInPort<TDataType> : ReactiveInPort<TDataType>
+    {
+    }
+    */
 }

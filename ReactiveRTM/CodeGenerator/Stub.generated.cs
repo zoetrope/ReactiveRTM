@@ -5,6 +5,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
+using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
@@ -388,13 +389,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -593,13 +594,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -766,13 +767,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -959,13 +960,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -1249,13 +1250,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -1428,7 +1429,7 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.PortService> GetPorts()
         {
             var ret = _target.get_ports();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
@@ -1476,13 +1477,13 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -1566,7 +1567,7 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
         {
             var ret = _target.get_service_profiles();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
         }
  
         public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
@@ -1596,10 +1597,10 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
         {
             var ret = _target.get_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
+        public Dictionary<string,object> GetStatusList()
         {
             var ret = _target.get_status_list();
             return Converter.NVListToDictionary(ret);
@@ -1614,7 +1615,7 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
     }
     public class PortServiceStub : IStub, ReactiveRTM.omg.org.RTC.PortService
@@ -1658,7 +1659,7 @@ namespace ReactiveRTM.omg.org.RTC
         public List<ReactiveRTM.omg.org.RTC.ConnectorProfile> GetConnectorProfiles()
         {
             var ret = _target.get_connector_profiles();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ConnectorProfile)new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ConnectorProfile GetConnectorProfile(System.String connectorId)
@@ -1670,10 +1671,10 @@ namespace ReactiveRTM.omg.org.RTC
         public ReactiveRTM.omg.org.RTC.ReturnCode_t Connect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
         {
  
-            var tmpconnector_profile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connector_profile).GetTarget());
-            var ret = _target.connect(ref tmpconnector_profile);
+            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
+            var ret = _target.connect(ref tmpconnectorProfile);
  
-            connector_profile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnector_profile);
+            connectorProfile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnectorProfile);
             return (omg.org.RTC.ReturnCode_t)ret;
         }
  
@@ -1692,10 +1693,10 @@ namespace ReactiveRTM.omg.org.RTC
         public ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyConnect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
         {
  
-            var tmpconnector_profile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connector_profile).GetTarget());
-            var ret = _target.notify_connect(ref tmpconnector_profile);
+            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
+            var ret = _target.notify_connect(ref tmpconnectorProfile);
  
-            connector_profile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnector_profile);
+            connectorProfile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnectorProfile);
             return (omg.org.RTC.ReturnCode_t)ret;
         }
  
@@ -1994,10 +1995,10 @@ namespace ReactiveRTM.OpenRTM
         public ReactiveRTM.OpenRTM.PortStatus Get(out List<System.Byte> data)
         {
  
-            var tmpdata = data.Select(x=>x).ToArray();
+            global::System.Byte[] tmpdata;
             var ret = _target._get(out tmpdata);
  
-            data = tmpdata.Select(x=>x).ToList();
+            data = tmpdata.Select(x => (System.Byte)x).ToList();
             return (OpenRTM.PortStatus)ret;
         }
     }
@@ -2144,7 +2145,7 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public List<ReactiveRTM.omg.org.RTC.PortService> GetPorts()
         {
             var ret = _target.get_ports();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
@@ -2192,13 +2193,13 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
         }
  
         public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
@@ -2282,7 +2283,7 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
         {
             var ret = _target.get_service_profiles();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
         }
  
         public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
@@ -2312,10 +2313,10 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
         {
             var ret = _target.get_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
+        public Dictionary<string,object> GetStatusList()
         {
             var ret = _target.get_status_list();
             return Converter.NVListToDictionary(ret);
@@ -2330,7 +2331,7 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
@@ -2542,7 +2543,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
         {
             var ret = _target.get_service_profiles();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
         }
  
         public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
@@ -2572,10 +2573,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
         {
             var ret = _target.get_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList()
+        public Dictionary<string,object> GetStatusList()
         {
             var ret = _target.get_status_list();
             return Converter.NVListToDictionary(ret);
@@ -2590,7 +2591,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
     }
     public class SDOServiceStub : IStub, ReactiveRTM.org.omg.SDOPackage.SDOService
@@ -2642,7 +2643,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
         }
     }
     public class ConfigurationStub : IStub, ReactiveRTM.org.omg.SDOPackage.Configuration
@@ -2701,10 +2702,10 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.Parameter> GetConfigurationParameters()
         {
             var ret = _target.get_configuration_parameters();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.Parameter(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Parameter)new ReactiveRTM.org.omg.SDOPackage.Parameter(x)).ToList();
         }
  
-        public System.Collections.Generic.Dictionary<System.String,System.Object> GetConfigurationParameterValues()
+        public Dictionary<string,object> GetConfigurationParameterValues()
         {
             var ret = _target.get_configuration_parameter_values();
             return Converter.NVListToDictionary(ret);
@@ -2725,7 +2726,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSets()
         {
             var ret = _target.get_configuration_sets();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ConfigurationSet)new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(x)).ToList();
         }
  
         public ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetConfigurationSet(System.String configId)
@@ -2861,7 +2862,7 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public List<ReactiveRTM.org.omg.SDOPackage.SDO> GetMembers()
         {
             var ret = _target.get_members();
-            return ret.Select(x=>new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.SDO)new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList();
         }
  
         public System.Boolean SetMembers(List<ReactiveRTM.org.omg.SDOPackage.SDO> sdos)
@@ -3386,7 +3387,7 @@ namespace ReactiveRTM.RTC
         public List<ReactiveRTM.RTC.CameraInfo> GetCameraInfos()
         {
             var ret = _target.GetCameraInfos();
-            return ret.Select(x=>new ReactiveRTM.RTC.CameraInfo(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.CameraInfo)new ReactiveRTM.RTC.CameraInfo(x)).ToList();
         }
     }
     public class PanTiltStub : IStub, ReactiveRTM.RTC.PanTilt
@@ -3963,7 +3964,7 @@ namespace ReactiveRTM.RTC
         public List<System.Byte> Read(System.String GUID)
         {
             var ret = _target.Read(GUID);
-            return ret.Select(x=>x).ToList();
+            return ret.Select(x => (System.Byte)x).ToList();
         }
     }
 }
@@ -4008,19 +4009,19 @@ namespace ReactiveRTM.RTM
         public List<ReactiveRTM.RTM.ModuleProfile> GetLoadableModules()
         {
             var ret = _target.get_loadable_modules();
-            return ret.Select(x=>new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTM.ModuleProfile)new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
         }
  
         public List<ReactiveRTM.RTM.ModuleProfile> GetLoadedModules()
         {
             var ret = _target.get_loaded_modules();
-            return ret.Select(x=>new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTM.ModuleProfile)new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
         }
  
         public List<ReactiveRTM.RTM.ModuleProfile> GetFactoryProfiles()
         {
             var ret = _target.get_factory_profiles();
-            return ret.Select(x=>new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTM.ModuleProfile)new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.RTObject CreateComponent(System.String moduleName)
@@ -4038,13 +4039,13 @@ namespace ReactiveRTM.RTM
         public List<ReactiveRTM.omg.org.RTC.RTObject> GetComponents()
         {
             var ret = _target.get_components();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.RTObject)new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
         }
  
         public List<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfiles()
         {
             var ret = _target.get_component_profiles();
-            return ret.Select(x=>new ReactiveRTM.omg.org.RTC.ComponentProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ComponentProfile)new ReactiveRTM.omg.org.RTC.ComponentProfile(x)).ToList();
         }
  
         public ReactiveRTM.RTM.ManagerProfile GetProfile()
@@ -4053,7 +4054,7 @@ namespace ReactiveRTM.RTM
             return new ReactiveRTM.RTM.ManagerProfile(ret);
         }
  
-        public System.Collections.Generic.Dictionary<System.String,System.Object> GetConfiguration()
+        public Dictionary<string,object> GetConfiguration()
         {
             var ret = _target.get_configuration();
             return Converter.NVListToDictionary(ret);
@@ -4074,7 +4075,7 @@ namespace ReactiveRTM.RTM
         public List<ReactiveRTM.RTM.Manager> GetMasterManagers()
         {
             var ret = _target.get_master_managers();
-            return ret.Select(x=>new ReactiveRTM.RTM.ManagerStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTM.Manager)new ReactiveRTM.RTM.ManagerStub(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr)
@@ -4092,7 +4093,7 @@ namespace ReactiveRTM.RTM
         public List<ReactiveRTM.RTM.Manager> GetSlaveManagers()
         {
             var ret = _target.get_slave_managers();
-            return ret.Select(x=>new ReactiveRTM.RTM.ManagerStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTM.Manager)new ReactiveRTM.RTM.ManagerStub(x)).ToList();
         }
  
         public ReactiveRTM.omg.org.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr)

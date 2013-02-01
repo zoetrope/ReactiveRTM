@@ -7,10 +7,10 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Reactive.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RTC;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Test
 {
@@ -59,7 +59,7 @@ namespace ReactiveRTM.Test
 
             inport.Subscribe(recorder);
 
-            var testData = new TimedLong(new Time(), 123);
+            var testData = new TimedLong() { Tm = DateTime.Now, Data = 123 };
 
             outport.Write(testData);
 

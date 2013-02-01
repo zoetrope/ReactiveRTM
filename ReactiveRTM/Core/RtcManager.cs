@@ -37,8 +37,9 @@ namespace ReactiveRTM.Core
 
         public IObservableComponent GetComponent(string name)
         {
-            var comp = _client.GetObject<DataFlowComponent>(name);
-            return new ObservableComponent(comp);
+            var comp = _client.GetObject<global::omg.org.RTC.RTObject>(name);
+            var stub = new DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)comp);
+            return new ObservableComponent(stub);
         }
     }
 }

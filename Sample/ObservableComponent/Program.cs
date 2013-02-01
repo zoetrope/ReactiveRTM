@@ -7,7 +7,7 @@ using System.Text;
 using ReactiveRTM;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// コンポーネントを監視するサンプル

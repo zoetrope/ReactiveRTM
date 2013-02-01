@@ -5,11 +5,11 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Reactive.Testing;
-using RTC;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using omg.org.RTC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ReactiveRTM.RTC;
+using ReactiveRTM.omg.org.RTC;
 
 
 namespace ComponentTest
@@ -27,11 +27,11 @@ public class ComponentTest : ReactiveTest
 
         // InPortにデータを入力するためのもの。1秒ごとにデータを送る。
         var publisher = scheduler.CreateHotObservable(
-            OnNext(TimeSpan.FromSeconds(1).Ticks, new TimedLong() {data = 1}),
-            OnNext(TimeSpan.FromSeconds(2).Ticks, new TimedLong() {data = 2}),
-            OnNext(TimeSpan.FromSeconds(3).Ticks, new TimedLong() {data = 3}),
-            OnNext(TimeSpan.FromSeconds(4).Ticks, new TimedLong() {data = 4}),
-            OnNext(TimeSpan.FromSeconds(5).Ticks, new TimedLong() {data = 5})
+            OnNext(TimeSpan.FromSeconds(1).Ticks, new TimedLong() {Data = 1}),
+            OnNext(TimeSpan.FromSeconds(2).Ticks, new TimedLong() {Data = 2}),
+            OnNext(TimeSpan.FromSeconds(3).Ticks, new TimedLong() {Data = 3}),
+            OnNext(TimeSpan.FromSeconds(4).Ticks, new TimedLong() {Data = 4}),
+            OnNext(TimeSpan.FromSeconds(5).Ticks, new TimedLong() {Data = 5})
             );
 
         var comp = new TargetComponent();
@@ -58,11 +58,11 @@ public class ComponentTest : ReactiveTest
         ReactiveAssert.AreElementsEqual(
             recorder.Messages.Select(x => x.Value.Value),
             new[] {
-                    new TimedLong() {data = 2},
-                    new TimedLong() {data = 4},
-                    new TimedLong() {data = 6},
-                    new TimedLong() {data = 8},
-                    new TimedLong() {data = 10}
+                    new TimedLong() {Data = 2},
+                    new TimedLong() {Data = 4},
+                    new TimedLong() {Data = 6},
+                    new TimedLong() {Data = 8},
+                    new TimedLong() {Data = 10}
                 });
     }
 }
@@ -86,7 +86,7 @@ public class ComponentTest : ReactiveTest
         {
             // InPortから入ってきたデータを2倍してOutPortに出力
             _disposer = InPort
-                .Select(x => new TimedLong(x.tm, x.data * 2))
+                .Select(x => new TimedLong() { Tm = x.Tm, Data = x.Data * 2 })
                 .Subscribe(OutPort);
 
             return ReturnCode_t.RTC_OK;
