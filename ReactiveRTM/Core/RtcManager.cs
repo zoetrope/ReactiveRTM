@@ -18,15 +18,21 @@ namespace ReactiveRTM.Core
         private NamingServiceClient _client;
         private RtcSetting _setting;
 
+        public RtcSetting RtcSetting
+        {
+            get { return _setting; }
+        }
+
         public RtcManager()
         {
-            CorbaUtility.Initialize(_setting.CorbaSetting);
+            
         }
 
         public RtcManager(IEnumerable<string> args)
             : this()
         {
             ParseOption(args);
+            CorbaUtility.Initialize(_setting.Corba);
         }
 
         public RtcManager(string host, int port)
@@ -55,7 +61,7 @@ namespace ReactiveRTM.Core
         private void ParseSetting(string fileName)
         {
             var settingFile = fileName;
-            if (string.IsNullOrEmpty(settingFile) || File.Exists(settingFile))
+            if (string.IsNullOrEmpty(settingFile) || !File.Exists(settingFile))
             {
                 settingFile = _defaultSettingFileNames.Where(f => File.Exists(f)).FirstOrDefault();
             }

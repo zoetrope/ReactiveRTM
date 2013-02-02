@@ -8,9 +8,30 @@ namespace ReactiveRTM.Core
 {
     public class RtcSetting
     {
-        public CorbaSetting CorbaSetting { get; set; }
+        public NamingSetting Naming { get; set; }
+        public LoggerSetting Logger { get; set; }
+        public CorbaSetting Corba { get; set; }
     }
 
+    public class NamingSetting
+    {
+        public string Format{get;set;}
+        public List<string> NamingServers{get;set;}
+
+        public NamingSetting()
+        {
+            NamingServers = new List<string>();
+        }
+    }
+
+    public class LoggerSetting
+    {
+        public string Level { get; set; }
+        public bool ShowLogName { get; set; }
+        public bool ShowDataTime { get; set; }
+        public string DateTimeFormat { get; set; }
+        public string Adapter { get; set; }
+    }
 
     public class CorbaSetting
     {

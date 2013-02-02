@@ -1,12 +1,15 @@
-﻿RtcSetting:
-  NamingName: %n.rtc
+﻿Naming:
+  Format: "%n.rtc"
   NamingServers:
   - localhost
+Logger:
+  Level: DEBUG
+  ShowLogName: true
+  ShowDataTime: true
+  DateTimeFormat: "yyyy/MM/dd HH:mm:ss:fff"
+  Adapter: RtcLoggerFactoryAdapter
 
-LoggerSetting:
-  
-
-CorbaSetting:
+Corba:
   CommonSetting:
     Name: IIOPChannel
     Priority: 0
@@ -15,7 +18,7 @@ CorbaSetting:
     ClientReceiveTimeOut: 3000
     ClientSendTimeOut: 3000
     ClientRequestTimeOut: 3000
-    UusedConnectionKeepAlive: 300000
+    UnusedConnectionKeepAlive: 300000
     ClientConnectionLimit: 5
     AllowRequestMultiplex: true
     MaxNumberOfMultiplexedRequests: 1000
