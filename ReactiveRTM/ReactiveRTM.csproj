@@ -155,6 +155,8 @@
     <Compile Include="Core\RtcManager.cs" />
     <Compile Include="Core\SimpleServiceConsumer.cs" />
     <Compile Include="Core\SimpleServiceProvider.cs" />
+    <Compile Include="Utility\RtcLogger.cs" />
+    <Compile Include="Utility\RtcLoggerFactoryAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeGenerator\Adapter.tt">
