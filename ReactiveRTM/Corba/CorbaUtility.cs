@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Channels;
 using Ch.Elca.Iiop;
 using Ch.Elca.Iiop.Idl;
 using omg.org.CORBA;
+using ReactiveRTM.Core;
 
 namespace ReactiveRTM.Corba
 {
@@ -18,40 +19,36 @@ namespace ReactiveRTM.Corba
             //Initialize();
         }
 
-        public static void Initialize()
+        public static void Initialize(CorbaSetting setting)
         {
-            //TODO: 設定は外から渡せるようにする。
-            var setting = new Dictionary<string, string>()
+            var corbaSetting = new Dictionary<string, string>()
                 {
-                    // Common Settings
-                    //{"name","IIOPChannel"},
-                    //{"priority","0"},
-                    //{"endian","true"},
+                    {"name",setting.CommonSetting.Name},
+                    {"priority",setting.CommonSetting.Priority.ToString()},
+                    {"endian",setting.CommonSetting.Endian.ToString()},
 
-                    // Client Settings
-                    //{"clientReceiveTimeOut","3000"},
-                    //{"clientSendTimeOut","3000"},
-                    {"clientRequestTimeOut","3000"},
-                    //{"unusedConnectionKeepAlive","300000"},
-                    //{"clientConnectionLimit","5"},
-                    //{"allowRequestMultiplex","true"},
-                    //{"maxNumberOfMultiplexedRequests","1000"},
-                    //{"maxNumberOfRetries","0"},
-                    //{"retryDelay","0"},
+                    {"clientReceiveTimeOut",setting.ClientSetting.ClientReceiveTimeOut.ToString()},
+                    {"clientSendTimeOut",setting.ClientSetting.ClientSendTimeOut.ToString()},
+                    {"clientRequestTimeOut",setting.ClientSetting.ClientRequestTimeOut.ToString()},
+                    {"unusedConnectionKeepAlive",setting.ClientSetting.UnusedConnectionKeepAlive.ToString()},
+                    {"clientConnectionLimit",setting.ClientSetting.ClientConnectionLimit.ToString()},
+                    {"allowRequestMultiplex",setting.ClientSetting.AllowRequestMultiplex.ToString()},
+                    {"maxNumberOfMultiplexedRequests",setting.ClientSetting.MaxNumberOfMultiplexedRequests.ToString()},
+                    {"maxNumberOfRetries",setting.ClientSetting.MaxNumberOfRetries.ToString()},
+                    {"retryDelay",setting.ClientSetting.RetryDelay.ToString()},
 
-                    // Server Settings
-                    {"port","0"},
-                    //{"machineName",""},
-                    //{"bindTo",""},
-                    //{"useIpAddress","true"},
-                    //{"serverThreadsMaxPerConnection","25"}
+                    {"port",setting.ServerSetting.Port.ToString()},
+                    {"machineName",setting.ServerSetting.MachineName},
+                    {"bindTo",setting.ServerSetting.BindTo},
+                    {"useIpAddress",setting.ServerSetting.UseIpAddress.ToString()},
+                    {"serverThreadsMaxPerConnection",setting.ServerSetting.ServerThreadsMaxPerConnection.ToString()}
                 };
 
             lock (_channelLock)
             {
                 if (_channel == null)
                 {
-                    _channel = new IiopChannel(setting);
+                    _channel = new IiopChannel(corbaSetting);
                     ChannelServices.RegisterChannel(_channel, false);
                 }
             }

@@ -11,6 +11,7 @@ namespace ReactiveRTM.Test.Core
         public void ParseOptionTest()
         {
             var manager = new RtcManager(new[]{"-f","rtc.yaml"});
+            
         }
     }
 }

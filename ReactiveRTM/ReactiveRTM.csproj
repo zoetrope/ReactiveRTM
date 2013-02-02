@@ -81,9 +81,15 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="YamlDotNet.Converters">
+      <HintPath>..\packages\YamlDotNet.Converters.1.1.17\lib\YamlDotNet.Converters.dll</HintPath>
+    </Reference>
     <Reference Include="YamlDotNet.Core">
       <HintPath>..\packages\YamlDotNet.Core.1.1.17\lib\YamlDotNet.Core.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlDotNet.RepresentationModel">
+      <HintPath>..\packages\YamlDotNet.RepresentationModel.1.1.17\lib\YamlDotNet.RepresentationModel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Adapter.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core\RtcSetting.cs" />
     <Compile Include="Data\Converter.cs" />
     <Compile Include="CodeGenerator\Data.generated.cs">
       <AutoGen>True</AutoGen>

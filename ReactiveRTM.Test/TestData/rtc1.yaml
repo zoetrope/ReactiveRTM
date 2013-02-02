@@ -1,0 +1,29 @@
+﻿RtcSetting:
+  NamingName: %n.rtc
+  NamingServers:
+  - localhost
+
+LoggerSetting:
+  
+
+CorbaSetting:
+  CommonSetting:
+    Name: IIOPChannel
+    Priority: 0
+    Endian: true
+  ClientSetting:
+    ClientReceiveTimeOut: 3000
+    ClientSendTimeOut: 3000
+    ClientRequestTimeOut: 3000
+    UusedConnectionKeepAlive: 300000
+    ClientConnectionLimit: 5
+    AllowRequestMultiplex: true
+    MaxNumberOfMultiplexedRequests: 1000
+    MaxNumberOfRetries: 0
+    RetryDelay: 0
+  ServerSetting:
+    Port: 0
+    MachineName:
+    BindTo: 
+    UseIpAddress: true
+    ServerThreadsMaxPerConnection: 25
