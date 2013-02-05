@@ -1,7 +1,19 @@
 ﻿Naming:
   Format: "%n.rtc"
   NamingServers:
-  - localhost
+  - "localhost:2809"
+
+Catalogs:
+  - Catalog: AssemblyCatalog
+    Args: 
+    - test
+  - Catalog: DirectoryCatalog
+    Args: 
+    - test
+  - Catalog: TypeCatalog
+    Args:
+    - test
+
 Logger:
   Level: DEBUG
   ShowLogName: true
@@ -13,7 +25,7 @@ Corba:
   CommonSetting:
     Name: IIOPChannel
     Priority: 0
-    Endian: true
+    Endian: LittleEndian
   ClientSetting:
     ClientReceiveTimeOut: 3000
     ClientSendTimeOut: 3000
@@ -28,5 +40,5 @@ Corba:
     Port: 0
     MachineName:
     BindTo: 
-    UseIpAddress: true
+    UseIpAddress: false
     ServerThreadsMaxPerConnection: 25

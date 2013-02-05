@@ -1,0 +1,4 @@
+﻿Catalogs:
+  - Catalog: AssemblyCatalog
+    Args: 
+    - ReactiveRTM.Test.dll

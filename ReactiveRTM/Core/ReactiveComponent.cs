@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.omg.org.RTC;
+using System.ComponentModel.Composition;
 
 namespace ReactiveRTM.Core
 {
-
+    [InheritedExport]
     public abstract class ReactiveComponent : ReactiveComponentBase
     {
 
@@ -17,6 +18,12 @@ namespace ReactiveRTM.Core
         private IDisposable _executor;
 
 
+        public ReactiveComponent()
+            : base("")
+        {
+
+
+        }
         public ReactiveComponent(string name)
             :base(name)
         {

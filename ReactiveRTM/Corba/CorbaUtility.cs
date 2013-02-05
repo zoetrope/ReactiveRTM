@@ -21,28 +21,39 @@ namespace ReactiveRTM.Corba
 
         public static void Initialize(CorbaSetting setting)
         {
-            var corbaSetting = new Dictionary<string, string>()
+            var corbaSetting = new Dictionary<string, string>();
+
+            if (setting != null)
+            {
+                if (setting.CommonSetting != null)
                 {
-                    {"name",setting.CommonSetting.Name},
-                    {"priority",setting.CommonSetting.Priority.ToString()},
-                    {"endian",setting.CommonSetting.Endian.ToString()},
+                    corbaSetting.SetOption("name", setting.CommonSetting.Name);
+                    corbaSetting.SetOption("priority", setting.CommonSetting.Priority);
+                    corbaSetting.SetOption("endian", setting.CommonSetting.Endian);
+                }
 
-                    {"clientReceiveTimeOut",setting.ClientSetting.ClientReceiveTimeOut.ToString()},
-                    {"clientSendTimeOut",setting.ClientSetting.ClientSendTimeOut.ToString()},
-                    {"clientRequestTimeOut",setting.ClientSetting.ClientRequestTimeOut.ToString()},
-                    {"unusedConnectionKeepAlive",setting.ClientSetting.UnusedConnectionKeepAlive.ToString()},
-                    {"clientConnectionLimit",setting.ClientSetting.ClientConnectionLimit.ToString()},
-                    {"allowRequestMultiplex",setting.ClientSetting.AllowRequestMultiplex.ToString()},
-                    {"maxNumberOfMultiplexedRequests",setting.ClientSetting.MaxNumberOfMultiplexedRequests.ToString()},
-                    {"maxNumberOfRetries",setting.ClientSetting.MaxNumberOfRetries.ToString()},
-                    {"retryDelay",setting.ClientSetting.RetryDelay.ToString()},
+                if (setting.ClientSetting != null)
+                {
+                    corbaSetting.SetOption("clientReceiveTimeOut", setting.ClientSetting.ClientReceiveTimeOut);
+                    corbaSetting.SetOption("clientSendTimeOut", setting.ClientSetting.ClientSendTimeOut);
+                    corbaSetting.SetOption("clientRequestTimeOut", setting.ClientSetting.ClientRequestTimeOut);
+                    corbaSetting.SetOption("unusedConnectionKeepAlive", setting.ClientSetting.UnusedConnectionKeepAlive);
+                    corbaSetting.SetOption("clientConnectionLimit", setting.ClientSetting.ClientConnectionLimit);
+                    corbaSetting.SetOption("allowRequestMultiplex", setting.ClientSetting.AllowRequestMultiplex);
+                    corbaSetting.SetOption("maxNumberOfMultiplexedRequests", setting.ClientSetting.MaxNumberOfMultiplexedRequests);
+                    corbaSetting.SetOption("maxNumberOfRetries", setting.ClientSetting.MaxNumberOfRetries);
+                    corbaSetting.SetOption("retryDelay", setting.ClientSetting.RetryDelay);
+                }
 
-                    {"port",setting.ServerSetting.Port.ToString()},
-                    {"machineName",setting.ServerSetting.MachineName},
-                    {"bindTo",setting.ServerSetting.BindTo},
-                    {"useIpAddress",setting.ServerSetting.UseIpAddress.ToString()},
-                    {"serverThreadsMaxPerConnection",setting.ServerSetting.ServerThreadsMaxPerConnection.ToString()}
-                };
+                if (setting.ServerSetting != null)
+                {
+                    corbaSetting.SetOption("port", setting.ServerSetting.Port);
+                    corbaSetting.SetOption("machineName", setting.ServerSetting.MachineName);
+                    corbaSetting.SetOption("bindTo", setting.ServerSetting.BindTo);
+                    corbaSetting.SetOption("useIpAddress", setting.ServerSetting.UseIpAddress);
+                    corbaSetting.SetOption("serverThreadsMaxPerConnection", setting.ServerSetting.ServerThreadsMaxPerConnection);
+                }
+            }
 
             lock (_channelLock)
             {
@@ -53,6 +64,7 @@ namespace ReactiveRTM.Corba
                 }
             }
         }
+
 
         public static void Destroy()
         {
@@ -87,6 +99,17 @@ namespace ReactiveRTM.Corba
         {
             return typeof (TType).GetCustomAttributes(typeof (RepositoryIDAttribute), true)
                 .Cast<RepositoryIDAttribute>().First().Id;
+        }
+    }
+
+    static class CorbaSettingExtensions
+    {
+
+        public static void SetOption<T>(this Dictionary<string, string> corbaSetting, string name, T param)
+        {
+            if (param == null) return;
+            if (param is string && string.IsNullOrEmpty(param as string)) return;
+            corbaSetting[name] = param.ToString();
         }
     }
 }

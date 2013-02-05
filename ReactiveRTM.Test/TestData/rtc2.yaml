@@ -1,0 +1,11 @@
+﻿Naming:
+  NamingServers:
+  - "localhost:2809"
+Corba:
+  ClientSetting:
+    ClientReceiveTimeOut: 3000
+    ClientSendTimeOut: 3000
+    ClientRequestTimeOut: 3000
+  ServerSetting:
+    Port: 0
+    ServerThreadsMaxPerConnection: 25

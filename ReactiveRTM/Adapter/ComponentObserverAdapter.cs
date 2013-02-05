@@ -23,15 +23,10 @@ namespace ReactiveRTM.Adapter
             _subject = new Subject<UpdateStatus>();
         }
 
-        #region Implementation of IObservable<out UpdateStatus>
-
         public IDisposable Subscribe(IObserver<UpdateStatus> observer)
         {
             return _subject.Subscribe(observer);
         }
-
-        #endregion
-
 
         public void UpdateStatus(StatusKind status_kind, string hint)
         {

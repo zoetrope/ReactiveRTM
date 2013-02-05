@@ -12,7 +12,13 @@ namespace ReactiveRTM.Test.Core
         {
             var manager = new RtcManager(new[]{"-f",@"..\..\TestData\rtc1.yaml"});
 
-            manager.RtcSetting.Corba.CommonSetting.Name.Is("hoge");
+            manager.RtcSetting.Corba.CommonSetting.Name.Is("IIOPChannel");
+        }
+        [TestMethod]
+        public void ParseOptionTest2()
+        {
+            var manager = new RtcManager(new[] { "-f", @"..\..\TestData\rtc2.yaml" });
+
         }
     }
 }
