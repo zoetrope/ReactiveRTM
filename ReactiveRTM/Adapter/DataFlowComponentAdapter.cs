@@ -24,9 +24,20 @@ namespace ReactiveRTM.Adapter
         private IComponentActionListener _listener;
         private Configuration _configuration;
 
-        internal DataFlowComponentImpl(IComponentActionListener listener, string name)
+        internal DataFlowComponentImpl(IComponentActionListener listener, string category, string description, string instantName,string typeName, string vendor, string version)
         {
             _profile = new ComponentProfile();
+
+            _profile.Category = category;
+            _profile.Description = description;
+            _profile.InstanceName = instantName;
+            _profile.TypeName = typeName;
+            _profile.Vendor = vendor;
+            _profile.Version = version;
+
+
+            //_profile.Parent
+            
             
             _listener = listener;
 

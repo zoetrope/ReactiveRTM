@@ -17,11 +17,11 @@ namespace ReactiveRTM.Core
 {
     public abstract class ReactiveComponentBase : IObservableComponent, IComponentActionListener
     {
-        protected ReactiveComponentBase(string name)
+        protected ReactiveComponentBase(string instantName, string category = "", string typeName = "", string description = "", string vendor = "", string version = "")
         {
-            Name = name;
+            Name = instantName;
 
-            _component = new DataFlowComponentImpl(this, name);
+            _component = new DataFlowComponentImpl(this, instantName, category, typeName, description, vendor, version);
 
             Component.Initialize();
 

@@ -16,7 +16,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        using (var manager = new RtcManager("localhost", 2809))
+        using (var manager = new RtcManager(args))
         {
             var comp = manager.GetComponent("ConsoleOut0.rtc");
 

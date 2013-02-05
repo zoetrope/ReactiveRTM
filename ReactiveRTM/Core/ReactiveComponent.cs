@@ -18,17 +18,11 @@ namespace ReactiveRTM.Core
         private IDisposable _executor;
 
 
-        public ReactiveComponent()
-            : base("")
+        public ReactiveComponent(string category = "", string description = "", string instantName = "", string typeName = "", string vendor = "", string version = "")
+            :base(category, description, instantName, typeName, vendor, version)
         {
-
-
-        }
-        public ReactiveComponent(string name)
-            :base(name)
-        {
-
-
+            
+            
         }
 
 

@@ -15,9 +15,12 @@ using System.Reflection;
 using System.ComponentModel.Composition.Registration;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Primitives;
+using Common.Logging;
+using YamlDotNet.Core;
 
 namespace ReactiveRTM.Core
 {
+
 #if LANG_JP
     /// <summary>
     /// RTコンポーネントの生成・ライフサイクル管理、各種サービスの提供
@@ -39,6 +42,7 @@ namespace ReactiveRTM.Core
     /// </example>
     public class RtcManager : IDisposable
     {
+        private ILog _logger = LogManager.GetCurrentClassLogger();
         private NamingServiceClient _client;
         private RtcSetting _setting;
 
@@ -64,9 +68,7 @@ namespace ReactiveRTM.Core
 #endif
         public RtcManager(IEnumerable<string> args)
         {
-            ParseOption(args);
-            CorbaUtility.Initialize(_setting.Corba);
-            LoadComponent();
+            Initialize(args);
         }
 
         public RtcManager()
@@ -74,38 +76,56 @@ namespace ReactiveRTM.Core
         {
 
         }
-        public RtcManager(string host, int port)
-            : this()
+
+        private void Initialize(IEnumerable<string> args)
         {
-            _client = new NamingServiceClient(host, port);
+            try
+            {
+                var settingFile = ParseOption(args);
+                ParseSetting(settingFile);
+
+                CorbaUtility.Initialize(_setting.Corba);
+                _client = new NamingServiceClient();
+
+                LoadComponent();
+            }
+            catch (FileNotFoundException ex)
+            {
+                _logger.Error("設定ファイルが見つからない");
+            }
+            catch (SyntaxErrorException ex)
+            {
+                _logger.Error("設定ファイルのフォーマットがおかしい");
+            }
         }
         
 #if LANG_JP
         /// <summary>
-        /// 名前を指定して
+        /// 名前を指定してコンポーネントを生成
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">コンポーネントのフルネーム</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">存在しない名前の</exception>
+        /// <exception cref="InvalidCastException">指定した名前の型が<see cref="ReactiveComponent" />ではない</exception>
 #else
 #endif
         public ReactiveComponent CreateComponent(string name)
         {
-            try
+            var def = new ImportDefinition(i => i.ContractName.Equals(name),
+                name, ImportCardinality.ZeroOrMore, false, false);
+            var exports = _container.GetExports(def);
+            if (exports.Count() == 0)
             {
-                var def = new ImportDefinition(i => i.ContractName.Equals(name),
-                    name, ImportCardinality.ZeroOrMore, false, false);
-                var temp = _container.GetExports(def);
-                
-                return temp.First().Value as ReactiveComponent;
-                //var foo = _container.GetExport<ReactiveComponent>(
-                //var hoge = temp.ToArray<ExportDefinition>();
-                //return temp.FirstOrDefault(x => x.GetType().Name == name).Value;
-                //return _container.GetExportedValue<ReactiveComponent>(name);
+                _logger.Error("");
+                throw new ArgumentException("", "name");
             }
-            catch (Exception ex)
+            var comp = exports.Single().Value as ReactiveComponent;
+            if (comp == null)
             {
-                throw;
+                _logger.Error("");
+                throw new InvalidCastException("");
             }
+            return comp;
         }
 
 #if LANG_JP
@@ -120,11 +140,12 @@ namespace ReactiveRTM.Core
         {
             try
             {
-                var temp = _container.GetExports<ReactiveComponent>().ToList();
                 return _container.GetExportedValue<TComponent>();
+
             }
-            catch (Exception ex)
+            catch (CompositionContractMismatchException ex)
             {
+                _logger.Error("", ex);
                 throw;
             }
         }
@@ -181,7 +202,7 @@ namespace ReactiveRTM.Core
         }
 
 
-        private void ParseOption(IEnumerable<string> args)
+        private string ParseOption(IEnumerable<string> args)
         {
             string settingFileName = null;
             bool help = false;
@@ -194,7 +215,8 @@ namespace ReactiveRTM.Core
             };
             var extra = p.Parse(args);
 
-            ParseSetting(settingFileName);
+            return settingFileName;
+            
         }
 
         private void ParseSetting(string fileName)
@@ -207,16 +229,10 @@ namespace ReactiveRTM.Core
 
             if (!string.IsNullOrEmpty(settingFile))
             {
-                try
+                using (var input = new StreamReader(settingFile, Encoding.UTF8))
                 {
-                    using (var input = new StreamReader(settingFile, Encoding.UTF8))
-                    {
-                        var yamlSerializer = new YamlSerializer<RtcSetting>();
-                        _setting = yamlSerializer.Deserialize(input);
-                    }
-                }
-                catch (FileNotFoundException)
-                {
+                    var yamlSerializer = new YamlSerializer<RtcSetting>();
+                    _setting = yamlSerializer.Deserialize(input);
                 }
             }
             else

@@ -14,11 +14,6 @@ namespace ReactiveRTM.Corba
         private static IiopChannel _channel;
         private static readonly object _channelLock = new object();
 
-        static CorbaUtility()
-		{
-            //Initialize();
-        }
-
         public static void Initialize(CorbaSetting setting)
         {
             var corbaSetting = new Dictionary<string, string>();
