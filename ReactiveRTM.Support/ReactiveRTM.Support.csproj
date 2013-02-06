@@ -32,9 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IIOPChannel, Version=1.9.1.0, Culture=neutral, PublicKeyToken=7937cf3f0449a5ee, processorArchitecture=MSIL">
+    <Reference Include="IIOPChannel, Version=1.9.1.0, Culture=neutral, PublicKeyToken=a91c00bc735262ad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll</HintPath>
+      <HintPath>..\Lib\IIOP.NET.1.9.3\net20\IIOPChannel.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>

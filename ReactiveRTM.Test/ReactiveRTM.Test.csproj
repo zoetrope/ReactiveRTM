@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="IIOPChannel, Version=1.9.1.0, Culture=neutral, PublicKeyToken=a91c00bc735262ad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\IIOP.NET-1.9.3\net4\IIOPChannel.dll</HintPath>
+      <HintPath>..\Lib\IIOP.NET.1.9.3\net20\IIOPChannel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Reactive.Testing, Version=2.1.30204.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
