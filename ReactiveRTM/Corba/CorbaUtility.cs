@@ -20,33 +20,33 @@ namespace ReactiveRTM.Corba
 
             if (setting != null)
             {
-                if (setting.CommonSetting != null)
+                if (setting.Common != null)
                 {
-                    corbaSetting.SetOption("name", setting.CommonSetting.Name);
-                    corbaSetting.SetOption("priority", setting.CommonSetting.Priority);
-                    corbaSetting.SetOption("endian", setting.CommonSetting.Endian);
+                    corbaSetting.SetOption("name", setting.Common.Name);
+                    corbaSetting.SetOption("priority", setting.Common.Priority);
+                    corbaSetting.SetOption("endian", setting.Common.Endian);
                 }
 
-                if (setting.ClientSetting != null)
+                if (setting.Client != null)
                 {
-                    corbaSetting.SetOption("clientReceiveTimeOut", setting.ClientSetting.ClientReceiveTimeOut);
-                    corbaSetting.SetOption("clientSendTimeOut", setting.ClientSetting.ClientSendTimeOut);
-                    corbaSetting.SetOption("clientRequestTimeOut", setting.ClientSetting.ClientRequestTimeOut);
-                    corbaSetting.SetOption("unusedConnectionKeepAlive", setting.ClientSetting.UnusedConnectionKeepAlive);
-                    corbaSetting.SetOption("clientConnectionLimit", setting.ClientSetting.ClientConnectionLimit);
-                    corbaSetting.SetOption("allowRequestMultiplex", setting.ClientSetting.AllowRequestMultiplex);
-                    corbaSetting.SetOption("maxNumberOfMultiplexedRequests", setting.ClientSetting.MaxNumberOfMultiplexedRequests);
-                    corbaSetting.SetOption("maxNumberOfRetries", setting.ClientSetting.MaxNumberOfRetries);
-                    corbaSetting.SetOption("retryDelay", setting.ClientSetting.RetryDelay);
+                    corbaSetting.SetOption("clientReceiveTimeOut", setting.Client.ClientReceiveTimeOut);
+                    corbaSetting.SetOption("clientSendTimeOut", setting.Client.ClientSendTimeOut);
+                    corbaSetting.SetOption("clientRequestTimeOut", setting.Client.ClientRequestTimeOut);
+                    corbaSetting.SetOption("unusedConnectionKeepAlive", setting.Client.UnusedConnectionKeepAlive);
+                    corbaSetting.SetOption("clientConnectionLimit", setting.Client.ClientConnectionLimit);
+                    corbaSetting.SetOption("allowRequestMultiplex", setting.Client.AllowRequestMultiplex);
+                    corbaSetting.SetOption("maxNumberOfMultiplexedRequests", setting.Client.MaxNumberOfMultiplexedRequests);
+                    corbaSetting.SetOption("maxNumberOfRetries", setting.Client.MaxNumberOfRetries);
+                    corbaSetting.SetOption("retryDelay", setting.Client.RetryDelay);
                 }
 
-                if (setting.ServerSetting != null)
+                if (setting.Server != null)
                 {
-                    corbaSetting.SetOption("port", setting.ServerSetting.Port);
-                    corbaSetting.SetOption("machineName", setting.ServerSetting.MachineName);
-                    corbaSetting.SetOption("bindTo", setting.ServerSetting.BindTo);
-                    corbaSetting.SetOption("useIpAddress", setting.ServerSetting.UseIpAddress);
-                    corbaSetting.SetOption("serverThreadsMaxPerConnection", setting.ServerSetting.ServerThreadsMaxPerConnection);
+                    corbaSetting.SetOption("port", setting.Server.Port);
+                    corbaSetting.SetOption("machineName", setting.Server.MachineName);
+                    corbaSetting.SetOption("bindTo", setting.Server.BindTo);
+                    corbaSetting.SetOption("useIpAddress", setting.Server.UseIpAddress);
+                    corbaSetting.SetOption("serverThreadsMaxPerConnection", setting.Server.ServerThreadsMaxPerConnection);
                 }
             }
 
@@ -65,6 +65,8 @@ namespace ReactiveRTM.Corba
         {
             lock (_channelLock)
             {
+                // UnregisterChannel to hang in .NET 4.5
+                // http://sourceforge.net/projects/iiop-net/forums/forum/274081/topic/6672349
                 ChannelServices.UnregisterChannel(_channel);
                 _channel = null;
             }

@@ -1,7 +1,13 @@
 ﻿Naming:
-  Format: "%n.rtc"
+  Enable: false
+  Formats: "%n.rtc"
   NamingServers:
   - "localhost:2809"
+  Type: CORBA
+  Update:
+    Enable: true
+    Interval: 1000
+    Rebind: true
 
 Catalogs:
   - Catalog: AssemblyCatalog
@@ -15,18 +21,36 @@ Catalogs:
     - test
 
 Logger:
+  Enable: true
   Level: DEBUG
   ShowLogName: true
   ShowDataTime: true
   DateTimeFormat: "yyyy/MM/dd HH:mm:ss:fff"
   Adapter: RtcLoggerFactoryAdapter
 
+Manager:
+  Name: manager
+  NamingFormats: "%M.manager"
+  IsMaster: false
+  CorbaServant: hoge
+  MasterManager: hoge
+  ShutdownOnNortcs: true
+  ShutdownAuto: true
+  
+Timer:
+  Enable: true
+  Tick: 1000
+
+ExecutionContext: 
+  Type: Periodic
+  Rate: 1000
+
 Corba:
-  CommonSetting:
+  Common:
     Name: IIOPChannel
     Priority: 0
     Endian: LittleEndian
-  ClientSetting:
+  Client:
     ClientReceiveTimeOut: 3000
     ClientSendTimeOut: 3000
     ClientRequestTimeOut: 3000
@@ -36,7 +60,7 @@ Corba:
     MaxNumberOfMultiplexedRequests: 1000
     MaxNumberOfRetries: 0
     RetryDelay: 0
-  ServerSetting:
+  Server:
     Port: 0
     MachineName:
     BindTo: 

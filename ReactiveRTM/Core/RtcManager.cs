@@ -85,17 +85,27 @@ namespace ReactiveRTM.Core
                 ParseSetting(settingFile);
 
                 CorbaUtility.Initialize(_setting.Corba);
-                _client = new NamingServiceClient();
+
+                if (_setting.Naming.Enable.Value)
+                {
+                    _client = new NamingServiceClient();
+                }
 
                 LoadComponent();
             }
             catch (FileNotFoundException ex)
             {
                 _logger.Error("設定ファイルが見つからない");
+                throw;
             }
             catch (SyntaxErrorException ex)
             {
                 _logger.Error("設定ファイルのフォーマットがおかしい");
+                throw;
+            }
+            finally
+            {
+                Dispose();
             }
         }
         
