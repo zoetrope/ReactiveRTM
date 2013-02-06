@@ -113,6 +113,18 @@ namespace ReactiveRTM.Core
         public string MasterManager { get; set; }
         public bool? ShutdownOnNortcs { get; set; }
         public bool? ShutdownAuto { get; set; }
+        public List<PrecreateComponent> PrecreateComponents { get; set; }
+
+        public ManagerSetting()
+        {
+            PrecreateComponents = new List<PrecreateComponent>();
+        }
+    }
+
+    public class PrecreateComponent
+    {
+        public string TypeName { get; set; }
+        public string InstanceName { get; set; }
     }
 
 #if LANG_JP

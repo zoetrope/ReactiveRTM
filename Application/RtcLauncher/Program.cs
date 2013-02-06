@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReactiveRTM.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace RtcLauncher
     {
         static void Main(string[] args)
         {
+            using (var manager = new RtcManager(args))
+            {
+                manager.Run();
+            }
         }
     }
 }

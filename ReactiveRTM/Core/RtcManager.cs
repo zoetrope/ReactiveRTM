@@ -265,14 +265,17 @@ namespace ReactiveRTM.Core
             _client.RegisterObject(comp.Name + ".rtc", (MarshalByRefObject)comp.Component);
         }
 
+        private ManualResetEvent _event = new ManualResetEvent(false);
+
         public void Run()
         {
-            Thread.Sleep(Timeout.Infinite);
+            _event.WaitOne();
         }
 
         public void Dispose()
         {
             CorbaUtility.Destroy();
+            _event.Set();
         }
 
         public IObservableComponent GetComponent(string name)

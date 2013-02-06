@@ -36,6 +36,9 @@ Manager:
   MasterManager: hoge
   ShutdownOnNortcs: true
   ShutdownAuto: true
+  PrecreateComponents:
+  - TypeName: test
+    InstanceName: test01
   
 Timer:
   Enable: true
