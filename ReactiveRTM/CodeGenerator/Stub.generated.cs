@@ -9,9 +9,9 @@ using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
-namespace ReactiveRTM.omg.org.CORBA
+namespace ReactiveRTM.CORBA
 {
-    public class TypeCodeStub : IStub, ReactiveRTM.omg.org.CORBA.TypeCode
+    public class TypeCodeStub : IStub, ReactiveRTM.CORBA.TypeCode
     {
         private global::omg.org.CORBA.TypeCode _target;
 
@@ -34,28 +34,28 @@ namespace ReactiveRTM.omg.org.CORBA
         }
 
  
-        public System.Boolean Equal(ReactiveRTM.omg.org.CORBA.TypeCode tc)
+        public System.Boolean Equal(ReactiveRTM.CORBA.TypeCode tc)
         {
             var ret = _target.equal(((global::omg.org.CORBA.TypeCode)((IStub)tc).GetTarget()));
             return ret;
         }
  
-        public System.Boolean Equivalent(ReactiveRTM.omg.org.CORBA.TypeCode tc)
+        public System.Boolean Equivalent(ReactiveRTM.CORBA.TypeCode tc)
         {
             var ret = _target.equivalent(((global::omg.org.CORBA.TypeCode)((IStub)tc).GetTarget()));
             return ret;
         }
  
-        public ReactiveRTM.omg.org.CORBA.TypeCode GetCompactTypecode()
+        public ReactiveRTM.CORBA.TypeCode GetCompactTypecode()
         {
             var ret = _target.get_compact_typecode();
-            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+            return new ReactiveRTM.CORBA.TypeCodeStub(ret);
         }
  
-        public ReactiveRTM.omg.org.CORBA.TCKind Kind()
+        public ReactiveRTM.CORBA.TCKind Kind()
         {
             var ret = _target.kind();
-            return (omg.org.CORBA.TCKind)ret;
+            return (ReactiveRTM.CORBA.TCKind)ret;
         }
  
         public System.String Id()
@@ -82,22 +82,22 @@ namespace ReactiveRTM.omg.org.CORBA
             return ret;
         }
  
-        public ReactiveRTM.omg.org.CORBA.TypeCode MemberType(System.Int32 index)
+        public ReactiveRTM.CORBA.TypeCode MemberType(System.Int32 index)
         {
             var ret = _target.member_type(index);
-            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+            return new ReactiveRTM.CORBA.TypeCodeStub(ret);
         }
  
         public System.Object MemberLabel(System.Int32 index)
         {
             var ret = _target.member_label(index);
-            return (System.Object)ret;
+            return ret;
         }
  
-        public ReactiveRTM.omg.org.CORBA.TypeCode DiscriminatorType()
+        public ReactiveRTM.CORBA.TypeCode DiscriminatorType()
         {
             var ret = _target.discriminator_type();
-            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+            return new ReactiveRTM.CORBA.TypeCodeStub(ret);
         }
  
         public System.Int32 DefaultIndex()
@@ -112,10 +112,10 @@ namespace ReactiveRTM.omg.org.CORBA
             return ret;
         }
  
-        public ReactiveRTM.omg.org.CORBA.TypeCode ContentType()
+        public ReactiveRTM.CORBA.TypeCode ContentType()
         {
             var ret = _target.content_type();
-            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
+            return new ReactiveRTM.CORBA.TypeCodeStub(ret);
         }
  
         public System.Int16 MemberVisibility(System.Int32 index)
@@ -130,1772 +130,10 @@ namespace ReactiveRTM.omg.org.CORBA
             return ret;
         }
  
-        public ReactiveRTM.omg.org.CORBA.TypeCode ConcreteBaseType()
+        public ReactiveRTM.CORBA.TypeCode ConcreteBaseType()
         {
             var ret = _target.concrete_base_type();
-            return new ReactiveRTM.omg.org.CORBA.TypeCodeStub(ret);
-        }
-    }
-}
- 
-namespace ReactiveRTM.omg.org.RTC
-{
-    public class ExecutionContextStub : IStub, ReactiveRTM.omg.org.RTC.ExecutionContext
-    {
-        private global::omg.org.RTC.ExecutionContext _target;
-
-        public ExecutionContextStub()
-        {
-        }
-
-        public ExecutionContextStub(global::omg.org.RTC.ExecutionContext target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.ExecutionContext)target;
-        }
-
- 
-        public System.Boolean IsRunning()
-        {
-            var ret = _target.is_running();
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Start()
-        {
-            var ret = _target.start();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Stop()
-        {
-            var ret = _target._stop();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Double GetRate()
-        {
-            var ret = _target.get_rate();
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
-        {
-            var ret = _target.set_rate(rate);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.add_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.remove_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.activate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.deactivate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.reset_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.get_component_state(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.LifeCycleState)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionKind GetKind()
-        {
-            var ret = _target.get_kind();
-            return (omg.org.RTC.ExecutionKind)ret;
-        }
-    }
-    public class ComponentActionStub : IStub, ReactiveRTM.omg.org.RTC.ComponentAction
-    {
-        private global::omg.org.RTC.ComponentAction _target;
-
-        public ComponentActionStub()
-        {
-        }
-
-        public ComponentActionStub(global::omg.org.RTC.ComponentAction target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.ComponentAction)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class LightweightRTObjectStub : IStub, ReactiveRTM.omg.org.RTC.LightweightRTObject
-    {
-        private global::omg.org.RTC.LightweightRTObject _target;
-
-        public LightweightRTObjectStub()
-        {
-        }
-
-        public LightweightRTObjectStub(global::omg.org.RTC.LightweightRTObject target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.LightweightRTObject)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class DataFlowComponentActionStub : IStub, ReactiveRTM.omg.org.RTC.DataFlowComponentAction
-    {
-        private global::omg.org.RTC.DataFlowComponentAction _target;
-
-        public DataFlowComponentActionStub()
-        {
-        }
-
-        public DataFlowComponentActionStub(global::omg.org.RTC.DataFlowComponentAction target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.DataFlowComponentAction)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
-        {
-            var ret = _target.on_execute(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
-        {
-            var ret = _target.on_state_update(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
-        {
-            var ret = _target.on_rate_changed(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class DataFlowComponentStub : IStub, ReactiveRTM.omg.org.RTC.DataFlowComponent
-    {
-        private global::omg.org.RTC.DataFlowComponent _target;
-
-        public DataFlowComponentStub()
-        {
-        }
-
-        public DataFlowComponentStub(global::omg.org.RTC.DataFlowComponent target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.DataFlowComponent)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub(ReactiveRTM.omg.org.RTC.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub((global::omg.org.RTC.DataFlowComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
-        {
-            var ret = _target.on_execute(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
-        {
-            var ret = _target.on_state_update(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
-        {
-            var ret = _target.on_rate_changed(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class FsmStub : IStub, ReactiveRTM.omg.org.RTC.Fsm
-    {
-        private global::omg.org.RTC.Fsm _target;
-
-        public FsmStub()
-        {
-        }
-
-        public FsmStub(global::omg.org.RTC.Fsm target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.Fsm)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.FsmStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmStub((global::omg.org.RTC.Fsm)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.FsmStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmStub((global::omg.org.RTC.Fsm)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class FsmParticipantActionStub : IStub, ReactiveRTM.omg.org.RTC.FsmParticipantAction
-    {
-        private global::omg.org.RTC.FsmParticipantAction _target;
-
-        public FsmParticipantActionStub()
-        {
-        }
-
-        public FsmParticipantActionStub(global::omg.org.RTC.FsmParticipantAction target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.FsmParticipantAction)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAction(System.Int32 execHandle)
-        {
-            var ret = _target.on_action(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class FsmParticipantStub : IStub, ReactiveRTM.omg.org.RTC.FsmParticipant
-    {
-        private global::omg.org.RTC.FsmParticipant _target;
-
-        public FsmParticipantStub()
-        {
-        }
-
-        public FsmParticipantStub(global::omg.org.RTC.FsmParticipant target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.FsmParticipant)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.FsmParticipantStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmParticipantStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.FsmParticipantStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmParticipantStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.FsmParticipantActionStub(ReactiveRTM.omg.org.RTC.FsmParticipantStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmParticipantActionStub((global::omg.org.RTC.FsmParticipantAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmParticipantStub(ReactiveRTM.omg.org.RTC.FsmParticipantActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAction(System.Int32 execHandle)
-        {
-            var ret = _target.on_action(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class ModeStub : IStub, ReactiveRTM.omg.org.RTC.Mode
-    {
-        private global::omg.org.RTC.Mode _target;
-
-        public ModeStub()
-        {
-        }
-
-        public ModeStub(global::omg.org.RTC.Mode target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.Mode)target;
-        }
-
-    }
-    public class ModeCapableStub : IStub, ReactiveRTM.omg.org.RTC.ModeCapable
-    {
-        private global::omg.org.RTC.ModeCapable _target;
-
-        public ModeCapableStub()
-        {
-        }
-
-        public ModeCapableStub(global::omg.org.RTC.ModeCapable target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.ModeCapable)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetDefaultMode()
-        {
-            var ret = _target.get_default_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetCurrentMode()
-        {
-            var ret = _target.get_current_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetCurrentModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.get_current_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetPendingMode()
-        {
-            var ret = _target.get_pending_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetPendingModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.get_pending_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetMode(ReactiveRTM.omg.org.RTC.Mode newMode,System.Boolean immediate)
-        {
-            var ret = _target.set_mode(((global::omg.org.RTC.Mode)((IStub)newMode).GetTarget()),immediate);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class MultiModeComponentActionStub : IStub, ReactiveRTM.omg.org.RTC.MultiModeComponentAction
-    {
-        private global::omg.org.RTC.MultiModeComponentAction _target;
-
-        public MultiModeComponentActionStub()
-        {
-        }
-
-        public MultiModeComponentActionStub(global::omg.org.RTC.MultiModeComponentAction target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.MultiModeComponentAction)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle)
-        {
-            var ret = _target.on_mode_changed(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class MultiModeObjectStub : IStub, ReactiveRTM.omg.org.RTC.MultiModeObject
-    {
-        private global::omg.org.RTC.MultiModeObject _target;
-
-        public MultiModeObjectStub()
-        {
-        }
-
-        public MultiModeObjectStub(global::omg.org.RTC.MultiModeObject target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.MultiModeObject)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.MultiModeObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.MultiModeObjectStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.MultiModeObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.MultiModeObjectStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ModeCapableStub(ReactiveRTM.omg.org.RTC.MultiModeObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ModeCapableStub((global::omg.org.RTC.ModeCapable)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.MultiModeObjectStub(ReactiveRTM.omg.org.RTC.ModeCapableStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.MultiModeComponentActionStub(ReactiveRTM.omg.org.RTC.MultiModeObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.MultiModeComponentActionStub((global::omg.org.RTC.MultiModeComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.MultiModeObjectStub(ReactiveRTM.omg.org.RTC.MultiModeComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetDefaultMode()
-        {
-            var ret = _target.get_default_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetCurrentMode()
-        {
-            var ret = _target.get_current_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetCurrentModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.get_current_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetPendingMode()
-        {
-            var ret = _target.get_pending_mode();
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.Mode GetPendingModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.get_pending_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return new ReactiveRTM.omg.org.RTC.ModeStub(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetMode(ReactiveRTM.omg.org.RTC.Mode newMode,System.Boolean immediate)
-        {
-            var ret = _target.set_mode(((global::omg.org.RTC.Mode)((IStub)newMode).GetTarget()),immediate);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle)
-        {
-            var ret = _target.on_mode_changed(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class RTObjectStub : IStub, ReactiveRTM.omg.org.RTC.RTObject
-    {
-        private global::omg.org.RTC.RTObject _target;
-
-        public RTObjectStub()
-        {
-        }
-
-        public RTObjectStub(global::omg.org.RTC.RTObject target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.RTObject)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.omg.org.RTC.RTObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.RTObjectStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.omg.org.RTC.RTObjectStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.RTObjectStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOStub(ReactiveRTM.omg.org.RTC.RTObjectStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.RTObjectStub(ReactiveRTM.org.omg.SDOPackage.SDOStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub(ReactiveRTM.omg.org.RTC.RTObjectStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.RTObjectStub(ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ComponentProfile GetComponentProfile()
-        {
-            var ret = _target.get_component_profile();
-            return new ReactiveRTM.omg.org.RTC.ComponentProfile(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.PortService> GetPorts()
-        {
-            var ret = _target.get_ports();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
-        {
-            var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
-        {
-            var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
-        {
-            var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
-        {
-            var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
-        {
-            var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
-        {
-            var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
-        {
-            var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
-        }
- 
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
-        {
-            var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
-        {
-            var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
-        {
-            var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
-        {
-            var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
-        {
-            var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
-        {
-            var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
-        {
-            var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
-        {
-            var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.String GetSdoId()
-        {
-            var ret = _target.get_sdo_id();
-            return ret;
-        }
- 
-        public System.String GetSdoType()
-        {
-            var ret = _target.get_sdo_type();
-            return ret;
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
-        {
-            var ret = _target.get_device_profile();
-            return new ReactiveRTM.org.omg.SDOPackage.DeviceProfile(ret);
-        }
- 
-        public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
-        {
-            var ret = _target.get_service_profiles();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
-        {
-            var ret = _target.get_service_profile(id);
-            return new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(ret);
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.SDOService GetSdoService(System.String id)
-        {
-            var ret = _target.get_sdo_service(id);
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ret);
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration()
-        {
-            var ret = _target.get_configuration();
-            return new ReactiveRTM.org.omg.SDOPackage.ConfigurationStub(ret);
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring()
-        {
-            var ret = _target.get_monitoring();
-            return new ReactiveRTM.org.omg.SDOPackage.MonitoringStub(ret);
-        }
- 
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
-        {
-            var ret = _target.get_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
-        }
- 
-        public Dictionary<string,object> GetStatusList()
-        {
-            var ret = _target.get_status_list();
-            return Converter.NVListToDictionary(ret);
-        }
- 
-        public System.Object GetStatus(System.String nme)
-        {
-            var ret = _target.get_status(nme);
-            return (System.Object)ret;
-        }
- 
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
-        {
-            var ret = _target.get_owned_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
-        }
-    }
-    public class PortServiceStub : IStub, ReactiveRTM.omg.org.RTC.PortService
-    {
-        private global::omg.org.RTC.PortService _target;
-
-        public PortServiceStub()
-        {
-        }
-
-        public PortServiceStub(global::omg.org.RTC.PortService target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.PortService)target;
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.omg.org.RTC.PortServiceStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.PortServiceStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.PortServiceStub((global::omg.org.RTC.PortService)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.PortProfile GetPortProfile()
-        {
-            var ret = _target.get_port_profile();
-            return new ReactiveRTM.omg.org.RTC.PortProfile(ret);
-        }
- 
-        public List<ReactiveRTM.omg.org.RTC.ConnectorProfile> GetConnectorProfiles()
-        {
-            var ret = _target.get_connector_profiles();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ConnectorProfile)new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ConnectorProfile GetConnectorProfile(System.String connectorId)
-        {
-            var ret = _target.get_connector_profile(connectorId);
-            return new ReactiveRTM.omg.org.RTC.ConnectorProfile(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Connect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
-        {
- 
-            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
-            var ret = _target.connect(ref tmpconnectorProfile);
- 
-            connectorProfile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnectorProfile);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Disconnect(System.String connectorId)
-        {
-            var ret = _target.disconnect(connectorId);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DisconnectAll()
-        {
-            var ret = _target.disconnect_all();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyConnect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
-        {
- 
-            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
-            var ret = _target.notify_connect(ref tmpconnectorProfile);
- 
-            connectorProfile = new ReactiveRTM.omg.org.RTC.ConnectorProfile(tmpconnectorProfile);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyDisconnect(System.String connectorId)
-        {
-            var ret = _target.notify_disconnect(connectorId);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class FsmObjectStub : IStub, ReactiveRTM.omg.org.RTC.FsmObject
-    {
-        private global::omg.org.RTC.FsmObject _target;
-
-        public FsmObjectStub()
-        {
-        }
-
-        public FsmObjectStub(global::omg.org.RTC.FsmObject target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.FsmObject)target;
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 execHandle)
-        {
-            var ret = _target.send_stimulus(message,execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class FsmServiceStub : IStub, ReactiveRTM.omg.org.RTC.FsmService
-    {
-        private global::omg.org.RTC.FsmService _target;
-
-        public FsmServiceStub()
-        {
-        }
-
-        public FsmServiceStub(global::omg.org.RTC.FsmService target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.FsmService)target;
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.omg.org.RTC.FsmServiceStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.FsmServiceStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.FsmServiceStub((global::omg.org.RTC.FsmService)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.FsmProfile GetFsmProfile()
-        {
-            var ret = _target.get_fsm_profile();
-            return new ReactiveRTM.omg.org.RTC.FsmProfile(ret);
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetFsmProfile(ReactiveRTM.omg.org.RTC.FsmProfile fsmProfile)
-        {
-            var ret = _target.set_fsm_profile(((global::omg.org.RTC.FsmProfile)((IStub)fsmProfile).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
-    }
-    public class ExecutionContextServiceStub : IStub, ReactiveRTM.omg.org.RTC.ExecutionContextService
-    {
-        private global::omg.org.RTC.ExecutionContextService _target;
-
-        public ExecutionContextServiceStub()
-        {
-        }
-
-        public ExecutionContextServiceStub(global::omg.org.RTC.ExecutionContextService target)
-        {
-            _target = target;
-        }
-
-        object IStub.GetTarget()
-        {
-            return _target;
-        }
-        void IStub.SetTarget(object target)
-        {
-            _target = (global::omg.org.RTC.ExecutionContextService)target;
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ExecutionContextStub(ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub((global::omg.org.RTC.ExecutionContext)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub(ReactiveRTM.omg.org.RTC.ExecutionContextStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
-        {
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)parent).GetTarget());
-        }
-
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionContextProfile GetProfile()
-        {
-            var ret = _target.get_profile();
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextProfile(ret);
-        }
- 
-        public System.Boolean IsRunning()
-        {
-            var ret = _target.is_running();
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Start()
-        {
-            var ret = _target.start();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Stop()
-        {
-            var ret = _target._stop();
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public System.Double GetRate()
-        {
-            var ret = _target.get_rate();
-            return ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
-        {
-            var ret = _target.set_rate(rate);
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.add_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.remove_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.activate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.deactivate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.reset_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            var ret = _target.get_component_state(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.LifeCycleState)ret;
-        }
- 
-        public ReactiveRTM.omg.org.RTC.ExecutionKind GetKind()
-        {
-            var ret = _target.get_kind();
-            return (omg.org.RTC.ExecutionKind)ret;
+            return new ReactiveRTM.CORBA.TypeCodeStub(ret);
         }
     }
 }
@@ -1924,11 +162,11 @@ namespace ReactiveRTM.OpenRTM
             _target = (global::OpenRTM.ComponentObserver)target;
         }
  
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.OpenRTM.ComponentObserverStub child)
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.OpenRTM.ComponentObserverStub child)
         {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.OpenRTM.ComponentObserverStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.ComponentObserverStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
         {
             return new ReactiveRTM.OpenRTM.ComponentObserverStub((global::OpenRTM.ComponentObserver)((IStub)parent).GetTarget());
         }
@@ -1966,7 +204,7 @@ namespace ReactiveRTM.OpenRTM
         public ReactiveRTM.OpenRTM.PortStatus Put(List<System.Byte> data)
         {
             var ret = _target.put(data.Select(x=>x).ToArray());
-            return (OpenRTM.PortStatus)ret;
+            return (ReactiveRTM.OpenRTM.PortStatus)ret;
         }
     }
     public class OutPortCdrStub : IStub, ReactiveRTM.OpenRTM.OutPortCdr
@@ -1999,7 +237,7 @@ namespace ReactiveRTM.OpenRTM
             var ret = _target._get(out tmpdata);
  
             data = tmpdata.Select(x => (System.Byte)x).ToList();
-            return (OpenRTM.PortStatus)ret;
+            return (ReactiveRTM.OpenRTM.PortStatus)ret;
         }
     }
     public class LoggerStub : IStub, ReactiveRTM.OpenRTM.Logger
@@ -2024,11 +262,11 @@ namespace ReactiveRTM.OpenRTM
             _target = (global::OpenRTM.Logger)target;
         }
  
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.OpenRTM.LoggerStub child)
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.OpenRTM.LoggerStub child)
         {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.OpenRTM.LoggerStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.LoggerStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
         {
             return new ReactiveRTM.OpenRTM.LoggerStub((global::OpenRTM.Logger)((IStub)parent).GetTarget());
         }
@@ -2048,9 +286,9 @@ namespace ReactiveRTM.OpenRTM
     }
 }
  
-namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
+namespace ReactiveRTM.OpenRTM
 {
-    public class DataFlowComponentStub : IStub, ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent
+    public class DataFlowComponentStub : IStub, ReactiveRTM.OpenRTM.DataFlowComponent
     {
         private global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent _target;
 
@@ -2072,194 +310,194 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             _target = (global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)target;
         }
  
-        public static explicit operator ReactiveRTM.omg.org.RTC.RTObjectStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
+        public static explicit operator ReactiveRTM.RTC.RTObjectStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
         {
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)child).GetTarget());
+            return new ReactiveRTM.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.RTObjectStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.RTC.RTObjectStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.LightweightRTObjectStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.LightweightRTObjectStub parent)
-        {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
         }
  
-        public static explicit operator ReactiveRTM.omg.org.RTC.ComponentActionStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
         {
-            return new ReactiveRTM.omg.org.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.ComponentActionStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.org.omg.SDOPackage.SDOStub parent)
-        {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
         }
  
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
         {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.RTC.ComponentActionStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.DataFlowComponentStub parent)
-        {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
         }
  
-        public static explicit operator ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub child)
+        public static explicit operator ReactiveRTM.SDOPackage.SDOStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
         {
-            return new ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub((global::omg.org.RTC.DataFlowComponentAction)((IStub)child).GetTarget());
+            return new ReactiveRTM.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub(ReactiveRTM.omg.org.RTC.DataFlowComponentActionStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.SDOPackage.SDOStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOSystemElementStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.SDOPackage.SDOSystemElementStub parent)
+        {
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.DataFlowComponentStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.RTC.DataFlowComponentStub parent)
+        {
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.DataFlowComponentActionStub(ReactiveRTM.OpenRTM.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentActionStub((global::omg.org.RTC.DataFlowComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.OpenRTM.DataFlowComponentStub(ReactiveRTM.RTC.DataFlowComponentActionStub parent)
+        {
+            return new ReactiveRTM.OpenRTM.DataFlowComponentStub((global::openrtm.aist.go.jp.OpenRTM.DataFlowComponent)((IStub)parent).GetTarget());
         }
 
  
-        public ReactiveRTM.omg.org.RTC.ComponentProfile GetComponentProfile()
+        public ReactiveRTM.RTC.ComponentProfile GetComponentProfile()
         {
             var ret = _target.get_component_profile();
-            return new ReactiveRTM.omg.org.RTC.ComponentProfile(ret);
+            return new ReactiveRTM.RTC.ComponentProfile(ret);
         }
  
-        public List<ReactiveRTM.omg.org.RTC.PortService> GetPorts()
+        public List<ReactiveRTM.RTC.PortService> GetPorts()
         {
             var ret = _target.get_ports();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.PortService)new ReactiveRTM.RTC.PortServiceStub(x)).ToList();
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize()
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
         {
             var ret = _target.initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize()
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
         {
             var ret = _target._finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
         {
             var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
             return ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Exit()
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
         {
             var ret = _target._exit();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
         {
             var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
             return ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
         {
             var ret = _target.detach_context(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
         {
             var ret = _target.get_context(execHandle);
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub(ret);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
         }
  
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts()
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
         {
             var ret = _target.get_owned_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
         }
  
-        public List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts()
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
         {
             var ret = _target.get_participating_contexts();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ExecutionContext)new ReactiveRTM.omg.org.RTC.ExecutionContextStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
         }
  
-        public System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
         {
             var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
             return ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize()
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
         {
             var ret = _target.on_initialize();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize()
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
         {
             var ret = _target.on_finalize();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
         {
             var ret = _target.on_startup(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
         {
             var ret = _target.on_shutdown(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
         {
             var ret = _target.on_activated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
         {
             var ret = _target.on_deactivated(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
         {
             var ret = _target.on_aborting(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
         {
             var ret = _target.on_error(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
         {
             var ret = _target.on_reset(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public System.String GetSdoId()
@@ -2274,46 +512,46 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return ret;
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
+        public ReactiveRTM.SDOPackage.DeviceProfile GetDeviceProfile()
         {
             var ret = _target.get_device_profile();
-            return new ReactiveRTM.org.omg.SDOPackage.DeviceProfile(ret);
+            return new ReactiveRTM.SDOPackage.DeviceProfile(ret);
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
+        public List<ReactiveRTM.SDOPackage.ServiceProfile> GetServiceProfiles()
         {
             var ret = _target.get_service_profiles();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.ServiceProfile)new ReactiveRTM.SDOPackage.ServiceProfile(x)).ToList();
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        public ReactiveRTM.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
         {
             var ret = _target.get_service_profile(id);
-            return new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(ret);
+            return new ReactiveRTM.SDOPackage.ServiceProfile(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.SDOService GetSdoService(System.String id)
+        public ReactiveRTM.SDOPackage.SDOService GetSdoService(System.String id)
         {
             var ret = _target.get_sdo_service(id);
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ret);
+            return new ReactiveRTM.SDOPackage.SDOServiceStub(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration()
+        public ReactiveRTM.SDOPackage.Configuration GetConfiguration()
         {
             var ret = _target.get_configuration();
-            return new ReactiveRTM.org.omg.SDOPackage.ConfigurationStub(ret);
+            return new ReactiveRTM.SDOPackage.ConfigurationStub(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring()
+        public ReactiveRTM.SDOPackage.Monitoring GetMonitoring()
         {
             var ret = _target.get_monitoring();
-            return new ReactiveRTM.org.omg.SDOPackage.MonitoringStub(ret);
+            return new ReactiveRTM.SDOPackage.MonitoringStub(ret);
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
+        public List<ReactiveRTM.SDOPackage.Organization> GetOrganizations()
         {
             var ret = _target.get_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
         }
  
         public Dictionary<string,object> GetStatusList()
@@ -2325,34 +563,34 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
         public System.Object GetStatus(System.String nme)
         {
             var ret = _target.get_status(nme);
-            return (System.Object)ret;
+            return ret;
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
+        public List<ReactiveRTM.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
         {
             var ret = _target.on_execute(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
         {
             var ret = _target.on_state_update(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
+        public ReactiveRTM.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
         {
             var ret = _target.on_rate_changed(execHandle);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
     }
-    public class ExtTrigExecutionContextServiceStub : IStub, ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService
+    public class ExtTrigExecutionContextServiceStub : IStub, ReactiveRTM.OpenRTM.ExtTrigExecutionContextService
     {
         private global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService _target;
 
@@ -2374,31 +612,31 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             _target = (global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)target;
         }
  
-        public static explicit operator ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub child)
+        public static explicit operator ReactiveRTM.RTC.ExecutionContextServiceStub(ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub child)
         {
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)child).GetTarget());
+            return new ReactiveRTM.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.omg.org.RTC.ExecutionContextServiceStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.RTC.ExecutionContextServiceStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
-        }
- 
-        public static explicit operator ReactiveRTM.omg.org.RTC.ExecutionContextStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub child)
-        {
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextStub((global::omg.org.RTC.ExecutionContext)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.omg.org.RTC.ExecutionContextStub parent)
-        {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
         }
  
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub child)
+        public static explicit operator ReactiveRTM.RTC.ExecutionContextStub(ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub child)
         {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+            return new ReactiveRTM.RTC.ExecutionContextStub((global::omg.org.RTC.ExecutionContext)((IStub)child).GetTarget());
         }
-        public static implicit operator ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.org.omg.SDOPackage.SDOServiceStub parent)
+        public static implicit operator ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.RTC.ExecutionContextStub parent)
         {
-            return new ReactiveRTM.openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
+            return new ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
+        {
+            return new ReactiveRTM.OpenRTM.ExtTrigExecutionContextServiceStub((global::openrtm.aist.go.jp.OpenRTM.ExtTrigExecutionContextService)((IStub)parent).GetTarget());
         }
 
  
@@ -2408,10 +646,10 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return;
         }
  
-        public ReactiveRTM.omg.org.RTC.ExecutionContextProfile GetProfile()
+        public ReactiveRTM.RTC.ExecutionContextProfile GetProfile()
         {
             var ret = _target.get_profile();
-            return new ReactiveRTM.omg.org.RTC.ExecutionContextProfile(ret);
+            return new ReactiveRTM.RTC.ExecutionContextProfile(ret);
         }
  
         public System.Boolean IsRunning()
@@ -2420,16 +658,16 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Start()
+        public ReactiveRTM.RTC.ReturnCode_t Start()
         {
             var ret = _target.start();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Stop()
+        public ReactiveRTM.RTC.ReturnCode_t Stop()
         {
             var ret = _target._stop();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public System.Double GetRate()
@@ -2438,67 +676,67 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
             return ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate)
+        public ReactiveRTM.RTC.ReturnCode_t SetRate(System.Double rate)
         {
             var ret = _target.set_rate(rate);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.ReturnCode_t AddComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.add_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.remove_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.activate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.deactivate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.ReturnCode_t ResetComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.reset_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
+        public ReactiveRTM.RTC.LifeCycleState GetComponentState(ReactiveRTM.RTC.LightweightRTObject comp)
         {
             var ret = _target.get_component_state(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
-            return (omg.org.RTC.LifeCycleState)ret;
+            return (ReactiveRTM.RTC.LifeCycleState)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ExecutionKind GetKind()
+        public ReactiveRTM.RTC.ExecutionKind GetKind()
         {
             var ret = _target.get_kind();
-            return (omg.org.RTC.ExecutionKind)ret;
+            return (ReactiveRTM.RTC.ExecutionKind)ret;
         }
     }
 }
  
-namespace ReactiveRTM.org.omg.SDOPackage
+namespace ReactiveRTM.RTC
 {
-    public class SDOStub : IStub, ReactiveRTM.org.omg.SDOPackage.SDO
+    public class ExecutionContextStub : IStub, ReactiveRTM.RTC.ExecutionContext
     {
-        private global::org.omg.SDOPackage.SDO _target;
+        private global::omg.org.RTC.ExecutionContext _target;
 
-        public SDOStub()
+        public ExecutionContextStub()
         {
         }
 
-        public SDOStub(global::org.omg.SDOPackage.SDO target)
+        public ExecutionContextStub(global::omg.org.RTC.ExecutionContext target)
         {
             _target = target;
         }
@@ -2509,18 +747,1392 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         void IStub.SetTarget(object target)
         {
-            _target = (global::org.omg.SDOPackage.SDO)target;
-        }
- 
-        public static explicit operator ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub(ReactiveRTM.org.omg.SDOPackage.SDOStub child)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
-        }
-        public static implicit operator ReactiveRTM.org.omg.SDOPackage.SDOStub(ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub parent)
-        {
-            return new ReactiveRTM.org.omg.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)parent).GetTarget());
+            _target = (global::omg.org.RTC.ExecutionContext)target;
         }
 
+ 
+        public System.Boolean IsRunning()
+        {
+            var ret = _target.is_running();
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Start()
+        {
+            var ret = _target.start();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Stop()
+        {
+            var ret = _target._stop();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Double GetRate()
+        {
+            var ret = _target.get_rate();
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t SetRate(System.Double rate)
+        {
+            var ret = _target.set_rate(rate);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t AddComponent(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.add_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.remove_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.activate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.deactivate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t ResetComponent(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.reset_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.LifeCycleState GetComponentState(ReactiveRTM.RTC.LightweightRTObject comp)
+        {
+            var ret = _target.get_component_state(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.LifeCycleState)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionKind GetKind()
+        {
+            var ret = _target.get_kind();
+            return (ReactiveRTM.RTC.ExecutionKind)ret;
+        }
+    }
+    public class ComponentActionStub : IStub, ReactiveRTM.RTC.ComponentAction
+    {
+        private global::omg.org.RTC.ComponentAction _target;
+
+        public ComponentActionStub()
+        {
+        }
+
+        public ComponentActionStub(global::omg.org.RTC.ComponentAction target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.ComponentAction)target;
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class LightweightRTObjectStub : IStub, ReactiveRTM.RTC.LightweightRTObject
+    {
+        private global::omg.org.RTC.LightweightRTObject _target;
+
+        public LightweightRTObjectStub()
+        {
+        }
+
+        public LightweightRTObjectStub(global::omg.org.RTC.LightweightRTObject target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.LightweightRTObject)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.LightweightRTObjectStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class DataFlowComponentActionStub : IStub, ReactiveRTM.RTC.DataFlowComponentAction
+    {
+        private global::omg.org.RTC.DataFlowComponentAction _target;
+
+        public DataFlowComponentActionStub()
+        {
+        }
+
+        public DataFlowComponentActionStub(global::omg.org.RTC.DataFlowComponentAction target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.DataFlowComponentAction)target;
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
+        {
+            var ret = _target.on_execute(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
+        {
+            var ret = _target.on_state_update(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
+        {
+            var ret = _target.on_rate_changed(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class DataFlowComponentStub : IStub, ReactiveRTM.RTC.DataFlowComponent
+    {
+        private global::omg.org.RTC.DataFlowComponent _target;
+
+        public DataFlowComponentStub()
+        {
+        }
+
+        public DataFlowComponentStub(global::omg.org.RTC.DataFlowComponent target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.DataFlowComponent)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.DataFlowComponentStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.DataFlowComponentStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.DataFlowComponentActionStub(ReactiveRTM.RTC.DataFlowComponentStub child)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentActionStub((global::omg.org.RTC.DataFlowComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.DataFlowComponentStub(ReactiveRTM.RTC.DataFlowComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.DataFlowComponentStub((global::omg.org.RTC.DataFlowComponent)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnExecute(System.Int32 execHandle)
+        {
+            var ret = _target.on_execute(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle)
+        {
+            var ret = _target.on_state_update(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle)
+        {
+            var ret = _target.on_rate_changed(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class FsmStub : IStub, ReactiveRTM.RTC.Fsm
+    {
+        private global::omg.org.RTC.Fsm _target;
+
+        public FsmStub()
+        {
+        }
+
+        public FsmStub(global::omg.org.RTC.Fsm target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.Fsm)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.FsmStub child)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmStub((global::omg.org.RTC.Fsm)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.FsmStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmStub((global::omg.org.RTC.Fsm)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class FsmParticipantActionStub : IStub, ReactiveRTM.RTC.FsmParticipantAction
+    {
+        private global::omg.org.RTC.FsmParticipantAction _target;
+
+        public FsmParticipantActionStub()
+        {
+        }
+
+        public FsmParticipantActionStub(global::omg.org.RTC.FsmParticipantAction target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.FsmParticipantAction)target;
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAction(System.Int32 execHandle)
+        {
+            var ret = _target.on_action(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class FsmParticipantStub : IStub, ReactiveRTM.RTC.FsmParticipant
+    {
+        private global::omg.org.RTC.FsmParticipant _target;
+
+        public FsmParticipantStub()
+        {
+        }
+
+        public FsmParticipantStub(global::omg.org.RTC.FsmParticipant target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.FsmParticipant)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.FsmParticipantStub child)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmParticipantStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.FsmParticipantStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmParticipantStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.FsmParticipantActionStub(ReactiveRTM.RTC.FsmParticipantStub child)
+        {
+            return new ReactiveRTM.RTC.FsmParticipantActionStub((global::omg.org.RTC.FsmParticipantAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmParticipantStub(ReactiveRTM.RTC.FsmParticipantActionStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmParticipantStub((global::omg.org.RTC.FsmParticipant)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAction(System.Int32 execHandle)
+        {
+            var ret = _target.on_action(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class ModeStub : IStub, ReactiveRTM.RTC.Mode
+    {
+        private global::omg.org.RTC.Mode _target;
+
+        public ModeStub()
+        {
+        }
+
+        public ModeStub(global::omg.org.RTC.Mode target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.Mode)target;
+        }
+
+    }
+    public class ModeCapableStub : IStub, ReactiveRTM.RTC.ModeCapable
+    {
+        private global::omg.org.RTC.ModeCapable _target;
+
+        public ModeCapableStub()
+        {
+        }
+
+        public ModeCapableStub(global::omg.org.RTC.ModeCapable target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.ModeCapable)target;
+        }
+
+ 
+        public ReactiveRTM.RTC.Mode GetDefaultMode()
+        {
+            var ret = _target.get_default_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetCurrentMode()
+        {
+            var ret = _target.get_current_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetCurrentModeInContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.get_current_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetPendingMode()
+        {
+            var ret = _target.get_pending_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetPendingModeInContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.get_pending_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t SetMode(ReactiveRTM.RTC.Mode newMode,System.Boolean immediate)
+        {
+            var ret = _target.set_mode(((global::omg.org.RTC.Mode)((IStub)newMode).GetTarget()),immediate);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class MultiModeComponentActionStub : IStub, ReactiveRTM.RTC.MultiModeComponentAction
+    {
+        private global::omg.org.RTC.MultiModeComponentAction _target;
+
+        public MultiModeComponentActionStub()
+        {
+        }
+
+        public MultiModeComponentActionStub(global::omg.org.RTC.MultiModeComponentAction target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.MultiModeComponentAction)target;
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle)
+        {
+            var ret = _target.on_mode_changed(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class MultiModeObjectStub : IStub, ReactiveRTM.RTC.MultiModeObject
+    {
+        private global::omg.org.RTC.MultiModeObject _target;
+
+        public MultiModeObjectStub()
+        {
+        }
+
+        public MultiModeObjectStub(global::omg.org.RTC.MultiModeObject target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.MultiModeObject)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.MultiModeObjectStub child)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.MultiModeObjectStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
+        {
+            return new ReactiveRTM.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.MultiModeObjectStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.MultiModeObjectStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ModeCapableStub(ReactiveRTM.RTC.MultiModeObjectStub child)
+        {
+            return new ReactiveRTM.RTC.ModeCapableStub((global::omg.org.RTC.ModeCapable)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.MultiModeObjectStub(ReactiveRTM.RTC.ModeCapableStub parent)
+        {
+            return new ReactiveRTM.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.MultiModeComponentActionStub(ReactiveRTM.RTC.MultiModeObjectStub child)
+        {
+            return new ReactiveRTM.RTC.MultiModeComponentActionStub((global::omg.org.RTC.MultiModeComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.MultiModeObjectStub(ReactiveRTM.RTC.MultiModeComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.MultiModeObjectStub((global::omg.org.RTC.MultiModeObject)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetDefaultMode()
+        {
+            var ret = _target.get_default_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetCurrentMode()
+        {
+            var ret = _target.get_current_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetCurrentModeInContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.get_current_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetPendingMode()
+        {
+            var ret = _target.get_pending_mode();
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.Mode GetPendingModeInContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.get_pending_mode_in_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return new ReactiveRTM.RTC.ModeStub(ret);
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t SetMode(ReactiveRTM.RTC.Mode newMode,System.Boolean immediate)
+        {
+            var ret = _target.set_mode(((global::omg.org.RTC.Mode)((IStub)newMode).GetTarget()),immediate);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle)
+        {
+            var ret = _target.on_mode_changed(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+    }
+    public class RTObjectStub : IStub, ReactiveRTM.RTC.RTObject
+    {
+        private global::omg.org.RTC.RTObject _target;
+
+        public RTObjectStub()
+        {
+        }
+
+        public RTObjectStub(global::omg.org.RTC.RTObject target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::omg.org.RTC.RTObject)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.LightweightRTObjectStub(ReactiveRTM.RTC.RTObjectStub child)
+        {
+            return new ReactiveRTM.RTC.LightweightRTObjectStub((global::omg.org.RTC.LightweightRTObject)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.RTObjectStub(ReactiveRTM.RTC.LightweightRTObjectStub parent)
+        {
+            return new ReactiveRTM.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.RTC.ComponentActionStub(ReactiveRTM.RTC.RTObjectStub child)
+        {
+            return new ReactiveRTM.RTC.ComponentActionStub((global::omg.org.RTC.ComponentAction)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.RTObjectStub(ReactiveRTM.RTC.ComponentActionStub parent)
+        {
+            return new ReactiveRTM.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOStub(ReactiveRTM.RTC.RTObjectStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.RTObjectStub(ReactiveRTM.SDOPackage.SDOStub parent)
+        {
+            return new ReactiveRTM.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOSystemElementStub(ReactiveRTM.RTC.RTObjectStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.RTObjectStub(ReactiveRTM.SDOPackage.SDOSystemElementStub parent)
+        {
+            return new ReactiveRTM.RTC.RTObjectStub((global::omg.org.RTC.RTObject)((IStub)parent).GetTarget());
+        }
+
+ 
+        public ReactiveRTM.RTC.ComponentProfile GetComponentProfile()
+        {
+            var ret = _target.get_component_profile();
+            return new ReactiveRTM.RTC.ComponentProfile(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.PortService> GetPorts()
+        {
+            var ret = _target.get_ports();
+            return ret.Select(x => (ReactiveRTM.RTC.PortService)new ReactiveRTM.RTC.PortServiceStub(x)).ToList();
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Initialize()
+        {
+            var ret = _target.initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Finalize()
+        {
+            var ret = _target._finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.is_alive(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Exit()
+        {
+            var ret = _target._exit();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            var ret = _target.attach_context(((global::omg.org.RTC.ExecutionContext)((IStub)execContext).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle)
+        {
+            var ret = _target.detach_context(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle)
+        {
+            var ret = _target.get_context(execHandle);
+            return new ReactiveRTM.RTC.ExecutionContextStub(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts()
+        {
+            var ret = _target.get_owned_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts()
+        {
+            var ret = _target.get_participating_contexts();
+            return ret.Select(x => (ReactiveRTM.RTC.ExecutionContext)new ReactiveRTM.RTC.ExecutionContextStub(x)).ToList();
+        }
+ 
+        public System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            var ret = _target.get_context_handle(((global::omg.org.RTC.ExecutionContext)((IStub)cxt).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnInitialize()
+        {
+            var ret = _target.on_initialize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnFinalize()
+        {
+            var ret = _target.on_finalize();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle)
+        {
+            var ret = _target.on_startup(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle)
+        {
+            var ret = _target.on_shutdown(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_activated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle)
+        {
+            var ret = _target.on_deactivated(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle)
+        {
+            var ret = _target.on_aborting(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle)
+        {
+            var ret = _target.on_error(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle)
+        {
+            var ret = _target.on_reset(execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
  
         public System.String GetSdoId()
         {
@@ -2534,46 +2146,46 @@ namespace ReactiveRTM.org.omg.SDOPackage
             return ret;
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile()
+        public ReactiveRTM.SDOPackage.DeviceProfile GetDeviceProfile()
         {
             var ret = _target.get_device_profile();
-            return new ReactiveRTM.org.omg.SDOPackage.DeviceProfile(ret);
+            return new ReactiveRTM.SDOPackage.DeviceProfile(ret);
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles()
+        public List<ReactiveRTM.SDOPackage.ServiceProfile> GetServiceProfiles()
         {
             var ret = _target.get_service_profiles();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ServiceProfile)new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.ServiceProfile)new ReactiveRTM.SDOPackage.ServiceProfile(x)).ToList();
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        public ReactiveRTM.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
         {
             var ret = _target.get_service_profile(id);
-            return new ReactiveRTM.org.omg.SDOPackage.ServiceProfile(ret);
+            return new ReactiveRTM.SDOPackage.ServiceProfile(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.SDOService GetSdoService(System.String id)
+        public ReactiveRTM.SDOPackage.SDOService GetSdoService(System.String id)
         {
             var ret = _target.get_sdo_service(id);
-            return new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(ret);
+            return new ReactiveRTM.SDOPackage.SDOServiceStub(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration()
+        public ReactiveRTM.SDOPackage.Configuration GetConfiguration()
         {
             var ret = _target.get_configuration();
-            return new ReactiveRTM.org.omg.SDOPackage.ConfigurationStub(ret);
+            return new ReactiveRTM.SDOPackage.ConfigurationStub(ret);
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring()
+        public ReactiveRTM.SDOPackage.Monitoring GetMonitoring()
         {
             var ret = _target.get_monitoring();
-            return new ReactiveRTM.org.omg.SDOPackage.MonitoringStub(ret);
+            return new ReactiveRTM.SDOPackage.MonitoringStub(ret);
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations()
+        public List<ReactiveRTM.SDOPackage.Organization> GetOrganizations()
         {
             var ret = _target.get_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
         }
  
         public Dictionary<string,object> GetStatusList()
@@ -2585,24 +2197,24 @@ namespace ReactiveRTM.org.omg.SDOPackage
         public System.Object GetStatus(System.String nme)
         {
             var ret = _target.get_status(nme);
-            return (System.Object)ret;
+            return ret;
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
+        public List<ReactiveRTM.SDOPackage.Organization> GetOwnedOrganizations()
         {
             var ret = _target.get_owned_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
         }
     }
-    public class SDOServiceStub : IStub, ReactiveRTM.org.omg.SDOPackage.SDOService
+    public class PortServiceStub : IStub, ReactiveRTM.RTC.PortService
     {
-        private global::org.omg.SDOPackage.SDOService _target;
+        private global::omg.org.RTC.PortService _target;
 
-        public SDOServiceStub()
+        public PortServiceStub()
         {
         }
 
-        public SDOServiceStub(global::org.omg.SDOPackage.SDOService target)
+        public PortServiceStub(global::omg.org.RTC.PortService target)
         {
             _target = target;
         }
@@ -2613,19 +2225,84 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         void IStub.SetTarget(object target)
         {
-            _target = (global::org.omg.SDOPackage.SDOService)target;
+            _target = (global::omg.org.RTC.PortService)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.RTC.PortServiceStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.PortServiceStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
+        {
+            return new ReactiveRTM.RTC.PortServiceStub((global::omg.org.RTC.PortService)((IStub)parent).GetTarget());
         }
 
+ 
+        public ReactiveRTM.RTC.PortProfile GetPortProfile()
+        {
+            var ret = _target.get_port_profile();
+            return new ReactiveRTM.RTC.PortProfile(ret);
+        }
+ 
+        public List<ReactiveRTM.RTC.ConnectorProfile> GetConnectorProfiles()
+        {
+            var ret = _target.get_connector_profiles();
+            return ret.Select(x => (ReactiveRTM.RTC.ConnectorProfile)new ReactiveRTM.RTC.ConnectorProfile(x)).ToList();
+        }
+ 
+        public ReactiveRTM.RTC.ConnectorProfile GetConnectorProfile(System.String connectorId)
+        {
+            var ret = _target.get_connector_profile(connectorId);
+            return new ReactiveRTM.RTC.ConnectorProfile(ret);
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Connect(ref ReactiveRTM.RTC.ConnectorProfile connectorProfile)
+        {
+ 
+            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
+            var ret = _target.connect(ref tmpconnectorProfile);
+ 
+            connectorProfile = new ReactiveRTM.RTC.ConnectorProfile(tmpconnectorProfile);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t Disconnect(System.String connectorId)
+        {
+            var ret = _target.disconnect(connectorId);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t DisconnectAll()
+        {
+            var ret = _target.disconnect_all();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t NotifyConnect(ref ReactiveRTM.RTC.ConnectorProfile connectorProfile)
+        {
+ 
+            var tmpconnectorProfile = ((global::omg.org.RTC.ConnectorProfile)((IStub)connectorProfile).GetTarget());
+            var ret = _target.notify_connect(ref tmpconnectorProfile);
+ 
+            connectorProfile = new ReactiveRTM.RTC.ConnectorProfile(tmpconnectorProfile);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
+ 
+        public ReactiveRTM.RTC.ReturnCode_t NotifyDisconnect(System.String connectorId)
+        {
+            var ret = _target.notify_disconnect(connectorId);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
+        }
     }
-    public class SDOSystemElementStub : IStub, ReactiveRTM.org.omg.SDOPackage.SDOSystemElement
+    public class FsmObjectStub : IStub, ReactiveRTM.RTC.FsmObject
     {
-        private global::org.omg.SDOPackage.SDOSystemElement _target;
+        private global::omg.org.RTC.FsmObject _target;
 
-        public SDOSystemElementStub()
+        public FsmObjectStub()
         {
         }
 
-        public SDOSystemElementStub(global::org.omg.SDOPackage.SDOSystemElement target)
+        public FsmObjectStub(global::omg.org.RTC.FsmObject target)
         {
             _target = target;
         }
@@ -2636,25 +2313,25 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         void IStub.SetTarget(object target)
         {
-            _target = (global::org.omg.SDOPackage.SDOSystemElement)target;
+            _target = (global::omg.org.RTC.FsmObject)target;
         }
 
  
-        public List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations()
+        public ReactiveRTM.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 execHandle)
         {
-            var ret = _target.get_owned_organizations();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Organization)new ReactiveRTM.org.omg.SDOPackage.OrganizationStub(x)).ToList();
+            var ret = _target.send_stimulus(message,execHandle);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
     }
-    public class ConfigurationStub : IStub, ReactiveRTM.org.omg.SDOPackage.Configuration
+    public class FsmServiceStub : IStub, ReactiveRTM.RTC.FsmService
     {
-        private global::org.omg.SDOPackage.Configuration _target;
+        private global::omg.org.RTC.FsmService _target;
 
-        public ConfigurationStub()
+        public FsmServiceStub()
         {
         }
 
-        public ConfigurationStub(global::org.omg.SDOPackage.Configuration target)
+        public FsmServiceStub(global::omg.org.RTC.FsmService target)
         {
             _target = target;
         }
@@ -2665,115 +2342,40 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         void IStub.SetTarget(object target)
         {
-            _target = (global::org.omg.SDOPackage.Configuration)target;
+            _target = (global::omg.org.RTC.FsmService)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.RTC.FsmServiceStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.RTC.FsmServiceStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
+        {
+            return new ReactiveRTM.RTC.FsmServiceStub((global::omg.org.RTC.FsmService)((IStub)parent).GetTarget());
         }
 
  
-        public System.Boolean SetDeviceProfile(ReactiveRTM.org.omg.SDOPackage.DeviceProfile dProfile)
+        public ReactiveRTM.RTC.FsmProfile GetFsmProfile()
         {
-            var ret = _target.set_device_profile(((global::org.omg.SDOPackage.DeviceProfile)((IStub)dProfile).GetTarget()));
-            return ret;
+            var ret = _target.get_fsm_profile();
+            return new ReactiveRTM.RTC.FsmProfile(ret);
         }
  
-        public System.Boolean AddServiceProfile(ReactiveRTM.org.omg.SDOPackage.ServiceProfile sProfile)
+        public ReactiveRTM.RTC.ReturnCode_t SetFsmProfile(ReactiveRTM.RTC.FsmProfile fsmProfile)
         {
-            var ret = _target.add_service_profile(((global::org.omg.SDOPackage.ServiceProfile)((IStub)sProfile).GetTarget()));
-            return ret;
-        }
- 
-        public System.Boolean AddOrganization(ReactiveRTM.org.omg.SDOPackage.Organization organizationObject)
-        {
-            var ret = _target.add_organization(((global::org.omg.SDOPackage.Organization)((IStub)organizationObject).GetTarget()));
-            return ret;
-        }
- 
-        public System.Boolean RemoveServiceProfile(System.String id)
-        {
-            var ret = _target.remove_service_profile(id);
-            return ret;
-        }
- 
-        public System.Boolean RemoveOrganization(System.String organizationId)
-        {
-            var ret = _target.remove_organization(organizationId);
-            return ret;
-        }
- 
-        public List<ReactiveRTM.org.omg.SDOPackage.Parameter> GetConfigurationParameters()
-        {
-            var ret = _target.get_configuration_parameters();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.Parameter)new ReactiveRTM.org.omg.SDOPackage.Parameter(x)).ToList();
-        }
- 
-        public Dictionary<string,object> GetConfigurationParameterValues()
-        {
-            var ret = _target.get_configuration_parameter_values();
-            return Converter.NVListToDictionary(ret);
-        }
- 
-        public System.Object GetConfigurationParameterValue(System.String name)
-        {
-            var ret = _target.get_configuration_parameter_value(name);
-            return (System.Object)ret;
-        }
- 
-        public System.Boolean SetConfigurationParameter(System.String name,System.Object value)
-        {
-            var ret = _target.set_configuration_parameter(name,(global::System.Object)value);
-            return ret;
-        }
- 
-        public List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSets()
-        {
-            var ret = _target.get_configuration_sets();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.ConfigurationSet)new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(x)).ToList();
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetConfigurationSet(System.String configId)
-        {
-            var ret = _target.get_configuration_set(configId);
-            return new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(ret);
-        }
- 
-        public System.Boolean SetConfigurationSetValues(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet)
-        {
-            var ret = _target.set_configuration_set_values(((global::org.omg.SDOPackage.ConfigurationSet)((IStub)configurationSet).GetTarget()));
-            return ret;
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetActiveConfigurationSet()
-        {
-            var ret = _target.get_active_configuration_set();
-            return new ReactiveRTM.org.omg.SDOPackage.ConfigurationSet(ret);
-        }
- 
-        public System.Boolean AddConfigurationSet(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet)
-        {
-            var ret = _target.add_configuration_set(((global::org.omg.SDOPackage.ConfigurationSet)((IStub)configurationSet).GetTarget()));
-            return ret;
-        }
- 
-        public System.Boolean RemoveConfigurationSet(System.String configId)
-        {
-            var ret = _target.remove_configuration_set(configId);
-            return ret;
-        }
- 
-        public System.Boolean ActivateConfigurationSet(System.String configId)
-        {
-            var ret = _target.activate_configuration_set(configId);
-            return ret;
+            var ret = _target.set_fsm_profile(((global::omg.org.RTC.FsmProfile)((IStub)fsmProfile).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
     }
-    public class MonitoringStub : IStub, ReactiveRTM.org.omg.SDOPackage.Monitoring
+    public class ExecutionContextServiceStub : IStub, ReactiveRTM.RTC.ExecutionContextService
     {
-        private global::org.omg.SDOPackage.Monitoring _target;
+        private global::omg.org.RTC.ExecutionContextService _target;
 
-        public MonitoringStub()
+        public ExecutionContextServiceStub()
         {
         }
 
-        public MonitoringStub(global::org.omg.SDOPackage.Monitoring target)
+        public ExecutionContextServiceStub(global::omg.org.RTC.ExecutionContextService target)
         {
             _target = target;
         }
@@ -2784,115 +2386,104 @@ namespace ReactiveRTM.org.omg.SDOPackage
         }
         void IStub.SetTarget(object target)
         {
-            _target = (global::org.omg.SDOPackage.Monitoring)target;
+            _target = (global::omg.org.RTC.ExecutionContextService)target;
         }
-
-    }
-    public class OrganizationStub : IStub, ReactiveRTM.org.omg.SDOPackage.Organization
-    {
-        private global::org.omg.SDOPackage.Organization _target;
-
-        public OrganizationStub()
+ 
+        public static explicit operator ReactiveRTM.RTC.ExecutionContextStub(ReactiveRTM.RTC.ExecutionContextServiceStub child)
         {
+            return new ReactiveRTM.RTC.ExecutionContextStub((global::omg.org.RTC.ExecutionContext)((IStub)child).GetTarget());
         }
-
-        public OrganizationStub(global::org.omg.SDOPackage.Organization target)
+        public static implicit operator ReactiveRTM.RTC.ExecutionContextServiceStub(ReactiveRTM.RTC.ExecutionContextStub parent)
         {
-            _target = target;
+            return new ReactiveRTM.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)parent).GetTarget());
         }
-
-        object IStub.GetTarget()
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOServiceStub(ReactiveRTM.RTC.ExecutionContextServiceStub child)
         {
-            return _target;
+            return new ReactiveRTM.SDOPackage.SDOServiceStub((global::org.omg.SDOPackage.SDOService)((IStub)child).GetTarget());
         }
-        void IStub.SetTarget(object target)
+        public static implicit operator ReactiveRTM.RTC.ExecutionContextServiceStub(ReactiveRTM.SDOPackage.SDOServiceStub parent)
         {
-            _target = (global::org.omg.SDOPackage.Organization)target;
+            return new ReactiveRTM.RTC.ExecutionContextServiceStub((global::omg.org.RTC.ExecutionContextService)((IStub)parent).GetTarget());
         }
 
  
-        public System.String GetOrganizationId()
+        public ReactiveRTM.RTC.ExecutionContextProfile GetProfile()
         {
-            var ret = _target.get_organization_id();
+            var ret = _target.get_profile();
+            return new ReactiveRTM.RTC.ExecutionContextProfile(ret);
+        }
+ 
+        public System.Boolean IsRunning()
+        {
+            var ret = _target.is_running();
             return ret;
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.OrganizationProperty GetOrganizationProperty()
+        public ReactiveRTM.RTC.ReturnCode_t Start()
         {
-            var ret = _target.get_organization_property();
-            return new ReactiveRTM.org.omg.SDOPackage.OrganizationProperty(ret);
+            var ret = _target.start();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Object GetOrganizationPropertyValue(System.String name)
+        public ReactiveRTM.RTC.ReturnCode_t Stop()
         {
-            var ret = _target.get_organization_property_value(name);
-            return (System.Object)ret;
+            var ret = _target._stop();
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean AddOrganizationProperty(ReactiveRTM.org.omg.SDOPackage.OrganizationProperty organizationProperty)
+        public System.Double GetRate()
         {
-            var ret = _target.add_organization_property(((global::org.omg.SDOPackage.OrganizationProperty)((IStub)organizationProperty).GetTarget()));
+            var ret = _target.get_rate();
             return ret;
         }
  
-        public System.Boolean SetOrganizationPropertyValue(System.String name,System.Object value)
+        public ReactiveRTM.RTC.ReturnCode_t SetRate(System.Double rate)
         {
-            var ret = _target.set_organization_property_value(name,(global::System.Object)value);
-            return ret;
+            var ret = _target.set_rate(rate);
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean RemoveOrganizationProperty(System.String name)
+        public ReactiveRTM.RTC.ReturnCode_t AddComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.remove_organization_property(name);
-            return ret;
+            var ret = _target.add_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.org.omg.SDOPackage.SDOSystemElement GetOwner()
+        public ReactiveRTM.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.get_owner();
-            return new ReactiveRTM.org.omg.SDOPackage.SDOSystemElementStub(ret);
+            var ret = _target.remove_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean SetOwner(ReactiveRTM.org.omg.SDOPackage.SDOSystemElement sdo)
+        public ReactiveRTM.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.set_owner(((global::org.omg.SDOPackage.SDOSystemElement)((IStub)sdo).GetTarget()));
-            return ret;
+            var ret = _target.activate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public List<ReactiveRTM.org.omg.SDOPackage.SDO> GetMembers()
+        public ReactiveRTM.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.get_members();
-            return ret.Select(x => (ReactiveRTM.org.omg.SDOPackage.SDO)new ReactiveRTM.org.omg.SDOPackage.SDOStub(x)).ToList();
+            var ret = _target.deactivate_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean SetMembers(List<ReactiveRTM.org.omg.SDOPackage.SDO> sdos)
+        public ReactiveRTM.RTC.ReturnCode_t ResetComponent(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.set_members(sdos.Select(x=>((global::org.omg.SDOPackage.SDO)((IStub)x).GetTarget())).ToArray());
-            return ret;
+            var ret = _target.reset_component(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public System.Boolean AddMembers(List<ReactiveRTM.org.omg.SDOPackage.SDO> sdoList)
+        public ReactiveRTM.RTC.LifeCycleState GetComponentState(ReactiveRTM.RTC.LightweightRTObject comp)
         {
-            var ret = _target.add_members(sdoList.Select(x=>((global::org.omg.SDOPackage.SDO)((IStub)x).GetTarget())).ToArray());
-            return ret;
+            var ret = _target.get_component_state(((global::omg.org.RTC.LightweightRTObject)((IStub)comp).GetTarget()));
+            return (ReactiveRTM.RTC.LifeCycleState)ret;
         }
  
-        public System.Boolean RemoveMember(System.String id)
+        public ReactiveRTM.RTC.ExecutionKind GetKind()
         {
-            var ret = _target.remove_member(id);
-            return ret;
-        }
- 
-        public ReactiveRTM.org.omg.SDOPackage.DependencyType GetDependency()
-        {
-            var ret = _target.get_dependency();
-            return (org.omg.SDOPackage.DependencyType)ret;
-        }
- 
-        public System.Boolean SetDependency(ReactiveRTM.org.omg.SDOPackage.DependencyType dependency)
-        {
-            var ret = _target.set_dependency((global::org.omg.SDOPackage.DependencyType)dependency);
-            return ret;
+            var ret = _target.get_kind();
+            return (ReactiveRTM.RTC.ExecutionKind)ret;
         }
     }
 }
@@ -3994,16 +3585,16 @@ namespace ReactiveRTM.RTM
         }
 
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc)
+        public ReactiveRTM.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc)
         {
             var ret = _target.load_module(pathname,initfunc);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t UnloadModule(System.String pathname)
+        public ReactiveRTM.RTC.ReturnCode_t UnloadModule(System.String pathname)
         {
             var ret = _target.unload_module(pathname);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public List<ReactiveRTM.RTM.ModuleProfile> GetLoadableModules()
@@ -4024,28 +3615,28 @@ namespace ReactiveRTM.RTM
             return ret.Select(x => (ReactiveRTM.RTM.ModuleProfile)new ReactiveRTM.RTM.ModuleProfile(x)).ToList();
         }
  
-        public ReactiveRTM.omg.org.RTC.RTObject CreateComponent(System.String moduleName)
+        public ReactiveRTM.RTC.RTObject CreateComponent(System.String moduleName)
         {
             var ret = _target.create_component(moduleName);
-            return new ReactiveRTM.omg.org.RTC.RTObjectStub(ret);
+            return new ReactiveRTM.RTC.RTObjectStub(ret);
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t DeleteComponent(System.String instanceName)
+        public ReactiveRTM.RTC.ReturnCode_t DeleteComponent(System.String instanceName)
         {
             var ret = _target.delete_component(instanceName);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public List<ReactiveRTM.omg.org.RTC.RTObject> GetComponents()
+        public List<ReactiveRTM.RTC.RTObject> GetComponents()
         {
             var ret = _target.get_components();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.RTObject)new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.RTObject)new ReactiveRTM.RTC.RTObjectStub(x)).ToList();
         }
  
-        public List<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfiles()
+        public List<ReactiveRTM.RTC.ComponentProfile> GetComponentProfiles()
         {
             var ret = _target.get_component_profiles();
-            return ret.Select(x => (ReactiveRTM.omg.org.RTC.ComponentProfile)new ReactiveRTM.omg.org.RTC.ComponentProfile(x)).ToList();
+            return ret.Select(x => (ReactiveRTM.RTC.ComponentProfile)new ReactiveRTM.RTC.ComponentProfile(x)).ToList();
         }
  
         public ReactiveRTM.RTM.ManagerProfile GetProfile()
@@ -4060,10 +3651,10 @@ namespace ReactiveRTM.RTM
             return Converter.NVListToDictionary(ret);
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value)
+        public ReactiveRTM.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value)
         {
             var ret = _target.set_configuration(name,value);
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public System.Boolean IsMaster()
@@ -4078,16 +3669,16 @@ namespace ReactiveRTM.RTM
             return ret.Select(x => (ReactiveRTM.RTM.Manager)new ReactiveRTM.RTM.ManagerStub(x)).ToList();
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr)
+        public ReactiveRTM.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr)
         {
             var ret = _target.add_master_manager(((global::RTM.Manager)((IStub)mgr).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveMasterManager(ReactiveRTM.RTM.Manager mgr)
+        public ReactiveRTM.RTC.ReturnCode_t RemoveMasterManager(ReactiveRTM.RTM.Manager mgr)
         {
             var ret = _target.remove_master_manager(((global::RTM.Manager)((IStub)mgr).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public List<ReactiveRTM.RTM.Manager> GetSlaveManagers()
@@ -4096,40 +3687,449 @@ namespace ReactiveRTM.RTM
             return ret.Select(x => (ReactiveRTM.RTM.Manager)new ReactiveRTM.RTM.ManagerStub(x)).ToList();
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr)
+        public ReactiveRTM.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr)
         {
             var ret = _target.add_slave_manager(((global::RTM.Manager)((IStub)mgr).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveSlaveManager(ReactiveRTM.RTM.Manager mgr)
+        public ReactiveRTM.RTC.ReturnCode_t RemoveSlaveManager(ReactiveRTM.RTM.Manager mgr)
         {
             var ret = _target.remove_slave_manager(((global::RTM.Manager)((IStub)mgr).GetTarget()));
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Fork()
+        public ReactiveRTM.RTC.ReturnCode_t Fork()
         {
             var ret = _target.fork();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Shutdown()
+        public ReactiveRTM.RTC.ReturnCode_t Shutdown()
         {
             var ret = _target.shutdown();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
-        public ReactiveRTM.omg.org.RTC.ReturnCode_t Restart()
+        public ReactiveRTM.RTC.ReturnCode_t Restart()
         {
             var ret = _target.restart();
-            return (omg.org.RTC.ReturnCode_t)ret;
+            return (ReactiveRTM.RTC.ReturnCode_t)ret;
         }
  
         public System.Object GetService(System.String name)
         {
             var ret = _target.get_service(name);
-            return (System.MarshalByRefObject)ret;
+            return (object)ret;
+        }
+    }
+}
+ 
+namespace ReactiveRTM.SDOPackage
+{
+    public class SDOStub : IStub, ReactiveRTM.SDOPackage.SDO
+    {
+        private global::org.omg.SDOPackage.SDO _target;
+
+        public SDOStub()
+        {
+        }
+
+        public SDOStub(global::org.omg.SDOPackage.SDO target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.SDO)target;
+        }
+ 
+        public static explicit operator ReactiveRTM.SDOPackage.SDOSystemElementStub(ReactiveRTM.SDOPackage.SDOStub child)
+        {
+            return new ReactiveRTM.SDOPackage.SDOSystemElementStub((global::org.omg.SDOPackage.SDOSystemElement)((IStub)child).GetTarget());
+        }
+        public static implicit operator ReactiveRTM.SDOPackage.SDOStub(ReactiveRTM.SDOPackage.SDOSystemElementStub parent)
+        {
+            return new ReactiveRTM.SDOPackage.SDOStub((global::org.omg.SDOPackage.SDO)((IStub)parent).GetTarget());
+        }
+
+ 
+        public System.String GetSdoId()
+        {
+            var ret = _target.get_sdo_id();
+            return ret;
+        }
+ 
+        public System.String GetSdoType()
+        {
+            var ret = _target.get_sdo_type();
+            return ret;
+        }
+ 
+        public ReactiveRTM.SDOPackage.DeviceProfile GetDeviceProfile()
+        {
+            var ret = _target.get_device_profile();
+            return new ReactiveRTM.SDOPackage.DeviceProfile(ret);
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.ServiceProfile> GetServiceProfiles()
+        {
+            var ret = _target.get_service_profiles();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.ServiceProfile)new ReactiveRTM.SDOPackage.ServiceProfile(x)).ToList();
+        }
+ 
+        public ReactiveRTM.SDOPackage.ServiceProfile GetServiceProfile(System.String id)
+        {
+            var ret = _target.get_service_profile(id);
+            return new ReactiveRTM.SDOPackage.ServiceProfile(ret);
+        }
+ 
+        public ReactiveRTM.SDOPackage.SDOService GetSdoService(System.String id)
+        {
+            var ret = _target.get_sdo_service(id);
+            return new ReactiveRTM.SDOPackage.SDOServiceStub(ret);
+        }
+ 
+        public ReactiveRTM.SDOPackage.Configuration GetConfiguration()
+        {
+            var ret = _target.get_configuration();
+            return new ReactiveRTM.SDOPackage.ConfigurationStub(ret);
+        }
+ 
+        public ReactiveRTM.SDOPackage.Monitoring GetMonitoring()
+        {
+            var ret = _target.get_monitoring();
+            return new ReactiveRTM.SDOPackage.MonitoringStub(ret);
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.Organization> GetOrganizations()
+        {
+            var ret = _target.get_organizations();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
+        }
+ 
+        public Dictionary<string,object> GetStatusList()
+        {
+            var ret = _target.get_status_list();
+            return Converter.NVListToDictionary(ret);
+        }
+ 
+        public System.Object GetStatus(System.String nme)
+        {
+            var ret = _target.get_status(nme);
+            return ret;
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.Organization> GetOwnedOrganizations()
+        {
+            var ret = _target.get_owned_organizations();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
+        }
+    }
+    public class SDOServiceStub : IStub, ReactiveRTM.SDOPackage.SDOService
+    {
+        private global::org.omg.SDOPackage.SDOService _target;
+
+        public SDOServiceStub()
+        {
+        }
+
+        public SDOServiceStub(global::org.omg.SDOPackage.SDOService target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.SDOService)target;
+        }
+
+    }
+    public class SDOSystemElementStub : IStub, ReactiveRTM.SDOPackage.SDOSystemElement
+    {
+        private global::org.omg.SDOPackage.SDOSystemElement _target;
+
+        public SDOSystemElementStub()
+        {
+        }
+
+        public SDOSystemElementStub(global::org.omg.SDOPackage.SDOSystemElement target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.SDOSystemElement)target;
+        }
+
+ 
+        public List<ReactiveRTM.SDOPackage.Organization> GetOwnedOrganizations()
+        {
+            var ret = _target.get_owned_organizations();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Organization)new ReactiveRTM.SDOPackage.OrganizationStub(x)).ToList();
+        }
+    }
+    public class ConfigurationStub : IStub, ReactiveRTM.SDOPackage.Configuration
+    {
+        private global::org.omg.SDOPackage.Configuration _target;
+
+        public ConfigurationStub()
+        {
+        }
+
+        public ConfigurationStub(global::org.omg.SDOPackage.Configuration target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.Configuration)target;
+        }
+
+ 
+        public System.Boolean SetDeviceProfile(ReactiveRTM.SDOPackage.DeviceProfile dProfile)
+        {
+            var ret = _target.set_device_profile(((global::org.omg.SDOPackage.DeviceProfile)((IStub)dProfile).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean AddServiceProfile(ReactiveRTM.SDOPackage.ServiceProfile sProfile)
+        {
+            var ret = _target.add_service_profile(((global::org.omg.SDOPackage.ServiceProfile)((IStub)sProfile).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean AddOrganization(ReactiveRTM.SDOPackage.Organization organizationObject)
+        {
+            var ret = _target.add_organization(((global::org.omg.SDOPackage.Organization)((IStub)organizationObject).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean RemoveServiceProfile(System.String id)
+        {
+            var ret = _target.remove_service_profile(id);
+            return ret;
+        }
+ 
+        public System.Boolean RemoveOrganization(System.String organizationId)
+        {
+            var ret = _target.remove_organization(organizationId);
+            return ret;
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.Parameter> GetConfigurationParameters()
+        {
+            var ret = _target.get_configuration_parameters();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.Parameter)new ReactiveRTM.SDOPackage.Parameter(x)).ToList();
+        }
+ 
+        public Dictionary<string,object> GetConfigurationParameterValues()
+        {
+            var ret = _target.get_configuration_parameter_values();
+            return Converter.NVListToDictionary(ret);
+        }
+ 
+        public System.Object GetConfigurationParameterValue(System.String name)
+        {
+            var ret = _target.get_configuration_parameter_value(name);
+            return ret;
+        }
+ 
+        public System.Boolean SetConfigurationParameter(System.String name,System.Object value)
+        {
+            var ret = _target.set_configuration_parameter(name,value);
+            return ret;
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.ConfigurationSet> GetConfigurationSets()
+        {
+            var ret = _target.get_configuration_sets();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.ConfigurationSet)new ReactiveRTM.SDOPackage.ConfigurationSet(x)).ToList();
+        }
+ 
+        public ReactiveRTM.SDOPackage.ConfigurationSet GetConfigurationSet(System.String configId)
+        {
+            var ret = _target.get_configuration_set(configId);
+            return new ReactiveRTM.SDOPackage.ConfigurationSet(ret);
+        }
+ 
+        public System.Boolean SetConfigurationSetValues(ReactiveRTM.SDOPackage.ConfigurationSet configurationSet)
+        {
+            var ret = _target.set_configuration_set_values(((global::org.omg.SDOPackage.ConfigurationSet)((IStub)configurationSet).GetTarget()));
+            return ret;
+        }
+ 
+        public ReactiveRTM.SDOPackage.ConfigurationSet GetActiveConfigurationSet()
+        {
+            var ret = _target.get_active_configuration_set();
+            return new ReactiveRTM.SDOPackage.ConfigurationSet(ret);
+        }
+ 
+        public System.Boolean AddConfigurationSet(ReactiveRTM.SDOPackage.ConfigurationSet configurationSet)
+        {
+            var ret = _target.add_configuration_set(((global::org.omg.SDOPackage.ConfigurationSet)((IStub)configurationSet).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean RemoveConfigurationSet(System.String configId)
+        {
+            var ret = _target.remove_configuration_set(configId);
+            return ret;
+        }
+ 
+        public System.Boolean ActivateConfigurationSet(System.String configId)
+        {
+            var ret = _target.activate_configuration_set(configId);
+            return ret;
+        }
+    }
+    public class MonitoringStub : IStub, ReactiveRTM.SDOPackage.Monitoring
+    {
+        private global::org.omg.SDOPackage.Monitoring _target;
+
+        public MonitoringStub()
+        {
+        }
+
+        public MonitoringStub(global::org.omg.SDOPackage.Monitoring target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.Monitoring)target;
+        }
+
+    }
+    public class OrganizationStub : IStub, ReactiveRTM.SDOPackage.Organization
+    {
+        private global::org.omg.SDOPackage.Organization _target;
+
+        public OrganizationStub()
+        {
+        }
+
+        public OrganizationStub(global::org.omg.SDOPackage.Organization target)
+        {
+            _target = target;
+        }
+
+        object IStub.GetTarget()
+        {
+            return _target;
+        }
+        void IStub.SetTarget(object target)
+        {
+            _target = (global::org.omg.SDOPackage.Organization)target;
+        }
+
+ 
+        public System.String GetOrganizationId()
+        {
+            var ret = _target.get_organization_id();
+            return ret;
+        }
+ 
+        public ReactiveRTM.SDOPackage.OrganizationProperty GetOrganizationProperty()
+        {
+            var ret = _target.get_organization_property();
+            return new ReactiveRTM.SDOPackage.OrganizationProperty(ret);
+        }
+ 
+        public System.Object GetOrganizationPropertyValue(System.String name)
+        {
+            var ret = _target.get_organization_property_value(name);
+            return ret;
+        }
+ 
+        public System.Boolean AddOrganizationProperty(ReactiveRTM.SDOPackage.OrganizationProperty organizationProperty)
+        {
+            var ret = _target.add_organization_property(((global::org.omg.SDOPackage.OrganizationProperty)((IStub)organizationProperty).GetTarget()));
+            return ret;
+        }
+ 
+        public System.Boolean SetOrganizationPropertyValue(System.String name,System.Object value)
+        {
+            var ret = _target.set_organization_property_value(name,value);
+            return ret;
+        }
+ 
+        public System.Boolean RemoveOrganizationProperty(System.String name)
+        {
+            var ret = _target.remove_organization_property(name);
+            return ret;
+        }
+ 
+        public ReactiveRTM.SDOPackage.SDOSystemElement GetOwner()
+        {
+            var ret = _target.get_owner();
+            return new ReactiveRTM.SDOPackage.SDOSystemElementStub(ret);
+        }
+ 
+        public System.Boolean SetOwner(ReactiveRTM.SDOPackage.SDOSystemElement sdo)
+        {
+            var ret = _target.set_owner(((global::org.omg.SDOPackage.SDOSystemElement)((IStub)sdo).GetTarget()));
+            return ret;
+        }
+ 
+        public List<ReactiveRTM.SDOPackage.SDO> GetMembers()
+        {
+            var ret = _target.get_members();
+            return ret.Select(x => (ReactiveRTM.SDOPackage.SDO)new ReactiveRTM.SDOPackage.SDOStub(x)).ToList();
+        }
+ 
+        public System.Boolean SetMembers(List<ReactiveRTM.SDOPackage.SDO> sdos)
+        {
+            var ret = _target.set_members(sdos.Select(x=>((global::org.omg.SDOPackage.SDO)((IStub)x).GetTarget())).ToArray());
+            return ret;
+        }
+ 
+        public System.Boolean AddMembers(List<ReactiveRTM.SDOPackage.SDO> sdoList)
+        {
+            var ret = _target.add_members(sdoList.Select(x=>((global::org.omg.SDOPackage.SDO)((IStub)x).GetTarget())).ToArray());
+            return ret;
+        }
+ 
+        public System.Boolean RemoveMember(System.String id)
+        {
+            var ret = _target.remove_member(id);
+            return ret;
+        }
+ 
+        public ReactiveRTM.SDOPackage.DependencyType GetDependency()
+        {
+            var ret = _target.get_dependency();
+            return (ReactiveRTM.SDOPackage.DependencyType)ret;
+        }
+ 
+        public System.Boolean SetDependency(ReactiveRTM.SDOPackage.DependencyType dependency)
+        {
+            var ret = _target.set_dependency((global::org.omg.SDOPackage.DependencyType)dependency);
+            return ret;
         }
     }
 }

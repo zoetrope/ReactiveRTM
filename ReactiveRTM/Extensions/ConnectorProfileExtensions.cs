@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ReactiveRTM.Extensions;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Core
 {

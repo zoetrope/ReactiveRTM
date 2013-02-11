@@ -10,7 +10,6 @@ using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.OpenRTM;
 using ReactiveRTM.RTC;
-using ReactiveRTM.omg.org.RTC;
 using Newtonsoft.Json.Linq;
 
 namespace ReactiveRTM.Core

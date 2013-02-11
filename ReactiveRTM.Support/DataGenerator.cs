@@ -18,7 +18,7 @@ namespace ReactiveRTM.Support
                 .GroupBy(t => t.Namespace)
                 .Select(g => new DataTemplate
                 {
-                    Namespace = GU.Join(GU.BaseNamespace,g.Key),
+                    Namespace = GU.Join(GU.BaseNamespace, g.Key.Split('.').LastOrDefault()),
                     StructTemplates = g.Where(GU.IsStruct)
                         .Select(t => new StructTemplate(t))
                         .ToArray(),

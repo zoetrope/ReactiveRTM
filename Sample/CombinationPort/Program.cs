@@ -6,7 +6,6 @@ using System.Reactive.Linq;
 using System.Text;
 using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
-using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// データポートの合成のサンプル

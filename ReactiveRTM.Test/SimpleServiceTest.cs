@@ -8,6 +8,7 @@ using Newtonsoft.Json.Bson;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Reactive.Concurrency;
 
 namespace ReactiveRTM.Test
 {
@@ -33,7 +34,6 @@ namespace ReactiveRTM.Test
         [TestMethod]
         public void BSONがつかえるかどうか()
         {
-            
             var js = new JsonSerializer();
 
             var ms = new MemoryStream();

@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenRTM;
-using ReactiveRTM.org.omg.SDOPackage;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.SDOPackage;
+using ReactiveRTM.RTC;
 using System.Collections.Generic;
 
 namespace ReactiveRTM.Adapter

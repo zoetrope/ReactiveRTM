@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using ReactiveRTM.omg.org.RTC;
 using ReactiveRTM.RTC;
 
 /// <summary>

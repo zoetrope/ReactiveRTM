@@ -9,144 +9,33 @@ using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
-namespace ReactiveRTM.omg.org.CORBA
+namespace ReactiveRTM.CORBA
 {
     public interface TypeCode 
     {
-        System.Boolean Equal(ReactiveRTM.omg.org.CORBA.TypeCode tc);
-        System.Boolean Equivalent(ReactiveRTM.omg.org.CORBA.TypeCode tc);
-        ReactiveRTM.omg.org.CORBA.TypeCode GetCompactTypecode();
-        ReactiveRTM.omg.org.CORBA.TCKind Kind();
+        System.Boolean Equal(ReactiveRTM.CORBA.TypeCode tc);
+        System.Boolean Equivalent(ReactiveRTM.CORBA.TypeCode tc);
+        ReactiveRTM.CORBA.TypeCode GetCompactTypecode();
+        ReactiveRTM.CORBA.TCKind Kind();
         System.String Id();
         System.String Name();
         System.Int32 MemberCount();
         System.String MemberName(System.Int32 index);
-        ReactiveRTM.omg.org.CORBA.TypeCode MemberType(System.Int32 index);
+        ReactiveRTM.CORBA.TypeCode MemberType(System.Int32 index);
         System.Object MemberLabel(System.Int32 index);
-        ReactiveRTM.omg.org.CORBA.TypeCode DiscriminatorType();
+        ReactiveRTM.CORBA.TypeCode DiscriminatorType();
         System.Int32 DefaultIndex();
         System.Int32 Length();
-        ReactiveRTM.omg.org.CORBA.TypeCode ContentType();
+        ReactiveRTM.CORBA.TypeCode ContentType();
         System.Int16 MemberVisibility(System.Int32 index);
         System.Int16 TypeModifier();
-        ReactiveRTM.omg.org.CORBA.TypeCode ConcreteBaseType();
-    }
-}
- 
-namespace ReactiveRTM.omg.org.RTC
-{
-    public interface ExecutionContext 
-    {
-        System.Boolean IsRunning();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Start();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Stop();
-        System.Double GetRate();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetRate(System.Double rate);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t ResetComponent(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.LifeCycleState GetComponentState(ReactiveRTM.omg.org.RTC.LightweightRTObject comp);
-        ReactiveRTM.omg.org.RTC.ExecutionKind GetKind();
-    }
-    public interface ComponentAction 
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnInitialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnFinalize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStartup(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnActivated(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAborting(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnError(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnReset(System.Int32 execHandle);
-    }
-    public interface LightweightRTObject : ReactiveRTM.omg.org.RTC.ComponentAction
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Initialize();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Finalize();
-        System.Boolean IsAlive(ReactiveRTM.omg.org.RTC.ExecutionContext execContext);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Exit();
-        System.Int32 AttachContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DetachContext(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ExecutionContext GetContext(System.Int32 execHandle);
-        List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetOwnedContexts();
-        List<ReactiveRTM.omg.org.RTC.ExecutionContext> GetParticipatingContexts();
-        System.Int32 GetContextHandle(ReactiveRTM.omg.org.RTC.ExecutionContext cxt);
-    }
-    public interface DataFlowComponentAction 
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnExecute(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle);
-    }
-    public interface DataFlowComponent : ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction,ReactiveRTM.omg.org.RTC.DataFlowComponentAction
-    {
-    }
-    public interface Fsm : ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction
-    {
-    }
-    public interface FsmParticipantAction 
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnAction(System.Int32 execHandle);
-    }
-    public interface FsmParticipant : ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction,ReactiveRTM.omg.org.RTC.FsmParticipantAction
-    {
-    }
-    public interface Mode 
-    {
-    }
-    public interface ModeCapable 
-    {
-        ReactiveRTM.omg.org.RTC.Mode GetDefaultMode();
-        ReactiveRTM.omg.org.RTC.Mode GetCurrentMode();
-        ReactiveRTM.omg.org.RTC.Mode GetCurrentModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext);
-        ReactiveRTM.omg.org.RTC.Mode GetPendingMode();
-        ReactiveRTM.omg.org.RTC.Mode GetPendingModeInContext(ReactiveRTM.omg.org.RTC.ExecutionContext execContext);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetMode(ReactiveRTM.omg.org.RTC.Mode newMode,System.Boolean immediate);
-    }
-    public interface MultiModeComponentAction 
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle);
-    }
-    public interface MultiModeObject : ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction,ReactiveRTM.omg.org.RTC.ModeCapable,ReactiveRTM.omg.org.RTC.MultiModeComponentAction
-    {
-    }
-    public interface RTObject : ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction,ReactiveRTM.org.omg.SDOPackage.SDO,ReactiveRTM.org.omg.SDOPackage.SDOSystemElement
-    {
-        ReactiveRTM.omg.org.RTC.ComponentProfile GetComponentProfile();
-        List<ReactiveRTM.omg.org.RTC.PortService> GetPorts();
-    }
-    public interface PortService : ReactiveRTM.org.omg.SDOPackage.SDOService
-    {
-        ReactiveRTM.omg.org.RTC.PortProfile GetPortProfile();
-        List<ReactiveRTM.omg.org.RTC.ConnectorProfile> GetConnectorProfiles();
-        ReactiveRTM.omg.org.RTC.ConnectorProfile GetConnectorProfile(System.String connectorId);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Connect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Disconnect(System.String connectorId);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DisconnectAll();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyConnect(ref ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t NotifyDisconnect(System.String connectorId);
-    }
-    public interface FsmObject 
-    {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 execHandle);
-    }
-    public interface FsmService : ReactiveRTM.org.omg.SDOPackage.SDOService
-    {
-        ReactiveRTM.omg.org.RTC.FsmProfile GetFsmProfile();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetFsmProfile(ReactiveRTM.omg.org.RTC.FsmProfile fsmProfile);
-    }
-    public interface ExecutionContextService : ReactiveRTM.omg.org.RTC.ExecutionContext,ReactiveRTM.org.omg.SDOPackage.SDOService
-    {
-        ReactiveRTM.omg.org.RTC.ExecutionContextProfile GetProfile();
+        ReactiveRTM.CORBA.TypeCode ConcreteBaseType();
     }
 }
  
 namespace ReactiveRTM.OpenRTM
 {
-    public interface ComponentObserver : ReactiveRTM.org.omg.SDOPackage.SDOService
+    public interface ComponentObserver : ReactiveRTM.SDOPackage.SDOService
     {
         void UpdateStatus(ReactiveRTM.OpenRTM.StatusKind statusKind,System.String hint);
     }
@@ -158,85 +47,132 @@ namespace ReactiveRTM.OpenRTM
     {
         ReactiveRTM.OpenRTM.PortStatus Get(out List<System.Byte> data);
     }
-    public interface Logger : ReactiveRTM.org.omg.SDOPackage.SDOService
+    public interface Logger : ReactiveRTM.SDOPackage.SDOService
     {
         void Publish(ReactiveRTM.OpenRTM.LogRecord record);
         void Close();
     }
 }
  
-namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
+namespace ReactiveRTM.OpenRTM
 {
-    public interface DataFlowComponent : ReactiveRTM.omg.org.RTC.RTObject,ReactiveRTM.omg.org.RTC.LightweightRTObject,ReactiveRTM.omg.org.RTC.ComponentAction,ReactiveRTM.org.omg.SDOPackage.SDO,ReactiveRTM.org.omg.SDOPackage.SDOSystemElement,ReactiveRTM.omg.org.RTC.DataFlowComponent,ReactiveRTM.omg.org.RTC.DataFlowComponentAction
+    public interface DataFlowComponent : ReactiveRTM.RTC.RTObject,ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction,ReactiveRTM.SDOPackage.SDO,ReactiveRTM.SDOPackage.SDOSystemElement,ReactiveRTM.RTC.DataFlowComponent,ReactiveRTM.RTC.DataFlowComponentAction
     {
     }
-    public interface ExtTrigExecutionContextService : ReactiveRTM.omg.org.RTC.ExecutionContextService,ReactiveRTM.omg.org.RTC.ExecutionContext,ReactiveRTM.org.omg.SDOPackage.SDOService
+    public interface ExtTrigExecutionContextService : ReactiveRTM.RTC.ExecutionContextService,ReactiveRTM.RTC.ExecutionContext,ReactiveRTM.SDOPackage.SDOService
     {
         void Tick();
     }
 }
  
-namespace ReactiveRTM.org.omg.SDOPackage
+namespace ReactiveRTM.RTC
 {
-    public interface SDO : ReactiveRTM.org.omg.SDOPackage.SDOSystemElement
+    public interface ExecutionContext 
     {
-        System.String GetSdoId();
-        System.String GetSdoType();
-        ReactiveRTM.org.omg.SDOPackage.DeviceProfile GetDeviceProfile();
-        List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfiles();
-        ReactiveRTM.org.omg.SDOPackage.ServiceProfile GetServiceProfile(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.SDOService GetSdoService(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.Configuration GetConfiguration();
-        ReactiveRTM.org.omg.SDOPackage.Monitoring GetMonitoring();
-        List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOrganizations();
-        System.Collections.Generic.Dictionary<System.String,System.Object> GetStatusList();
-        System.Object GetStatus(System.String nme);
+        System.Boolean IsRunning();
+        ReactiveRTM.RTC.ReturnCode_t Start();
+        ReactiveRTM.RTC.ReturnCode_t Stop();
+        System.Double GetRate();
+        ReactiveRTM.RTC.ReturnCode_t SetRate(System.Double rate);
+        ReactiveRTM.RTC.ReturnCode_t AddComponent(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.ReturnCode_t RemoveComponent(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.ReturnCode_t ActivateComponent(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.ReturnCode_t DeactivateComponent(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.ReturnCode_t ResetComponent(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.LifeCycleState GetComponentState(ReactiveRTM.RTC.LightweightRTObject comp);
+        ReactiveRTM.RTC.ExecutionKind GetKind();
     }
-    public interface SDOService 
+    public interface ComponentAction 
+    {
+        ReactiveRTM.RTC.ReturnCode_t OnInitialize();
+        ReactiveRTM.RTC.ReturnCode_t OnFinalize();
+        ReactiveRTM.RTC.ReturnCode_t OnStartup(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnShutdown(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnActivated(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnDeactivated(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnAborting(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnError(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnReset(System.Int32 execHandle);
+    }
+    public interface LightweightRTObject : ReactiveRTM.RTC.ComponentAction
+    {
+        ReactiveRTM.RTC.ReturnCode_t Initialize();
+        ReactiveRTM.RTC.ReturnCode_t Finalize();
+        System.Boolean IsAlive(ReactiveRTM.RTC.ExecutionContext execContext);
+        ReactiveRTM.RTC.ReturnCode_t Exit();
+        System.Int32 AttachContext(ReactiveRTM.RTC.ExecutionContext execContext);
+        ReactiveRTM.RTC.ReturnCode_t DetachContext(System.Int32 execHandle);
+        ReactiveRTM.RTC.ExecutionContext GetContext(System.Int32 execHandle);
+        List<ReactiveRTM.RTC.ExecutionContext> GetOwnedContexts();
+        List<ReactiveRTM.RTC.ExecutionContext> GetParticipatingContexts();
+        System.Int32 GetContextHandle(ReactiveRTM.RTC.ExecutionContext cxt);
+    }
+    public interface DataFlowComponentAction 
+    {
+        ReactiveRTM.RTC.ReturnCode_t OnExecute(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnStateUpdate(System.Int32 execHandle);
+        ReactiveRTM.RTC.ReturnCode_t OnRateChanged(System.Int32 execHandle);
+    }
+    public interface DataFlowComponent : ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction,ReactiveRTM.RTC.DataFlowComponentAction
     {
     }
-    public interface SDOSystemElement 
-    {
-        List<ReactiveRTM.org.omg.SDOPackage.Organization> GetOwnedOrganizations();
-    }
-    public interface Configuration 
-    {
-        System.Boolean SetDeviceProfile(ReactiveRTM.org.omg.SDOPackage.DeviceProfile dProfile);
-        System.Boolean AddServiceProfile(ReactiveRTM.org.omg.SDOPackage.ServiceProfile sProfile);
-        System.Boolean AddOrganization(ReactiveRTM.org.omg.SDOPackage.Organization organizationObject);
-        System.Boolean RemoveServiceProfile(System.String id);
-        System.Boolean RemoveOrganization(System.String organizationId);
-        List<ReactiveRTM.org.omg.SDOPackage.Parameter> GetConfigurationParameters();
-        System.Collections.Generic.Dictionary<System.String,System.Object> GetConfigurationParameterValues();
-        System.Object GetConfigurationParameterValue(System.String name);
-        System.Boolean SetConfigurationParameter(System.String name,System.Object value);
-        List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSets();
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetConfigurationSet(System.String configId);
-        System.Boolean SetConfigurationSetValues(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet);
-        ReactiveRTM.org.omg.SDOPackage.ConfigurationSet GetActiveConfigurationSet();
-        System.Boolean AddConfigurationSet(ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet);
-        System.Boolean RemoveConfigurationSet(System.String configId);
-        System.Boolean ActivateConfigurationSet(System.String configId);
-    }
-    public interface Monitoring 
+    public interface Fsm : ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction
     {
     }
-    public interface Organization 
+    public interface FsmParticipantAction 
     {
-        System.String GetOrganizationId();
-        ReactiveRTM.org.omg.SDOPackage.OrganizationProperty GetOrganizationProperty();
-        System.Object GetOrganizationPropertyValue(System.String name);
-        System.Boolean AddOrganizationProperty(ReactiveRTM.org.omg.SDOPackage.OrganizationProperty organizationProperty);
-        System.Boolean SetOrganizationPropertyValue(System.String name,System.Object value);
-        System.Boolean RemoveOrganizationProperty(System.String name);
-        ReactiveRTM.org.omg.SDOPackage.SDOSystemElement GetOwner();
-        System.Boolean SetOwner(ReactiveRTM.org.omg.SDOPackage.SDOSystemElement sdo);
-        List<ReactiveRTM.org.omg.SDOPackage.SDO> GetMembers();
-        System.Boolean SetMembers(List<ReactiveRTM.org.omg.SDOPackage.SDO> sdos);
-        System.Boolean AddMembers(List<ReactiveRTM.org.omg.SDOPackage.SDO> sdoList);
-        System.Boolean RemoveMember(System.String id);
-        ReactiveRTM.org.omg.SDOPackage.DependencyType GetDependency();
-        System.Boolean SetDependency(ReactiveRTM.org.omg.SDOPackage.DependencyType dependency);
+        ReactiveRTM.RTC.ReturnCode_t OnAction(System.Int32 execHandle);
+    }
+    public interface FsmParticipant : ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction,ReactiveRTM.RTC.FsmParticipantAction
+    {
+    }
+    public interface Mode 
+    {
+    }
+    public interface ModeCapable 
+    {
+        ReactiveRTM.RTC.Mode GetDefaultMode();
+        ReactiveRTM.RTC.Mode GetCurrentMode();
+        ReactiveRTM.RTC.Mode GetCurrentModeInContext(ReactiveRTM.RTC.ExecutionContext execContext);
+        ReactiveRTM.RTC.Mode GetPendingMode();
+        ReactiveRTM.RTC.Mode GetPendingModeInContext(ReactiveRTM.RTC.ExecutionContext execContext);
+        ReactiveRTM.RTC.ReturnCode_t SetMode(ReactiveRTM.RTC.Mode newMode,System.Boolean immediate);
+    }
+    public interface MultiModeComponentAction 
+    {
+        ReactiveRTM.RTC.ReturnCode_t OnModeChanged(System.Int32 execHandle);
+    }
+    public interface MultiModeObject : ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction,ReactiveRTM.RTC.ModeCapable,ReactiveRTM.RTC.MultiModeComponentAction
+    {
+    }
+    public interface RTObject : ReactiveRTM.RTC.LightweightRTObject,ReactiveRTM.RTC.ComponentAction,ReactiveRTM.SDOPackage.SDO,ReactiveRTM.SDOPackage.SDOSystemElement
+    {
+        ReactiveRTM.RTC.ComponentProfile GetComponentProfile();
+        List<ReactiveRTM.RTC.PortService> GetPorts();
+    }
+    public interface PortService : ReactiveRTM.SDOPackage.SDOService
+    {
+        ReactiveRTM.RTC.PortProfile GetPortProfile();
+        List<ReactiveRTM.RTC.ConnectorProfile> GetConnectorProfiles();
+        ReactiveRTM.RTC.ConnectorProfile GetConnectorProfile(System.String connectorId);
+        ReactiveRTM.RTC.ReturnCode_t Connect(ref ReactiveRTM.RTC.ConnectorProfile connectorProfile);
+        ReactiveRTM.RTC.ReturnCode_t Disconnect(System.String connectorId);
+        ReactiveRTM.RTC.ReturnCode_t DisconnectAll();
+        ReactiveRTM.RTC.ReturnCode_t NotifyConnect(ref ReactiveRTM.RTC.ConnectorProfile connectorProfile);
+        ReactiveRTM.RTC.ReturnCode_t NotifyDisconnect(System.String connectorId);
+    }
+    public interface FsmObject 
+    {
+        ReactiveRTM.RTC.ReturnCode_t SendStimulus(System.String message,System.Int32 execHandle);
+    }
+    public interface FsmService : ReactiveRTM.SDOPackage.SDOService
+    {
+        ReactiveRTM.RTC.FsmProfile GetFsmProfile();
+        ReactiveRTM.RTC.ReturnCode_t SetFsmProfile(ReactiveRTM.RTC.FsmProfile fsmProfile);
+    }
+    public interface ExecutionContextService : ReactiveRTM.RTC.ExecutionContext,ReactiveRTM.SDOPackage.SDOService
+    {
+        ReactiveRTM.RTC.ExecutionContextProfile GetProfile();
     }
 }
  
@@ -401,28 +337,92 @@ namespace ReactiveRTM.RTM
 {
     public interface Manager 
     {
-        ReactiveRTM.omg.org.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t UnloadModule(System.String pathname);
+        ReactiveRTM.RTC.ReturnCode_t LoadModule(System.String pathname,System.String initfunc);
+        ReactiveRTM.RTC.ReturnCode_t UnloadModule(System.String pathname);
         List<ReactiveRTM.RTM.ModuleProfile> GetLoadableModules();
         List<ReactiveRTM.RTM.ModuleProfile> GetLoadedModules();
         List<ReactiveRTM.RTM.ModuleProfile> GetFactoryProfiles();
-        ReactiveRTM.omg.org.RTC.RTObject CreateComponent(System.String moduleName);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t DeleteComponent(System.String instanceName);
-        List<ReactiveRTM.omg.org.RTC.RTObject> GetComponents();
-        List<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfiles();
+        ReactiveRTM.RTC.RTObject CreateComponent(System.String moduleName);
+        ReactiveRTM.RTC.ReturnCode_t DeleteComponent(System.String instanceName);
+        List<ReactiveRTM.RTC.RTObject> GetComponents();
+        List<ReactiveRTM.RTC.ComponentProfile> GetComponentProfiles();
         ReactiveRTM.RTM.ManagerProfile GetProfile();
-        System.Collections.Generic.Dictionary<System.String,System.Object> GetConfiguration();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value);
+        Dictionary<string,object> GetConfiguration();
+        ReactiveRTM.RTC.ReturnCode_t SetConfiguration(System.String name,System.String value);
         System.Boolean IsMaster();
         List<ReactiveRTM.RTM.Manager> GetMasterManagers();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveMasterManager(ReactiveRTM.RTM.Manager mgr);
+        ReactiveRTM.RTC.ReturnCode_t AddMasterManager(ReactiveRTM.RTM.Manager mgr);
+        ReactiveRTM.RTC.ReturnCode_t RemoveMasterManager(ReactiveRTM.RTM.Manager mgr);
         List<ReactiveRTM.RTM.Manager> GetSlaveManagers();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t RemoveSlaveManager(ReactiveRTM.RTM.Manager mgr);
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Fork();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Shutdown();
-        ReactiveRTM.omg.org.RTC.ReturnCode_t Restart();
+        ReactiveRTM.RTC.ReturnCode_t AddSlaveManager(ReactiveRTM.RTM.Manager mgr);
+        ReactiveRTM.RTC.ReturnCode_t RemoveSlaveManager(ReactiveRTM.RTM.Manager mgr);
+        ReactiveRTM.RTC.ReturnCode_t Fork();
+        ReactiveRTM.RTC.ReturnCode_t Shutdown();
+        ReactiveRTM.RTC.ReturnCode_t Restart();
         System.Object GetService(System.String name);
+    }
+}
+ 
+namespace ReactiveRTM.SDOPackage
+{
+    public interface SDO : ReactiveRTM.SDOPackage.SDOSystemElement
+    {
+        System.String GetSdoId();
+        System.String GetSdoType();
+        ReactiveRTM.SDOPackage.DeviceProfile GetDeviceProfile();
+        List<ReactiveRTM.SDOPackage.ServiceProfile> GetServiceProfiles();
+        ReactiveRTM.SDOPackage.ServiceProfile GetServiceProfile(System.String id);
+        ReactiveRTM.SDOPackage.SDOService GetSdoService(System.String id);
+        ReactiveRTM.SDOPackage.Configuration GetConfiguration();
+        ReactiveRTM.SDOPackage.Monitoring GetMonitoring();
+        List<ReactiveRTM.SDOPackage.Organization> GetOrganizations();
+        Dictionary<string,object> GetStatusList();
+        System.Object GetStatus(System.String nme);
+    }
+    public interface SDOService 
+    {
+    }
+    public interface SDOSystemElement 
+    {
+        List<ReactiveRTM.SDOPackage.Organization> GetOwnedOrganizations();
+    }
+    public interface Configuration 
+    {
+        System.Boolean SetDeviceProfile(ReactiveRTM.SDOPackage.DeviceProfile dProfile);
+        System.Boolean AddServiceProfile(ReactiveRTM.SDOPackage.ServiceProfile sProfile);
+        System.Boolean AddOrganization(ReactiveRTM.SDOPackage.Organization organizationObject);
+        System.Boolean RemoveServiceProfile(System.String id);
+        System.Boolean RemoveOrganization(System.String organizationId);
+        List<ReactiveRTM.SDOPackage.Parameter> GetConfigurationParameters();
+        Dictionary<string,object> GetConfigurationParameterValues();
+        System.Object GetConfigurationParameterValue(System.String name);
+        System.Boolean SetConfigurationParameter(System.String name,System.Object value);
+        List<ReactiveRTM.SDOPackage.ConfigurationSet> GetConfigurationSets();
+        ReactiveRTM.SDOPackage.ConfigurationSet GetConfigurationSet(System.String configId);
+        System.Boolean SetConfigurationSetValues(ReactiveRTM.SDOPackage.ConfigurationSet configurationSet);
+        ReactiveRTM.SDOPackage.ConfigurationSet GetActiveConfigurationSet();
+        System.Boolean AddConfigurationSet(ReactiveRTM.SDOPackage.ConfigurationSet configurationSet);
+        System.Boolean RemoveConfigurationSet(System.String configId);
+        System.Boolean ActivateConfigurationSet(System.String configId);
+    }
+    public interface Monitoring 
+    {
+    }
+    public interface Organization 
+    {
+        System.String GetOrganizationId();
+        ReactiveRTM.SDOPackage.OrganizationProperty GetOrganizationProperty();
+        System.Object GetOrganizationPropertyValue(System.String name);
+        System.Boolean AddOrganizationProperty(ReactiveRTM.SDOPackage.OrganizationProperty organizationProperty);
+        System.Boolean SetOrganizationPropertyValue(System.String name,System.Object value);
+        System.Boolean RemoveOrganizationProperty(System.String name);
+        ReactiveRTM.SDOPackage.SDOSystemElement GetOwner();
+        System.Boolean SetOwner(ReactiveRTM.SDOPackage.SDOSystemElement sdo);
+        List<ReactiveRTM.SDOPackage.SDO> GetMembers();
+        System.Boolean SetMembers(List<ReactiveRTM.SDOPackage.SDO> sdos);
+        System.Boolean AddMembers(List<ReactiveRTM.SDOPackage.SDO> sdoList);
+        System.Boolean RemoveMember(System.String id);
+        ReactiveRTM.SDOPackage.DependencyType GetDependency();
+        System.Boolean SetDependency(ReactiveRTM.SDOPackage.DependencyType dependency);
     }
 }

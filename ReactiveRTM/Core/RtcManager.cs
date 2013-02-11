@@ -6,7 +6,7 @@ using System.Threading;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
-using ReactiveRTM.openrtm.aist.go.jp.OpenRTM;
+using ReactiveRTM.OpenRTM;
 using NDesk.Options;
 using System.IO;
 using YamlDotNet.RepresentationModel.Serialization;

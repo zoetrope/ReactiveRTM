@@ -8,7 +8,6 @@ using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
-using ReactiveRTM.omg.org.RTC;
 using ReactiveRTM.OpenRTM;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;

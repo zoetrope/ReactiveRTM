@@ -9,7 +9,7 @@ using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.RTC;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 
 namespace ComponentTest

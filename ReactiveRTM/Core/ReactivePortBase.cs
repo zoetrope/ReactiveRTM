@@ -1,7 +1,7 @@
 ﻿using System;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Extensions;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Core
 {

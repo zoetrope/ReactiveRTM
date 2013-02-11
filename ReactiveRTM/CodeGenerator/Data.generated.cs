@@ -10,7 +10,7 @@ using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
-namespace ReactiveRTM.omg.org.CORBA
+namespace ReactiveRTM.CORBA
 {
     public enum TCKind
     {
@@ -50,930 +50,6 @@ namespace ReactiveRTM.omg.org.CORBA
         tk_local_interface = 33,
     }
     
-}
- 
-namespace ReactiveRTM.omg.org.RTC
-{
-    public enum ReturnCode_t
-    {
-        RTC_OK = 0,
-        RTC_ERROR = 1,
-        BAD_PARAMETER = 2,
-        UNSUPPORTED = 3,
-        OUT_OF_RESOURCES = 4,
-        PRECONDITION_NOT_MET = 5,
-    }
-    public enum LifeCycleState
-    {
-        CREATED_STATE = 0,
-        INACTIVE_STATE = 1,
-        ACTIVE_STATE = 2,
-        ERROR_STATE = 3,
-    }
-    public enum ExecutionKind
-    {
-        PERIODIC = 0,
-        EVENT_DRIVEN = 1,
-        OTHER = 2,
-    }
-    public enum PortInterfacePolarity
-    {
-        PROVIDED = 0,
-        REQUIRED = 1,
-    }
-    
- 
-    public class PortInterfaceProfile : NotifyPropertyChangedBase
-    {
-        private System.String _InstanceName;
-            
-        ///<exclude/>
-        public System.String InstanceName
-        {
-            get { return _InstanceName; }
-            set 
-            {
-                if(!_InstanceName.Equals(value))
-                {
-                    _InstanceName  = value;
-                    RaisePropertyChanged("InstanceName");
-                }
-            }
-        }
-        private System.String _TypeName;
-            
-        ///<exclude/>
-        public System.String TypeName
-        {
-            get { return _TypeName; }
-            set 
-            {
-                if(!_TypeName.Equals(value))
-                {
-                    _TypeName  = value;
-                    RaisePropertyChanged("TypeName");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.RTC.PortInterfacePolarity _Polarity;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.PortInterfacePolarity Polarity
-        {
-            get { return _Polarity; }
-            set 
-            {
-                if(!_Polarity.Equals(value))
-                {
-                    _Polarity  = value;
-                    RaisePropertyChanged("Polarity");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.PortInterfaceProfile (ReactiveRTM.omg.org.RTC.PortInterfaceProfile source)
-        {
-            var instance = new global::omg.org.RTC.PortInterfaceProfile();
-            instance.instance_name =  source._InstanceName;
-            instance.type_name =  source._TypeName;
-            instance.polarity =  (global::omg.org.RTC.PortInterfacePolarity)source._Polarity;
-            return instance;
-        }
-        public PortInterfaceProfile ()
-        {
-            //TODO: 初期化
-        }
-        public PortInterfaceProfile (global::omg.org.RTC.PortInterfaceProfile source)
-        {
-            _InstanceName = source.instance_name;
-            _TypeName = source.type_name;
-            _Polarity = (omg.org.RTC.PortInterfacePolarity)source.polarity;
-        }
-
-        ///<exclude/>
-        public bool Equals(PortInterfaceProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Polarity.Equals(_Polarity);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(PortInterfaceProfile)) return false;
-            return Equals((PortInterfaceProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _InstanceName.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _TypeName.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Polarity.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class ConnectorProfile : NotifyPropertyChangedBase
-    {
-        private System.String _Name;
-            
-        ///<exclude/>
-        public System.String Name
-        {
-            get { return _Name; }
-            set 
-            {
-                if(!_Name.Equals(value))
-                {
-                    _Name  = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-        private System.String _ConnectorId;
-            
-        ///<exclude/>
-        public System.String ConnectorId
-        {
-            get { return _ConnectorId; }
-            set 
-            {
-                if(!_ConnectorId.Equals(value))
-                {
-                    _ConnectorId  = value;
-                    RaisePropertyChanged("ConnectorId");
-                }
-            }
-        }
-        private List<ReactiveRTM.omg.org.RTC.PortService> _Ports;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.PortService> Ports
-        {
-            get { return _Ports; }
-            set 
-            {
-                if(!_Ports.SequenceEqual(value))
-                {
-                    _Ports  = value;
-                    RaisePropertyChanged("Ports");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.ConnectorProfile (ReactiveRTM.omg.org.RTC.ConnectorProfile source)
-        {
-            var instance = new global::omg.org.RTC.ConnectorProfile();
-            instance.name =  source._Name;
-            instance.connector_id =  source._ConnectorId;
-            instance.ports =  source._Ports.Select(x=>((global::omg.org.RTC.PortService)((IStub)x).GetTarget())).ToArray();
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public ConnectorProfile ()
-        {
-            //TODO: 初期化
-        }
-        public ConnectorProfile (global::omg.org.RTC.ConnectorProfile source)
-        {
-            _Name = source.name;
-            _ConnectorId = source.connector_id;
-            _Ports = source.ports.Select(x => (ReactiveRTM.omg.org.RTC.PortService)new ReactiveRTM.omg.org.RTC.PortServiceStub(x)).ToList();
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(ConnectorProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._ConnectorId.Equals(_ConnectorId) && other._Ports.SequenceEqual(_Ports) && other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(ConnectorProfile)) return false;
-            return Equals((ConnectorProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ConnectorId.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Ports.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class PortProfile : NotifyPropertyChangedBase
-    {
-        private System.String _Name;
-            
-        ///<exclude/>
-        public System.String Name
-        {
-            get { return _Name; }
-            set 
-            {
-                if(!_Name.Equals(value))
-                {
-                    _Name  = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-        private List<ReactiveRTM.omg.org.RTC.PortInterfaceProfile> _Interfaces;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.PortInterfaceProfile> Interfaces
-        {
-            get { return _Interfaces; }
-            set 
-            {
-                if(!_Interfaces.SequenceEqual(value))
-                {
-                    _Interfaces  = value;
-                    RaisePropertyChanged("Interfaces");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.RTC.PortService _PortRef;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.PortService PortRef
-        {
-            get { return _PortRef; }
-            set 
-            {
-                if(!_PortRef.Equals(value))
-                {
-                    _PortRef  = value;
-                    RaisePropertyChanged("PortRef");
-                }
-            }
-        }
-        private List<ReactiveRTM.omg.org.RTC.ConnectorProfile> _ConnectorProfiles;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.ConnectorProfile> ConnectorProfiles
-        {
-            get { return _ConnectorProfiles; }
-            set 
-            {
-                if(!_ConnectorProfiles.SequenceEqual(value))
-                {
-                    _ConnectorProfiles  = value;
-                    RaisePropertyChanged("ConnectorProfiles");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.RTC.RTObject _Owner;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObject Owner
-        {
-            get { return _Owner; }
-            set 
-            {
-                if(!_Owner.Equals(value))
-                {
-                    _Owner  = value;
-                    RaisePropertyChanged("Owner");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.PortProfile (ReactiveRTM.omg.org.RTC.PortProfile source)
-        {
-            var instance = new global::omg.org.RTC.PortProfile();
-            instance.name =  source._Name;
-            instance.interfaces =  source._Interfaces.Select(x=>((global::omg.org.RTC.PortInterfaceProfile)((IStub)x).GetTarget())).ToArray();
-            instance.port_ref =  ((global::omg.org.RTC.PortService)((IStub)source._PortRef).GetTarget());
-            instance.connector_profiles =  source._ConnectorProfiles.Select(x=>((global::omg.org.RTC.ConnectorProfile)((IStub)x).GetTarget())).ToArray();
-            instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public PortProfile ()
-        {
-            //TODO: 初期化
-        }
-        public PortProfile (global::omg.org.RTC.PortProfile source)
-        {
-            _Name = source.name;
-            _Interfaces = source.interfaces.Select(x => (ReactiveRTM.omg.org.RTC.PortInterfaceProfile)new ReactiveRTM.omg.org.RTC.PortInterfaceProfile(x)).ToList();
-            _PortRef = new ReactiveRTM.omg.org.RTC.PortServiceStub(source.port_ref);
-            _ConnectorProfiles = source.connector_profiles.Select(x => (ReactiveRTM.omg.org.RTC.ConnectorProfile)new ReactiveRTM.omg.org.RTC.ConnectorProfile(x)).ToList();
-            _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(PortProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Interfaces.SequenceEqual(_Interfaces) && other._PortRef.Equals(_PortRef) && other._ConnectorProfiles.SequenceEqual(_ConnectorProfiles) && other._Owner.Equals(_Owner) && other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(PortProfile)) return false;
-            return Equals((PortProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Interfaces.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _PortRef.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ConnectorProfiles.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Owner.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class ExecutionContextProfile : NotifyPropertyChangedBase
-    {
-        private ReactiveRTM.omg.org.RTC.ExecutionKind _Kind;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.ExecutionKind Kind
-        {
-            get { return _Kind; }
-            set 
-            {
-                if(!_Kind.Equals(value))
-                {
-                    _Kind  = value;
-                    RaisePropertyChanged("Kind");
-                }
-            }
-        }
-        private System.Double _Rate;
-            
-        ///<exclude/>
-        public System.Double Rate
-        {
-            get { return _Rate; }
-            set 
-            {
-                if(!_Rate.Equals(value))
-                {
-                    _Rate  = value;
-                    RaisePropertyChanged("Rate");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.RTC.RTObject _Owner;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObject Owner
-        {
-            get { return _Owner; }
-            set 
-            {
-                if(!_Owner.Equals(value))
-                {
-                    _Owner  = value;
-                    RaisePropertyChanged("Owner");
-                }
-            }
-        }
-        private List<ReactiveRTM.omg.org.RTC.RTObject> _Participants;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.RTObject> Participants
-        {
-            get { return _Participants; }
-            set 
-            {
-                if(!_Participants.SequenceEqual(value))
-                {
-                    _Participants  = value;
-                    RaisePropertyChanged("Participants");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.ExecutionContextProfile (ReactiveRTM.omg.org.RTC.ExecutionContextProfile source)
-        {
-            var instance = new global::omg.org.RTC.ExecutionContextProfile();
-            instance.kind =  (global::omg.org.RTC.ExecutionKind)source._Kind;
-            instance.rate =  source._Rate;
-            instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
-            instance.participants =  source._Participants.Select(x=>((global::omg.org.RTC.RTObject)((IStub)x).GetTarget())).ToArray();
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public ExecutionContextProfile ()
-        {
-            //TODO: 初期化
-        }
-        public ExecutionContextProfile (global::omg.org.RTC.ExecutionContextProfile source)
-        {
-            _Kind = (omg.org.RTC.ExecutionKind)source.kind;
-            _Rate = source.rate;
-            _Owner = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.owner);
-            _Participants = source.participants.Select(x => (ReactiveRTM.omg.org.RTC.RTObject)new ReactiveRTM.omg.org.RTC.RTObjectStub(x)).ToList();
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(ExecutionContextProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner.Equals(_Owner) && other._Participants.SequenceEqual(_Participants) && other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(ExecutionContextProfile)) return false;
-            return Equals((ExecutionContextProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Kind.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Rate.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Owner.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Participants.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class FsmBehaviorProfile : NotifyPropertyChangedBase
-    {
-        private ReactiveRTM.omg.org.RTC.FsmParticipantAction _ActionComponent;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.FsmParticipantAction ActionComponent
-        {
-            get { return _ActionComponent; }
-            set 
-            {
-                if(!_ActionComponent.Equals(value))
-                {
-                    _ActionComponent  = value;
-                    RaisePropertyChanged("ActionComponent");
-                }
-            }
-        }
-        private System.String _Id;
-            
-        ///<exclude/>
-        public System.String Id
-        {
-            get { return _Id; }
-            set 
-            {
-                if(!_Id.Equals(value))
-                {
-                    _Id  = value;
-                    RaisePropertyChanged("Id");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.FsmBehaviorProfile (ReactiveRTM.omg.org.RTC.FsmBehaviorProfile source)
-        {
-            var instance = new global::omg.org.RTC.FsmBehaviorProfile();
-            instance.action_component =  ((global::omg.org.RTC.FsmParticipantAction)((IStub)source._ActionComponent).GetTarget());
-            instance.id =  source._Id;
-            return instance;
-        }
-        public FsmBehaviorProfile ()
-        {
-            //TODO: 初期化
-        }
-        public FsmBehaviorProfile (global::omg.org.RTC.FsmBehaviorProfile source)
-        {
-            _ActionComponent = new ReactiveRTM.omg.org.RTC.FsmParticipantActionStub(source.action_component);
-            _Id = source.id;
-        }
-
-        ///<exclude/>
-        public bool Equals(FsmBehaviorProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._ActionComponent.Equals(_ActionComponent) && other._Id.Equals(_Id);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(FsmBehaviorProfile)) return false;
-            return Equals((FsmBehaviorProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ActionComponent.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Id.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class FsmProfile : NotifyPropertyChangedBase
-    {
-        private List<ReactiveRTM.omg.org.RTC.FsmBehaviorProfile> _BehaviorProfiles;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.FsmBehaviorProfile> BehaviorProfiles
-        {
-            get { return _BehaviorProfiles; }
-            set 
-            {
-                if(!_BehaviorProfiles.SequenceEqual(value))
-                {
-                    _BehaviorProfiles  = value;
-                    RaisePropertyChanged("BehaviorProfiles");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.FsmProfile (ReactiveRTM.omg.org.RTC.FsmProfile source)
-        {
-            var instance = new global::omg.org.RTC.FsmProfile();
-            instance.behavior_profiles =  source._BehaviorProfiles.Select(x=>((global::omg.org.RTC.FsmBehaviorProfile)((IStub)x).GetTarget())).ToArray();
-            return instance;
-        }
-        public FsmProfile ()
-        {
-            //TODO: 初期化
-        }
-        public FsmProfile (global::omg.org.RTC.FsmProfile source)
-        {
-            _BehaviorProfiles = source.behavior_profiles.Select(x => (ReactiveRTM.omg.org.RTC.FsmBehaviorProfile)new ReactiveRTM.omg.org.RTC.FsmBehaviorProfile(x)).ToList();
-        }
-
-        ///<exclude/>
-        public bool Equals(FsmProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._BehaviorProfiles.SequenceEqual(_BehaviorProfiles);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(FsmProfile)) return false;
-            return Equals((FsmProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _BehaviorProfiles.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class ComponentProfile : NotifyPropertyChangedBase
-    {
-        private System.String _InstanceName;
-            
-        ///<exclude/>
-        public System.String InstanceName
-        {
-            get { return _InstanceName; }
-            set 
-            {
-                if(!_InstanceName.Equals(value))
-                {
-                    _InstanceName  = value;
-                    RaisePropertyChanged("InstanceName");
-                }
-            }
-        }
-        private System.String _TypeName;
-            
-        ///<exclude/>
-        public System.String TypeName
-        {
-            get { return _TypeName; }
-            set 
-            {
-                if(!_TypeName.Equals(value))
-                {
-                    _TypeName  = value;
-                    RaisePropertyChanged("TypeName");
-                }
-            }
-        }
-        private System.String _Description;
-            
-        ///<exclude/>
-        public System.String Description
-        {
-            get { return _Description; }
-            set 
-            {
-                if(!_Description.Equals(value))
-                {
-                    _Description  = value;
-                    RaisePropertyChanged("Description");
-                }
-            }
-        }
-        private System.String _Version;
-            
-        ///<exclude/>
-        public System.String Version
-        {
-            get { return _Version; }
-            set 
-            {
-                if(!_Version.Equals(value))
-                {
-                    _Version  = value;
-                    RaisePropertyChanged("Version");
-                }
-            }
-        }
-        private System.String _Vendor;
-            
-        ///<exclude/>
-        public System.String Vendor
-        {
-            get { return _Vendor; }
-            set 
-            {
-                if(!_Vendor.Equals(value))
-                {
-                    _Vendor  = value;
-                    RaisePropertyChanged("Vendor");
-                }
-            }
-        }
-        private System.String _Category;
-            
-        ///<exclude/>
-        public System.String Category
-        {
-            get { return _Category; }
-            set 
-            {
-                if(!_Category.Equals(value))
-                {
-                    _Category  = value;
-                    RaisePropertyChanged("Category");
-                }
-            }
-        }
-        private List<ReactiveRTM.omg.org.RTC.PortProfile> _PortProfiles;
-            
-        ///<exclude/>
-        public List<ReactiveRTM.omg.org.RTC.PortProfile> PortProfiles
-        {
-            get { return _PortProfiles; }
-            set 
-            {
-                if(!_PortProfiles.SequenceEqual(value))
-                {
-                    _PortProfiles  = value;
-                    RaisePropertyChanged("PortProfiles");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.RTC.RTObject _Parent;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.RTC.RTObject Parent
-        {
-            get { return _Parent; }
-            set 
-            {
-                if(!_Parent.Equals(value))
-                {
-                    _Parent  = value;
-                    RaisePropertyChanged("Parent");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::omg.org.RTC.ComponentProfile (ReactiveRTM.omg.org.RTC.ComponentProfile source)
-        {
-            var instance = new global::omg.org.RTC.ComponentProfile();
-            instance.instance_name =  source._InstanceName;
-            instance.type_name =  source._TypeName;
-            instance.description =  source._Description;
-            instance.version =  source._Version;
-            instance.vendor =  source._Vendor;
-            instance.category =  source._Category;
-            instance.port_profiles =  source._PortProfiles.Select(x=>((global::omg.org.RTC.PortProfile)((IStub)x).GetTarget())).ToArray();
-            instance.parent =  ((global::omg.org.RTC.RTObject)((IStub)source._Parent).GetTarget());
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public ComponentProfile ()
-        {
-            //TODO: 初期化
-        }
-        public ComponentProfile (global::omg.org.RTC.ComponentProfile source)
-        {
-            _InstanceName = source.instance_name;
-            _TypeName = source.type_name;
-            _Description = source.description;
-            _Version = source.version;
-            _Vendor = source.vendor;
-            _Category = source.category;
-            _PortProfiles = source.port_profiles.Select(x => (ReactiveRTM.omg.org.RTC.PortProfile)new ReactiveRTM.omg.org.RTC.PortProfile(x)).ToList();
-            _Parent = new ReactiveRTM.omg.org.RTC.RTObjectStub(source.parent);
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(ComponentProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Description.Equals(_Description) && other._Version.Equals(_Version) && other._Vendor.Equals(_Vendor) && other._Category.Equals(_Category) && other._PortProfiles.SequenceEqual(_PortProfiles) && other._Parent.Equals(_Parent) && other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(ComponentProfile)) return false;
-            return Equals((ComponentProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _InstanceName.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _TypeName.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Description.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Version.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Vendor.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Category.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _PortProfiles.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Parent.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
 }
  
 namespace ReactiveRTM.OpenRTM
@@ -1095,7 +171,7 @@ namespace ReactiveRTM.OpenRTM
         {
             _Time = Converter.RtcTimeToDateTime(source.time);
             _Loggername = source.loggername;
-            _Level = (OpenRTM.LogLevel)source.level;
+            _Level = (ReactiveRTM.OpenRTM.LogLevel)source.level;
             _Message = source.message;
         }
 
@@ -1134,979 +210,9 @@ namespace ReactiveRTM.OpenRTM
     }
 }
  
-namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
+namespace ReactiveRTM.OpenRTM
 {
     
-}
- 
-namespace ReactiveRTM.org.omg.SDOPackage
-{
-    public enum NumericType
-    {
-        SHORT_TYPE = 0,
-        LONG_TYPE = 1,
-        FLOAT_TYPE = 2,
-        DOUBLE_TYPE = 3,
-    }
-    public enum ComplexDataType
-    {
-        ENUMERATION = 0,
-        RANGE = 1,
-        INTERVAL = 2,
-    }
-    public enum DependencyType
-    {
-        OWN = 0,
-        OWNED = 1,
-        NO_DEPENDENCY = 2,
-    }
-    
- 
-    public class NameValue : NotifyPropertyChangedBase
-    {
-        private System.String _Name;
-            
-        ///<exclude/>
-        public System.String Name
-        {
-            get { return _Name; }
-            set 
-            {
-                if(!_Name.Equals(value))
-                {
-                    _Name  = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-        private System.Object _Value;
-            
-        ///<exclude/>
-        public System.Object Value
-        {
-            get { return _Value; }
-            set 
-            {
-                if(!_Value.Equals(value))
-                {
-                    _Value  = value;
-                    RaisePropertyChanged("Value");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.NameValue (ReactiveRTM.org.omg.SDOPackage.NameValue source)
-        {
-            var instance = new global::org.omg.SDOPackage.NameValue();
-            instance.name =  source._Name;
-            instance.value =  (global::System.Object)source._Value;
-            return instance;
-        }
-        public NameValue ()
-        {
-            //TODO: 初期化
-        }
-        public NameValue (global::org.omg.SDOPackage.NameValue source)
-        {
-            _Name = source.name;
-            _Value = (System.Object)source.value;
-        }
-
-        ///<exclude/>
-        public bool Equals(NameValue other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Value.Equals(_Value);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(NameValue)) return false;
-            return Equals((NameValue)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Value.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class EnumerationType : NotifyPropertyChangedBase
-    {
-        private List<System.String> _EnumeratedValues;
-            
-        ///<exclude/>
-        public List<System.String> EnumeratedValues
-        {
-            get { return _EnumeratedValues; }
-            set 
-            {
-                if(!_EnumeratedValues.SequenceEqual(value))
-                {
-                    _EnumeratedValues  = value;
-                    RaisePropertyChanged("EnumeratedValues");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.EnumerationType (ReactiveRTM.org.omg.SDOPackage.EnumerationType source)
-        {
-            var instance = new global::org.omg.SDOPackage.EnumerationType();
-            instance.enumerated_values =  source._EnumeratedValues.Select(x=>x).ToArray();
-            return instance;
-        }
-        public EnumerationType ()
-        {
-            //TODO: 初期化
-        }
-        public EnumerationType (global::org.omg.SDOPackage.EnumerationType source)
-        {
-            _EnumeratedValues = source.enumerated_values.Select(x => (System.String)x).ToList();
-        }
-
-        ///<exclude/>
-        public bool Equals(EnumerationType other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._EnumeratedValues.SequenceEqual(_EnumeratedValues);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(EnumerationType)) return false;
-            return Equals((EnumerationType)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _EnumeratedValues.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class RangeType : NotifyPropertyChangedBase
-    {
-        private global::org.omg.SDOPackage.Numeric _Min;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.Numeric Min
-        {
-            get { return _Min; }
-            set 
-            {
-                if(!_Min.Equals(value))
-                {
-                    _Min  = value;
-                    RaisePropertyChanged("Min");
-                }
-            }
-        }
-        private global::org.omg.SDOPackage.Numeric _Max;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.Numeric Max
-        {
-            get { return _Max; }
-            set 
-            {
-                if(!_Max.Equals(value))
-                {
-                    _Max  = value;
-                    RaisePropertyChanged("Max");
-                }
-            }
-        }
-        private System.Boolean _MinInclusive;
-            
-        ///<exclude/>
-        public System.Boolean MinInclusive
-        {
-            get { return _MinInclusive; }
-            set 
-            {
-                if(!_MinInclusive.Equals(value))
-                {
-                    _MinInclusive  = value;
-                    RaisePropertyChanged("MinInclusive");
-                }
-            }
-        }
-        private System.Boolean _MaxInclusive;
-            
-        ///<exclude/>
-        public System.Boolean MaxInclusive
-        {
-            get { return _MaxInclusive; }
-            set 
-            {
-                if(!_MaxInclusive.Equals(value))
-                {
-                    _MaxInclusive  = value;
-                    RaisePropertyChanged("MaxInclusive");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.RangeType (ReactiveRTM.org.omg.SDOPackage.RangeType source)
-        {
-            var instance = new global::org.omg.SDOPackage.RangeType();
-            instance.min =  source._Min;
-            instance.max =  source._Max;
-            instance.min_inclusive =  source._MinInclusive;
-            instance.max_inclusive =  source._MaxInclusive;
-            return instance;
-        }
-        public RangeType ()
-        {
-            //TODO: 初期化
-        }
-        public RangeType (global::org.omg.SDOPackage.RangeType source)
-        {
-            _Min = source.min;
-            _Max = source.max;
-            _MinInclusive = source.min_inclusive;
-            _MaxInclusive = source.max_inclusive;
-        }
-
-        ///<exclude/>
-        public bool Equals(RangeType other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(RangeType)) return false;
-            return Equals((RangeType)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Min.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Max.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _MinInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _MaxInclusive.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class IntervalType : NotifyPropertyChangedBase
-    {
-        private global::org.omg.SDOPackage.Numeric _Min;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.Numeric Min
-        {
-            get { return _Min; }
-            set 
-            {
-                if(!_Min.Equals(value))
-                {
-                    _Min  = value;
-                    RaisePropertyChanged("Min");
-                }
-            }
-        }
-        private global::org.omg.SDOPackage.Numeric _Max;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.Numeric Max
-        {
-            get { return _Max; }
-            set 
-            {
-                if(!_Max.Equals(value))
-                {
-                    _Max  = value;
-                    RaisePropertyChanged("Max");
-                }
-            }
-        }
-        private System.Boolean _MinInclusive;
-            
-        ///<exclude/>
-        public System.Boolean MinInclusive
-        {
-            get { return _MinInclusive; }
-            set 
-            {
-                if(!_MinInclusive.Equals(value))
-                {
-                    _MinInclusive  = value;
-                    RaisePropertyChanged("MinInclusive");
-                }
-            }
-        }
-        private System.Boolean _MaxInclusive;
-            
-        ///<exclude/>
-        public System.Boolean MaxInclusive
-        {
-            get { return _MaxInclusive; }
-            set 
-            {
-                if(!_MaxInclusive.Equals(value))
-                {
-                    _MaxInclusive  = value;
-                    RaisePropertyChanged("MaxInclusive");
-                }
-            }
-        }
-        private global::org.omg.SDOPackage.Numeric _Step;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.Numeric Step
-        {
-            get { return _Step; }
-            set 
-            {
-                if(!_Step.Equals(value))
-                {
-                    _Step  = value;
-                    RaisePropertyChanged("Step");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.IntervalType (ReactiveRTM.org.omg.SDOPackage.IntervalType source)
-        {
-            var instance = new global::org.omg.SDOPackage.IntervalType();
-            instance.min =  source._Min;
-            instance.max =  source._Max;
-            instance.min_inclusive =  source._MinInclusive;
-            instance.max_inclusive =  source._MaxInclusive;
-            instance._step =  source._Step;
-            return instance;
-        }
-        public IntervalType ()
-        {
-            //TODO: 初期化
-        }
-        public IntervalType (global::org.omg.SDOPackage.IntervalType source)
-        {
-            _Min = source.min;
-            _Max = source.max;
-            _MinInclusive = source.min_inclusive;
-            _MaxInclusive = source.max_inclusive;
-            _Step = source._step;
-        }
-
-        ///<exclude/>
-        public bool Equals(IntervalType other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive) && other._Step.Equals(_Step);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(IntervalType)) return false;
-            return Equals((IntervalType)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Min.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Max.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _MinInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _MaxInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Step.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class Parameter : NotifyPropertyChangedBase
-    {
-        private System.String _Name;
-            
-        ///<exclude/>
-        public System.String Name
-        {
-            get { return _Name; }
-            set 
-            {
-                if(!_Name.Equals(value))
-                {
-                    _Name  = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-        private ReactiveRTM.omg.org.CORBA.TypeCode _Type;
-            
-        ///<exclude/>
-        public ReactiveRTM.omg.org.CORBA.TypeCode Type
-        {
-            get { return _Type; }
-            set 
-            {
-                if(!_Type.Equals(value))
-                {
-                    _Type  = value;
-                    RaisePropertyChanged("Type");
-                }
-            }
-        }
-        private global::org.omg.SDOPackage.AllowedValues _AllowedValues;
-            
-        ///<exclude/>
-        public global::org.omg.SDOPackage.AllowedValues AllowedValues
-        {
-            get { return _AllowedValues; }
-            set 
-            {
-                if(!_AllowedValues.Equals(value))
-                {
-                    _AllowedValues  = value;
-                    RaisePropertyChanged("AllowedValues");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.Parameter (ReactiveRTM.org.omg.SDOPackage.Parameter source)
-        {
-            var instance = new global::org.omg.SDOPackage.Parameter();
-            instance.name =  source._Name;
-            instance.type =  ((global::omg.org.CORBA.TypeCode)((IStub)source._Type).GetTarget());
-            instance.allowed_values =  source._AllowedValues;
-            return instance;
-        }
-        public Parameter ()
-        {
-            //TODO: 初期化
-        }
-        public Parameter (global::org.omg.SDOPackage.Parameter source)
-        {
-            _Name = source.name;
-            _Type = new ReactiveRTM.omg.org.CORBA.TypeCodeStub(source.type);
-            _AllowedValues = source.allowed_values;
-        }
-
-        ///<exclude/>
-        public bool Equals(Parameter other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Type.Equals(_Type) && other._AllowedValues.Equals(_AllowedValues);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(Parameter)) return false;
-            return Equals((Parameter)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Type.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _AllowedValues.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class OrganizationProperty : NotifyPropertyChangedBase
-    {
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.OrganizationProperty (ReactiveRTM.org.omg.SDOPackage.OrganizationProperty source)
-        {
-            var instance = new global::org.omg.SDOPackage.OrganizationProperty();
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public OrganizationProperty ()
-        {
-            //TODO: 初期化
-        }
-        public OrganizationProperty (global::org.omg.SDOPackage.OrganizationProperty source)
-        {
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(OrganizationProperty other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(OrganizationProperty)) return false;
-            return Equals((OrganizationProperty)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class DeviceProfile : NotifyPropertyChangedBase
-    {
-        private System.String _DeviceType;
-            
-        ///<exclude/>
-        public System.String DeviceType
-        {
-            get { return _DeviceType; }
-            set 
-            {
-                if(!_DeviceType.Equals(value))
-                {
-                    _DeviceType  = value;
-                    RaisePropertyChanged("DeviceType");
-                }
-            }
-        }
-        private System.String _Manufacturer;
-            
-        ///<exclude/>
-        public System.String Manufacturer
-        {
-            get { return _Manufacturer; }
-            set 
-            {
-                if(!_Manufacturer.Equals(value))
-                {
-                    _Manufacturer  = value;
-                    RaisePropertyChanged("Manufacturer");
-                }
-            }
-        }
-        private System.String _Model;
-            
-        ///<exclude/>
-        public System.String Model
-        {
-            get { return _Model; }
-            set 
-            {
-                if(!_Model.Equals(value))
-                {
-                    _Model  = value;
-                    RaisePropertyChanged("Model");
-                }
-            }
-        }
-        private System.String _Version;
-            
-        ///<exclude/>
-        public System.String Version
-        {
-            get { return _Version; }
-            set 
-            {
-                if(!_Version.Equals(value))
-                {
-                    _Version  = value;
-                    RaisePropertyChanged("Version");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.DeviceProfile (ReactiveRTM.org.omg.SDOPackage.DeviceProfile source)
-        {
-            var instance = new global::org.omg.SDOPackage.DeviceProfile();
-            instance.device_type =  source._DeviceType;
-            instance.manufacturer =  source._Manufacturer;
-            instance.model =  source._Model;
-            instance.version =  source._Version;
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            return instance;
-        }
-        public DeviceProfile ()
-        {
-            //TODO: 初期化
-        }
-        public DeviceProfile (global::org.omg.SDOPackage.DeviceProfile source)
-        {
-            _DeviceType = source.device_type;
-            _Manufacturer = source.manufacturer;
-            _Model = source.model;
-            _Version = source.version;
-            _Properties = Converter.NVListToDictionary(source.properties);
-        }
-
-        ///<exclude/>
-        public bool Equals(DeviceProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._DeviceType.Equals(_DeviceType) && other._Manufacturer.Equals(_Manufacturer) && other._Model.Equals(_Model) && other._Version.Equals(_Version) && other._Properties.SequenceEqual(_Properties);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(DeviceProfile)) return false;
-            return Equals((DeviceProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _DeviceType.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Manufacturer.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Model.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Version.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class ServiceProfile : NotifyPropertyChangedBase
-    {
-        private System.String _Id;
-            
-        ///<exclude/>
-        public System.String Id
-        {
-            get { return _Id; }
-            set 
-            {
-                if(!_Id.Equals(value))
-                {
-                    _Id  = value;
-                    RaisePropertyChanged("Id");
-                }
-            }
-        }
-        private System.String _InterfaceType;
-            
-        ///<exclude/>
-        public System.String InterfaceType
-        {
-            get { return _InterfaceType; }
-            set 
-            {
-                if(!_InterfaceType.Equals(value))
-                {
-                    _InterfaceType  = value;
-                    RaisePropertyChanged("InterfaceType");
-                }
-            }
-        }
-        private Dictionary<string,object> _Properties;
-            
-        ///<exclude/>
-        public Dictionary<string,object> Properties
-        {
-            get { return _Properties; }
-            set 
-            {
-                if(!_Properties.SequenceEqual(value))
-                {
-                    _Properties  = value;
-                    RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        private ReactiveRTM.org.omg.SDOPackage.SDOService _Service;
-            
-        ///<exclude/>
-        public ReactiveRTM.org.omg.SDOPackage.SDOService Service
-        {
-            get { return _Service; }
-            set 
-            {
-                if(!_Service.Equals(value))
-                {
-                    _Service  = value;
-                    RaisePropertyChanged("Service");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.ServiceProfile (ReactiveRTM.org.omg.SDOPackage.ServiceProfile source)
-        {
-            var instance = new global::org.omg.SDOPackage.ServiceProfile();
-            instance.id =  source._Id;
-            instance.interface_type =  source._InterfaceType;
-            instance.properties =  Converter.DictionaryToNVList(source._Properties);
-            instance.service =  ((global::org.omg.SDOPackage.SDOService)((IStub)source._Service).GetTarget());
-            return instance;
-        }
-        public ServiceProfile ()
-        {
-            //TODO: 初期化
-        }
-        public ServiceProfile (global::org.omg.SDOPackage.ServiceProfile source)
-        {
-            _Id = source.id;
-            _InterfaceType = source.interface_type;
-            _Properties = Converter.NVListToDictionary(source.properties);
-            _Service = new ReactiveRTM.org.omg.SDOPackage.SDOServiceStub(source.service);
-        }
-
-        ///<exclude/>
-        public bool Equals(ServiceProfile other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Id.Equals(_Id) && other._InterfaceType.Equals(_InterfaceType) && other._Properties.SequenceEqual(_Properties) && other._Service.Equals(_Service);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(ServiceProfile)) return false;
-            return Equals((ServiceProfile)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Id.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _InterfaceType.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Service.GetHashCode();
-                return result;
-            }
-        }
-    }
- 
-    public class ConfigurationSet : NotifyPropertyChangedBase
-    {
-        private System.String _Id;
-            
-        ///<exclude/>
-        public System.String Id
-        {
-            get { return _Id; }
-            set 
-            {
-                if(!_Id.Equals(value))
-                {
-                    _Id  = value;
-                    RaisePropertyChanged("Id");
-                }
-            }
-        }
-        private System.String _Description;
-            
-        ///<exclude/>
-        public System.String Description
-        {
-            get { return _Description; }
-            set 
-            {
-                if(!_Description.Equals(value))
-                {
-                    _Description  = value;
-                    RaisePropertyChanged("Description");
-                }
-            }
-        }
-        private Dictionary<string,object> _ConfigurationData;
-            
-        ///<exclude/>
-        public Dictionary<string,object> ConfigurationData
-        {
-            get { return _ConfigurationData; }
-            set 
-            {
-                if(!_ConfigurationData.SequenceEqual(value))
-                {
-                    _ConfigurationData  = value;
-                    RaisePropertyChanged("ConfigurationData");
-                }
-            }
-        }
-        public string RepositoryId
-        {
-            //TODO:
-            get { return ""; }
-        }
-        public static explicit operator global::org.omg.SDOPackage.ConfigurationSet (ReactiveRTM.org.omg.SDOPackage.ConfigurationSet source)
-        {
-            var instance = new global::org.omg.SDOPackage.ConfigurationSet();
-            instance.id =  source._Id;
-            instance.description =  source._Description;
-            instance.configuration_data =  Converter.DictionaryToNVList(source._ConfigurationData);
-            return instance;
-        }
-        public ConfigurationSet ()
-        {
-            //TODO: 初期化
-        }
-        public ConfigurationSet (global::org.omg.SDOPackage.ConfigurationSet source)
-        {
-            _Id = source.id;
-            _Description = source.description;
-            _ConfigurationData = Converter.NVListToDictionary(source.configuration_data);
-        }
-
-        ///<exclude/>
-        public bool Equals(ConfigurationSet other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return other._Id.Equals(_Id) && other._Description.Equals(_Description) && other._ConfigurationData.SequenceEqual(_ConfigurationData);
-        }
-        ///<exclude/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(ConfigurationSet)) return false;
-            return Equals((ConfigurationSet)obj);
-        }
-        ///<exclude/>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Id.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Description.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ConfigurationData.GetHashCode();
-                return result;
-            }
-        }
-    }
 }
  
 namespace ReactiveRTM.RTC
@@ -9999,7 +8105,7 @@ namespace ReactiveRTM.RTC
             _Speed = source.speed;
             _Accel = source.accel;
             _Current = source.current;
-            _Status = (RTC.ActArrayActuatorStatus)source.status;
+            _Status = (ReactiveRTM.RTC.ActArrayActuatorStatus)source.status;
         }
 
         ///<exclude/>
@@ -10284,7 +8390,7 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorGeometry (global::RTC.ActArrayActuatorGeometry source)
         {
-            _Type = (RTC.ActArrayActuatorType)source.type;
+            _Type = (ReactiveRTM.RTC.ActArrayActuatorType)source.type;
             _Length = source.length;
             _Orientation = new ReactiveRTM.RTC.Orientation3D(source.orientation);
             _Axis = new ReactiveRTM.RTC.Vector3D(source.axis);
@@ -11582,7 +9688,7 @@ namespace ReactiveRTM.RTC
             _HorizontalSpeed = source.horizontalSpeed;
             _VerticalSpeed = source.verticalSpeed;
             _NumSatellites = source.numSatellites;
-            _FixType = (RTC.GPSFixType)source.fixType;
+            _FixType = (ReactiveRTM.RTC.GPSFixType)source.fixType;
         }
 
         ///<exclude/>
@@ -11686,7 +9792,7 @@ namespace ReactiveRTM.RTC
         public GripperState (global::RTC.GripperState source)
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
-            _Status = (RTC.GripperStatus)source.status;
+            _Status = (ReactiveRTM.RTC.GripperStatus)source.status;
         }
 
         ///<exclude/>
@@ -12050,7 +10156,7 @@ namespace ReactiveRTM.RTC
         {
             _Tm = Converter.RtcTimeToDateTime(source.tm);
             _OapMatrix = new ReactiveRTM.RTC.OAP(source.oapMatrix);
-            _Status = (RTC.LimbStatus)source.status;
+            _Status = (ReactiveRTM.RTC.LimbStatus)source.status;
         }
 
         ///<exclude/>
@@ -14786,6 +12892,930 @@ namespace ReactiveRTM.RTC
     }
 }
  
+namespace ReactiveRTM.RTC
+{
+    public enum ReturnCode_t
+    {
+        RTC_OK = 0,
+        RTC_ERROR = 1,
+        BAD_PARAMETER = 2,
+        UNSUPPORTED = 3,
+        OUT_OF_RESOURCES = 4,
+        PRECONDITION_NOT_MET = 5,
+    }
+    public enum LifeCycleState
+    {
+        CREATED_STATE = 0,
+        INACTIVE_STATE = 1,
+        ACTIVE_STATE = 2,
+        ERROR_STATE = 3,
+    }
+    public enum ExecutionKind
+    {
+        PERIODIC = 0,
+        EVENT_DRIVEN = 1,
+        OTHER = 2,
+    }
+    public enum PortInterfacePolarity
+    {
+        PROVIDED = 0,
+        REQUIRED = 1,
+    }
+    
+ 
+    public class PortInterfaceProfile : NotifyPropertyChangedBase
+    {
+        private System.String _InstanceName;
+            
+        ///<exclude/>
+        public System.String InstanceName
+        {
+            get { return _InstanceName; }
+            set 
+            {
+                if(!_InstanceName.Equals(value))
+                {
+                    _InstanceName  = value;
+                    RaisePropertyChanged("InstanceName");
+                }
+            }
+        }
+        private System.String _TypeName;
+            
+        ///<exclude/>
+        public System.String TypeName
+        {
+            get { return _TypeName; }
+            set 
+            {
+                if(!_TypeName.Equals(value))
+                {
+                    _TypeName  = value;
+                    RaisePropertyChanged("TypeName");
+                }
+            }
+        }
+        private ReactiveRTM.RTC.PortInterfacePolarity _Polarity;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.PortInterfacePolarity Polarity
+        {
+            get { return _Polarity; }
+            set 
+            {
+                if(!_Polarity.Equals(value))
+                {
+                    _Polarity  = value;
+                    RaisePropertyChanged("Polarity");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.PortInterfaceProfile (ReactiveRTM.RTC.PortInterfaceProfile source)
+        {
+            var instance = new global::omg.org.RTC.PortInterfaceProfile();
+            instance.instance_name =  source._InstanceName;
+            instance.type_name =  source._TypeName;
+            instance.polarity =  (global::omg.org.RTC.PortInterfacePolarity)source._Polarity;
+            return instance;
+        }
+        public PortInterfaceProfile ()
+        {
+            //TODO: 初期化
+        }
+        public PortInterfaceProfile (global::omg.org.RTC.PortInterfaceProfile source)
+        {
+            _InstanceName = source.instance_name;
+            _TypeName = source.type_name;
+            _Polarity = (ReactiveRTM.RTC.PortInterfacePolarity)source.polarity;
+        }
+
+        ///<exclude/>
+        public bool Equals(PortInterfaceProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Polarity.Equals(_Polarity);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(PortInterfaceProfile)) return false;
+            return Equals((PortInterfaceProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _InstanceName.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _TypeName.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Polarity.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class ConnectorProfile : NotifyPropertyChangedBase
+    {
+        private System.String _Name;
+            
+        ///<exclude/>
+        public System.String Name
+        {
+            get { return _Name; }
+            set 
+            {
+                if(!_Name.Equals(value))
+                {
+                    _Name  = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+        private System.String _ConnectorId;
+            
+        ///<exclude/>
+        public System.String ConnectorId
+        {
+            get { return _ConnectorId; }
+            set 
+            {
+                if(!_ConnectorId.Equals(value))
+                {
+                    _ConnectorId  = value;
+                    RaisePropertyChanged("ConnectorId");
+                }
+            }
+        }
+        private List<ReactiveRTM.RTC.PortService> _Ports;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.PortService> Ports
+        {
+            get { return _Ports; }
+            set 
+            {
+                if(!_Ports.SequenceEqual(value))
+                {
+                    _Ports  = value;
+                    RaisePropertyChanged("Ports");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.ConnectorProfile (ReactiveRTM.RTC.ConnectorProfile source)
+        {
+            var instance = new global::omg.org.RTC.ConnectorProfile();
+            instance.name =  source._Name;
+            instance.connector_id =  source._ConnectorId;
+            instance.ports =  source._Ports.Select(x=>((global::omg.org.RTC.PortService)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public ConnectorProfile ()
+        {
+            //TODO: 初期化
+        }
+        public ConnectorProfile (global::omg.org.RTC.ConnectorProfile source)
+        {
+            _Name = source.name;
+            _ConnectorId = source.connector_id;
+            _Ports = source.ports.Select(x => (ReactiveRTM.RTC.PortService)new ReactiveRTM.RTC.PortServiceStub(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(ConnectorProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Name.Equals(_Name) && other._ConnectorId.Equals(_ConnectorId) && other._Ports.SequenceEqual(_Ports) && other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(ConnectorProfile)) return false;
+            return Equals((ConnectorProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Name.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _ConnectorId.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Ports.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class PortProfile : NotifyPropertyChangedBase
+    {
+        private System.String _Name;
+            
+        ///<exclude/>
+        public System.String Name
+        {
+            get { return _Name; }
+            set 
+            {
+                if(!_Name.Equals(value))
+                {
+                    _Name  = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+        private List<ReactiveRTM.RTC.PortInterfaceProfile> _Interfaces;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.PortInterfaceProfile> Interfaces
+        {
+            get { return _Interfaces; }
+            set 
+            {
+                if(!_Interfaces.SequenceEqual(value))
+                {
+                    _Interfaces  = value;
+                    RaisePropertyChanged("Interfaces");
+                }
+            }
+        }
+        private ReactiveRTM.RTC.PortService _PortRef;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.PortService PortRef
+        {
+            get { return _PortRef; }
+            set 
+            {
+                if(!_PortRef.Equals(value))
+                {
+                    _PortRef  = value;
+                    RaisePropertyChanged("PortRef");
+                }
+            }
+        }
+        private List<ReactiveRTM.RTC.ConnectorProfile> _ConnectorProfiles;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.ConnectorProfile> ConnectorProfiles
+        {
+            get { return _ConnectorProfiles; }
+            set 
+            {
+                if(!_ConnectorProfiles.SequenceEqual(value))
+                {
+                    _ConnectorProfiles  = value;
+                    RaisePropertyChanged("ConnectorProfiles");
+                }
+            }
+        }
+        private ReactiveRTM.RTC.RTObject _Owner;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.RTObject Owner
+        {
+            get { return _Owner; }
+            set 
+            {
+                if(!_Owner.Equals(value))
+                {
+                    _Owner  = value;
+                    RaisePropertyChanged("Owner");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.PortProfile (ReactiveRTM.RTC.PortProfile source)
+        {
+            var instance = new global::omg.org.RTC.PortProfile();
+            instance.name =  source._Name;
+            instance.interfaces =  source._Interfaces.Select(x=>((global::omg.org.RTC.PortInterfaceProfile)((IStub)x).GetTarget())).ToArray();
+            instance.port_ref =  ((global::omg.org.RTC.PortService)((IStub)source._PortRef).GetTarget());
+            instance.connector_profiles =  source._ConnectorProfiles.Select(x=>((global::omg.org.RTC.ConnectorProfile)((IStub)x).GetTarget())).ToArray();
+            instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public PortProfile ()
+        {
+            //TODO: 初期化
+        }
+        public PortProfile (global::omg.org.RTC.PortProfile source)
+        {
+            _Name = source.name;
+            _Interfaces = source.interfaces.Select(x => (ReactiveRTM.RTC.PortInterfaceProfile)new ReactiveRTM.RTC.PortInterfaceProfile(x)).ToList();
+            _PortRef = new ReactiveRTM.RTC.PortServiceStub(source.port_ref);
+            _ConnectorProfiles = source.connector_profiles.Select(x => (ReactiveRTM.RTC.ConnectorProfile)new ReactiveRTM.RTC.ConnectorProfile(x)).ToList();
+            _Owner = new ReactiveRTM.RTC.RTObjectStub(source.owner);
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(PortProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Name.Equals(_Name) && other._Interfaces.SequenceEqual(_Interfaces) && other._PortRef.Equals(_PortRef) && other._ConnectorProfiles.SequenceEqual(_ConnectorProfiles) && other._Owner.Equals(_Owner) && other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(PortProfile)) return false;
+            return Equals((PortProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Name.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Interfaces.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _PortRef.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _ConnectorProfiles.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Owner.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class ExecutionContextProfile : NotifyPropertyChangedBase
+    {
+        private ReactiveRTM.RTC.ExecutionKind _Kind;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.ExecutionKind Kind
+        {
+            get { return _Kind; }
+            set 
+            {
+                if(!_Kind.Equals(value))
+                {
+                    _Kind  = value;
+                    RaisePropertyChanged("Kind");
+                }
+            }
+        }
+        private System.Double _Rate;
+            
+        ///<exclude/>
+        public System.Double Rate
+        {
+            get { return _Rate; }
+            set 
+            {
+                if(!_Rate.Equals(value))
+                {
+                    _Rate  = value;
+                    RaisePropertyChanged("Rate");
+                }
+            }
+        }
+        private ReactiveRTM.RTC.RTObject _Owner;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.RTObject Owner
+        {
+            get { return _Owner; }
+            set 
+            {
+                if(!_Owner.Equals(value))
+                {
+                    _Owner  = value;
+                    RaisePropertyChanged("Owner");
+                }
+            }
+        }
+        private List<ReactiveRTM.RTC.RTObject> _Participants;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.RTObject> Participants
+        {
+            get { return _Participants; }
+            set 
+            {
+                if(!_Participants.SequenceEqual(value))
+                {
+                    _Participants  = value;
+                    RaisePropertyChanged("Participants");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.ExecutionContextProfile (ReactiveRTM.RTC.ExecutionContextProfile source)
+        {
+            var instance = new global::omg.org.RTC.ExecutionContextProfile();
+            instance.kind =  (global::omg.org.RTC.ExecutionKind)source._Kind;
+            instance.rate =  source._Rate;
+            instance.owner =  ((global::omg.org.RTC.RTObject)((IStub)source._Owner).GetTarget());
+            instance.participants =  source._Participants.Select(x=>((global::omg.org.RTC.RTObject)((IStub)x).GetTarget())).ToArray();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public ExecutionContextProfile ()
+        {
+            //TODO: 初期化
+        }
+        public ExecutionContextProfile (global::omg.org.RTC.ExecutionContextProfile source)
+        {
+            _Kind = (ReactiveRTM.RTC.ExecutionKind)source.kind;
+            _Rate = source.rate;
+            _Owner = new ReactiveRTM.RTC.RTObjectStub(source.owner);
+            _Participants = source.participants.Select(x => (ReactiveRTM.RTC.RTObject)new ReactiveRTM.RTC.RTObjectStub(x)).ToList();
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(ExecutionContextProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner.Equals(_Owner) && other._Participants.SequenceEqual(_Participants) && other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(ExecutionContextProfile)) return false;
+            return Equals((ExecutionContextProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Kind.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Rate.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Owner.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Participants.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class FsmBehaviorProfile : NotifyPropertyChangedBase
+    {
+        private ReactiveRTM.RTC.FsmParticipantAction _ActionComponent;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.FsmParticipantAction ActionComponent
+        {
+            get { return _ActionComponent; }
+            set 
+            {
+                if(!_ActionComponent.Equals(value))
+                {
+                    _ActionComponent  = value;
+                    RaisePropertyChanged("ActionComponent");
+                }
+            }
+        }
+        private System.String _Id;
+            
+        ///<exclude/>
+        public System.String Id
+        {
+            get { return _Id; }
+            set 
+            {
+                if(!_Id.Equals(value))
+                {
+                    _Id  = value;
+                    RaisePropertyChanged("Id");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.FsmBehaviorProfile (ReactiveRTM.RTC.FsmBehaviorProfile source)
+        {
+            var instance = new global::omg.org.RTC.FsmBehaviorProfile();
+            instance.action_component =  ((global::omg.org.RTC.FsmParticipantAction)((IStub)source._ActionComponent).GetTarget());
+            instance.id =  source._Id;
+            return instance;
+        }
+        public FsmBehaviorProfile ()
+        {
+            //TODO: 初期化
+        }
+        public FsmBehaviorProfile (global::omg.org.RTC.FsmBehaviorProfile source)
+        {
+            _ActionComponent = new ReactiveRTM.RTC.FsmParticipantActionStub(source.action_component);
+            _Id = source.id;
+        }
+
+        ///<exclude/>
+        public bool Equals(FsmBehaviorProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._ActionComponent.Equals(_ActionComponent) && other._Id.Equals(_Id);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(FsmBehaviorProfile)) return false;
+            return Equals((FsmBehaviorProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _ActionComponent.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Id.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class FsmProfile : NotifyPropertyChangedBase
+    {
+        private List<ReactiveRTM.RTC.FsmBehaviorProfile> _BehaviorProfiles;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.FsmBehaviorProfile> BehaviorProfiles
+        {
+            get { return _BehaviorProfiles; }
+            set 
+            {
+                if(!_BehaviorProfiles.SequenceEqual(value))
+                {
+                    _BehaviorProfiles  = value;
+                    RaisePropertyChanged("BehaviorProfiles");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.FsmProfile (ReactiveRTM.RTC.FsmProfile source)
+        {
+            var instance = new global::omg.org.RTC.FsmProfile();
+            instance.behavior_profiles =  source._BehaviorProfiles.Select(x=>((global::omg.org.RTC.FsmBehaviorProfile)((IStub)x).GetTarget())).ToArray();
+            return instance;
+        }
+        public FsmProfile ()
+        {
+            //TODO: 初期化
+        }
+        public FsmProfile (global::omg.org.RTC.FsmProfile source)
+        {
+            _BehaviorProfiles = source.behavior_profiles.Select(x => (ReactiveRTM.RTC.FsmBehaviorProfile)new ReactiveRTM.RTC.FsmBehaviorProfile(x)).ToList();
+        }
+
+        ///<exclude/>
+        public bool Equals(FsmProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._BehaviorProfiles.SequenceEqual(_BehaviorProfiles);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(FsmProfile)) return false;
+            return Equals((FsmProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _BehaviorProfiles.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class ComponentProfile : NotifyPropertyChangedBase
+    {
+        private System.String _InstanceName;
+            
+        ///<exclude/>
+        public System.String InstanceName
+        {
+            get { return _InstanceName; }
+            set 
+            {
+                if(!_InstanceName.Equals(value))
+                {
+                    _InstanceName  = value;
+                    RaisePropertyChanged("InstanceName");
+                }
+            }
+        }
+        private System.String _TypeName;
+            
+        ///<exclude/>
+        public System.String TypeName
+        {
+            get { return _TypeName; }
+            set 
+            {
+                if(!_TypeName.Equals(value))
+                {
+                    _TypeName  = value;
+                    RaisePropertyChanged("TypeName");
+                }
+            }
+        }
+        private System.String _Description;
+            
+        ///<exclude/>
+        public System.String Description
+        {
+            get { return _Description; }
+            set 
+            {
+                if(!_Description.Equals(value))
+                {
+                    _Description  = value;
+                    RaisePropertyChanged("Description");
+                }
+            }
+        }
+        private System.String _Version;
+            
+        ///<exclude/>
+        public System.String Version
+        {
+            get { return _Version; }
+            set 
+            {
+                if(!_Version.Equals(value))
+                {
+                    _Version  = value;
+                    RaisePropertyChanged("Version");
+                }
+            }
+        }
+        private System.String _Vendor;
+            
+        ///<exclude/>
+        public System.String Vendor
+        {
+            get { return _Vendor; }
+            set 
+            {
+                if(!_Vendor.Equals(value))
+                {
+                    _Vendor  = value;
+                    RaisePropertyChanged("Vendor");
+                }
+            }
+        }
+        private System.String _Category;
+            
+        ///<exclude/>
+        public System.String Category
+        {
+            get { return _Category; }
+            set 
+            {
+                if(!_Category.Equals(value))
+                {
+                    _Category  = value;
+                    RaisePropertyChanged("Category");
+                }
+            }
+        }
+        private List<ReactiveRTM.RTC.PortProfile> _PortProfiles;
+            
+        ///<exclude/>
+        public List<ReactiveRTM.RTC.PortProfile> PortProfiles
+        {
+            get { return _PortProfiles; }
+            set 
+            {
+                if(!_PortProfiles.SequenceEqual(value))
+                {
+                    _PortProfiles  = value;
+                    RaisePropertyChanged("PortProfiles");
+                }
+            }
+        }
+        private ReactiveRTM.RTC.RTObject _Parent;
+            
+        ///<exclude/>
+        public ReactiveRTM.RTC.RTObject Parent
+        {
+            get { return _Parent; }
+            set 
+            {
+                if(!_Parent.Equals(value))
+                {
+                    _Parent  = value;
+                    RaisePropertyChanged("Parent");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::omg.org.RTC.ComponentProfile (ReactiveRTM.RTC.ComponentProfile source)
+        {
+            var instance = new global::omg.org.RTC.ComponentProfile();
+            instance.instance_name =  source._InstanceName;
+            instance.type_name =  source._TypeName;
+            instance.description =  source._Description;
+            instance.version =  source._Version;
+            instance.vendor =  source._Vendor;
+            instance.category =  source._Category;
+            instance.port_profiles =  source._PortProfiles.Select(x=>((global::omg.org.RTC.PortProfile)((IStub)x).GetTarget())).ToArray();
+            instance.parent =  ((global::omg.org.RTC.RTObject)((IStub)source._Parent).GetTarget());
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public ComponentProfile ()
+        {
+            //TODO: 初期化
+        }
+        public ComponentProfile (global::omg.org.RTC.ComponentProfile source)
+        {
+            _InstanceName = source.instance_name;
+            _TypeName = source.type_name;
+            _Description = source.description;
+            _Version = source.version;
+            _Vendor = source.vendor;
+            _Category = source.category;
+            _PortProfiles = source.port_profiles.Select(x => (ReactiveRTM.RTC.PortProfile)new ReactiveRTM.RTC.PortProfile(x)).ToList();
+            _Parent = new ReactiveRTM.RTC.RTObjectStub(source.parent);
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(ComponentProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Description.Equals(_Description) && other._Version.Equals(_Version) && other._Vendor.Equals(_Vendor) && other._Category.Equals(_Category) && other._PortProfiles.SequenceEqual(_PortProfiles) && other._Parent.Equals(_Parent) && other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(ComponentProfile)) return false;
+            return Equals((ComponentProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _InstanceName.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _TypeName.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Description.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Version.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Vendor.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Category.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _PortProfiles.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Parent.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+}
+ 
 namespace ReactiveRTM.RTM
 {
     
@@ -14915,6 +13945,976 @@ namespace ReactiveRTM.RTM
                 int result = 0;
             //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+}
+ 
+namespace ReactiveRTM.SDOPackage
+{
+    public enum NumericType
+    {
+        SHORT_TYPE = 0,
+        LONG_TYPE = 1,
+        FLOAT_TYPE = 2,
+        DOUBLE_TYPE = 3,
+    }
+    public enum ComplexDataType
+    {
+        ENUMERATION = 0,
+        RANGE = 1,
+        INTERVAL = 2,
+    }
+    public enum DependencyType
+    {
+        OWN = 0,
+        OWNED = 1,
+        NO_DEPENDENCY = 2,
+    }
+    
+ 
+    public class NameValue : NotifyPropertyChangedBase
+    {
+        private System.String _Name;
+            
+        ///<exclude/>
+        public System.String Name
+        {
+            get { return _Name; }
+            set 
+            {
+                if(!_Name.Equals(value))
+                {
+                    _Name  = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+        private System.Object _Value;
+            
+        ///<exclude/>
+        public System.Object Value
+        {
+            get { return _Value; }
+            set 
+            {
+                if(!_Value.Equals(value))
+                {
+                    _Value  = value;
+                    RaisePropertyChanged("Value");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.NameValue (ReactiveRTM.SDOPackage.NameValue source)
+        {
+            var instance = new global::org.omg.SDOPackage.NameValue();
+            instance.name =  source._Name;
+            instance.value =  source._Value;
+            return instance;
+        }
+        public NameValue ()
+        {
+            //TODO: 初期化
+        }
+        public NameValue (global::org.omg.SDOPackage.NameValue source)
+        {
+            _Name = source.name;
+            _Value = source.value;
+        }
+
+        ///<exclude/>
+        public bool Equals(NameValue other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Name.Equals(_Name) && other._Value.Equals(_Value);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(NameValue)) return false;
+            return Equals((NameValue)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Name.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Value.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class EnumerationType : NotifyPropertyChangedBase
+    {
+        private List<System.String> _EnumeratedValues;
+            
+        ///<exclude/>
+        public List<System.String> EnumeratedValues
+        {
+            get { return _EnumeratedValues; }
+            set 
+            {
+                if(!_EnumeratedValues.SequenceEqual(value))
+                {
+                    _EnumeratedValues  = value;
+                    RaisePropertyChanged("EnumeratedValues");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.EnumerationType (ReactiveRTM.SDOPackage.EnumerationType source)
+        {
+            var instance = new global::org.omg.SDOPackage.EnumerationType();
+            instance.enumerated_values =  source._EnumeratedValues.Select(x=>x).ToArray();
+            return instance;
+        }
+        public EnumerationType ()
+        {
+            //TODO: 初期化
+        }
+        public EnumerationType (global::org.omg.SDOPackage.EnumerationType source)
+        {
+            _EnumeratedValues = source.enumerated_values.Select(x => (System.String)x).ToList();
+        }
+
+        ///<exclude/>
+        public bool Equals(EnumerationType other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._EnumeratedValues.SequenceEqual(_EnumeratedValues);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(EnumerationType)) return false;
+            return Equals((EnumerationType)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _EnumeratedValues.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class RangeType : NotifyPropertyChangedBase
+    {
+        private global::org.omg.SDOPackage.Numeric _Min;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.Numeric Min
+        {
+            get { return _Min; }
+            set 
+            {
+                if(!_Min.Equals(value))
+                {
+                    _Min  = value;
+                    RaisePropertyChanged("Min");
+                }
+            }
+        }
+        private global::org.omg.SDOPackage.Numeric _Max;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.Numeric Max
+        {
+            get { return _Max; }
+            set 
+            {
+                if(!_Max.Equals(value))
+                {
+                    _Max  = value;
+                    RaisePropertyChanged("Max");
+                }
+            }
+        }
+        private System.Boolean _MinInclusive;
+            
+        ///<exclude/>
+        public System.Boolean MinInclusive
+        {
+            get { return _MinInclusive; }
+            set 
+            {
+                if(!_MinInclusive.Equals(value))
+                {
+                    _MinInclusive  = value;
+                    RaisePropertyChanged("MinInclusive");
+                }
+            }
+        }
+        private System.Boolean _MaxInclusive;
+            
+        ///<exclude/>
+        public System.Boolean MaxInclusive
+        {
+            get { return _MaxInclusive; }
+            set 
+            {
+                if(!_MaxInclusive.Equals(value))
+                {
+                    _MaxInclusive  = value;
+                    RaisePropertyChanged("MaxInclusive");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.RangeType (ReactiveRTM.SDOPackage.RangeType source)
+        {
+            var instance = new global::org.omg.SDOPackage.RangeType();
+            instance.min =  source._Min;
+            instance.max =  source._Max;
+            instance.min_inclusive =  source._MinInclusive;
+            instance.max_inclusive =  source._MaxInclusive;
+            return instance;
+        }
+        public RangeType ()
+        {
+            //TODO: 初期化
+        }
+        public RangeType (global::org.omg.SDOPackage.RangeType source)
+        {
+            _Min = source.min;
+            _Max = source.max;
+            _MinInclusive = source.min_inclusive;
+            _MaxInclusive = source.max_inclusive;
+        }
+
+        ///<exclude/>
+        public bool Equals(RangeType other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(RangeType)) return false;
+            return Equals((RangeType)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Min.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Max.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _MinInclusive.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _MaxInclusive.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class IntervalType : NotifyPropertyChangedBase
+    {
+        private global::org.omg.SDOPackage.Numeric _Min;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.Numeric Min
+        {
+            get { return _Min; }
+            set 
+            {
+                if(!_Min.Equals(value))
+                {
+                    _Min  = value;
+                    RaisePropertyChanged("Min");
+                }
+            }
+        }
+        private global::org.omg.SDOPackage.Numeric _Max;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.Numeric Max
+        {
+            get { return _Max; }
+            set 
+            {
+                if(!_Max.Equals(value))
+                {
+                    _Max  = value;
+                    RaisePropertyChanged("Max");
+                }
+            }
+        }
+        private System.Boolean _MinInclusive;
+            
+        ///<exclude/>
+        public System.Boolean MinInclusive
+        {
+            get { return _MinInclusive; }
+            set 
+            {
+                if(!_MinInclusive.Equals(value))
+                {
+                    _MinInclusive  = value;
+                    RaisePropertyChanged("MinInclusive");
+                }
+            }
+        }
+        private System.Boolean _MaxInclusive;
+            
+        ///<exclude/>
+        public System.Boolean MaxInclusive
+        {
+            get { return _MaxInclusive; }
+            set 
+            {
+                if(!_MaxInclusive.Equals(value))
+                {
+                    _MaxInclusive  = value;
+                    RaisePropertyChanged("MaxInclusive");
+                }
+            }
+        }
+        private global::org.omg.SDOPackage.Numeric _Step;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.Numeric Step
+        {
+            get { return _Step; }
+            set 
+            {
+                if(!_Step.Equals(value))
+                {
+                    _Step  = value;
+                    RaisePropertyChanged("Step");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.IntervalType (ReactiveRTM.SDOPackage.IntervalType source)
+        {
+            var instance = new global::org.omg.SDOPackage.IntervalType();
+            instance.min =  source._Min;
+            instance.max =  source._Max;
+            instance.min_inclusive =  source._MinInclusive;
+            instance.max_inclusive =  source._MaxInclusive;
+            instance._step =  source._Step;
+            return instance;
+        }
+        public IntervalType ()
+        {
+            //TODO: 初期化
+        }
+        public IntervalType (global::org.omg.SDOPackage.IntervalType source)
+        {
+            _Min = source.min;
+            _Max = source.max;
+            _MinInclusive = source.min_inclusive;
+            _MaxInclusive = source.max_inclusive;
+            _Step = source._step;
+        }
+
+        ///<exclude/>
+        public bool Equals(IntervalType other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Min.Equals(_Min) && other._Max.Equals(_Max) && other._MinInclusive.Equals(_MinInclusive) && other._MaxInclusive.Equals(_MaxInclusive) && other._Step.Equals(_Step);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(IntervalType)) return false;
+            return Equals((IntervalType)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Min.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Max.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _MinInclusive.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _MaxInclusive.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Step.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class Parameter : NotifyPropertyChangedBase
+    {
+        private System.String _Name;
+            
+        ///<exclude/>
+        public System.String Name
+        {
+            get { return _Name; }
+            set 
+            {
+                if(!_Name.Equals(value))
+                {
+                    _Name  = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+        private ReactiveRTM.CORBA.TypeCode _Type;
+            
+        ///<exclude/>
+        public ReactiveRTM.CORBA.TypeCode Type
+        {
+            get { return _Type; }
+            set 
+            {
+                if(!_Type.Equals(value))
+                {
+                    _Type  = value;
+                    RaisePropertyChanged("Type");
+                }
+            }
+        }
+        private global::org.omg.SDOPackage.AllowedValues _AllowedValues;
+            
+        ///<exclude/>
+        public global::org.omg.SDOPackage.AllowedValues AllowedValues
+        {
+            get { return _AllowedValues; }
+            set 
+            {
+                if(!_AllowedValues.Equals(value))
+                {
+                    _AllowedValues  = value;
+                    RaisePropertyChanged("AllowedValues");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.Parameter (ReactiveRTM.SDOPackage.Parameter source)
+        {
+            var instance = new global::org.omg.SDOPackage.Parameter();
+            instance.name =  source._Name;
+            instance.type =  ((global::omg.org.CORBA.TypeCode)((IStub)source._Type).GetTarget());
+            instance.allowed_values =  source._AllowedValues;
+            return instance;
+        }
+        public Parameter ()
+        {
+            //TODO: 初期化
+        }
+        public Parameter (global::org.omg.SDOPackage.Parameter source)
+        {
+            _Name = source.name;
+            _Type = new ReactiveRTM.CORBA.TypeCodeStub(source.type);
+            _AllowedValues = source.allowed_values;
+        }
+
+        ///<exclude/>
+        public bool Equals(Parameter other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Name.Equals(_Name) && other._Type.Equals(_Type) && other._AllowedValues.Equals(_AllowedValues);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(Parameter)) return false;
+            return Equals((Parameter)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Name.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Type.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _AllowedValues.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class OrganizationProperty : NotifyPropertyChangedBase
+    {
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.OrganizationProperty (ReactiveRTM.SDOPackage.OrganizationProperty source)
+        {
+            var instance = new global::org.omg.SDOPackage.OrganizationProperty();
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public OrganizationProperty ()
+        {
+            //TODO: 初期化
+        }
+        public OrganizationProperty (global::org.omg.SDOPackage.OrganizationProperty source)
+        {
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(OrganizationProperty other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(OrganizationProperty)) return false;
+            return Equals((OrganizationProperty)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class DeviceProfile : NotifyPropertyChangedBase
+    {
+        private System.String _DeviceType;
+            
+        ///<exclude/>
+        public System.String DeviceType
+        {
+            get { return _DeviceType; }
+            set 
+            {
+                if(!_DeviceType.Equals(value))
+                {
+                    _DeviceType  = value;
+                    RaisePropertyChanged("DeviceType");
+                }
+            }
+        }
+        private System.String _Manufacturer;
+            
+        ///<exclude/>
+        public System.String Manufacturer
+        {
+            get { return _Manufacturer; }
+            set 
+            {
+                if(!_Manufacturer.Equals(value))
+                {
+                    _Manufacturer  = value;
+                    RaisePropertyChanged("Manufacturer");
+                }
+            }
+        }
+        private System.String _Model;
+            
+        ///<exclude/>
+        public System.String Model
+        {
+            get { return _Model; }
+            set 
+            {
+                if(!_Model.Equals(value))
+                {
+                    _Model  = value;
+                    RaisePropertyChanged("Model");
+                }
+            }
+        }
+        private System.String _Version;
+            
+        ///<exclude/>
+        public System.String Version
+        {
+            get { return _Version; }
+            set 
+            {
+                if(!_Version.Equals(value))
+                {
+                    _Version  = value;
+                    RaisePropertyChanged("Version");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.DeviceProfile (ReactiveRTM.SDOPackage.DeviceProfile source)
+        {
+            var instance = new global::org.omg.SDOPackage.DeviceProfile();
+            instance.device_type =  source._DeviceType;
+            instance.manufacturer =  source._Manufacturer;
+            instance.model =  source._Model;
+            instance.version =  source._Version;
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            return instance;
+        }
+        public DeviceProfile ()
+        {
+            //TODO: 初期化
+        }
+        public DeviceProfile (global::org.omg.SDOPackage.DeviceProfile source)
+        {
+            _DeviceType = source.device_type;
+            _Manufacturer = source.manufacturer;
+            _Model = source.model;
+            _Version = source.version;
+            _Properties = Converter.NVListToDictionary(source.properties);
+        }
+
+        ///<exclude/>
+        public bool Equals(DeviceProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._DeviceType.Equals(_DeviceType) && other._Manufacturer.Equals(_Manufacturer) && other._Model.Equals(_Model) && other._Version.Equals(_Version) && other._Properties.SequenceEqual(_Properties);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(DeviceProfile)) return false;
+            return Equals((DeviceProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _DeviceType.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Manufacturer.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Model.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Version.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class ServiceProfile : NotifyPropertyChangedBase
+    {
+        private System.String _Id;
+            
+        ///<exclude/>
+        public System.String Id
+        {
+            get { return _Id; }
+            set 
+            {
+                if(!_Id.Equals(value))
+                {
+                    _Id  = value;
+                    RaisePropertyChanged("Id");
+                }
+            }
+        }
+        private System.String _InterfaceType;
+            
+        ///<exclude/>
+        public System.String InterfaceType
+        {
+            get { return _InterfaceType; }
+            set 
+            {
+                if(!_InterfaceType.Equals(value))
+                {
+                    _InterfaceType  = value;
+                    RaisePropertyChanged("InterfaceType");
+                }
+            }
+        }
+        private Dictionary<string,object> _Properties;
+            
+        ///<exclude/>
+        public Dictionary<string,object> Properties
+        {
+            get { return _Properties; }
+            set 
+            {
+                if(!_Properties.SequenceEqual(value))
+                {
+                    _Properties  = value;
+                    RaisePropertyChanged("Properties");
+                }
+            }
+        }
+        private ReactiveRTM.SDOPackage.SDOService _Service;
+            
+        ///<exclude/>
+        public ReactiveRTM.SDOPackage.SDOService Service
+        {
+            get { return _Service; }
+            set 
+            {
+                if(!_Service.Equals(value))
+                {
+                    _Service  = value;
+                    RaisePropertyChanged("Service");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.ServiceProfile (ReactiveRTM.SDOPackage.ServiceProfile source)
+        {
+            var instance = new global::org.omg.SDOPackage.ServiceProfile();
+            instance.id =  source._Id;
+            instance.interface_type =  source._InterfaceType;
+            instance.properties =  Converter.DictionaryToNVList(source._Properties);
+            instance.service =  ((global::org.omg.SDOPackage.SDOService)((IStub)source._Service).GetTarget());
+            return instance;
+        }
+        public ServiceProfile ()
+        {
+            //TODO: 初期化
+        }
+        public ServiceProfile (global::org.omg.SDOPackage.ServiceProfile source)
+        {
+            _Id = source.id;
+            _InterfaceType = source.interface_type;
+            _Properties = Converter.NVListToDictionary(source.properties);
+            _Service = new ReactiveRTM.SDOPackage.SDOServiceStub(source.service);
+        }
+
+        ///<exclude/>
+        public bool Equals(ServiceProfile other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Id.Equals(_Id) && other._InterfaceType.Equals(_InterfaceType) && other._Properties.SequenceEqual(_Properties) && other._Service.Equals(_Service);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(ServiceProfile)) return false;
+            return Equals((ServiceProfile)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Id.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _InterfaceType.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Properties.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Service.GetHashCode();
+                return result;
+            }
+        }
+    }
+ 
+    public class ConfigurationSet : NotifyPropertyChangedBase
+    {
+        private System.String _Id;
+            
+        ///<exclude/>
+        public System.String Id
+        {
+            get { return _Id; }
+            set 
+            {
+                if(!_Id.Equals(value))
+                {
+                    _Id  = value;
+                    RaisePropertyChanged("Id");
+                }
+            }
+        }
+        private System.String _Description;
+            
+        ///<exclude/>
+        public System.String Description
+        {
+            get { return _Description; }
+            set 
+            {
+                if(!_Description.Equals(value))
+                {
+                    _Description  = value;
+                    RaisePropertyChanged("Description");
+                }
+            }
+        }
+        private Dictionary<string,object> _ConfigurationData;
+            
+        ///<exclude/>
+        public Dictionary<string,object> ConfigurationData
+        {
+            get { return _ConfigurationData; }
+            set 
+            {
+                if(!_ConfigurationData.SequenceEqual(value))
+                {
+                    _ConfigurationData  = value;
+                    RaisePropertyChanged("ConfigurationData");
+                }
+            }
+        }
+        public string RepositoryId
+        {
+            //TODO:
+            get { return ""; }
+        }
+        public static explicit operator global::org.omg.SDOPackage.ConfigurationSet (ReactiveRTM.SDOPackage.ConfigurationSet source)
+        {
+            var instance = new global::org.omg.SDOPackage.ConfigurationSet();
+            instance.id =  source._Id;
+            instance.description =  source._Description;
+            instance.configuration_data =  Converter.DictionaryToNVList(source._ConfigurationData);
+            return instance;
+        }
+        public ConfigurationSet ()
+        {
+            //TODO: 初期化
+        }
+        public ConfigurationSet (global::org.omg.SDOPackage.ConfigurationSet source)
+        {
+            _Id = source.id;
+            _Description = source.description;
+            _ConfigurationData = Converter.NVListToDictionary(source.configuration_data);
+        }
+
+        ///<exclude/>
+        public bool Equals(ConfigurationSet other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return other._Id.Equals(_Id) && other._Description.Equals(_Description) && other._ConfigurationData.SequenceEqual(_ConfigurationData);
+        }
+        ///<exclude/>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(ConfigurationSet)) return false;
+            return Equals((ConfigurationSet)obj);
+        }
+        ///<exclude/>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = 0;
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Id.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _Description.GetHashCode();
+            //TODO: 配列のハッシュは？
+                result = (result * 397) ^ _ConfigurationData.GetHashCode();
                 return result;
             }
         }

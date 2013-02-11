@@ -9,7 +9,6 @@ using Microsoft.Reactive.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
-using ReactiveRTM.omg.org.RTC;
 using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Test

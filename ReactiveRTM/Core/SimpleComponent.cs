@@ -1,4 +1,4 @@
-﻿using ReactiveRTM.omg.org.RTC;
+﻿using ReactiveRTM.RTC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

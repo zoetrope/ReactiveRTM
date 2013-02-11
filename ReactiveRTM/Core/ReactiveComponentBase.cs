@@ -9,9 +9,9 @@ using System.Reactive.Subjects;
 using System.Text;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
-using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using DataFlowComponent = ReactiveRTM.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {

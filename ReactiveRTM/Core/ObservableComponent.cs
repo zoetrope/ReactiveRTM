@@ -9,12 +9,12 @@ using System.Reactive.Threading.Tasks;
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Extensions;
-using ReactiveRTM.org.omg.SDOPackage;
+using ReactiveRTM.SDOPackage;
 using ReactiveRTM.OpenRTM;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 using System.Collections.Generic;
 
-using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using DataFlowComponent = ReactiveRTM.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {

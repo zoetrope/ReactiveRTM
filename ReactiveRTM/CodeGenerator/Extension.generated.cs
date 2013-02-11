@@ -9,509 +9,6 @@ using ReactiveRTM.Data;
 using ReactiveRTM.Generated;
 
  
-namespace ReactiveRTM.omg.org.RTC
-{
-    public static class ExecutionContextExtensions
-    {
- 
-        public static Task<System.Boolean> IsRunningAsync(this ExecutionContext target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.IsRunning();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> StartAsync(this ExecutionContext target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Start();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> StopAsync(this ExecutionContext target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Stop();
-                return ret;
-            });
-        }
- 
-        public static Task<System.Double> GetRateAsync(this ExecutionContext target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetRate();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> SetRateAsync(this ExecutionContext target,System.Double rate)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SetRate(rate);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> AddComponentAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.AddComponent(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> RemoveComponentAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveComponent(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> ActivateComponentAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.ActivateComponent(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> DeactivateComponentAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.DeactivateComponent(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> ResetComponentAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.ResetComponent(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.LifeCycleState> GetComponentStateAsync(this ExecutionContext target,ReactiveRTM.omg.org.RTC.LightweightRTObject comp)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetComponentState(comp);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ExecutionKind> GetKindAsync(this ExecutionContext target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetKind();
-                return ret;
-            });
-        }
-    }
-    public static class ComponentActionExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnInitializeAsync(this ComponentAction target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnInitialize();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnFinalizeAsync(this ComponentAction target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnFinalize();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnStartupAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnStartup(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnShutdownAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnShutdown(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnActivatedAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnActivated(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnDeactivatedAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnDeactivated(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnAbortingAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnAborting(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnErrorAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnError(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnResetAsync(this ComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnReset(execHandle);
-                return ret;
-            });
-        }
-    }
-    public static class LightweightRTObjectExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> InitializeAsync(this LightweightRTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Initialize();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> FinalizeAsync(this LightweightRTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Finalize();
-                return ret;
-            });
-        }
- 
-        public static Task<System.Boolean> IsAliveAsync(this LightweightRTObject target,ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.IsAlive(execContext);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> ExitAsync(this LightweightRTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Exit();
-                return ret;
-            });
-        }
- 
-        public static Task<System.Int32> AttachContextAsync(this LightweightRTObject target,ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.AttachContext(execContext);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> DetachContextAsync(this LightweightRTObject target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.DetachContext(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ExecutionContext> GetContextAsync(this LightweightRTObject target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetContext(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<List<ReactiveRTM.omg.org.RTC.ExecutionContext>> GetOwnedContextsAsync(this LightweightRTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetOwnedContexts();
-                return ret;
-            });
-        }
- 
-        public static Task<List<ReactiveRTM.omg.org.RTC.ExecutionContext>> GetParticipatingContextsAsync(this LightweightRTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetParticipatingContexts();
-                return ret;
-            });
-        }
- 
-        public static Task<System.Int32> GetContextHandleAsync(this LightweightRTObject target,ReactiveRTM.omg.org.RTC.ExecutionContext cxt)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetContextHandle(cxt);
-                return ret;
-            });
-        }
-    }
-    public static class DataFlowComponentActionExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnExecuteAsync(this DataFlowComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnExecute(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnStateUpdateAsync(this DataFlowComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnStateUpdate(execHandle);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnRateChangedAsync(this DataFlowComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnRateChanged(execHandle);
-                return ret;
-            });
-        }
-    }
-    public static class DataFlowComponentExtensions
-    {
-    }
-    public static class FsmExtensions
-    {
-    }
-    public static class FsmParticipantActionExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnActionAsync(this FsmParticipantAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnAction(execHandle);
-                return ret;
-            });
-        }
-    }
-    public static class FsmParticipantExtensions
-    {
-    }
-    public static class ModeExtensions
-    {
-    }
-    public static class ModeCapableExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.Mode> GetDefaultModeAsync(this ModeCapable target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetDefaultMode();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.Mode> GetCurrentModeAsync(this ModeCapable target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetCurrentMode();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.Mode> GetCurrentModeInContextAsync(this ModeCapable target,ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetCurrentModeInContext(execContext);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.Mode> GetPendingModeAsync(this ModeCapable target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetPendingMode();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.Mode> GetPendingModeInContextAsync(this ModeCapable target,ReactiveRTM.omg.org.RTC.ExecutionContext execContext)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetPendingModeInContext(execContext);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> SetModeAsync(this ModeCapable target,ReactiveRTM.omg.org.RTC.Mode newMode,System.Boolean immediate)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SetMode(newMode,immediate);
-                return ret;
-            });
-        }
-    }
-    public static class MultiModeComponentActionExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> OnModeChangedAsync(this MultiModeComponentAction target,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.OnModeChanged(execHandle);
-                return ret;
-            });
-        }
-    }
-    public static class MultiModeObjectExtensions
-    {
-    }
-    public static class RTObjectExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ComponentProfile> GetComponentProfileAsync(this RTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetComponentProfile();
-                return ret;
-            });
-        }
- 
-        public static Task<List<ReactiveRTM.omg.org.RTC.PortService>> GetPortsAsync(this RTObject target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetPorts();
-                return ret;
-            });
-        }
-    }
-    public static class PortServiceExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.PortProfile> GetPortProfileAsync(this PortService target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetPortProfile();
-                return ret;
-            });
-        }
- 
-        public static Task<List<ReactiveRTM.omg.org.RTC.ConnectorProfile>> GetConnectorProfilesAsync(this PortService target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetConnectorProfiles();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ConnectorProfile> GetConnectorProfileAsync(this PortService target,System.String connectorId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetConnectorProfile(connectorId);
-                return ret;
-            });
-        }
- 
-        public static Task<Tuple<ReactiveRTM.omg.org.RTC.ReturnCode_t,ReactiveRTM.omg.org.RTC.ConnectorProfile>> ConnectAsync(this PortService target,ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Connect(ref connectorProfile);
-                return Tuple.Create(ret,connectorProfile);
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> DisconnectAsync(this PortService target,System.String connectorId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.Disconnect(connectorId);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> DisconnectAllAsync(this PortService target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.DisconnectAll();
-                return ret;
-            });
-        }
- 
-        public static Task<Tuple<ReactiveRTM.omg.org.RTC.ReturnCode_t,ReactiveRTM.omg.org.RTC.ConnectorProfile>> NotifyConnectAsync(this PortService target,ReactiveRTM.omg.org.RTC.ConnectorProfile connectorProfile)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.NotifyConnect(ref connectorProfile);
-                return Tuple.Create(ret,connectorProfile);
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> NotifyDisconnectAsync(this PortService target,System.String connectorId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.NotifyDisconnect(connectorId);
-                return ret;
-            });
-        }
-    }
-    public static class FsmObjectExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> SendStimulusAsync(this FsmObject target,System.String message,System.Int32 execHandle)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SendStimulus(message,execHandle);
-                return ret;
-            });
-        }
-    }
-    public static class FsmServiceExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.FsmProfile> GetFsmProfileAsync(this FsmService target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetFsmProfile();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> SetFsmProfileAsync(this FsmService target,ReactiveRTM.omg.org.RTC.FsmProfile fsmProfile)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SetFsmProfile(fsmProfile);
-                return ret;
-            });
-        }
-    }
-    public static class ExecutionContextServiceExtensions
-    {
- 
-        public static Task<ReactiveRTM.omg.org.RTC.ExecutionContextProfile> GetProfileAsync(this ExecutionContextService target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetProfile();
-                return ret;
-            });
-        }
-    }
-}
- 
 namespace ReactiveRTM.OpenRTM
 {
     public static class ComponentObserverExtensions
@@ -568,7 +65,7 @@ namespace ReactiveRTM.OpenRTM
     }
 }
  
-namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
+namespace ReactiveRTM.OpenRTM
 {
     public static class DataFlowComponentExtensions
     {
@@ -586,358 +83,503 @@ namespace ReactiveRTM.openrtm.aist.go.jp.OpenRTM
     }
 }
  
-namespace ReactiveRTM.org.omg.SDOPackage
+namespace ReactiveRTM.RTC
 {
-    public static class SDOExtensions
+    public static class ExecutionContextExtensions
     {
  
-        public static Task<System.String> GetSdoIdAsync(this SDO target)
+        public static Task<System.Boolean> IsRunningAsync(this ExecutionContext target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetSdoId();
+                var ret = target.IsRunning();
                 return ret;
             });
         }
  
-        public static Task<System.String> GetSdoTypeAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> StartAsync(this ExecutionContext target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetSdoType();
+                var ret = target.Start();
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.DeviceProfile> GetDeviceProfileAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> StopAsync(this ExecutionContext target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetDeviceProfile();
+                var ret = target.Stop();
                 return ret;
             });
         }
  
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.ServiceProfile>> GetServiceProfilesAsync(this SDO target)
+        public static Task<System.Double> GetRateAsync(this ExecutionContext target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetServiceProfiles();
+                var ret = target.GetRate();
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.ServiceProfile> GetServiceProfileAsync(this SDO target,System.String id)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> SetRateAsync(this ExecutionContext target,System.Double rate)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetServiceProfile(id);
+                var ret = target.SetRate(rate);
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.SDOService> GetSdoServiceAsync(this SDO target,System.String id)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> AddComponentAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetSdoService(id);
+                var ret = target.AddComponent(comp);
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.Configuration> GetConfigurationAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> RemoveComponentAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfiguration();
+                var ret = target.RemoveComponent(comp);
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.Monitoring> GetMonitoringAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> ActivateComponentAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetMonitoring();
+                var ret = target.ActivateComponent(comp);
                 return ret;
             });
         }
  
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.Organization>> GetOrganizationsAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> DeactivateComponentAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOrganizations();
+                var ret = target.DeactivateComponent(comp);
                 return ret;
             });
         }
  
-        public static Task<System.Collections.Generic.Dictionary<System.String,System.Object>> GetStatusListAsync(this SDO target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> ResetComponentAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetStatusList();
+                var ret = target.ResetComponent(comp);
                 return ret;
             });
         }
  
-        public static Task<System.Object> GetStatusAsync(this SDO target,System.String nme)
+        public static Task<ReactiveRTM.RTC.LifeCycleState> GetComponentStateAsync(this ExecutionContext target,ReactiveRTM.RTC.LightweightRTObject comp)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetStatus(nme);
+                var ret = target.GetComponentState(comp);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ExecutionKind> GetKindAsync(this ExecutionContext target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetKind();
                 return ret;
             });
         }
     }
-    public static class SDOServiceExtensions
-    {
-    }
-    public static class SDOSystemElementExtensions
+    public static class ComponentActionExtensions
     {
  
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.Organization>> GetOwnedOrganizationsAsync(this SDOSystemElement target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnInitializeAsync(this ComponentAction target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOwnedOrganizations();
-                return ret;
-            });
-        }
-    }
-    public static class ConfigurationExtensions
-    {
- 
-        public static Task<System.Boolean> SetDeviceProfileAsync(this Configuration target,ReactiveRTM.org.omg.SDOPackage.DeviceProfile dProfile)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SetDeviceProfile(dProfile);
+                var ret = target.OnInitialize();
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> AddServiceProfileAsync(this Configuration target,ReactiveRTM.org.omg.SDOPackage.ServiceProfile sProfile)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnFinalizeAsync(this ComponentAction target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.AddServiceProfile(sProfile);
+                var ret = target.OnFinalize();
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> AddOrganizationAsync(this Configuration target,ReactiveRTM.org.omg.SDOPackage.Organization organizationObject)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnStartupAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.AddOrganization(organizationObject);
+                var ret = target.OnStartup(execHandle);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> RemoveServiceProfileAsync(this Configuration target,System.String id)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnShutdownAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveServiceProfile(id);
+                var ret = target.OnShutdown(execHandle);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> RemoveOrganizationAsync(this Configuration target,System.String organizationId)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnActivatedAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveOrganization(organizationId);
+                var ret = target.OnActivated(execHandle);
                 return ret;
             });
         }
  
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.Parameter>> GetConfigurationParametersAsync(this Configuration target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnDeactivatedAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfigurationParameters();
+                var ret = target.OnDeactivated(execHandle);
                 return ret;
             });
         }
  
-        public static Task<System.Collections.Generic.Dictionary<System.String,System.Object>> GetConfigurationParameterValuesAsync(this Configuration target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnAbortingAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfigurationParameterValues();
+                var ret = target.OnAborting(execHandle);
                 return ret;
             });
         }
  
-        public static Task<System.Object> GetConfigurationParameterValueAsync(this Configuration target,System.String name)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnErrorAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfigurationParameterValue(name);
+                var ret = target.OnError(execHandle);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> SetConfigurationParameterAsync(this Configuration target,System.String name,System.Object value)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnResetAsync(this ComponentAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.SetConfigurationParameter(name,value);
-                return ret;
-            });
-        }
- 
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet>> GetConfigurationSetsAsync(this Configuration target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfigurationSets();
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetConfigurationSetAsync(this Configuration target,System.String configId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetConfigurationSet(configId);
-                return ret;
-            });
-        }
- 
-        public static Task<System.Boolean> SetConfigurationSetValuesAsync(this Configuration target,ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.SetConfigurationSetValues(configurationSet);
-                return ret;
-            });
-        }
- 
-        public static Task<ReactiveRTM.org.omg.SDOPackage.ConfigurationSet> GetActiveConfigurationSetAsync(this Configuration target)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.GetActiveConfigurationSet();
-                return ret;
-            });
-        }
- 
-        public static Task<System.Boolean> AddConfigurationSetAsync(this Configuration target,ReactiveRTM.org.omg.SDOPackage.ConfigurationSet configurationSet)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.AddConfigurationSet(configurationSet);
-                return ret;
-            });
-        }
- 
-        public static Task<System.Boolean> RemoveConfigurationSetAsync(this Configuration target,System.String configId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveConfigurationSet(configId);
-                return ret;
-            });
-        }
- 
-        public static Task<System.Boolean> ActivateConfigurationSetAsync(this Configuration target,System.String configId)
-        {
-            return Task.Factory.StartNew(()=>{
-                var ret = target.ActivateConfigurationSet(configId);
+                var ret = target.OnReset(execHandle);
                 return ret;
             });
         }
     }
-    public static class MonitoringExtensions
+    public static class LightweightRTObjectExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> InitializeAsync(this LightweightRTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.Initialize();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> FinalizeAsync(this LightweightRTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.Finalize();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> IsAliveAsync(this LightweightRTObject target,ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.IsAlive(execContext);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> ExitAsync(this LightweightRTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.Exit();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Int32> AttachContextAsync(this LightweightRTObject target,ReactiveRTM.RTC.ExecutionContext execContext)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AttachContext(execContext);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> DetachContextAsync(this LightweightRTObject target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.DetachContext(execHandle);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ExecutionContext> GetContextAsync(this LightweightRTObject target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetContext(execHandle);
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.RTC.ExecutionContext>> GetOwnedContextsAsync(this LightweightRTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOwnedContexts();
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.RTC.ExecutionContext>> GetParticipatingContextsAsync(this LightweightRTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetParticipatingContexts();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Int32> GetContextHandleAsync(this LightweightRTObject target,ReactiveRTM.RTC.ExecutionContext cxt)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetContextHandle(cxt);
+                return ret;
+            });
+        }
+    }
+    public static class DataFlowComponentActionExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnExecuteAsync(this DataFlowComponentAction target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.OnExecute(execHandle);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnStateUpdateAsync(this DataFlowComponentAction target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.OnStateUpdate(execHandle);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnRateChangedAsync(this DataFlowComponentAction target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.OnRateChanged(execHandle);
+                return ret;
+            });
+        }
+    }
+    public static class DataFlowComponentExtensions
     {
     }
-    public static class OrganizationExtensions
+    public static class FsmExtensions
+    {
+    }
+    public static class FsmParticipantActionExtensions
     {
  
-        public static Task<System.String> GetOrganizationIdAsync(this Organization target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnActionAsync(this FsmParticipantAction target,System.Int32 execHandle)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOrganizationId();
+                var ret = target.OnAction(execHandle);
+                return ret;
+            });
+        }
+    }
+    public static class FsmParticipantExtensions
+    {
+    }
+    public static class ModeExtensions
+    {
+    }
+    public static class ModeCapableExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.Mode> GetDefaultModeAsync(this ModeCapable target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetDefaultMode();
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.OrganizationProperty> GetOrganizationPropertyAsync(this Organization target)
+        public static Task<ReactiveRTM.RTC.Mode> GetCurrentModeAsync(this ModeCapable target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOrganizationProperty();
+                var ret = target.GetCurrentMode();
                 return ret;
             });
         }
  
-        public static Task<System.Object> GetOrganizationPropertyValueAsync(this Organization target,System.String name)
+        public static Task<ReactiveRTM.RTC.Mode> GetCurrentModeInContextAsync(this ModeCapable target,ReactiveRTM.RTC.ExecutionContext execContext)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOrganizationPropertyValue(name);
+                var ret = target.GetCurrentModeInContext(execContext);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> AddOrganizationPropertyAsync(this Organization target,ReactiveRTM.org.omg.SDOPackage.OrganizationProperty organizationProperty)
+        public static Task<ReactiveRTM.RTC.Mode> GetPendingModeAsync(this ModeCapable target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.AddOrganizationProperty(organizationProperty);
+                var ret = target.GetPendingMode();
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> SetOrganizationPropertyValueAsync(this Organization target,System.String name,System.Object value)
+        public static Task<ReactiveRTM.RTC.Mode> GetPendingModeInContextAsync(this ModeCapable target,ReactiveRTM.RTC.ExecutionContext execContext)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.SetOrganizationPropertyValue(name,value);
+                var ret = target.GetPendingModeInContext(execContext);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> RemoveOrganizationPropertyAsync(this Organization target,System.String name)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> SetModeAsync(this ModeCapable target,ReactiveRTM.RTC.Mode newMode,System.Boolean immediate)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveOrganizationProperty(name);
+                var ret = target.SetMode(newMode,immediate);
+                return ret;
+            });
+        }
+    }
+    public static class MultiModeComponentActionExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> OnModeChangedAsync(this MultiModeComponentAction target,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.OnModeChanged(execHandle);
+                return ret;
+            });
+        }
+    }
+    public static class MultiModeObjectExtensions
+    {
+    }
+    public static class RTObjectExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.ComponentProfile> GetComponentProfileAsync(this RTObject target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetComponentProfile();
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.SDOSystemElement> GetOwnerAsync(this Organization target)
+        public static Task<List<ReactiveRTM.RTC.PortService>> GetPortsAsync(this RTObject target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetOwner();
+                var ret = target.GetPorts();
+                return ret;
+            });
+        }
+    }
+    public static class PortServiceExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.PortProfile> GetPortProfileAsync(this PortService target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetPortProfile();
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> SetOwnerAsync(this Organization target,ReactiveRTM.org.omg.SDOPackage.SDOSystemElement sdo)
+        public static Task<List<ReactiveRTM.RTC.ConnectorProfile>> GetConnectorProfilesAsync(this PortService target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.SetOwner(sdo);
+                var ret = target.GetConnectorProfiles();
                 return ret;
             });
         }
  
-        public static Task<List<ReactiveRTM.org.omg.SDOPackage.SDO>> GetMembersAsync(this Organization target)
+        public static Task<ReactiveRTM.RTC.ConnectorProfile> GetConnectorProfileAsync(this PortService target,System.String connectorId)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetMembers();
+                var ret = target.GetConnectorProfile(connectorId);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> SetMembersAsync(this Organization target,List<ReactiveRTM.org.omg.SDOPackage.SDO> sdos)
+        public static Task<Tuple<ReactiveRTM.RTC.ReturnCode_t,ReactiveRTM.RTC.ConnectorProfile>> ConnectAsync(this PortService target,ReactiveRTM.RTC.ConnectorProfile connectorProfile)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.SetMembers(sdos);
+                var ret = target.Connect(ref connectorProfile);
+                return Tuple.Create(ret,connectorProfile);
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> DisconnectAsync(this PortService target,System.String connectorId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.Disconnect(connectorId);
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> AddMembersAsync(this Organization target,List<ReactiveRTM.org.omg.SDOPackage.SDO> sdoList)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> DisconnectAllAsync(this PortService target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.AddMembers(sdoList);
+                var ret = target.DisconnectAll();
                 return ret;
             });
         }
  
-        public static Task<System.Boolean> RemoveMemberAsync(this Organization target,System.String id)
+        public static Task<Tuple<ReactiveRTM.RTC.ReturnCode_t,ReactiveRTM.RTC.ConnectorProfile>> NotifyConnectAsync(this PortService target,ReactiveRTM.RTC.ConnectorProfile connectorProfile)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.RemoveMember(id);
+                var ret = target.NotifyConnect(ref connectorProfile);
+                return Tuple.Create(ret,connectorProfile);
+            });
+        }
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> NotifyDisconnectAsync(this PortService target,System.String connectorId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.NotifyDisconnect(connectorId);
+                return ret;
+            });
+        }
+    }
+    public static class FsmObjectExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> SendStimulusAsync(this FsmObject target,System.String message,System.Int32 execHandle)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SendStimulus(message,execHandle);
+                return ret;
+            });
+        }
+    }
+    public static class FsmServiceExtensions
+    {
+ 
+        public static Task<ReactiveRTM.RTC.FsmProfile> GetFsmProfileAsync(this FsmService target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetFsmProfile();
                 return ret;
             });
         }
  
-        public static Task<ReactiveRTM.org.omg.SDOPackage.DependencyType> GetDependencyAsync(this Organization target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> SetFsmProfileAsync(this FsmService target,ReactiveRTM.RTC.FsmProfile fsmProfile)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.GetDependency();
+                var ret = target.SetFsmProfile(fsmProfile);
                 return ret;
             });
         }
+    }
+    public static class ExecutionContextServiceExtensions
+    {
  
-        public static Task<System.Boolean> SetDependencyAsync(this Organization target,ReactiveRTM.org.omg.SDOPackage.DependencyType dependency)
+        public static Task<ReactiveRTM.RTC.ExecutionContextProfile> GetProfileAsync(this ExecutionContextService target)
         {
             return Task.Factory.StartNew(()=>{
-                var ret = target.SetDependency(dependency);
+                var ret = target.GetProfile();
                 return ret;
             });
         }
@@ -1547,7 +1189,7 @@ namespace ReactiveRTM.RTM
     public static class ManagerExtensions
     {
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> LoadModuleAsync(this Manager target,System.String pathname,System.String initfunc)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> LoadModuleAsync(this Manager target,System.String pathname,System.String initfunc)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.LoadModule(pathname,initfunc);
@@ -1555,7 +1197,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> UnloadModuleAsync(this Manager target,System.String pathname)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> UnloadModuleAsync(this Manager target,System.String pathname)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.UnloadModule(pathname);
@@ -1587,7 +1229,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.RTObject> CreateComponentAsync(this Manager target,System.String moduleName)
+        public static Task<ReactiveRTM.RTC.RTObject> CreateComponentAsync(this Manager target,System.String moduleName)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.CreateComponent(moduleName);
@@ -1595,7 +1237,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> DeleteComponentAsync(this Manager target,System.String instanceName)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> DeleteComponentAsync(this Manager target,System.String instanceName)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.DeleteComponent(instanceName);
@@ -1603,7 +1245,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<List<ReactiveRTM.omg.org.RTC.RTObject>> GetComponentsAsync(this Manager target)
+        public static Task<List<ReactiveRTM.RTC.RTObject>> GetComponentsAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.GetComponents();
@@ -1611,7 +1253,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<List<ReactiveRTM.omg.org.RTC.ComponentProfile>> GetComponentProfilesAsync(this Manager target)
+        public static Task<List<ReactiveRTM.RTC.ComponentProfile>> GetComponentProfilesAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.GetComponentProfiles();
@@ -1627,7 +1269,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<System.Collections.Generic.Dictionary<System.String,System.Object>> GetConfigurationAsync(this Manager target)
+        public static Task<Dictionary<string,object>> GetConfigurationAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.GetConfiguration();
@@ -1635,7 +1277,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> SetConfigurationAsync(this Manager target,System.String name,System.String value)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> SetConfigurationAsync(this Manager target,System.String name,System.String value)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.SetConfiguration(name,value);
@@ -1659,7 +1301,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> AddMasterManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> AddMasterManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.AddMasterManager(mgr);
@@ -1667,7 +1309,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> RemoveMasterManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> RemoveMasterManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.RemoveMasterManager(mgr);
@@ -1683,7 +1325,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> AddSlaveManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> AddSlaveManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.AddSlaveManager(mgr);
@@ -1691,7 +1333,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> RemoveSlaveManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> RemoveSlaveManagerAsync(this Manager target,ReactiveRTM.RTM.Manager mgr)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.RemoveSlaveManager(mgr);
@@ -1699,7 +1341,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> ForkAsync(this Manager target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> ForkAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.Fork();
@@ -1707,7 +1349,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> ShutdownAsync(this Manager target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> ShutdownAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.Shutdown();
@@ -1715,7 +1357,7 @@ namespace ReactiveRTM.RTM
             });
         }
  
-        public static Task<ReactiveRTM.omg.org.RTC.ReturnCode_t> RestartAsync(this Manager target)
+        public static Task<ReactiveRTM.RTC.ReturnCode_t> RestartAsync(this Manager target)
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.Restart();
@@ -1727,6 +1369,364 @@ namespace ReactiveRTM.RTM
         {
             return Task.Factory.StartNew(()=>{
                 var ret = target.GetService(name);
+                return ret;
+            });
+        }
+    }
+}
+ 
+namespace ReactiveRTM.SDOPackage
+{
+    public static class SDOExtensions
+    {
+ 
+        public static Task<System.String> GetSdoIdAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetSdoId();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.String> GetSdoTypeAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetSdoType();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.DeviceProfile> GetDeviceProfileAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetDeviceProfile();
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.ServiceProfile>> GetServiceProfilesAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetServiceProfiles();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.ServiceProfile> GetServiceProfileAsync(this SDO target,System.String id)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetServiceProfile(id);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.SDOService> GetSdoServiceAsync(this SDO target,System.String id)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetSdoService(id);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.Configuration> GetConfigurationAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfiguration();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.Monitoring> GetMonitoringAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetMonitoring();
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.Organization>> GetOrganizationsAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOrganizations();
+                return ret;
+            });
+        }
+ 
+        public static Task<Dictionary<string,object>> GetStatusListAsync(this SDO target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetStatusList();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Object> GetStatusAsync(this SDO target,System.String nme)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetStatus(nme);
+                return ret;
+            });
+        }
+    }
+    public static class SDOServiceExtensions
+    {
+    }
+    public static class SDOSystemElementExtensions
+    {
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.Organization>> GetOwnedOrganizationsAsync(this SDOSystemElement target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOwnedOrganizations();
+                return ret;
+            });
+        }
+    }
+    public static class ConfigurationExtensions
+    {
+ 
+        public static Task<System.Boolean> SetDeviceProfileAsync(this Configuration target,ReactiveRTM.SDOPackage.DeviceProfile dProfile)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetDeviceProfile(dProfile);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> AddServiceProfileAsync(this Configuration target,ReactiveRTM.SDOPackage.ServiceProfile sProfile)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AddServiceProfile(sProfile);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> AddOrganizationAsync(this Configuration target,ReactiveRTM.SDOPackage.Organization organizationObject)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AddOrganization(organizationObject);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> RemoveServiceProfileAsync(this Configuration target,System.String id)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.RemoveServiceProfile(id);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> RemoveOrganizationAsync(this Configuration target,System.String organizationId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.RemoveOrganization(organizationId);
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.Parameter>> GetConfigurationParametersAsync(this Configuration target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfigurationParameters();
+                return ret;
+            });
+        }
+ 
+        public static Task<Dictionary<string,object>> GetConfigurationParameterValuesAsync(this Configuration target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfigurationParameterValues();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Object> GetConfigurationParameterValueAsync(this Configuration target,System.String name)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfigurationParameterValue(name);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetConfigurationParameterAsync(this Configuration target,System.String name,System.Object value)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetConfigurationParameter(name,value);
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.ConfigurationSet>> GetConfigurationSetsAsync(this Configuration target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfigurationSets();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.ConfigurationSet> GetConfigurationSetAsync(this Configuration target,System.String configId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetConfigurationSet(configId);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetConfigurationSetValuesAsync(this Configuration target,ReactiveRTM.SDOPackage.ConfigurationSet configurationSet)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetConfigurationSetValues(configurationSet);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.ConfigurationSet> GetActiveConfigurationSetAsync(this Configuration target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetActiveConfigurationSet();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> AddConfigurationSetAsync(this Configuration target,ReactiveRTM.SDOPackage.ConfigurationSet configurationSet)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AddConfigurationSet(configurationSet);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> RemoveConfigurationSetAsync(this Configuration target,System.String configId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.RemoveConfigurationSet(configId);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> ActivateConfigurationSetAsync(this Configuration target,System.String configId)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.ActivateConfigurationSet(configId);
+                return ret;
+            });
+        }
+    }
+    public static class MonitoringExtensions
+    {
+    }
+    public static class OrganizationExtensions
+    {
+ 
+        public static Task<System.String> GetOrganizationIdAsync(this Organization target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOrganizationId();
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.OrganizationProperty> GetOrganizationPropertyAsync(this Organization target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOrganizationProperty();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Object> GetOrganizationPropertyValueAsync(this Organization target,System.String name)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOrganizationPropertyValue(name);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> AddOrganizationPropertyAsync(this Organization target,ReactiveRTM.SDOPackage.OrganizationProperty organizationProperty)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AddOrganizationProperty(organizationProperty);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetOrganizationPropertyValueAsync(this Organization target,System.String name,System.Object value)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetOrganizationPropertyValue(name,value);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> RemoveOrganizationPropertyAsync(this Organization target,System.String name)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.RemoveOrganizationProperty(name);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.SDOSystemElement> GetOwnerAsync(this Organization target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetOwner();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetOwnerAsync(this Organization target,ReactiveRTM.SDOPackage.SDOSystemElement sdo)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetOwner(sdo);
+                return ret;
+            });
+        }
+ 
+        public static Task<List<ReactiveRTM.SDOPackage.SDO>> GetMembersAsync(this Organization target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetMembers();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetMembersAsync(this Organization target,List<ReactiveRTM.SDOPackage.SDO> sdos)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetMembers(sdos);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> AddMembersAsync(this Organization target,List<ReactiveRTM.SDOPackage.SDO> sdoList)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.AddMembers(sdoList);
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> RemoveMemberAsync(this Organization target,System.String id)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.RemoveMember(id);
+                return ret;
+            });
+        }
+ 
+        public static Task<ReactiveRTM.SDOPackage.DependencyType> GetDependencyAsync(this Organization target)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.GetDependency();
+                return ret;
+            });
+        }
+ 
+        public static Task<System.Boolean> SetDependencyAsync(this Organization target,ReactiveRTM.SDOPackage.DependencyType dependency)
+        {
+            return Task.Factory.StartNew(()=>{
+                var ret = target.SetDependency(dependency);
                 return ret;
             });
         }

@@ -3,9 +3,9 @@ using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using ReactiveRTM.Corba;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
-using DataFlowComponent = ReactiveRTM.openrtm.aist.go.jp.OpenRTM.DataFlowComponent;
+using DataFlowComponent = ReactiveRTM.OpenRTM.DataFlowComponent;
 
 namespace ReactiveRTM.Core
 {

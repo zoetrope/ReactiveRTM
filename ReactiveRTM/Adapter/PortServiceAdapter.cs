@@ -6,7 +6,7 @@ using System.Text;
 using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
-using ReactiveRTM.omg.org.RTC;
+using ReactiveRTM.RTC;
 
 namespace ReactiveRTM.Adapter
 {

@@ -9,6 +9,8 @@ namespace ReactiveRTM.Support
 {
     public static class GeneratorUtility
     {
+        public const string BaseNamespace = "ReactiveRTM";
+
         public static string SnakeCaseToCamelCase(string snake, bool firstIsLarge = true)
         {
             string camel = "";
@@ -39,6 +41,7 @@ namespace ReactiveRTM.Support
         {
             if (type.IsPrimitive) return true;
             if (type == typeof(string)) return true;
+            if (type == typeof(object)) return true;
 
             return false;
         }
@@ -82,7 +85,7 @@ namespace ReactiveRTM.Support
         {
             if (type == typeof(void)) return "void";
             if (IsPrimitive(type)) return type.FullName;
-            return Join(BaseNamespace, type.FullName);
+            return Join(BaseNamespace, type.Namespace.Split('.').LastOrDefault(), type.Name);
         }
 
         public static string GetFullDataName(Type type)
@@ -95,7 +98,7 @@ namespace ReactiveRTM.Support
             }
             if (IsPrimitive(type)) return type.FullName;
             if (IsUnion(type)) return GetIiopName(type);
-            return Join(BaseNamespace, type.FullName);
+            return Join(BaseNamespace, type.Namespace.Split('.').LastOrDefault(), type.Name);
         }
 
         public static string GetFullRefTypeName(Type type)
@@ -152,6 +155,7 @@ namespace ReactiveRTM.Support
             if (IsStruct(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
             if (IsInterface(type)) return "((" + GetIiopName(type) + ")((IStub)" + name + ").GetTarget())";
             if (IsUnion(type)) return name;
+            if (type == typeof(MarshalByRefObject)) return "(MarshalByRefObject)" + name;
 
             //if (IsEnum(type)) 
             return "(" + GetIiopName(type) + ")" + name;
@@ -180,28 +184,18 @@ namespace ReactiveRTM.Support
             if (IsStruct(type)) return "new " + GetFullDataName(type) + "(" + name + ")";
             if (IsInterface(type)) return "new " + GetFullName(type) + "Stub(" + name + ")";
             if (IsUnion(type)) return name;
+            if (type == typeof(MarshalByRefObject)) return "(object)" + name;
 
             //if (IsEnum(type)) 
-            return "(" + type.FullName + ")" + name;
+            return "(" + GetFullName(type)+ ")" + name;
         }
 
 
 
-        public static string Join(string s1, string s2)
+        public static string Join(params string[] sttrs)
         {
-            
-            if (string.IsNullOrEmpty(s1))
-            {
-                return s2;
-            }
-            if (string.IsNullOrEmpty(s2))
-            {
-                return s1;
-            }
-
-            return s1 + "." + s2;
+            return string.Join(".", sttrs.Where(x => !string.IsNullOrEmpty(x)));
         }
 
-        public const string BaseNamespace = "ReactiveRTM";
     }
 }

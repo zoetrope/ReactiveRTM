@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
-using ReactiveRTM.omg.org.RTC;
 
 /// <summary>
 /// データポートからの入力データをコンソールに出力する
