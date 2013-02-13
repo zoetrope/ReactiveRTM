@@ -2,6 +2,7 @@
 using ReactiveRTM.Adapter;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Servant;
 
 namespace ReactiveRTM.Core
 {
@@ -45,7 +46,7 @@ namespace ReactiveRTM.Core
 
         public void Initialize(PortProfile prof)
         {
-            PortService = new PortServiceImpl(this, prof);
+            PortService = new PortServiceServant(this, prof);
         }
 
         public string Name { get; set; }

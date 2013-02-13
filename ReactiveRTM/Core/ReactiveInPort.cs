@@ -11,6 +11,7 @@ using ReactiveRTM.RTC;
 using ReactiveRTM.OpenRTM;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using ReactiveRTM.Servant;
 
 namespace ReactiveRTM.Core
 {
@@ -18,7 +19,7 @@ namespace ReactiveRTM.Core
     {
         private Subject<TDataType> _source;
         private CdrSerializer<TDataType> _serializer;
-        private InPortCdrImpl _adapter;
+        private InPortCdrServant _adapter;
 
         public ReactiveInPort(string name)
             : base(name)
@@ -27,7 +28,7 @@ namespace ReactiveRTM.Core
             var factory = new CdrSerializerFactory();
             _serializer = factory.GetSerializer<TDataType>();
 
-            _adapter = new InPortCdrImpl();
+            _adapter = new InPortCdrServant();
 
             _source = new Subject<TDataType>();
 
@@ -92,7 +93,7 @@ namespace ReactiveRTM.Core
 
             _source = new Subject<TimedWString>();
 
-            var cdr = new InPortCdrImpl();
+            var cdr = new InPortCdrServant();
 
             cdr.DataReceivedAsObservable()
                 .Subscribe(x => _source.OnNext(Parse(x)));

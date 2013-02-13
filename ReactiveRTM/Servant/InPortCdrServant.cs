@@ -5,19 +5,19 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 
-namespace ReactiveRTM.Adapter
+namespace ReactiveRTM.Servant
 {
     public class DataReceivedEventArgs : EventArgs
     {
         public List<byte> Data { get; set; }
     }
 
-    public class InPortCdrImpl : InPortCdr
+    public class InPortCdrServant : InPortCdr
     {
         //ここにイベントを置く？
         public event EventHandler<DataReceivedEventArgs> DataReceived;
 
-        public InPortCdrImpl()
+        public InPortCdrServant()
         {
             
         }
@@ -37,7 +37,7 @@ namespace ReactiveRTM.Adapter
     
     internal static class ReactiveComponentExtension
     {
-        internal static IObservable<List<byte>> DataReceivedAsObservable(this InPortCdrImpl target)
+        internal static IObservable<List<byte>> DataReceivedAsObservable(this InPortCdrServant target)
         {
             return Observable.FromEventPattern<EventHandler<DataReceivedEventArgs>, DataReceivedEventArgs>(
                     h => h.Invoke,

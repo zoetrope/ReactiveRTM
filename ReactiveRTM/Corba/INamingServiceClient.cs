@@ -5,10 +5,7 @@ namespace ReactiveRTM.Corba
 {
     public interface INamingServiceClient : IDisposable
     {
-        string Key { get; }
-        string HostName { get; }
-        int PortNumber { get; }
-
+        void Initialize(Dictionary<string, string> setting);
         /// <summary>
         /// コンポーネントをネーミングサービスに登録する
         /// </summary>

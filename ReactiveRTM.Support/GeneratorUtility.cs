@@ -130,8 +130,30 @@ namespace ReactiveRTM.Support
 
         public static string GetEqualsMethod(Type type)
         {
-            if (type.IsArray) return "SequenceEqual";
-            return "Equals";
+            if (type.IsArray) return ".SequenceEqual";
+            if (type.IsValueType) return ".Equals";
+            return " == ";
+        }
+        public static string GetInitialzier(Type type)
+        {
+            if (type.IsArray) return "new " + GetFullRefTypeName(type) + "()";
+            if (type == typeof(string)) return "string.Empty";
+            if (type == typeof(global::RTC.Time)) return "default(" + GetFullRefTypeName(type) + ")";
+            if (type.IsValueType) return "new " + GetFullRefTypeName(type) + "()";
+            return "default(" + GetFullRefTypeName(type) + ")";
+        }
+        public static string GetHashMethod(Type type, string name)
+        {
+            if (type.IsArray)
+            {
+                if (type.GetElementType() == typeof(global::org.omg.SDOPackage.NameValue))
+                {
+                    return name + ".Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode())";
+                }
+                return name + ".Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode())";
+            }
+
+            return "(result * 397) ^ " + name + ".GetHashCode()";
         }
         
         public static string ToIiop(Type type, string name)

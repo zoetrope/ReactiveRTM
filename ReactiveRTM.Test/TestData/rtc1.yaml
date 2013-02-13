@@ -36,6 +36,7 @@ Manager:
   MasterManager: hoge
   ShutdownOnNortcs: true
   ShutdownAuto: true
+  AutoShutdownDuration: 10.0
   PrecreateComponents:
   - TypeName: test
     InstanceName: test01
@@ -47,6 +48,25 @@ Timer:
 ExecutionContext: 
   Type: Periodic
   Rate: 1000
+  
+SdoService:
+  Provider:
+    AvailableServices:
+    - a
+    - b
+    EnabledServices:
+    - a
+    - b
+    ProvidingServices:
+    - a
+    - b
+  Consumer:
+    AvailableServices:
+    - a
+    - b
+    EnabledServices:
+    - a
+    - b
 
 Corba:
   Common:

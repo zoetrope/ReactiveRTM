@@ -4,14 +4,14 @@ using ReactiveRTM.SDOPackage;
 using ReactiveRTM.RTC;
 using System.Collections.Generic;
 
-namespace ReactiveRTM.Adapter
+namespace ReactiveRTM.Servant
 {
-    public class ConfigurationImpl : Configuration
+    public class ConfigurationServant : Configuration, IServant
     {
-        private DataFlowComponentImpl _owner;
+        private DataFlowComponentServant _owner;
         private ComponentObserver _observer;
 
-        public ConfigurationImpl(DataFlowComponentImpl owner)
+        public ConfigurationServant(DataFlowComponentServant owner)
         {
             _owner = owner;
         }

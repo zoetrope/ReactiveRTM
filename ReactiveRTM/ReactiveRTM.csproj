@@ -100,13 +100,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Servant\ManagerServant.cs" />
     <Compile Include="CodeGenerator\Adapter.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Adapter.tt</DependentUpon>
     </Compile>
-    <Compile Include="Core\RtcSetting.cs" />
-    <Compile Include="Data\Converter.cs" />
+    <Compile Include="Corba\DummyNamingServiceClient.cs" />
+    <Compile Include="Corba\NamingServiceContainer.cs" />
+    <Compile Include="Core\ModuleManager.cs" />
+    <Compile Include="Servant\IServant.cs" />
+    <Compile Include="Utility\RtcSetting.cs" />
+    <Compile Include="Extensions\Converter.cs" />
     <Compile Include="CodeGenerator\Data.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,7 +122,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Extension.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\FormalType.cs" />
     <Compile Include="CodeGenerator\Interface.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,12 +143,12 @@
     <Compile Include="Extensions\ObservableComponentExtensions.cs" />
     <Compile Include="IDL\ISimpleService.cs" />
     <Compile Include="Utility\AccessPrivateWrapper.cs" />
-    <Compile Include="Adapter\ComponentObserverAdapter.cs" />
-    <Compile Include="Adapter\DataFlowComponentAdapter.cs" />
-    <Compile Include="Adapter\ExecutionContextServiceAdapter.cs" />
-    <Compile Include="Adapter\InPortCdrAdapter.cs" />
-    <Compile Include="Adapter\PortServiceAdapter.cs" />
-    <Compile Include="Adapter\SimpleServiceAdapter.cs" />
+    <Compile Include="Servant\ComponentObserverServant.cs" />
+    <Compile Include="Servant\DataFlowComponentServant.cs" />
+    <Compile Include="Servant\ExecutionContextServiceServant.cs" />
+    <Compile Include="Servant\InPortCdrServant.cs" />
+    <Compile Include="Servant\PortServiceServant.cs" />
+    <Compile Include="Servant\SimpleServiceServant.cs" />
     <Compile Include="Core\AsyncServiceConsumer.cs" />
     <Compile Include="Corba\CdrSerializer.cs" />
     <Compile Include="Corba\CdrSerializerFactory.cs" />
@@ -156,6 +160,7 @@
     <Compile Include="Corba\INamingServiceClient.cs" />
     <Compile Include="Core\IObservableComponent.cs" />
     <Compile Include="Extensions\NameValueExtensions.cs" />
+    <Compile Include="Utility\LoggerImpl.cs" />
     <Compile Include="Utility\NativeTime.cs" />
     <Compile Include="Core\ObservableComponent.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
@@ -165,12 +170,13 @@
     <Compile Include="Core\ReactiveConfiguration.cs" />
     <Compile Include="Core\ReactiveInPort.cs" />
     <Compile Include="Core\ReactiveOutPort.cs" />
-    <Compile Include="Adapter\ConfigurationAdapter.cs" />
+    <Compile Include="Servant\ConfigurationServant.cs" />
     <Compile Include="Core\RtcManager.cs" />
     <Compile Include="Core\SimpleServiceConsumer.cs" />
     <Compile Include="Core\SimpleServiceProvider.cs" />
     <Compile Include="Utility\RtcLogger.cs" />
     <Compile Include="Utility\RtcLoggerFactoryAdapter.cs" />
+    <Compile Include="Utility\RtcSettingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeGenerator\Adapter.tt">

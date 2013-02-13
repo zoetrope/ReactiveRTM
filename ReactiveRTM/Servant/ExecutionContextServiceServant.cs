@@ -6,10 +6,10 @@ using System.Reactive.Linq;
 using System.Text;
 using ReactiveRTM.RTC;
 
-namespace ReactiveRTM.Adapter
+namespace ReactiveRTM.Servant
 {
 
-    public class ExecutionContextServiceImpl : ExecutionContextService
+    public class ExecutionContextServiceServant : ExecutionContextService, IServant
     {
         private DataFlowComponent _component;
         private IDisposable _executor;
@@ -18,7 +18,7 @@ namespace ReactiveRTM.Adapter
         private bool _isRunning;
         private ExecutionContextProfile _profile;
 
-        public ExecutionContextServiceImpl()
+        public ExecutionContextServiceServant()
         {
             _state = LifeCycleState.CREATED_STATE;
             _timeSpan = TimeSpan.FromSeconds(1);

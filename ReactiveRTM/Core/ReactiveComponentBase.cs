@@ -12,6 +12,7 @@ using ReactiveRTM.Corba;
 using ReactiveRTM.RTC;
 
 using DataFlowComponent = ReactiveRTM.OpenRTM.DataFlowComponent;
+using ReactiveRTM.Servant;
 
 namespace ReactiveRTM.Core
 {
@@ -21,7 +22,7 @@ namespace ReactiveRTM.Core
         {
             Name = instantName;
 
-            _component = new DataFlowComponentImpl(this, instantName, category, typeName, description, vendor, version);
+            _component = new DataFlowComponentServant(this, instantName, category, typeName, description, vendor, version);
 
             Component.Initialize();
 
@@ -34,7 +35,7 @@ namespace ReactiveRTM.Core
             set { _component.ExecutionContextScheduler = value;}
         }
 
-        private DataFlowComponentImpl _component;
+        private DataFlowComponentServant _component;
 
 
         internal void RaiseStateChanged(LifeCycleState state)

@@ -14,6 +14,7 @@ namespace ReactiveRTM.Core
         public ManagerSetting Manager { get; set; }
         public TimerSetting Timer { get; set; }
         public ExecutionContextSetting ExecutionContext { get; set; }
+        public SdoServiceSetting SdoService { get; set; }
         public CorbaSetting Corba { get; set; }
 
         public RtcSetting()
@@ -113,6 +114,7 @@ namespace ReactiveRTM.Core
         public string MasterManager { get; set; }
         public bool? ShutdownOnNortcs { get; set; }
         public bool? ShutdownAuto { get; set; }
+        public double? AutoShutdownDuration { get; set; }
         public List<PrecreateComponent> PrecreateComponents { get; set; }
 
         public ManagerSetting()
@@ -156,6 +158,24 @@ namespace ReactiveRTM.Core
         public string Type { get; set; }
         public int? Rate { get; set; }
     }
+
+    public class SdoServiceSetting
+    {
+        public ProviderSetting Provider { get; set; }
+        public ConsumerSetting Consumer { get; set; }
+    }
+    public class ProviderSetting
+    {
+        public List<string> AvailableServices { get; set; }
+        public List<string> EnabledServices { get; set; }
+        public List<string> ProvidingServices { get; set; }
+    }
+    public class ConsumerSetting
+    {
+        public List<string> AvailableServices { get; set; }
+        public List<string> EnabledServices { get; set; }
+    }
+
 
 
 #if LANG_JP

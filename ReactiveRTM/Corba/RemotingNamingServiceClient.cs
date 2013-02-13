@@ -64,5 +64,10 @@ namespace ReactiveRTM.Corba
         }
         
         #endregion
+
+        public void Initialize(Dictionary<string, string> setting)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

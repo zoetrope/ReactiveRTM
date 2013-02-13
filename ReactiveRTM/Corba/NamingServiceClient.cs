@@ -309,6 +309,11 @@ namespace ReactiveRTM.Corba
         public NamingContextInfo RootContextInfo {
             get { return new NamingContextInfo(null, null, _rootContext); }
         }
+
+        public void Initialize(Dictionary<string, string> setting)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     

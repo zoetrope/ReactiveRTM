@@ -7,16 +7,17 @@ using ReactiveRTM.Corba;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Data;
 
-namespace ReactiveRTM.Adapter
+namespace ReactiveRTM.Servant
 {
 
-    public class PortServiceImpl : PortService
+    public class PortServiceServant : PortService, IServant
     {
         private PortProfile _profile;
         private IConnectable _connector;
 
-        public PortServiceImpl(IConnectable connector, PortProfile prof)
+        public PortServiceServant(IConnectable connector, PortProfile prof)
         {
             _connector = connector;
             _profile = prof;

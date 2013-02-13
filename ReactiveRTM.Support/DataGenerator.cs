@@ -54,6 +54,8 @@ namespace ReactiveRTM.Support
                     .Select(a => new PropertyTemplate
                     {
                         Type = a.FieldType,
+                        Initialize = GU.GetInitialzier(a.FieldType),
+                        Hash = GU.GetHashMethod(a.FieldType, "_" + GU.SnakeCaseToCamelCase(a.Name)),
                         Name = GU.SnakeCaseToCamelCase(a.Name),
                         TypeName = GU.GetFullRefTypeName(a.FieldType),
                         IiopName = a.Name,
@@ -67,6 +69,9 @@ namespace ReactiveRTM.Support
         public class PropertyTemplate
         {
             public Type Type { get; set; }
+
+            public string Initialize { get; set; }
+            public string Hash { get; set; }
 
             public string Name{get;set;}
             public string TypeName{get;set;}

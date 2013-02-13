@@ -11,20 +11,19 @@ using ReactiveRTM.Core;
 using ReactiveRTM.OpenRTM;
 using ReactiveRTM.RTC;
 using ReactiveRTM.SDOPackage;
-using ReactiveRTM.OpenRTM;
 
 using DataFlowComponent = ReactiveRTM.OpenRTM.DataFlowComponent;
 
-namespace ReactiveRTM.Adapter
+namespace ReactiveRTM.Servant
 {
 
-    public class DataFlowComponentImpl : DataFlowComponent
+    public class DataFlowComponentServant : DataFlowComponent, IServant
     {
 
         private IComponentActionListener _listener;
         private Configuration _configuration;
 
-        internal DataFlowComponentImpl(IComponentActionListener listener, string category, string description, string instantName,string typeName, string vendor, string version)
+        internal DataFlowComponentServant(IComponentActionListener listener, string category, string description, string instantName,string typeName, string vendor, string version)
         {
             _profile = new ComponentProfile();
 
@@ -41,7 +40,7 @@ namespace ReactiveRTM.Adapter
             
             _listener = listener;
 
-            _configuration = new ConfigurationImpl(this);
+            _configuration = new ConfigurationServant(this);
         }
         
         public IScheduler ExecutionContextScheduler {
@@ -57,7 +56,7 @@ namespace ReactiveRTM.Adapter
             _observers.Add(observer);
         }
 
-        private ExecutionContextServiceImpl _context;
+        private ExecutionContextServiceServant _context;
 
 
         private ComponentProfile _profile;
@@ -88,7 +87,7 @@ namespace ReactiveRTM.Adapter
 
         public ReturnCode_t Initialize()
         {
-            _context = new ExecutionContextServiceImpl();
+            _context = new ExecutionContextServiceServant();
 
 
             _context.AddComponent(this);

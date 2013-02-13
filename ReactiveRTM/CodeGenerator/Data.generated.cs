@@ -97,9 +97,9 @@ namespace ReactiveRTM.OpenRTM
             get { return _Time; }
             set 
             {
-                if(!_Time.Equals(value))
+                if(!(_Time.Equals(value)))
                 {
-                    _Time  = value;
+                    _Time = value;
                     RaisePropertyChanged("Time");
                 }
             }
@@ -112,9 +112,9 @@ namespace ReactiveRTM.OpenRTM
             get { return _Loggername; }
             set 
             {
-                if(!_Loggername.Equals(value))
+                if(!(_Loggername == (value)))
                 {
-                    _Loggername  = value;
+                    _Loggername = value;
                     RaisePropertyChanged("Loggername");
                 }
             }
@@ -127,9 +127,9 @@ namespace ReactiveRTM.OpenRTM
             get { return _Level; }
             set 
             {
-                if(!_Level.Equals(value))
+                if(!(_Level.Equals(value)))
                 {
-                    _Level  = value;
+                    _Level = value;
                     RaisePropertyChanged("Level");
                 }
             }
@@ -142,9 +142,9 @@ namespace ReactiveRTM.OpenRTM
             get { return _Message; }
             set 
             {
-                if(!_Message.Equals(value))
+                if(!(_Message == (value)))
                 {
-                    _Message  = value;
+                    _Message = value;
                     RaisePropertyChanged("Message");
                 }
             }
@@ -165,7 +165,10 @@ namespace ReactiveRTM.OpenRTM
         }
         public LogRecord ()
         {
-            //TODO: 初期化
+            _Time = default(System.DateTime);
+            _Loggername = string.Empty;
+            _Level = new ReactiveRTM.OpenRTM.LogLevel();
+            _Message = string.Empty;
         }
         public LogRecord (global::OpenRTM.LogRecord source)
         {
@@ -180,7 +183,7 @@ namespace ReactiveRTM.OpenRTM
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Time.Equals(_Time) && other._Loggername.Equals(_Loggername) && other._Level.Equals(_Level) && other._Message.Equals(_Message);
+            return other._Time.Equals(_Time) && other._Loggername == (_Loggername) && other._Level.Equals(_Level) && other._Message == (_Message);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -196,13 +199,9 @@ namespace ReactiveRTM.OpenRTM
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Time.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Loggername.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Level.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Message.GetHashCode();
                 return result;
             }
@@ -262,9 +261,9 @@ namespace ReactiveRTM.RTC
             get { return _Sec; }
             set 
             {
-                if(!_Sec.Equals(value))
+                if(!(_Sec.Equals(value)))
                 {
-                    _Sec  = value;
+                    _Sec = value;
                     RaisePropertyChanged("Sec");
                 }
             }
@@ -277,9 +276,9 @@ namespace ReactiveRTM.RTC
             get { return _Nsec; }
             set 
             {
-                if(!_Nsec.Equals(value))
+                if(!(_Nsec.Equals(value)))
                 {
-                    _Nsec  = value;
+                    _Nsec = value;
                     RaisePropertyChanged("Nsec");
                 }
             }
@@ -298,7 +297,8 @@ namespace ReactiveRTM.RTC
         }
         public Time ()
         {
-            //TODO: 初期化
+            _Sec = new System.Int32();
+            _Nsec = new System.Int32();
         }
         public Time (global::RTC.Time source)
         {
@@ -327,9 +327,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Sec.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Nsec.GetHashCode();
                 return result;
             }
@@ -346,9 +344,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -361,9 +359,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -382,7 +380,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedState ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Int16();
         }
         public TimedState (global::RTC.TimedState source)
         {
@@ -411,9 +410,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -430,9 +427,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -445,9 +442,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -466,7 +463,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedShort ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Int16();
         }
         public TimedShort (global::RTC.TimedShort source)
         {
@@ -495,9 +493,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -514,9 +510,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -529,9 +525,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -550,7 +546,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedLong ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Int32();
         }
         public TimedLong (global::RTC.TimedLong source)
         {
@@ -579,9 +576,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -598,9 +593,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -613,9 +608,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -634,7 +629,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedUShort ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Int16();
         }
         public TimedUShort (global::RTC.TimedUShort source)
         {
@@ -663,9 +659,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -682,9 +676,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -697,9 +691,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -718,7 +712,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedULong ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Int32();
         }
         public TimedULong (global::RTC.TimedULong source)
         {
@@ -747,9 +742,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -766,9 +759,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -781,9 +774,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -802,7 +795,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedFloat ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Single();
         }
         public TimedFloat (global::RTC.TimedFloat source)
         {
@@ -831,9 +825,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -850,9 +842,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -865,9 +857,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -886,7 +878,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedDouble ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Double();
         }
         public TimedDouble (global::RTC.TimedDouble source)
         {
@@ -915,9 +908,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -934,9 +925,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -949,9 +940,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -970,7 +961,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedChar ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Char();
         }
         public TimedChar (global::RTC.TimedChar source)
         {
@@ -999,9 +991,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1018,9 +1008,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1033,9 +1023,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1054,7 +1044,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedWChar ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Char();
         }
         public TimedWChar (global::RTC.TimedWChar source)
         {
@@ -1083,9 +1074,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1102,9 +1091,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1117,9 +1106,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1138,7 +1127,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedBoolean ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Boolean();
         }
         public TimedBoolean (global::RTC.TimedBoolean source)
         {
@@ -1167,9 +1157,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1186,9 +1174,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1201,9 +1189,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1222,7 +1210,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedOctet ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new System.Byte();
         }
         public TimedOctet (global::RTC.TimedOctet source)
         {
@@ -1251,9 +1240,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1270,9 +1257,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1285,9 +1272,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data == (value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1306,7 +1293,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedString ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = string.Empty;
         }
         public TimedString (global::RTC.TimedString source)
         {
@@ -1319,7 +1307,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data == (_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1335,9 +1323,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1354,9 +1340,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1369,9 +1355,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data == (value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1390,7 +1376,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedWString ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = string.Empty;
         }
         public TimedWString (global::RTC.TimedWString source)
         {
@@ -1403,7 +1390,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Tm.Equals(_Tm) && other._Data.Equals(_Data);
+            return other._Tm.Equals(_Tm) && other._Data == (_Data);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -1419,9 +1406,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -1438,9 +1423,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1453,9 +1438,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1474,7 +1459,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedShortSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Int16>();
         }
         public TimedShortSeq (global::RTC.TimedShortSeq source)
         {
@@ -1503,10 +1489,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1522,9 +1506,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1537,9 +1521,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1558,7 +1542,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedLongSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Int32>();
         }
         public TimedLongSeq (global::RTC.TimedLongSeq source)
         {
@@ -1587,10 +1572,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1606,9 +1589,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1621,9 +1604,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1642,7 +1625,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedUShortSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Int16>();
         }
         public TimedUShortSeq (global::RTC.TimedUShortSeq source)
         {
@@ -1671,10 +1655,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1690,9 +1672,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1705,9 +1687,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1726,7 +1708,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedULongSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Int32>();
         }
         public TimedULongSeq (global::RTC.TimedULongSeq source)
         {
@@ -1755,10 +1738,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1774,9 +1755,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1789,9 +1770,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1810,7 +1791,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedFloatSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Single>();
         }
         public TimedFloatSeq (global::RTC.TimedFloatSeq source)
         {
@@ -1839,10 +1821,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1858,9 +1838,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1873,9 +1853,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1894,7 +1874,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedDoubleSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Double>();
         }
         public TimedDoubleSeq (global::RTC.TimedDoubleSeq source)
         {
@@ -1923,10 +1904,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -1942,9 +1921,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -1957,9 +1936,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -1978,7 +1957,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedCharSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Char>();
         }
         public TimedCharSeq (global::RTC.TimedCharSeq source)
         {
@@ -2007,10 +1987,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2026,9 +2004,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -2041,9 +2019,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -2062,7 +2040,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedWCharSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Char>();
         }
         public TimedWCharSeq (global::RTC.TimedWCharSeq source)
         {
@@ -2091,10 +2070,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2110,9 +2087,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -2125,9 +2102,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -2146,7 +2123,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedBooleanSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Boolean>();
         }
         public TimedBooleanSeq (global::RTC.TimedBooleanSeq source)
         {
@@ -2175,10 +2153,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2194,9 +2170,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -2209,9 +2185,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -2230,7 +2206,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedOctetSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.Byte>();
         }
         public TimedOctetSeq (global::RTC.TimedOctetSeq source)
         {
@@ -2259,10 +2236,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2278,9 +2253,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -2293,9 +2268,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -2314,7 +2289,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedStringSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.String>();
         }
         public TimedStringSeq (global::RTC.TimedStringSeq source)
         {
@@ -2343,10 +2319,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2362,9 +2336,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -2377,9 +2351,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.SequenceEqual(value))
+                if(!(_Data.SequenceEqual(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -2398,7 +2372,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedWStringSeq ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new List<System.String>();
         }
         public TimedWStringSeq (global::RTC.TimedWStringSeq source)
         {
@@ -2427,10 +2402,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Data.GetHashCode();
+                result = _Data.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -2446,9 +2419,9 @@ namespace ReactiveRTM.RTC
             get { return _R; }
             set 
             {
-                if(!_R.Equals(value))
+                if(!(_R.Equals(value)))
                 {
-                    _R  = value;
+                    _R = value;
                     RaisePropertyChanged("R");
                 }
             }
@@ -2461,9 +2434,9 @@ namespace ReactiveRTM.RTC
             get { return _G; }
             set 
             {
-                if(!_G.Equals(value))
+                if(!(_G.Equals(value)))
                 {
-                    _G  = value;
+                    _G = value;
                     RaisePropertyChanged("G");
                 }
             }
@@ -2476,9 +2449,9 @@ namespace ReactiveRTM.RTC
             get { return _B; }
             set 
             {
-                if(!_B.Equals(value))
+                if(!(_B.Equals(value)))
                 {
-                    _B  = value;
+                    _B = value;
                     RaisePropertyChanged("B");
                 }
             }
@@ -2498,7 +2471,9 @@ namespace ReactiveRTM.RTC
         }
         public RGBColour ()
         {
-            //TODO: 初期化
+            _R = new System.Double();
+            _G = new System.Double();
+            _B = new System.Double();
         }
         public RGBColour (global::RTC.RGBColour source)
         {
@@ -2528,11 +2503,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _R.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _G.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _B.GetHashCode();
                 return result;
             }
@@ -2549,9 +2521,9 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(!_X.Equals(value))
+                if(!(_X.Equals(value)))
                 {
-                    _X  = value;
+                    _X = value;
                     RaisePropertyChanged("X");
                 }
             }
@@ -2564,9 +2536,9 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(!_Y.Equals(value))
+                if(!(_Y.Equals(value)))
                 {
-                    _Y  = value;
+                    _Y = value;
                     RaisePropertyChanged("Y");
                 }
             }
@@ -2585,7 +2557,8 @@ namespace ReactiveRTM.RTC
         }
         public Point2D ()
         {
-            //TODO: 初期化
+            _X = new System.Double();
+            _Y = new System.Double();
         }
         public Point2D (global::RTC.Point2D source)
         {
@@ -2614,9 +2587,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _X.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Y.GetHashCode();
                 return result;
             }
@@ -2633,9 +2604,9 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(!_X.Equals(value))
+                if(!(_X.Equals(value)))
                 {
-                    _X  = value;
+                    _X = value;
                     RaisePropertyChanged("X");
                 }
             }
@@ -2648,9 +2619,9 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(!_Y.Equals(value))
+                if(!(_Y.Equals(value)))
                 {
-                    _Y  = value;
+                    _Y = value;
                     RaisePropertyChanged("Y");
                 }
             }
@@ -2669,7 +2640,8 @@ namespace ReactiveRTM.RTC
         }
         public Vector2D ()
         {
-            //TODO: 初期化
+            _X = new System.Double();
+            _Y = new System.Double();
         }
         public Vector2D (global::RTC.Vector2D source)
         {
@@ -2698,9 +2670,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _X.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Y.GetHashCode();
                 return result;
             }
@@ -2717,9 +2687,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -2732,9 +2702,9 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(!_Heading.Equals(value))
+                if(!(_Heading.Equals(value)))
                 {
-                    _Heading  = value;
+                    _Heading = value;
                     RaisePropertyChanged("Heading");
                 }
             }
@@ -2753,7 +2723,8 @@ namespace ReactiveRTM.RTC
         }
         public Pose2D ()
         {
-            //TODO: 初期化
+            _Position = new ReactiveRTM.RTC.Point2D();
+            _Heading = new System.Double();
         }
         public Pose2D (global::RTC.Pose2D source)
         {
@@ -2782,9 +2753,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Heading.GetHashCode();
                 return result;
             }
@@ -2801,9 +2770,9 @@ namespace ReactiveRTM.RTC
             get { return _Vx; }
             set 
             {
-                if(!_Vx.Equals(value))
+                if(!(_Vx.Equals(value)))
                 {
-                    _Vx  = value;
+                    _Vx = value;
                     RaisePropertyChanged("Vx");
                 }
             }
@@ -2816,9 +2785,9 @@ namespace ReactiveRTM.RTC
             get { return _Vy; }
             set 
             {
-                if(!_Vy.Equals(value))
+                if(!(_Vy.Equals(value)))
                 {
-                    _Vy  = value;
+                    _Vy = value;
                     RaisePropertyChanged("Vy");
                 }
             }
@@ -2831,9 +2800,9 @@ namespace ReactiveRTM.RTC
             get { return _Va; }
             set 
             {
-                if(!_Va.Equals(value))
+                if(!(_Va.Equals(value)))
                 {
-                    _Va  = value;
+                    _Va = value;
                     RaisePropertyChanged("Va");
                 }
             }
@@ -2853,7 +2822,9 @@ namespace ReactiveRTM.RTC
         }
         public Velocity2D ()
         {
-            //TODO: 初期化
+            _Vx = new System.Double();
+            _Vy = new System.Double();
+            _Va = new System.Double();
         }
         public Velocity2D (global::RTC.Velocity2D source)
         {
@@ -2883,11 +2854,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Va.GetHashCode();
                 return result;
             }
@@ -2904,9 +2872,9 @@ namespace ReactiveRTM.RTC
             get { return _Ax; }
             set 
             {
-                if(!_Ax.Equals(value))
+                if(!(_Ax.Equals(value)))
                 {
-                    _Ax  = value;
+                    _Ax = value;
                     RaisePropertyChanged("Ax");
                 }
             }
@@ -2919,9 +2887,9 @@ namespace ReactiveRTM.RTC
             get { return _Ay; }
             set 
             {
-                if(!_Ay.Equals(value))
+                if(!(_Ay.Equals(value)))
                 {
-                    _Ay  = value;
+                    _Ay = value;
                     RaisePropertyChanged("Ay");
                 }
             }
@@ -2940,7 +2908,8 @@ namespace ReactiveRTM.RTC
         }
         public Acceleration2D ()
         {
-            //TODO: 初期化
+            _Ax = new System.Double();
+            _Ay = new System.Double();
         }
         public Acceleration2D (global::RTC.Acceleration2D source)
         {
@@ -2969,9 +2938,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ax.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ay.GetHashCode();
                 return result;
             }
@@ -2988,9 +2955,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -3003,9 +2970,9 @@ namespace ReactiveRTM.RTC
             get { return _Velocities; }
             set 
             {
-                if(!_Velocities.Equals(value))
+                if(!(_Velocities.Equals(value)))
                 {
-                    _Velocities  = value;
+                    _Velocities = value;
                     RaisePropertyChanged("Velocities");
                 }
             }
@@ -3024,7 +2991,8 @@ namespace ReactiveRTM.RTC
         }
         public PoseVel2D ()
         {
-            //TODO: 初期化
+            _Pose = new ReactiveRTM.RTC.Pose2D();
+            _Velocities = new ReactiveRTM.RTC.Velocity2D();
         }
         public PoseVel2D (global::RTC.PoseVel2D source)
         {
@@ -3053,9 +3021,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Velocities.GetHashCode();
                 return result;
             }
@@ -3072,9 +3038,9 @@ namespace ReactiveRTM.RTC
             get { return _L; }
             set 
             {
-                if(!_L.Equals(value))
+                if(!(_L.Equals(value)))
                 {
-                    _L  = value;
+                    _L = value;
                     RaisePropertyChanged("L");
                 }
             }
@@ -3087,9 +3053,9 @@ namespace ReactiveRTM.RTC
             get { return _W; }
             set 
             {
-                if(!_W.Equals(value))
+                if(!(_W.Equals(value)))
                 {
-                    _W  = value;
+                    _W = value;
                     RaisePropertyChanged("W");
                 }
             }
@@ -3108,7 +3074,8 @@ namespace ReactiveRTM.RTC
         }
         public Size2D ()
         {
-            //TODO: 初期化
+            _L = new System.Double();
+            _W = new System.Double();
         }
         public Size2D (global::RTC.Size2D source)
         {
@@ -3137,9 +3104,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _L.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _W.GetHashCode();
                 return result;
             }
@@ -3156,9 +3121,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -3171,9 +3136,9 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(!_Size.Equals(value))
+                if(!(_Size.Equals(value)))
                 {
-                    _Size  = value;
+                    _Size = value;
                     RaisePropertyChanged("Size");
                 }
             }
@@ -3192,7 +3157,8 @@ namespace ReactiveRTM.RTC
         }
         public Geometry2D ()
         {
-            //TODO: 初期化
+            _Pose = new ReactiveRTM.RTC.Pose2D();
+            _Size = new ReactiveRTM.RTC.Size2D();
         }
         public Geometry2D (global::RTC.Geometry2D source)
         {
@@ -3221,9 +3187,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Size.GetHashCode();
                 return result;
             }
@@ -3240,9 +3204,9 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(!_Xx.Equals(value))
+                if(!(_Xx.Equals(value)))
                 {
-                    _Xx  = value;
+                    _Xx = value;
                     RaisePropertyChanged("Xx");
                 }
             }
@@ -3255,9 +3219,9 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(!_Xy.Equals(value))
+                if(!(_Xy.Equals(value)))
                 {
-                    _Xy  = value;
+                    _Xy = value;
                     RaisePropertyChanged("Xy");
                 }
             }
@@ -3270,9 +3234,9 @@ namespace ReactiveRTM.RTC
             get { return _Xt; }
             set 
             {
-                if(!_Xt.Equals(value))
+                if(!(_Xt.Equals(value)))
                 {
-                    _Xt  = value;
+                    _Xt = value;
                     RaisePropertyChanged("Xt");
                 }
             }
@@ -3285,9 +3249,9 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(!_Yy.Equals(value))
+                if(!(_Yy.Equals(value)))
                 {
-                    _Yy  = value;
+                    _Yy = value;
                     RaisePropertyChanged("Yy");
                 }
             }
@@ -3300,9 +3264,9 @@ namespace ReactiveRTM.RTC
             get { return _Yt; }
             set 
             {
-                if(!_Yt.Equals(value))
+                if(!(_Yt.Equals(value)))
                 {
-                    _Yt  = value;
+                    _Yt = value;
                     RaisePropertyChanged("Yt");
                 }
             }
@@ -3315,9 +3279,9 @@ namespace ReactiveRTM.RTC
             get { return _Tt; }
             set 
             {
-                if(!_Tt.Equals(value))
+                if(!(_Tt.Equals(value)))
                 {
-                    _Tt  = value;
+                    _Tt = value;
                     RaisePropertyChanged("Tt");
                 }
             }
@@ -3340,7 +3304,12 @@ namespace ReactiveRTM.RTC
         }
         public Covariance2D ()
         {
-            //TODO: 初期化
+            _Xx = new System.Double();
+            _Xy = new System.Double();
+            _Xt = new System.Double();
+            _Yy = new System.Double();
+            _Yt = new System.Double();
+            _Tt = new System.Double();
         }
         public Covariance2D (global::RTC.Covariance2D source)
         {
@@ -3373,17 +3342,11 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xt.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yt.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tt.GetHashCode();
                 return result;
             }
@@ -3400,9 +3363,9 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(!_Xx.Equals(value))
+                if(!(_Xx.Equals(value)))
                 {
-                    _Xx  = value;
+                    _Xx = value;
                     RaisePropertyChanged("Xx");
                 }
             }
@@ -3415,9 +3378,9 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(!_Xy.Equals(value))
+                if(!(_Xy.Equals(value)))
                 {
-                    _Xy  = value;
+                    _Xy = value;
                     RaisePropertyChanged("Xy");
                 }
             }
@@ -3430,9 +3393,9 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(!_Yy.Equals(value))
+                if(!(_Yy.Equals(value)))
                 {
-                    _Yy  = value;
+                    _Yy = value;
                     RaisePropertyChanged("Yy");
                 }
             }
@@ -3452,7 +3415,9 @@ namespace ReactiveRTM.RTC
         }
         public PointCovariance2D ()
         {
-            //TODO: 初期化
+            _Xx = new System.Double();
+            _Xy = new System.Double();
+            _Yy = new System.Double();
         }
         public PointCovariance2D (global::RTC.PointCovariance2D source)
         {
@@ -3482,11 +3447,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yy.GetHashCode();
                 return result;
             }
@@ -3503,9 +3465,9 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(!_Speed.Equals(value))
+                if(!(_Speed.Equals(value)))
                 {
-                    _Speed  = value;
+                    _Speed = value;
                     RaisePropertyChanged("Speed");
                 }
             }
@@ -3518,9 +3480,9 @@ namespace ReactiveRTM.RTC
             get { return _SteeringAngle; }
             set 
             {
-                if(!_SteeringAngle.Equals(value))
+                if(!(_SteeringAngle.Equals(value)))
                 {
-                    _SteeringAngle  = value;
+                    _SteeringAngle = value;
                     RaisePropertyChanged("SteeringAngle");
                 }
             }
@@ -3539,7 +3501,8 @@ namespace ReactiveRTM.RTC
         }
         public Carlike ()
         {
-            //TODO: 初期化
+            _Speed = new System.Double();
+            _SteeringAngle = new System.Double();
         }
         public Carlike (global::RTC.Carlike source)
         {
@@ -3568,9 +3531,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Speed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _SteeringAngle.GetHashCode();
                 return result;
             }
@@ -3587,9 +3548,9 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(!_Speed.Equals(value))
+                if(!(_Speed.Equals(value)))
                 {
-                    _Speed  = value;
+                    _Speed = value;
                     RaisePropertyChanged("Speed");
                 }
             }
@@ -3602,9 +3563,9 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(!_Heading.Equals(value))
+                if(!(_Heading.Equals(value)))
                 {
-                    _Heading  = value;
+                    _Heading = value;
                     RaisePropertyChanged("Heading");
                 }
             }
@@ -3623,7 +3584,8 @@ namespace ReactiveRTM.RTC
         }
         public SpeedHeading2D ()
         {
-            //TODO: 初期化
+            _Speed = new System.Double();
+            _Heading = new System.Double();
         }
         public SpeedHeading2D (global::RTC.SpeedHeading2D source)
         {
@@ -3652,9 +3614,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Speed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Heading.GetHashCode();
                 return result;
             }
@@ -3671,9 +3631,9 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(!_X.Equals(value))
+                if(!(_X.Equals(value)))
                 {
-                    _X  = value;
+                    _X = value;
                     RaisePropertyChanged("X");
                 }
             }
@@ -3686,9 +3646,9 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(!_Y.Equals(value))
+                if(!(_Y.Equals(value)))
                 {
-                    _Y  = value;
+                    _Y = value;
                     RaisePropertyChanged("Y");
                 }
             }
@@ -3701,9 +3661,9 @@ namespace ReactiveRTM.RTC
             get { return _Z; }
             set 
             {
-                if(!_Z.Equals(value))
+                if(!(_Z.Equals(value)))
                 {
-                    _Z  = value;
+                    _Z = value;
                     RaisePropertyChanged("Z");
                 }
             }
@@ -3723,7 +3683,9 @@ namespace ReactiveRTM.RTC
         }
         public Point3D ()
         {
-            //TODO: 初期化
+            _X = new System.Double();
+            _Y = new System.Double();
+            _Z = new System.Double();
         }
         public Point3D (global::RTC.Point3D source)
         {
@@ -3753,11 +3715,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _X.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Y.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Z.GetHashCode();
                 return result;
             }
@@ -3774,9 +3733,9 @@ namespace ReactiveRTM.RTC
             get { return _X; }
             set 
             {
-                if(!_X.Equals(value))
+                if(!(_X.Equals(value)))
                 {
-                    _X  = value;
+                    _X = value;
                     RaisePropertyChanged("X");
                 }
             }
@@ -3789,9 +3748,9 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(!_Y.Equals(value))
+                if(!(_Y.Equals(value)))
                 {
-                    _Y  = value;
+                    _Y = value;
                     RaisePropertyChanged("Y");
                 }
             }
@@ -3804,9 +3763,9 @@ namespace ReactiveRTM.RTC
             get { return _Z; }
             set 
             {
-                if(!_Z.Equals(value))
+                if(!(_Z.Equals(value)))
                 {
-                    _Z  = value;
+                    _Z = value;
                     RaisePropertyChanged("Z");
                 }
             }
@@ -3826,7 +3785,9 @@ namespace ReactiveRTM.RTC
         }
         public Vector3D ()
         {
-            //TODO: 初期化
+            _X = new System.Double();
+            _Y = new System.Double();
+            _Z = new System.Double();
         }
         public Vector3D (global::RTC.Vector3D source)
         {
@@ -3856,11 +3817,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _X.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Y.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Z.GetHashCode();
                 return result;
             }
@@ -3877,9 +3835,9 @@ namespace ReactiveRTM.RTC
             get { return _R; }
             set 
             {
-                if(!_R.Equals(value))
+                if(!(_R.Equals(value)))
                 {
-                    _R  = value;
+                    _R = value;
                     RaisePropertyChanged("R");
                 }
             }
@@ -3892,9 +3850,9 @@ namespace ReactiveRTM.RTC
             get { return _P; }
             set 
             {
-                if(!_P.Equals(value))
+                if(!(_P.Equals(value)))
                 {
-                    _P  = value;
+                    _P = value;
                     RaisePropertyChanged("P");
                 }
             }
@@ -3907,9 +3865,9 @@ namespace ReactiveRTM.RTC
             get { return _Y; }
             set 
             {
-                if(!_Y.Equals(value))
+                if(!(_Y.Equals(value)))
                 {
-                    _Y  = value;
+                    _Y = value;
                     RaisePropertyChanged("Y");
                 }
             }
@@ -3929,7 +3887,9 @@ namespace ReactiveRTM.RTC
         }
         public Orientation3D ()
         {
-            //TODO: 初期化
+            _R = new System.Double();
+            _P = new System.Double();
+            _Y = new System.Double();
         }
         public Orientation3D (global::RTC.Orientation3D source)
         {
@@ -3959,11 +3919,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _R.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _P.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Y.GetHashCode();
                 return result;
             }
@@ -3980,9 +3937,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -3995,9 +3952,9 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(!_Orientation.Equals(value))
+                if(!(_Orientation.Equals(value)))
                 {
-                    _Orientation  = value;
+                    _Orientation = value;
                     RaisePropertyChanged("Orientation");
                 }
             }
@@ -4016,7 +3973,8 @@ namespace ReactiveRTM.RTC
         }
         public Pose3D ()
         {
-            //TODO: 初期化
+            _Position = new ReactiveRTM.RTC.Point3D();
+            _Orientation = new ReactiveRTM.RTC.Orientation3D();
         }
         public Pose3D (global::RTC.Pose3D source)
         {
@@ -4045,9 +4003,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Orientation.GetHashCode();
                 return result;
             }
@@ -4064,9 +4020,9 @@ namespace ReactiveRTM.RTC
             get { return _Vx; }
             set 
             {
-                if(!_Vx.Equals(value))
+                if(!(_Vx.Equals(value)))
                 {
-                    _Vx  = value;
+                    _Vx = value;
                     RaisePropertyChanged("Vx");
                 }
             }
@@ -4079,9 +4035,9 @@ namespace ReactiveRTM.RTC
             get { return _Vy; }
             set 
             {
-                if(!_Vy.Equals(value))
+                if(!(_Vy.Equals(value)))
                 {
-                    _Vy  = value;
+                    _Vy = value;
                     RaisePropertyChanged("Vy");
                 }
             }
@@ -4094,9 +4050,9 @@ namespace ReactiveRTM.RTC
             get { return _Vz; }
             set 
             {
-                if(!_Vz.Equals(value))
+                if(!(_Vz.Equals(value)))
                 {
-                    _Vz  = value;
+                    _Vz = value;
                     RaisePropertyChanged("Vz");
                 }
             }
@@ -4109,9 +4065,9 @@ namespace ReactiveRTM.RTC
             get { return _Vr; }
             set 
             {
-                if(!_Vr.Equals(value))
+                if(!(_Vr.Equals(value)))
                 {
-                    _Vr  = value;
+                    _Vr = value;
                     RaisePropertyChanged("Vr");
                 }
             }
@@ -4124,9 +4080,9 @@ namespace ReactiveRTM.RTC
             get { return _Vp; }
             set 
             {
-                if(!_Vp.Equals(value))
+                if(!(_Vp.Equals(value)))
                 {
-                    _Vp  = value;
+                    _Vp = value;
                     RaisePropertyChanged("Vp");
                 }
             }
@@ -4139,9 +4095,9 @@ namespace ReactiveRTM.RTC
             get { return _Va; }
             set 
             {
-                if(!_Va.Equals(value))
+                if(!(_Va.Equals(value)))
                 {
-                    _Va  = value;
+                    _Va = value;
                     RaisePropertyChanged("Va");
                 }
             }
@@ -4164,7 +4120,12 @@ namespace ReactiveRTM.RTC
         }
         public Velocity3D ()
         {
-            //TODO: 初期化
+            _Vx = new System.Double();
+            _Vy = new System.Double();
+            _Vz = new System.Double();
+            _Vr = new System.Double();
+            _Vp = new System.Double();
+            _Va = new System.Double();
         }
         public Velocity3D (global::RTC.Velocity3D source)
         {
@@ -4197,17 +4158,11 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vz.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vr.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Va.GetHashCode();
                 return result;
             }
@@ -4224,9 +4179,9 @@ namespace ReactiveRTM.RTC
             get { return _Avx; }
             set 
             {
-                if(!_Avx.Equals(value))
+                if(!(_Avx.Equals(value)))
                 {
-                    _Avx  = value;
+                    _Avx = value;
                     RaisePropertyChanged("Avx");
                 }
             }
@@ -4239,9 +4194,9 @@ namespace ReactiveRTM.RTC
             get { return _Avy; }
             set 
             {
-                if(!_Avy.Equals(value))
+                if(!(_Avy.Equals(value)))
                 {
-                    _Avy  = value;
+                    _Avy = value;
                     RaisePropertyChanged("Avy");
                 }
             }
@@ -4254,9 +4209,9 @@ namespace ReactiveRTM.RTC
             get { return _Avz; }
             set 
             {
-                if(!_Avz.Equals(value))
+                if(!(_Avz.Equals(value)))
                 {
-                    _Avz  = value;
+                    _Avz = value;
                     RaisePropertyChanged("Avz");
                 }
             }
@@ -4276,7 +4231,9 @@ namespace ReactiveRTM.RTC
         }
         public AngularVelocity3D ()
         {
-            //TODO: 初期化
+            _Avx = new System.Double();
+            _Avy = new System.Double();
+            _Avz = new System.Double();
         }
         public AngularVelocity3D (global::RTC.AngularVelocity3D source)
         {
@@ -4306,11 +4263,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Avx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Avy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Avz.GetHashCode();
                 return result;
             }
@@ -4327,9 +4281,9 @@ namespace ReactiveRTM.RTC
             get { return _Ax; }
             set 
             {
-                if(!_Ax.Equals(value))
+                if(!(_Ax.Equals(value)))
                 {
-                    _Ax  = value;
+                    _Ax = value;
                     RaisePropertyChanged("Ax");
                 }
             }
@@ -4342,9 +4296,9 @@ namespace ReactiveRTM.RTC
             get { return _Ay; }
             set 
             {
-                if(!_Ay.Equals(value))
+                if(!(_Ay.Equals(value)))
                 {
-                    _Ay  = value;
+                    _Ay = value;
                     RaisePropertyChanged("Ay");
                 }
             }
@@ -4357,9 +4311,9 @@ namespace ReactiveRTM.RTC
             get { return _Az; }
             set 
             {
-                if(!_Az.Equals(value))
+                if(!(_Az.Equals(value)))
                 {
-                    _Az  = value;
+                    _Az = value;
                     RaisePropertyChanged("Az");
                 }
             }
@@ -4379,7 +4333,9 @@ namespace ReactiveRTM.RTC
         }
         public Acceleration3D ()
         {
-            //TODO: 初期化
+            _Ax = new System.Double();
+            _Ay = new System.Double();
+            _Az = new System.Double();
         }
         public Acceleration3D (global::RTC.Acceleration3D source)
         {
@@ -4409,11 +4365,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ax.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ay.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Az.GetHashCode();
                 return result;
             }
@@ -4430,9 +4383,9 @@ namespace ReactiveRTM.RTC
             get { return _Aax; }
             set 
             {
-                if(!_Aax.Equals(value))
+                if(!(_Aax.Equals(value)))
                 {
-                    _Aax  = value;
+                    _Aax = value;
                     RaisePropertyChanged("Aax");
                 }
             }
@@ -4445,9 +4398,9 @@ namespace ReactiveRTM.RTC
             get { return _Aay; }
             set 
             {
-                if(!_Aay.Equals(value))
+                if(!(_Aay.Equals(value)))
                 {
-                    _Aay  = value;
+                    _Aay = value;
                     RaisePropertyChanged("Aay");
                 }
             }
@@ -4460,9 +4413,9 @@ namespace ReactiveRTM.RTC
             get { return _Aaz; }
             set 
             {
-                if(!_Aaz.Equals(value))
+                if(!(_Aaz.Equals(value)))
                 {
-                    _Aaz  = value;
+                    _Aaz = value;
                     RaisePropertyChanged("Aaz");
                 }
             }
@@ -4482,7 +4435,9 @@ namespace ReactiveRTM.RTC
         }
         public AngularAcceleration3D ()
         {
-            //TODO: 初期化
+            _Aax = new System.Double();
+            _Aay = new System.Double();
+            _Aaz = new System.Double();
         }
         public AngularAcceleration3D (global::RTC.AngularAcceleration3D source)
         {
@@ -4512,11 +4467,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Aax.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Aay.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Aaz.GetHashCode();
                 return result;
             }
@@ -4533,9 +4485,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -4548,9 +4500,9 @@ namespace ReactiveRTM.RTC
             get { return _Velocities; }
             set 
             {
-                if(!_Velocities.Equals(value))
+                if(!(_Velocities.Equals(value)))
                 {
-                    _Velocities  = value;
+                    _Velocities = value;
                     RaisePropertyChanged("Velocities");
                 }
             }
@@ -4569,7 +4521,8 @@ namespace ReactiveRTM.RTC
         }
         public PoseVel3D ()
         {
-            //TODO: 初期化
+            _Pose = new ReactiveRTM.RTC.Pose3D();
+            _Velocities = new ReactiveRTM.RTC.Velocity3D();
         }
         public PoseVel3D (global::RTC.PoseVel3D source)
         {
@@ -4598,9 +4551,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Velocities.GetHashCode();
                 return result;
             }
@@ -4617,9 +4568,9 @@ namespace ReactiveRTM.RTC
             get { return _L; }
             set 
             {
-                if(!_L.Equals(value))
+                if(!(_L.Equals(value)))
                 {
-                    _L  = value;
+                    _L = value;
                     RaisePropertyChanged("L");
                 }
             }
@@ -4632,9 +4583,9 @@ namespace ReactiveRTM.RTC
             get { return _W; }
             set 
             {
-                if(!_W.Equals(value))
+                if(!(_W.Equals(value)))
                 {
-                    _W  = value;
+                    _W = value;
                     RaisePropertyChanged("W");
                 }
             }
@@ -4647,9 +4598,9 @@ namespace ReactiveRTM.RTC
             get { return _H; }
             set 
             {
-                if(!_H.Equals(value))
+                if(!(_H.Equals(value)))
                 {
-                    _H  = value;
+                    _H = value;
                     RaisePropertyChanged("H");
                 }
             }
@@ -4669,7 +4620,9 @@ namespace ReactiveRTM.RTC
         }
         public Size3D ()
         {
-            //TODO: 初期化
+            _L = new System.Double();
+            _W = new System.Double();
+            _H = new System.Double();
         }
         public Size3D (global::RTC.Size3D source)
         {
@@ -4699,11 +4652,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _L.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _W.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _H.GetHashCode();
                 return result;
             }
@@ -4720,9 +4670,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -4735,9 +4685,9 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(!_Size.Equals(value))
+                if(!(_Size.Equals(value)))
                 {
-                    _Size  = value;
+                    _Size = value;
                     RaisePropertyChanged("Size");
                 }
             }
@@ -4756,7 +4706,8 @@ namespace ReactiveRTM.RTC
         }
         public Geometry3D ()
         {
-            //TODO: 初期化
+            _Pose = new ReactiveRTM.RTC.Pose3D();
+            _Size = new ReactiveRTM.RTC.Size3D();
         }
         public Geometry3D (global::RTC.Geometry3D source)
         {
@@ -4785,9 +4736,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Size.GetHashCode();
                 return result;
             }
@@ -4804,9 +4753,9 @@ namespace ReactiveRTM.RTC
             get { return _Xx; }
             set 
             {
-                if(!_Xx.Equals(value))
+                if(!(_Xx.Equals(value)))
                 {
-                    _Xx  = value;
+                    _Xx = value;
                     RaisePropertyChanged("Xx");
                 }
             }
@@ -4819,9 +4768,9 @@ namespace ReactiveRTM.RTC
             get { return _Xy; }
             set 
             {
-                if(!_Xy.Equals(value))
+                if(!(_Xy.Equals(value)))
                 {
-                    _Xy  = value;
+                    _Xy = value;
                     RaisePropertyChanged("Xy");
                 }
             }
@@ -4834,9 +4783,9 @@ namespace ReactiveRTM.RTC
             get { return _Xz; }
             set 
             {
-                if(!_Xz.Equals(value))
+                if(!(_Xz.Equals(value)))
                 {
-                    _Xz  = value;
+                    _Xz = value;
                     RaisePropertyChanged("Xz");
                 }
             }
@@ -4849,9 +4798,9 @@ namespace ReactiveRTM.RTC
             get { return _Xr; }
             set 
             {
-                if(!_Xr.Equals(value))
+                if(!(_Xr.Equals(value)))
                 {
-                    _Xr  = value;
+                    _Xr = value;
                     RaisePropertyChanged("Xr");
                 }
             }
@@ -4864,9 +4813,9 @@ namespace ReactiveRTM.RTC
             get { return _Xp; }
             set 
             {
-                if(!_Xp.Equals(value))
+                if(!(_Xp.Equals(value)))
                 {
-                    _Xp  = value;
+                    _Xp = value;
                     RaisePropertyChanged("Xp");
                 }
             }
@@ -4879,9 +4828,9 @@ namespace ReactiveRTM.RTC
             get { return _Xa; }
             set 
             {
-                if(!_Xa.Equals(value))
+                if(!(_Xa.Equals(value)))
                 {
-                    _Xa  = value;
+                    _Xa = value;
                     RaisePropertyChanged("Xa");
                 }
             }
@@ -4894,9 +4843,9 @@ namespace ReactiveRTM.RTC
             get { return _Yy; }
             set 
             {
-                if(!_Yy.Equals(value))
+                if(!(_Yy.Equals(value)))
                 {
-                    _Yy  = value;
+                    _Yy = value;
                     RaisePropertyChanged("Yy");
                 }
             }
@@ -4909,9 +4858,9 @@ namespace ReactiveRTM.RTC
             get { return _Yz; }
             set 
             {
-                if(!_Yz.Equals(value))
+                if(!(_Yz.Equals(value)))
                 {
-                    _Yz  = value;
+                    _Yz = value;
                     RaisePropertyChanged("Yz");
                 }
             }
@@ -4924,9 +4873,9 @@ namespace ReactiveRTM.RTC
             get { return _Yr; }
             set 
             {
-                if(!_Yr.Equals(value))
+                if(!(_Yr.Equals(value)))
                 {
-                    _Yr  = value;
+                    _Yr = value;
                     RaisePropertyChanged("Yr");
                 }
             }
@@ -4939,9 +4888,9 @@ namespace ReactiveRTM.RTC
             get { return _Yp; }
             set 
             {
-                if(!_Yp.Equals(value))
+                if(!(_Yp.Equals(value)))
                 {
-                    _Yp  = value;
+                    _Yp = value;
                     RaisePropertyChanged("Yp");
                 }
             }
@@ -4954,9 +4903,9 @@ namespace ReactiveRTM.RTC
             get { return _Ya; }
             set 
             {
-                if(!_Ya.Equals(value))
+                if(!(_Ya.Equals(value)))
                 {
-                    _Ya  = value;
+                    _Ya = value;
                     RaisePropertyChanged("Ya");
                 }
             }
@@ -4969,9 +4918,9 @@ namespace ReactiveRTM.RTC
             get { return _Zz; }
             set 
             {
-                if(!_Zz.Equals(value))
+                if(!(_Zz.Equals(value)))
                 {
-                    _Zz  = value;
+                    _Zz = value;
                     RaisePropertyChanged("Zz");
                 }
             }
@@ -4984,9 +4933,9 @@ namespace ReactiveRTM.RTC
             get { return _Zr; }
             set 
             {
-                if(!_Zr.Equals(value))
+                if(!(_Zr.Equals(value)))
                 {
-                    _Zr  = value;
+                    _Zr = value;
                     RaisePropertyChanged("Zr");
                 }
             }
@@ -4999,9 +4948,9 @@ namespace ReactiveRTM.RTC
             get { return _Zp; }
             set 
             {
-                if(!_Zp.Equals(value))
+                if(!(_Zp.Equals(value)))
                 {
-                    _Zp  = value;
+                    _Zp = value;
                     RaisePropertyChanged("Zp");
                 }
             }
@@ -5014,9 +4963,9 @@ namespace ReactiveRTM.RTC
             get { return _Za; }
             set 
             {
-                if(!_Za.Equals(value))
+                if(!(_Za.Equals(value)))
                 {
-                    _Za  = value;
+                    _Za = value;
                     RaisePropertyChanged("Za");
                 }
             }
@@ -5029,9 +4978,9 @@ namespace ReactiveRTM.RTC
             get { return _Rr; }
             set 
             {
-                if(!_Rr.Equals(value))
+                if(!(_Rr.Equals(value)))
                 {
-                    _Rr  = value;
+                    _Rr = value;
                     RaisePropertyChanged("Rr");
                 }
             }
@@ -5044,9 +4993,9 @@ namespace ReactiveRTM.RTC
             get { return _Rp; }
             set 
             {
-                if(!_Rp.Equals(value))
+                if(!(_Rp.Equals(value)))
                 {
-                    _Rp  = value;
+                    _Rp = value;
                     RaisePropertyChanged("Rp");
                 }
             }
@@ -5059,9 +5008,9 @@ namespace ReactiveRTM.RTC
             get { return _Ra; }
             set 
             {
-                if(!_Ra.Equals(value))
+                if(!(_Ra.Equals(value)))
                 {
-                    _Ra  = value;
+                    _Ra = value;
                     RaisePropertyChanged("Ra");
                 }
             }
@@ -5074,9 +5023,9 @@ namespace ReactiveRTM.RTC
             get { return _Pp; }
             set 
             {
-                if(!_Pp.Equals(value))
+                if(!(_Pp.Equals(value)))
                 {
-                    _Pp  = value;
+                    _Pp = value;
                     RaisePropertyChanged("Pp");
                 }
             }
@@ -5089,9 +5038,9 @@ namespace ReactiveRTM.RTC
             get { return _Pa; }
             set 
             {
-                if(!_Pa.Equals(value))
+                if(!(_Pa.Equals(value)))
                 {
-                    _Pa  = value;
+                    _Pa = value;
                     RaisePropertyChanged("Pa");
                 }
             }
@@ -5104,9 +5053,9 @@ namespace ReactiveRTM.RTC
             get { return _Aa; }
             set 
             {
-                if(!_Aa.Equals(value))
+                if(!(_Aa.Equals(value)))
                 {
-                    _Aa  = value;
+                    _Aa = value;
                     RaisePropertyChanged("Aa");
                 }
             }
@@ -5144,7 +5093,27 @@ namespace ReactiveRTM.RTC
         }
         public Covariance3D ()
         {
-            //TODO: 初期化
+            _Xx = new System.Double();
+            _Xy = new System.Double();
+            _Xz = new System.Double();
+            _Xr = new System.Double();
+            _Xp = new System.Double();
+            _Xa = new System.Double();
+            _Yy = new System.Double();
+            _Yz = new System.Double();
+            _Yr = new System.Double();
+            _Yp = new System.Double();
+            _Ya = new System.Double();
+            _Zz = new System.Double();
+            _Zr = new System.Double();
+            _Zp = new System.Double();
+            _Za = new System.Double();
+            _Rr = new System.Double();
+            _Rp = new System.Double();
+            _Ra = new System.Double();
+            _Pp = new System.Double();
+            _Pa = new System.Double();
+            _Aa = new System.Double();
         }
         public Covariance3D (global::RTC.Covariance3D source)
         {
@@ -5192,47 +5161,26 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xx.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xz.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xr.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Xa.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yy.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yz.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yr.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Yp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ya.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Zz.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Zr.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Zp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Za.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Rr.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Rp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Ra.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pa.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Aa.GetHashCode();
                 return result;
             }
@@ -5249,9 +5197,9 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(!_Speed.Equals(value))
+                if(!(_Speed.Equals(value)))
                 {
-                    _Speed  = value;
+                    _Speed = value;
                     RaisePropertyChanged("Speed");
                 }
             }
@@ -5264,9 +5212,9 @@ namespace ReactiveRTM.RTC
             get { return _Direction; }
             set 
             {
-                if(!_Direction.Equals(value))
+                if(!(_Direction.Equals(value)))
                 {
-                    _Direction  = value;
+                    _Direction = value;
                     RaisePropertyChanged("Direction");
                 }
             }
@@ -5285,7 +5233,8 @@ namespace ReactiveRTM.RTC
         }
         public SpeedHeading3D ()
         {
-            //TODO: 初期化
+            _Speed = new System.Double();
+            _Direction = new ReactiveRTM.RTC.Orientation3D();
         }
         public SpeedHeading3D (global::RTC.SpeedHeading3D source)
         {
@@ -5314,9 +5263,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Speed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Direction.GetHashCode();
                 return result;
             }
@@ -5333,9 +5280,9 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(!_Orientation.Equals(value))
+                if(!(_Orientation.Equals(value)))
                 {
-                    _Orientation  = value;
+                    _Orientation = value;
                     RaisePropertyChanged("Orientation");
                 }
             }
@@ -5348,9 +5295,9 @@ namespace ReactiveRTM.RTC
             get { return _Approach; }
             set 
             {
-                if(!_Approach.Equals(value))
+                if(!(_Approach.Equals(value)))
                 {
-                    _Approach  = value;
+                    _Approach = value;
                     RaisePropertyChanged("Approach");
                 }
             }
@@ -5363,9 +5310,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -5385,7 +5332,9 @@ namespace ReactiveRTM.RTC
         }
         public OAP ()
         {
-            //TODO: 初期化
+            _Orientation = new ReactiveRTM.RTC.Vector3D();
+            _Approach = new ReactiveRTM.RTC.Vector3D();
+            _Position = new ReactiveRTM.RTC.Vector3D();
         }
         public OAP (global::RTC.OAP source)
         {
@@ -5415,11 +5364,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Orientation.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Approach.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
                 return result;
             }
@@ -5436,9 +5382,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5451,9 +5397,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5472,7 +5418,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedRGBColour ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.RGBColour();
         }
         public TimedRGBColour (global::RTC.TimedRGBColour source)
         {
@@ -5501,9 +5448,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5520,9 +5465,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5535,9 +5480,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5556,7 +5501,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPoint2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Point2D();
         }
         public TimedPoint2D (global::RTC.TimedPoint2D source)
         {
@@ -5585,9 +5531,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5604,9 +5548,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5619,9 +5563,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5640,7 +5584,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedVector2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Vector2D();
         }
         public TimedVector2D (global::RTC.TimedVector2D source)
         {
@@ -5669,9 +5614,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5688,9 +5631,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5703,9 +5646,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5724,7 +5667,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPose2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Pose2D();
         }
         public TimedPose2D (global::RTC.TimedPose2D source)
         {
@@ -5753,9 +5697,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5772,9 +5714,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5787,9 +5729,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5808,7 +5750,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedVelocity2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Velocity2D();
         }
         public TimedVelocity2D (global::RTC.TimedVelocity2D source)
         {
@@ -5837,9 +5780,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5856,9 +5797,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5871,9 +5812,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5892,7 +5833,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedAcceleration2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Acceleration2D();
         }
         public TimedAcceleration2D (global::RTC.TimedAcceleration2D source)
         {
@@ -5921,9 +5863,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -5940,9 +5880,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -5955,9 +5895,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -5976,7 +5916,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPoseVel2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.PoseVel2D();
         }
         public TimedPoseVel2D (global::RTC.TimedPoseVel2D source)
         {
@@ -6005,9 +5946,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6024,9 +5963,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6039,9 +5978,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6060,7 +5999,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedSize2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Size2D();
         }
         public TimedSize2D (global::RTC.TimedSize2D source)
         {
@@ -6089,9 +6029,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6108,9 +6046,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6123,9 +6061,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6144,7 +6082,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedGeometry2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Geometry2D();
         }
         public TimedGeometry2D (global::RTC.TimedGeometry2D source)
         {
@@ -6173,9 +6112,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6192,9 +6129,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6207,9 +6144,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6228,7 +6165,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedCovariance2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Covariance2D();
         }
         public TimedCovariance2D (global::RTC.TimedCovariance2D source)
         {
@@ -6257,9 +6195,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6276,9 +6212,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6291,9 +6227,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6312,7 +6248,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPointCovariance2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.PointCovariance2D();
         }
         public TimedPointCovariance2D (global::RTC.TimedPointCovariance2D source)
         {
@@ -6341,9 +6278,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6360,9 +6295,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6375,9 +6310,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6396,7 +6331,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedCarlike ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Carlike();
         }
         public TimedCarlike (global::RTC.TimedCarlike source)
         {
@@ -6425,9 +6361,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6444,9 +6378,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6459,9 +6393,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6480,7 +6414,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedSpeedHeading2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.SpeedHeading2D();
         }
         public TimedSpeedHeading2D (global::RTC.TimedSpeedHeading2D source)
         {
@@ -6509,9 +6444,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6528,9 +6461,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6543,9 +6476,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6564,7 +6497,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPoint3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Point3D();
         }
         public TimedPoint3D (global::RTC.TimedPoint3D source)
         {
@@ -6593,9 +6527,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6612,9 +6544,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6627,9 +6559,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6648,7 +6580,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedVector3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Vector3D();
         }
         public TimedVector3D (global::RTC.TimedVector3D source)
         {
@@ -6677,9 +6610,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6696,9 +6627,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6711,9 +6642,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6732,7 +6663,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedOrientation3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Orientation3D();
         }
         public TimedOrientation3D (global::RTC.TimedOrientation3D source)
         {
@@ -6761,9 +6693,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6780,9 +6710,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6795,9 +6725,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6816,7 +6746,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPose3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Pose3D();
         }
         public TimedPose3D (global::RTC.TimedPose3D source)
         {
@@ -6845,9 +6776,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6864,9 +6793,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6879,9 +6808,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6900,7 +6829,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedVelocity3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Velocity3D();
         }
         public TimedVelocity3D (global::RTC.TimedVelocity3D source)
         {
@@ -6929,9 +6859,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -6948,9 +6876,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -6963,9 +6891,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -6984,7 +6912,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedAngularVelocity3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.AngularVelocity3D();
         }
         public TimedAngularVelocity3D (global::RTC.TimedAngularVelocity3D source)
         {
@@ -7013,9 +6942,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7032,9 +6959,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7047,9 +6974,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7068,7 +6995,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedAcceleration3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Acceleration3D();
         }
         public TimedAcceleration3D (global::RTC.TimedAcceleration3D source)
         {
@@ -7097,9 +7025,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7116,9 +7042,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7131,9 +7057,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7152,7 +7078,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedAngularAcceleration3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.AngularAcceleration3D();
         }
         public TimedAngularAcceleration3D (global::RTC.TimedAngularAcceleration3D source)
         {
@@ -7181,9 +7108,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7200,9 +7125,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7215,9 +7140,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7236,7 +7161,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedPoseVel3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.PoseVel3D();
         }
         public TimedPoseVel3D (global::RTC.TimedPoseVel3D source)
         {
@@ -7265,9 +7191,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7284,9 +7208,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7299,9 +7223,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7320,7 +7244,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedSize3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Size3D();
         }
         public TimedSize3D (global::RTC.TimedSize3D source)
         {
@@ -7349,9 +7274,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7368,9 +7291,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7383,9 +7306,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7404,7 +7327,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedGeometry3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Geometry3D();
         }
         public TimedGeometry3D (global::RTC.TimedGeometry3D source)
         {
@@ -7433,9 +7357,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7452,9 +7374,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7467,9 +7389,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7488,7 +7410,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedCovariance3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.Covariance3D();
         }
         public TimedCovariance3D (global::RTC.TimedCovariance3D source)
         {
@@ -7517,9 +7440,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7536,9 +7457,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7551,9 +7472,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7572,7 +7493,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedSpeedHeading3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.SpeedHeading3D();
         }
         public TimedSpeedHeading3D (global::RTC.TimedSpeedHeading3D source)
         {
@@ -7601,9 +7523,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7620,9 +7540,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7635,9 +7555,9 @@ namespace ReactiveRTM.RTC
             get { return _Data; }
             set 
             {
-                if(!_Data.Equals(value))
+                if(!(_Data.Equals(value)))
                 {
-                    _Data  = value;
+                    _Data = value;
                     RaisePropertyChanged("Data");
                 }
             }
@@ -7656,7 +7576,8 @@ namespace ReactiveRTM.RTC
         }
         public TimedOAP ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Data = new ReactiveRTM.RTC.OAP();
         }
         public TimedOAP (global::RTC.TimedOAP source)
         {
@@ -7685,9 +7606,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Data.GetHashCode();
                 return result;
             }
@@ -7704,9 +7623,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7719,9 +7638,9 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(!_Index.Equals(value))
+                if(!(_Index.Equals(value)))
                 {
-                    _Index  = value;
+                    _Index = value;
                     RaisePropertyChanged("Index");
                 }
             }
@@ -7734,9 +7653,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -7756,7 +7675,9 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorPos ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Index = new System.Int16();
+            _Position = new System.Double();
         }
         public ActArrayActuatorPos (global::RTC.ActArrayActuatorPos source)
         {
@@ -7786,11 +7707,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Index.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
                 return result;
             }
@@ -7807,9 +7725,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7822,9 +7740,9 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(!_Index.Equals(value))
+                if(!(_Index.Equals(value)))
                 {
-                    _Index  = value;
+                    _Index = value;
                     RaisePropertyChanged("Index");
                 }
             }
@@ -7837,9 +7755,9 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(!_Speed.Equals(value))
+                if(!(_Speed.Equals(value)))
                 {
-                    _Speed  = value;
+                    _Speed = value;
                     RaisePropertyChanged("Speed");
                 }
             }
@@ -7859,7 +7777,9 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorSpeed ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Index = new System.Int16();
+            _Speed = new System.Double();
         }
         public ActArrayActuatorSpeed (global::RTC.ActArrayActuatorSpeed source)
         {
@@ -7889,11 +7809,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Index.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Speed.GetHashCode();
                 return result;
             }
@@ -7910,9 +7827,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -7925,9 +7842,9 @@ namespace ReactiveRTM.RTC
             get { return _Index; }
             set 
             {
-                if(!_Index.Equals(value))
+                if(!(_Index.Equals(value)))
                 {
-                    _Index  = value;
+                    _Index = value;
                     RaisePropertyChanged("Index");
                 }
             }
@@ -7940,9 +7857,9 @@ namespace ReactiveRTM.RTC
             get { return _Current; }
             set 
             {
-                if(!_Current.Equals(value))
+                if(!(_Current.Equals(value)))
                 {
-                    _Current  = value;
+                    _Current = value;
                     RaisePropertyChanged("Current");
                 }
             }
@@ -7962,7 +7879,9 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorCurrent ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Index = new System.Int16();
+            _Current = new System.Double();
         }
         public ActArrayActuatorCurrent (global::RTC.ActArrayActuatorCurrent source)
         {
@@ -7992,11 +7911,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Index.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Current.GetHashCode();
                 return result;
             }
@@ -8013,9 +7929,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -8028,9 +7944,9 @@ namespace ReactiveRTM.RTC
             get { return _Speed; }
             set 
             {
-                if(!_Speed.Equals(value))
+                if(!(_Speed.Equals(value)))
                 {
-                    _Speed  = value;
+                    _Speed = value;
                     RaisePropertyChanged("Speed");
                 }
             }
@@ -8043,9 +7959,9 @@ namespace ReactiveRTM.RTC
             get { return _Accel; }
             set 
             {
-                if(!_Accel.Equals(value))
+                if(!(_Accel.Equals(value)))
                 {
-                    _Accel  = value;
+                    _Accel = value;
                     RaisePropertyChanged("Accel");
                 }
             }
@@ -8058,9 +7974,9 @@ namespace ReactiveRTM.RTC
             get { return _Current; }
             set 
             {
-                if(!_Current.Equals(value))
+                if(!(_Current.Equals(value)))
                 {
-                    _Current  = value;
+                    _Current = value;
                     RaisePropertyChanged("Current");
                 }
             }
@@ -8073,9 +7989,9 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(!_Status.Equals(value))
+                if(!(_Status.Equals(value)))
                 {
-                    _Status  = value;
+                    _Status = value;
                     RaisePropertyChanged("Status");
                 }
             }
@@ -8097,7 +8013,11 @@ namespace ReactiveRTM.RTC
         }
         public Actuator ()
         {
-            //TODO: 初期化
+            _Position = new System.Double();
+            _Speed = new System.Double();
+            _Accel = new System.Double();
+            _Current = new System.Double();
+            _Status = new ReactiveRTM.RTC.ActArrayActuatorStatus();
         }
         public Actuator (global::RTC.Actuator source)
         {
@@ -8129,15 +8049,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Speed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Accel.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Current.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Status.GetHashCode();
                 return result;
             }
@@ -8154,9 +8069,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -8169,9 +8084,9 @@ namespace ReactiveRTM.RTC
             get { return _Actuators; }
             set 
             {
-                if(!_Actuators.SequenceEqual(value))
+                if(!(_Actuators.SequenceEqual(value)))
                 {
-                    _Actuators  = value;
+                    _Actuators = value;
                     RaisePropertyChanged("Actuators");
                 }
             }
@@ -8190,7 +8105,8 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayState ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Actuators = new List<ReactiveRTM.RTC.Actuator>();
         }
         public ActArrayState (global::RTC.ActArrayState source)
         {
@@ -8219,10 +8135,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Actuators.GetHashCode();
+                result = _Actuators.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -8238,9 +8152,9 @@ namespace ReactiveRTM.RTC
             get { return _Type; }
             set 
             {
-                if(!_Type.Equals(value))
+                if(!(_Type.Equals(value)))
                 {
-                    _Type  = value;
+                    _Type = value;
                     RaisePropertyChanged("Type");
                 }
             }
@@ -8253,9 +8167,9 @@ namespace ReactiveRTM.RTC
             get { return _Length; }
             set 
             {
-                if(!_Length.Equals(value))
+                if(!(_Length.Equals(value)))
                 {
-                    _Length  = value;
+                    _Length = value;
                     RaisePropertyChanged("Length");
                 }
             }
@@ -8268,9 +8182,9 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(!_Orientation.Equals(value))
+                if(!(_Orientation.Equals(value)))
                 {
-                    _Orientation  = value;
+                    _Orientation = value;
                     RaisePropertyChanged("Orientation");
                 }
             }
@@ -8283,9 +8197,9 @@ namespace ReactiveRTM.RTC
             get { return _Axis; }
             set 
             {
-                if(!_Axis.Equals(value))
+                if(!(_Axis.Equals(value)))
                 {
-                    _Axis  = value;
+                    _Axis = value;
                     RaisePropertyChanged("Axis");
                 }
             }
@@ -8298,9 +8212,9 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(!_MinRange.Equals(value))
+                if(!(_MinRange.Equals(value)))
                 {
-                    _MinRange  = value;
+                    _MinRange = value;
                     RaisePropertyChanged("MinRange");
                 }
             }
@@ -8313,9 +8227,9 @@ namespace ReactiveRTM.RTC
             get { return _Centre; }
             set 
             {
-                if(!_Centre.Equals(value))
+                if(!(_Centre.Equals(value)))
                 {
-                    _Centre  = value;
+                    _Centre = value;
                     RaisePropertyChanged("Centre");
                 }
             }
@@ -8328,9 +8242,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(!_MaxRange.Equals(value))
+                if(!(_MaxRange.Equals(value)))
                 {
-                    _MaxRange  = value;
+                    _MaxRange = value;
                     RaisePropertyChanged("MaxRange");
                 }
             }
@@ -8343,9 +8257,9 @@ namespace ReactiveRTM.RTC
             get { return _HomePosition; }
             set 
             {
-                if(!_HomePosition.Equals(value))
+                if(!(_HomePosition.Equals(value)))
                 {
-                    _HomePosition  = value;
+                    _HomePosition = value;
                     RaisePropertyChanged("HomePosition");
                 }
             }
@@ -8358,9 +8272,9 @@ namespace ReactiveRTM.RTC
             get { return _HasBrakes; }
             set 
             {
-                if(!_HasBrakes.Equals(value))
+                if(!(_HasBrakes.Equals(value)))
                 {
-                    _HasBrakes  = value;
+                    _HasBrakes = value;
                     RaisePropertyChanged("HasBrakes");
                 }
             }
@@ -8386,7 +8300,15 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayActuatorGeometry ()
         {
-            //TODO: 初期化
+            _Type = new ReactiveRTM.RTC.ActArrayActuatorType();
+            _Length = new System.Double();
+            _Orientation = new ReactiveRTM.RTC.Orientation3D();
+            _Axis = new ReactiveRTM.RTC.Vector3D();
+            _MinRange = new System.Double();
+            _Centre = new System.Double();
+            _MaxRange = new System.Double();
+            _HomePosition = new System.Double();
+            _HasBrakes = new System.Boolean();
         }
         public ActArrayActuatorGeometry (global::RTC.ActArrayActuatorGeometry source)
         {
@@ -8422,23 +8344,14 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Type.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Length.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Orientation.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Axis.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Centre.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HomePosition.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HasBrakes.GetHashCode();
                 return result;
             }
@@ -8455,9 +8368,9 @@ namespace ReactiveRTM.RTC
             get { return _ArrayGeometry; }
             set 
             {
-                if(!_ArrayGeometry.Equals(value))
+                if(!(_ArrayGeometry.Equals(value)))
                 {
-                    _ArrayGeometry  = value;
+                    _ArrayGeometry = value;
                     RaisePropertyChanged("ArrayGeometry");
                 }
             }
@@ -8470,9 +8383,9 @@ namespace ReactiveRTM.RTC
             get { return _ActuatorGeometry; }
             set 
             {
-                if(!_ActuatorGeometry.SequenceEqual(value))
+                if(!(_ActuatorGeometry.SequenceEqual(value)))
                 {
-                    _ActuatorGeometry  = value;
+                    _ActuatorGeometry = value;
                     RaisePropertyChanged("ActuatorGeometry");
                 }
             }
@@ -8491,7 +8404,8 @@ namespace ReactiveRTM.RTC
         }
         public ActArrayGeometry ()
         {
-            //TODO: 初期化
+            _ArrayGeometry = new ReactiveRTM.RTC.Geometry3D();
+            _ActuatorGeometry = new List<ReactiveRTM.RTC.ActArrayActuatorGeometry>();
         }
         public ActArrayGeometry (global::RTC.ActArrayGeometry source)
         {
@@ -8520,10 +8434,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _ArrayGeometry.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ActuatorGeometry.GetHashCode();
+                result = _ActuatorGeometry.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -8539,9 +8451,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -8554,9 +8466,9 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(!_Size.Equals(value))
+                if(!(_Size.Equals(value)))
                 {
-                    _Size  = value;
+                    _Size = value;
                     RaisePropertyChanged("Size");
                 }
             }
@@ -8569,9 +8481,9 @@ namespace ReactiveRTM.RTC
             get { return _Roc; }
             set 
             {
-                if(!_Roc.Equals(value))
+                if(!(_Roc.Equals(value)))
                 {
-                    _Roc  = value;
+                    _Roc = value;
                     RaisePropertyChanged("Roc");
                 }
             }
@@ -8591,7 +8503,9 @@ namespace ReactiveRTM.RTC
         }
         public BumperGeometry ()
         {
-            //TODO: 初期化
+            _Pose = new ReactiveRTM.RTC.Pose3D();
+            _Size = new ReactiveRTM.RTC.Size3D();
+            _Roc = new System.Double();
         }
         public BumperGeometry (global::RTC.BumperGeometry source)
         {
@@ -8621,11 +8535,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Size.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Roc.GetHashCode();
                 return result;
             }
@@ -8642,9 +8553,9 @@ namespace ReactiveRTM.RTC
             get { return _ArrayGeometry; }
             set 
             {
-                if(!_ArrayGeometry.Equals(value))
+                if(!(_ArrayGeometry.Equals(value)))
                 {
-                    _ArrayGeometry  = value;
+                    _ArrayGeometry = value;
                     RaisePropertyChanged("ArrayGeometry");
                 }
             }
@@ -8657,9 +8568,9 @@ namespace ReactiveRTM.RTC
             get { return _BumperGeometry; }
             set 
             {
-                if(!_BumperGeometry.SequenceEqual(value))
+                if(!(_BumperGeometry.SequenceEqual(value)))
                 {
-                    _BumperGeometry  = value;
+                    _BumperGeometry = value;
                     RaisePropertyChanged("BumperGeometry");
                 }
             }
@@ -8678,7 +8589,8 @@ namespace ReactiveRTM.RTC
         }
         public BumperArrayGeometry ()
         {
-            //TODO: 初期化
+            _ArrayGeometry = new ReactiveRTM.RTC.Geometry3D();
+            _BumperGeometry = new List<ReactiveRTM.RTC.BumperGeometry>();
         }
         public BumperArrayGeometry (global::RTC.BumperArrayGeometry source)
         {
@@ -8707,10 +8619,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _ArrayGeometry.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _BumperGeometry.GetHashCode();
+                result = _BumperGeometry.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -8726,9 +8636,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -8741,9 +8651,9 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(!_Width.Equals(value))
+                if(!(_Width.Equals(value)))
                 {
-                    _Width  = value;
+                    _Width = value;
                     RaisePropertyChanged("Width");
                 }
             }
@@ -8756,9 +8666,9 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(!_Height.Equals(value))
+                if(!(_Height.Equals(value)))
                 {
-                    _Height  = value;
+                    _Height = value;
                     RaisePropertyChanged("Height");
                 }
             }
@@ -8771,9 +8681,9 @@ namespace ReactiveRTM.RTC
             get { return _Bpp; }
             set 
             {
-                if(!_Bpp.Equals(value))
+                if(!(_Bpp.Equals(value)))
                 {
-                    _Bpp  = value;
+                    _Bpp = value;
                     RaisePropertyChanged("Bpp");
                 }
             }
@@ -8786,9 +8696,9 @@ namespace ReactiveRTM.RTC
             get { return _Format; }
             set 
             {
-                if(!_Format.Equals(value))
+                if(!(_Format == (value)))
                 {
-                    _Format  = value;
+                    _Format = value;
                     RaisePropertyChanged("Format");
                 }
             }
@@ -8801,9 +8711,9 @@ namespace ReactiveRTM.RTC
             get { return _FDiv; }
             set 
             {
-                if(!_FDiv.Equals(value))
+                if(!(_FDiv.Equals(value)))
                 {
-                    _FDiv  = value;
+                    _FDiv = value;
                     RaisePropertyChanged("FDiv");
                 }
             }
@@ -8816,9 +8726,9 @@ namespace ReactiveRTM.RTC
             get { return _Pixels; }
             set 
             {
-                if(!_Pixels.SequenceEqual(value))
+                if(!(_Pixels.SequenceEqual(value)))
                 {
-                    _Pixels  = value;
+                    _Pixels = value;
                     RaisePropertyChanged("Pixels");
                 }
             }
@@ -8842,7 +8752,13 @@ namespace ReactiveRTM.RTC
         }
         public CameraImage ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Width = new System.Int16();
+            _Height = new System.Int16();
+            _Bpp = new System.Int16();
+            _Format = string.Empty;
+            _FDiv = new System.Double();
+            _Pixels = new List<System.Byte>();
         }
         public CameraImage (global::RTC.CameraImage source)
         {
@@ -8860,7 +8776,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Tm.Equals(_Tm) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Bpp.Equals(_Bpp) && other._Format.Equals(_Format) && other._FDiv.Equals(_FDiv) && other._Pixels.SequenceEqual(_Pixels);
+            return other._Tm.Equals(_Tm) && other._Width.Equals(_Width) && other._Height.Equals(_Height) && other._Bpp.Equals(_Bpp) && other._Format == (_Format) && other._FDiv.Equals(_FDiv) && other._Pixels.SequenceEqual(_Pixels);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -8876,20 +8792,13 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Width.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Height.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Bpp.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Format.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _FDiv.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Pixels.GetHashCode();
+                result = _Pixels.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -8905,9 +8814,9 @@ namespace ReactiveRTM.RTC
             get { return _FocalLength; }
             set 
             {
-                if(!_FocalLength.Equals(value))
+                if(!(_FocalLength.Equals(value)))
                 {
-                    _FocalLength  = value;
+                    _FocalLength = value;
                     RaisePropertyChanged("FocalLength");
                 }
             }
@@ -8920,9 +8829,9 @@ namespace ReactiveRTM.RTC
             get { return _PrincipalPoint; }
             set 
             {
-                if(!_PrincipalPoint.Equals(value))
+                if(!(_PrincipalPoint.Equals(value)))
                 {
-                    _PrincipalPoint  = value;
+                    _PrincipalPoint = value;
                     RaisePropertyChanged("PrincipalPoint");
                 }
             }
@@ -8935,9 +8844,9 @@ namespace ReactiveRTM.RTC
             get { return _K1; }
             set 
             {
-                if(!_K1.Equals(value))
+                if(!(_K1.Equals(value)))
                 {
-                    _K1  = value;
+                    _K1 = value;
                     RaisePropertyChanged("K1");
                 }
             }
@@ -8950,9 +8859,9 @@ namespace ReactiveRTM.RTC
             get { return _K2; }
             set 
             {
-                if(!_K2.Equals(value))
+                if(!(_K2.Equals(value)))
                 {
-                    _K2  = value;
+                    _K2 = value;
                     RaisePropertyChanged("K2");
                 }
             }
@@ -8965,9 +8874,9 @@ namespace ReactiveRTM.RTC
             get { return _P1; }
             set 
             {
-                if(!_P1.Equals(value))
+                if(!(_P1.Equals(value)))
                 {
-                    _P1  = value;
+                    _P1 = value;
                     RaisePropertyChanged("P1");
                 }
             }
@@ -8980,9 +8889,9 @@ namespace ReactiveRTM.RTC
             get { return _P2; }
             set 
             {
-                if(!_P2.Equals(value))
+                if(!(_P2.Equals(value)))
                 {
-                    _P2  = value;
+                    _P2 = value;
                     RaisePropertyChanged("P2");
                 }
             }
@@ -9005,7 +8914,12 @@ namespace ReactiveRTM.RTC
         }
         public CameraInfo ()
         {
-            //TODO: 初期化
+            _FocalLength = new ReactiveRTM.RTC.Vector2D();
+            _PrincipalPoint = new ReactiveRTM.RTC.Point2D();
+            _K1 = new System.Double();
+            _K2 = new System.Double();
+            _P1 = new System.Double();
+            _P2 = new System.Double();
         }
         public CameraInfo (global::RTC.CameraInfo source)
         {
@@ -9038,17 +8952,11 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _FocalLength.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _PrincipalPoint.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _K1.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _K2.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _P1.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _P2.GetHashCode();
                 return result;
             }
@@ -9065,9 +8973,9 @@ namespace ReactiveRTM.RTC
             get { return _Id; }
             set 
             {
-                if(!_Id.Equals(value))
+                if(!(_Id.Equals(value)))
                 {
-                    _Id  = value;
+                    _Id = value;
                     RaisePropertyChanged("Id");
                 }
             }
@@ -9080,9 +8988,9 @@ namespace ReactiveRTM.RTC
             get { return _Pose; }
             set 
             {
-                if(!_Pose.Equals(value))
+                if(!(_Pose.Equals(value)))
                 {
-                    _Pose  = value;
+                    _Pose = value;
                     RaisePropertyChanged("Pose");
                 }
             }
@@ -9095,9 +9003,9 @@ namespace ReactiveRTM.RTC
             get { return _PoseUncertainty; }
             set 
             {
-                if(!_PoseUncertainty.Equals(value))
+                if(!(_PoseUncertainty.Equals(value)))
                 {
-                    _PoseUncertainty  = value;
+                    _PoseUncertainty = value;
                     RaisePropertyChanged("PoseUncertainty");
                 }
             }
@@ -9110,9 +9018,9 @@ namespace ReactiveRTM.RTC
             get { return _Size; }
             set 
             {
-                if(!_Size.Equals(value))
+                if(!(_Size.Equals(value)))
                 {
-                    _Size  = value;
+                    _Size = value;
                     RaisePropertyChanged("Size");
                 }
             }
@@ -9125,9 +9033,9 @@ namespace ReactiveRTM.RTC
             get { return _SizeUncertainty; }
             set 
             {
-                if(!_SizeUncertainty.Equals(value))
+                if(!(_SizeUncertainty.Equals(value)))
                 {
-                    _SizeUncertainty  = value;
+                    _SizeUncertainty = value;
                     RaisePropertyChanged("SizeUncertainty");
                 }
             }
@@ -9149,7 +9057,11 @@ namespace ReactiveRTM.RTC
         }
         public FiducialInfo ()
         {
-            //TODO: 初期化
+            _Id = new System.Int32();
+            _Pose = new ReactiveRTM.RTC.Pose3D();
+            _PoseUncertainty = new ReactiveRTM.RTC.Pose3D();
+            _Size = new ReactiveRTM.RTC.Size3D();
+            _SizeUncertainty = new ReactiveRTM.RTC.Size3D();
         }
         public FiducialInfo (global::RTC.FiducialInfo source)
         {
@@ -9181,15 +9093,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Id.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pose.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _PoseUncertainty.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Size.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _SizeUncertainty.GetHashCode();
                 return result;
             }
@@ -9206,9 +9113,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -9221,9 +9128,9 @@ namespace ReactiveRTM.RTC
             get { return _FiducialsList; }
             set 
             {
-                if(!_FiducialsList.SequenceEqual(value))
+                if(!(_FiducialsList.SequenceEqual(value)))
                 {
-                    _FiducialsList  = value;
+                    _FiducialsList = value;
                     RaisePropertyChanged("FiducialsList");
                 }
             }
@@ -9242,7 +9149,8 @@ namespace ReactiveRTM.RTC
         }
         public Fiducials ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _FiducialsList = new List<ReactiveRTM.RTC.FiducialInfo>();
         }
         public Fiducials (global::RTC.Fiducials source)
         {
@@ -9271,10 +9179,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _FiducialsList.GetHashCode();
+                result = _FiducialsList.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -9290,9 +9196,9 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(!_MinRange.Equals(value))
+                if(!(_MinRange.Equals(value)))
                 {
-                    _MinRange  = value;
+                    _MinRange = value;
                     RaisePropertyChanged("MinRange");
                 }
             }
@@ -9305,9 +9211,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(!_MaxRange.Equals(value))
+                if(!(_MaxRange.Equals(value)))
                 {
-                    _MaxRange  = value;
+                    _MaxRange = value;
                     RaisePropertyChanged("MaxRange");
                 }
             }
@@ -9320,9 +9226,9 @@ namespace ReactiveRTM.RTC
             get { return _ViewAngle; }
             set 
             {
-                if(!_ViewAngle.Equals(value))
+                if(!(_ViewAngle.Equals(value)))
                 {
-                    _ViewAngle  = value;
+                    _ViewAngle = value;
                     RaisePropertyChanged("ViewAngle");
                 }
             }
@@ -9342,7 +9248,9 @@ namespace ReactiveRTM.RTC
         }
         public FiducialFOV ()
         {
-            //TODO: 初期化
+            _MinRange = new System.Double();
+            _MaxRange = new System.Double();
+            _ViewAngle = new System.Double();
         }
         public FiducialFOV (global::RTC.FiducialFOV source)
         {
@@ -9372,11 +9280,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _ViewAngle.GetHashCode();
                 return result;
             }
@@ -9393,9 +9298,9 @@ namespace ReactiveRTM.RTC
             get { return _Sec; }
             set 
             {
-                if(!_Sec.Equals(value))
+                if(!(_Sec.Equals(value)))
                 {
-                    _Sec  = value;
+                    _Sec = value;
                     RaisePropertyChanged("Sec");
                 }
             }
@@ -9408,9 +9313,9 @@ namespace ReactiveRTM.RTC
             get { return _Msec; }
             set 
             {
-                if(!_Msec.Equals(value))
+                if(!(_Msec.Equals(value)))
                 {
-                    _Msec  = value;
+                    _Msec = value;
                     RaisePropertyChanged("Msec");
                 }
             }
@@ -9429,7 +9334,8 @@ namespace ReactiveRTM.RTC
         }
         public GPSTime ()
         {
-            //TODO: 初期化
+            _Sec = new System.Int32();
+            _Msec = new System.Int32();
         }
         public GPSTime (global::RTC.GPSTime source)
         {
@@ -9458,9 +9364,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Sec.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Msec.GetHashCode();
                 return result;
             }
@@ -9477,9 +9381,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -9492,9 +9396,9 @@ namespace ReactiveRTM.RTC
             get { return _TimeFromGPS; }
             set 
             {
-                if(!_TimeFromGPS.Equals(value))
+                if(!(_TimeFromGPS.Equals(value)))
                 {
-                    _TimeFromGPS  = value;
+                    _TimeFromGPS = value;
                     RaisePropertyChanged("TimeFromGPS");
                 }
             }
@@ -9507,9 +9411,9 @@ namespace ReactiveRTM.RTC
             get { return _Latitude; }
             set 
             {
-                if(!_Latitude.Equals(value))
+                if(!(_Latitude.Equals(value)))
                 {
-                    _Latitude  = value;
+                    _Latitude = value;
                     RaisePropertyChanged("Latitude");
                 }
             }
@@ -9522,9 +9426,9 @@ namespace ReactiveRTM.RTC
             get { return _Longitude; }
             set 
             {
-                if(!_Longitude.Equals(value))
+                if(!(_Longitude.Equals(value)))
                 {
-                    _Longitude  = value;
+                    _Longitude = value;
                     RaisePropertyChanged("Longitude");
                 }
             }
@@ -9537,9 +9441,9 @@ namespace ReactiveRTM.RTC
             get { return _Altitude; }
             set 
             {
-                if(!_Altitude.Equals(value))
+                if(!(_Altitude.Equals(value)))
                 {
-                    _Altitude  = value;
+                    _Altitude = value;
                     RaisePropertyChanged("Altitude");
                 }
             }
@@ -9552,9 +9456,9 @@ namespace ReactiveRTM.RTC
             get { return _HorizontalError; }
             set 
             {
-                if(!_HorizontalError.Equals(value))
+                if(!(_HorizontalError.Equals(value)))
                 {
-                    _HorizontalError  = value;
+                    _HorizontalError = value;
                     RaisePropertyChanged("HorizontalError");
                 }
             }
@@ -9567,9 +9471,9 @@ namespace ReactiveRTM.RTC
             get { return _VerticalError; }
             set 
             {
-                if(!_VerticalError.Equals(value))
+                if(!(_VerticalError.Equals(value)))
                 {
-                    _VerticalError  = value;
+                    _VerticalError = value;
                     RaisePropertyChanged("VerticalError");
                 }
             }
@@ -9582,9 +9486,9 @@ namespace ReactiveRTM.RTC
             get { return _Heading; }
             set 
             {
-                if(!_Heading.Equals(value))
+                if(!(_Heading.Equals(value)))
                 {
-                    _Heading  = value;
+                    _Heading = value;
                     RaisePropertyChanged("Heading");
                 }
             }
@@ -9597,9 +9501,9 @@ namespace ReactiveRTM.RTC
             get { return _HorizontalSpeed; }
             set 
             {
-                if(!_HorizontalSpeed.Equals(value))
+                if(!(_HorizontalSpeed.Equals(value)))
                 {
-                    _HorizontalSpeed  = value;
+                    _HorizontalSpeed = value;
                     RaisePropertyChanged("HorizontalSpeed");
                 }
             }
@@ -9612,9 +9516,9 @@ namespace ReactiveRTM.RTC
             get { return _VerticalSpeed; }
             set 
             {
-                if(!_VerticalSpeed.Equals(value))
+                if(!(_VerticalSpeed.Equals(value)))
                 {
-                    _VerticalSpeed  = value;
+                    _VerticalSpeed = value;
                     RaisePropertyChanged("VerticalSpeed");
                 }
             }
@@ -9627,9 +9531,9 @@ namespace ReactiveRTM.RTC
             get { return _NumSatellites; }
             set 
             {
-                if(!_NumSatellites.Equals(value))
+                if(!(_NumSatellites.Equals(value)))
                 {
-                    _NumSatellites  = value;
+                    _NumSatellites = value;
                     RaisePropertyChanged("NumSatellites");
                 }
             }
@@ -9642,9 +9546,9 @@ namespace ReactiveRTM.RTC
             get { return _FixType; }
             set 
             {
-                if(!_FixType.Equals(value))
+                if(!(_FixType.Equals(value)))
                 {
-                    _FixType  = value;
+                    _FixType = value;
                     RaisePropertyChanged("FixType");
                 }
             }
@@ -9673,7 +9577,18 @@ namespace ReactiveRTM.RTC
         }
         public GPSData ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _TimeFromGPS = new ReactiveRTM.RTC.GPSTime();
+            _Latitude = new System.Double();
+            _Longitude = new System.Double();
+            _Altitude = new System.Double();
+            _HorizontalError = new System.Double();
+            _VerticalError = new System.Double();
+            _Heading = new System.Double();
+            _HorizontalSpeed = new System.Double();
+            _VerticalSpeed = new System.Double();
+            _NumSatellites = new System.Int16();
+            _FixType = new ReactiveRTM.RTC.GPSFixType();
         }
         public GPSData (global::RTC.GPSData source)
         {
@@ -9712,29 +9627,17 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TimeFromGPS.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Latitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Longitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Altitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HorizontalError.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _VerticalError.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Heading.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HorizontalSpeed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _VerticalSpeed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _NumSatellites.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _FixType.GetHashCode();
                 return result;
             }
@@ -9751,9 +9654,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -9766,9 +9669,9 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(!_Status.Equals(value))
+                if(!(_Status.Equals(value)))
                 {
-                    _Status  = value;
+                    _Status = value;
                     RaisePropertyChanged("Status");
                 }
             }
@@ -9787,7 +9690,8 @@ namespace ReactiveRTM.RTC
         }
         public GripperState ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Status = new ReactiveRTM.RTC.GripperStatus();
         }
         public GripperState (global::RTC.GripperState source)
         {
@@ -9816,9 +9720,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Status.GetHashCode();
                 return result;
             }
@@ -9835,9 +9737,9 @@ namespace ReactiveRTM.RTC
             get { return _Exterior; }
             set 
             {
-                if(!_Exterior.Equals(value))
+                if(!(_Exterior.Equals(value)))
                 {
-                    _Exterior  = value;
+                    _Exterior = value;
                     RaisePropertyChanged("Exterior");
                 }
             }
@@ -9850,9 +9752,9 @@ namespace ReactiveRTM.RTC
             get { return _Interior; }
             set 
             {
-                if(!_Interior.Equals(value))
+                if(!(_Interior.Equals(value)))
                 {
-                    _Interior  = value;
+                    _Interior = value;
                     RaisePropertyChanged("Interior");
                 }
             }
@@ -9871,7 +9773,8 @@ namespace ReactiveRTM.RTC
         }
         public GripperGeometry ()
         {
-            //TODO: 初期化
+            _Exterior = new ReactiveRTM.RTC.Geometry3D();
+            _Interior = new ReactiveRTM.RTC.Geometry3D();
         }
         public GripperGeometry (global::RTC.GripperGeometry source)
         {
@@ -9900,9 +9803,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Exterior.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Interior.GetHashCode();
                 return result;
             }
@@ -9919,9 +9820,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -9934,9 +9835,9 @@ namespace ReactiveRTM.RTC
             get { return _Latitude; }
             set 
             {
-                if(!_Latitude.Equals(value))
+                if(!(_Latitude.Equals(value)))
                 {
-                    _Latitude  = value;
+                    _Latitude = value;
                     RaisePropertyChanged("Latitude");
                 }
             }
@@ -9949,9 +9850,9 @@ namespace ReactiveRTM.RTC
             get { return _Longitude; }
             set 
             {
-                if(!_Longitude.Equals(value))
+                if(!(_Longitude.Equals(value)))
                 {
-                    _Longitude  = value;
+                    _Longitude = value;
                     RaisePropertyChanged("Longitude");
                 }
             }
@@ -9964,9 +9865,9 @@ namespace ReactiveRTM.RTC
             get { return _Altitude; }
             set 
             {
-                if(!_Altitude.Equals(value))
+                if(!(_Altitude.Equals(value)))
                 {
-                    _Altitude  = value;
+                    _Altitude = value;
                     RaisePropertyChanged("Altitude");
                 }
             }
@@ -9979,9 +9880,9 @@ namespace ReactiveRTM.RTC
             get { return _HeightAMSL; }
             set 
             {
-                if(!_HeightAMSL.Equals(value))
+                if(!(_HeightAMSL.Equals(value)))
                 {
-                    _HeightAMSL  = value;
+                    _HeightAMSL = value;
                     RaisePropertyChanged("HeightAMSL");
                 }
             }
@@ -9994,9 +9895,9 @@ namespace ReactiveRTM.RTC
             get { return _VelocityENU; }
             set 
             {
-                if(!_VelocityENU.Equals(value))
+                if(!(_VelocityENU.Equals(value)))
                 {
-                    _VelocityENU  = value;
+                    _VelocityENU = value;
                     RaisePropertyChanged("VelocityENU");
                 }
             }
@@ -10009,9 +9910,9 @@ namespace ReactiveRTM.RTC
             get { return _Orientation; }
             set 
             {
-                if(!_Orientation.Equals(value))
+                if(!(_Orientation.Equals(value)))
                 {
-                    _Orientation  = value;
+                    _Orientation = value;
                     RaisePropertyChanged("Orientation");
                 }
             }
@@ -10035,7 +9936,13 @@ namespace ReactiveRTM.RTC
         }
         public INSData ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Latitude = new System.Double();
+            _Longitude = new System.Double();
+            _Altitude = new System.Double();
+            _HeightAMSL = new System.Double();
+            _VelocityENU = new ReactiveRTM.RTC.Velocity3D();
+            _Orientation = new ReactiveRTM.RTC.Orientation3D();
         }
         public INSData (global::RTC.INSData source)
         {
@@ -10069,19 +9976,12 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Latitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Longitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Altitude.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HeightAMSL.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _VelocityENU.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Orientation.GetHashCode();
                 return result;
             }
@@ -10098,9 +9998,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -10113,9 +10013,9 @@ namespace ReactiveRTM.RTC
             get { return _OapMatrix; }
             set 
             {
-                if(!_OapMatrix.Equals(value))
+                if(!(_OapMatrix.Equals(value)))
                 {
-                    _OapMatrix  = value;
+                    _OapMatrix = value;
                     RaisePropertyChanged("OapMatrix");
                 }
             }
@@ -10128,9 +10028,9 @@ namespace ReactiveRTM.RTC
             get { return _Status; }
             set 
             {
-                if(!_Status.Equals(value))
+                if(!(_Status.Equals(value)))
                 {
-                    _Status  = value;
+                    _Status = value;
                     RaisePropertyChanged("Status");
                 }
             }
@@ -10150,7 +10050,9 @@ namespace ReactiveRTM.RTC
         }
         public LimbState ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _OapMatrix = new ReactiveRTM.RTC.OAP();
+            _Status = new ReactiveRTM.RTC.LimbStatus();
         }
         public LimbState (global::RTC.LimbState source)
         {
@@ -10180,11 +10082,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _OapMatrix.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Status.GetHashCode();
                 return result;
             }
@@ -10201,9 +10100,9 @@ namespace ReactiveRTM.RTC
             get { return _Mean; }
             set 
             {
-                if(!_Mean.Equals(value))
+                if(!(_Mean.Equals(value)))
                 {
-                    _Mean  = value;
+                    _Mean = value;
                     RaisePropertyChanged("Mean");
                 }
             }
@@ -10216,9 +10115,9 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(!_Covariance.Equals(value))
+                if(!(_Covariance.Equals(value)))
                 {
-                    _Covariance  = value;
+                    _Covariance = value;
                     RaisePropertyChanged("Covariance");
                 }
             }
@@ -10231,9 +10130,9 @@ namespace ReactiveRTM.RTC
             get { return _Weight; }
             set 
             {
-                if(!_Weight.Equals(value))
+                if(!(_Weight.Equals(value)))
                 {
-                    _Weight  = value;
+                    _Weight = value;
                     RaisePropertyChanged("Weight");
                 }
             }
@@ -10253,7 +10152,9 @@ namespace ReactiveRTM.RTC
         }
         public Hypothesis2D ()
         {
-            //TODO: 初期化
+            _Mean = new ReactiveRTM.RTC.Pose2D();
+            _Covariance = new ReactiveRTM.RTC.Covariance2D();
+            _Weight = new System.Double();
         }
         public Hypothesis2D (global::RTC.Hypothesis2D source)
         {
@@ -10283,11 +10184,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Mean.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Covariance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Weight.GetHashCode();
                 return result;
             }
@@ -10304,9 +10202,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -10319,9 +10217,9 @@ namespace ReactiveRTM.RTC
             get { return _Hypotheses; }
             set 
             {
-                if(!_Hypotheses.SequenceEqual(value))
+                if(!(_Hypotheses.SequenceEqual(value)))
                 {
-                    _Hypotheses  = value;
+                    _Hypotheses = value;
                     RaisePropertyChanged("Hypotheses");
                 }
             }
@@ -10340,7 +10238,8 @@ namespace ReactiveRTM.RTC
         }
         public Hypotheses2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Hypotheses = new List<ReactiveRTM.RTC.Hypothesis2D>();
         }
         public Hypotheses2D (global::RTC.Hypotheses2D source)
         {
@@ -10369,10 +10268,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Hypotheses.GetHashCode();
+                result = _Hypotheses.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -10388,9 +10285,9 @@ namespace ReactiveRTM.RTC
             get { return _Mean; }
             set 
             {
-                if(!_Mean.Equals(value))
+                if(!(_Mean.Equals(value)))
                 {
-                    _Mean  = value;
+                    _Mean = value;
                     RaisePropertyChanged("Mean");
                 }
             }
@@ -10403,9 +10300,9 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(!_Covariance.Equals(value))
+                if(!(_Covariance.Equals(value)))
                 {
-                    _Covariance  = value;
+                    _Covariance = value;
                     RaisePropertyChanged("Covariance");
                 }
             }
@@ -10418,9 +10315,9 @@ namespace ReactiveRTM.RTC
             get { return _Weight; }
             set 
             {
-                if(!_Weight.Equals(value))
+                if(!(_Weight.Equals(value)))
                 {
-                    _Weight  = value;
+                    _Weight = value;
                     RaisePropertyChanged("Weight");
                 }
             }
@@ -10440,7 +10337,9 @@ namespace ReactiveRTM.RTC
         }
         public Hypothesis3D ()
         {
-            //TODO: 初期化
+            _Mean = new ReactiveRTM.RTC.Pose3D();
+            _Covariance = new ReactiveRTM.RTC.Covariance3D();
+            _Weight = new System.Double();
         }
         public Hypothesis3D (global::RTC.Hypothesis3D source)
         {
@@ -10470,11 +10369,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Mean.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Covariance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Weight.GetHashCode();
                 return result;
             }
@@ -10491,9 +10387,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -10506,9 +10402,9 @@ namespace ReactiveRTM.RTC
             get { return _Hypotheses; }
             set 
             {
-                if(!_Hypotheses.SequenceEqual(value))
+                if(!(_Hypotheses.SequenceEqual(value)))
                 {
-                    _Hypotheses  = value;
+                    _Hypotheses = value;
                     RaisePropertyChanged("Hypotheses");
                 }
             }
@@ -10527,7 +10423,8 @@ namespace ReactiveRTM.RTC
         }
         public Hypotheses3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Hypotheses = new List<ReactiveRTM.RTC.Hypothesis3D>();
         }
         public Hypotheses3D (global::RTC.Hypotheses3D source)
         {
@@ -10556,10 +10453,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Hypotheses.GetHashCode();
+                result = _Hypotheses.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -10575,9 +10470,9 @@ namespace ReactiveRTM.RTC
             get { return _XScale; }
             set 
             {
-                if(!_XScale.Equals(value))
+                if(!(_XScale.Equals(value)))
                 {
-                    _XScale  = value;
+                    _XScale = value;
                     RaisePropertyChanged("XScale");
                 }
             }
@@ -10590,9 +10485,9 @@ namespace ReactiveRTM.RTC
             get { return _YScale; }
             set 
             {
-                if(!_YScale.Equals(value))
+                if(!(_YScale.Equals(value)))
                 {
-                    _YScale  = value;
+                    _YScale = value;
                     RaisePropertyChanged("YScale");
                 }
             }
@@ -10605,9 +10500,9 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(!_Width.Equals(value))
+                if(!(_Width.Equals(value)))
                 {
-                    _Width  = value;
+                    _Width = value;
                     RaisePropertyChanged("Width");
                 }
             }
@@ -10620,9 +10515,9 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(!_Height.Equals(value))
+                if(!(_Height.Equals(value)))
                 {
-                    _Height  = value;
+                    _Height = value;
                     RaisePropertyChanged("Height");
                 }
             }
@@ -10635,9 +10530,9 @@ namespace ReactiveRTM.RTC
             get { return _Origin; }
             set 
             {
-                if(!_Origin.Equals(value))
+                if(!(_Origin.Equals(value)))
                 {
-                    _Origin  = value;
+                    _Origin = value;
                     RaisePropertyChanged("Origin");
                 }
             }
@@ -10659,7 +10554,11 @@ namespace ReactiveRTM.RTC
         }
         public OGMapConfig ()
         {
-            //TODO: 初期化
+            _XScale = new System.Double();
+            _YScale = new System.Double();
+            _Width = new System.Int32();
+            _Height = new System.Int32();
+            _Origin = new ReactiveRTM.RTC.Pose2D();
         }
         public OGMapConfig (global::RTC.OGMapConfig source)
         {
@@ -10691,15 +10590,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _XScale.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _YScale.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Width.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Height.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Origin.GetHashCode();
                 return result;
             }
@@ -10716,9 +10610,9 @@ namespace ReactiveRTM.RTC
             get { return _Column; }
             set 
             {
-                if(!_Column.Equals(value))
+                if(!(_Column.Equals(value)))
                 {
-                    _Column  = value;
+                    _Column = value;
                     RaisePropertyChanged("Column");
                 }
             }
@@ -10731,9 +10625,9 @@ namespace ReactiveRTM.RTC
             get { return _Row; }
             set 
             {
-                if(!_Row.Equals(value))
+                if(!(_Row.Equals(value)))
                 {
-                    _Row  = value;
+                    _Row = value;
                     RaisePropertyChanged("Row");
                 }
             }
@@ -10746,9 +10640,9 @@ namespace ReactiveRTM.RTC
             get { return _Width; }
             set 
             {
-                if(!_Width.Equals(value))
+                if(!(_Width.Equals(value)))
                 {
-                    _Width  = value;
+                    _Width = value;
                     RaisePropertyChanged("Width");
                 }
             }
@@ -10761,9 +10655,9 @@ namespace ReactiveRTM.RTC
             get { return _Height; }
             set 
             {
-                if(!_Height.Equals(value))
+                if(!(_Height.Equals(value)))
                 {
-                    _Height  = value;
+                    _Height = value;
                     RaisePropertyChanged("Height");
                 }
             }
@@ -10776,9 +10670,9 @@ namespace ReactiveRTM.RTC
             get { return _Cells; }
             set 
             {
-                if(!_Cells.SequenceEqual(value))
+                if(!(_Cells.SequenceEqual(value)))
                 {
-                    _Cells  = value;
+                    _Cells = value;
                     RaisePropertyChanged("Cells");
                 }
             }
@@ -10800,7 +10694,11 @@ namespace ReactiveRTM.RTC
         }
         public OGMapTile ()
         {
-            //TODO: 初期化
+            _Column = new System.Int32();
+            _Row = new System.Int32();
+            _Width = new System.Int32();
+            _Height = new System.Int32();
+            _Cells = new List<System.Byte>();
         }
         public OGMapTile (global::RTC.OGMapTile source)
         {
@@ -10832,16 +10730,11 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Column.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Row.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Width.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Height.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Cells.GetHashCode();
+                result = _Cells.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -10857,9 +10750,9 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(!_Probability.Equals(value))
+                if(!(_Probability.Equals(value)))
                 {
-                    _Probability  = value;
+                    _Probability = value;
                     RaisePropertyChanged("Probability");
                 }
             }
@@ -10872,9 +10765,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -10887,9 +10780,9 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(!_Covariance.Equals(value))
+                if(!(_Covariance.Equals(value)))
                 {
-                    _Covariance  = value;
+                    _Covariance = value;
                     RaisePropertyChanged("Covariance");
                 }
             }
@@ -10909,7 +10802,9 @@ namespace ReactiveRTM.RTC
         }
         public PointFeature ()
         {
-            //TODO: 初期化
+            _Probability = new System.Double();
+            _Position = new ReactiveRTM.RTC.Point2D();
+            _Covariance = new ReactiveRTM.RTC.PointCovariance2D();
         }
         public PointFeature (global::RTC.PointFeature source)
         {
@@ -10939,11 +10834,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Probability.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Covariance.GetHashCode();
                 return result;
             }
@@ -10960,9 +10852,9 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(!_Probability.Equals(value))
+                if(!(_Probability.Equals(value)))
                 {
-                    _Probability  = value;
+                    _Probability = value;
                     RaisePropertyChanged("Probability");
                 }
             }
@@ -10975,9 +10867,9 @@ namespace ReactiveRTM.RTC
             get { return _Position; }
             set 
             {
-                if(!_Position.Equals(value))
+                if(!(_Position.Equals(value)))
                 {
-                    _Position  = value;
+                    _Position = value;
                     RaisePropertyChanged("Position");
                 }
             }
@@ -10990,9 +10882,9 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(!_Covariance.Equals(value))
+                if(!(_Covariance.Equals(value)))
                 {
-                    _Covariance  = value;
+                    _Covariance = value;
                     RaisePropertyChanged("Covariance");
                 }
             }
@@ -11012,7 +10904,9 @@ namespace ReactiveRTM.RTC
         }
         public PoseFeature ()
         {
-            //TODO: 初期化
+            _Probability = new System.Double();
+            _Position = new ReactiveRTM.RTC.Pose2D();
+            _Covariance = new ReactiveRTM.RTC.Covariance2D();
         }
         public PoseFeature (global::RTC.PoseFeature source)
         {
@@ -11042,11 +10936,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Probability.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Position.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Covariance.GetHashCode();
                 return result;
             }
@@ -11063,9 +10954,9 @@ namespace ReactiveRTM.RTC
             get { return _Probability; }
             set 
             {
-                if(!_Probability.Equals(value))
+                if(!(_Probability.Equals(value)))
                 {
-                    _Probability  = value;
+                    _Probability = value;
                     RaisePropertyChanged("Probability");
                 }
             }
@@ -11078,9 +10969,9 @@ namespace ReactiveRTM.RTC
             get { return _Rho; }
             set 
             {
-                if(!_Rho.Equals(value))
+                if(!(_Rho.Equals(value)))
                 {
-                    _Rho  = value;
+                    _Rho = value;
                     RaisePropertyChanged("Rho");
                 }
             }
@@ -11093,9 +10984,9 @@ namespace ReactiveRTM.RTC
             get { return _Alpha; }
             set 
             {
-                if(!_Alpha.Equals(value))
+                if(!(_Alpha.Equals(value)))
                 {
-                    _Alpha  = value;
+                    _Alpha = value;
                     RaisePropertyChanged("Alpha");
                 }
             }
@@ -11108,9 +10999,9 @@ namespace ReactiveRTM.RTC
             get { return _Covariance; }
             set 
             {
-                if(!_Covariance.Equals(value))
+                if(!(_Covariance.Equals(value)))
                 {
-                    _Covariance  = value;
+                    _Covariance = value;
                     RaisePropertyChanged("Covariance");
                 }
             }
@@ -11123,9 +11014,9 @@ namespace ReactiveRTM.RTC
             get { return _Start; }
             set 
             {
-                if(!_Start.Equals(value))
+                if(!(_Start.Equals(value)))
                 {
-                    _Start  = value;
+                    _Start = value;
                     RaisePropertyChanged("Start");
                 }
             }
@@ -11138,9 +11029,9 @@ namespace ReactiveRTM.RTC
             get { return _End; }
             set 
             {
-                if(!_End.Equals(value))
+                if(!(_End.Equals(value)))
                 {
-                    _End  = value;
+                    _End = value;
                     RaisePropertyChanged("End");
                 }
             }
@@ -11153,9 +11044,9 @@ namespace ReactiveRTM.RTC
             get { return _StartSighted; }
             set 
             {
-                if(!_StartSighted.Equals(value))
+                if(!(_StartSighted.Equals(value)))
                 {
-                    _StartSighted  = value;
+                    _StartSighted = value;
                     RaisePropertyChanged("StartSighted");
                 }
             }
@@ -11168,9 +11059,9 @@ namespace ReactiveRTM.RTC
             get { return _EndSighted; }
             set 
             {
-                if(!_EndSighted.Equals(value))
+                if(!(_EndSighted.Equals(value)))
                 {
-                    _EndSighted  = value;
+                    _EndSighted = value;
                     RaisePropertyChanged("EndSighted");
                 }
             }
@@ -11195,7 +11086,14 @@ namespace ReactiveRTM.RTC
         }
         public LineFeature ()
         {
-            //TODO: 初期化
+            _Probability = new System.Double();
+            _Rho = new System.Double();
+            _Alpha = new System.Double();
+            _Covariance = new ReactiveRTM.RTC.PointCovariance2D();
+            _Start = new ReactiveRTM.RTC.Point2D();
+            _End = new ReactiveRTM.RTC.Point2D();
+            _StartSighted = new System.Boolean();
+            _EndSighted = new System.Boolean();
         }
         public LineFeature (global::RTC.LineFeature source)
         {
@@ -11230,21 +11128,13 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Probability.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Rho.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Alpha.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Covariance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Start.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _End.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _StartSighted.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _EndSighted.GetHashCode();
                 return result;
             }
@@ -11261,9 +11151,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -11276,9 +11166,9 @@ namespace ReactiveRTM.RTC
             get { return _PointFeatures; }
             set 
             {
-                if(!_PointFeatures.SequenceEqual(value))
+                if(!(_PointFeatures.SequenceEqual(value)))
                 {
-                    _PointFeatures  = value;
+                    _PointFeatures = value;
                     RaisePropertyChanged("PointFeatures");
                 }
             }
@@ -11291,9 +11181,9 @@ namespace ReactiveRTM.RTC
             get { return _PoseFeatures; }
             set 
             {
-                if(!_PoseFeatures.SequenceEqual(value))
+                if(!(_PoseFeatures.SequenceEqual(value)))
                 {
-                    _PoseFeatures  = value;
+                    _PoseFeatures = value;
                     RaisePropertyChanged("PoseFeatures");
                 }
             }
@@ -11306,9 +11196,9 @@ namespace ReactiveRTM.RTC
             get { return _LineFeatures; }
             set 
             {
-                if(!_LineFeatures.SequenceEqual(value))
+                if(!(_LineFeatures.SequenceEqual(value)))
                 {
-                    _LineFeatures  = value;
+                    _LineFeatures = value;
                     RaisePropertyChanged("LineFeatures");
                 }
             }
@@ -11329,7 +11219,10 @@ namespace ReactiveRTM.RTC
         }
         public Features ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _PointFeatures = new List<ReactiveRTM.RTC.PointFeature>();
+            _PoseFeatures = new List<ReactiveRTM.RTC.PoseFeature>();
+            _LineFeatures = new List<ReactiveRTM.RTC.LineFeature>();
         }
         public Features (global::RTC.Features source)
         {
@@ -11360,14 +11253,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _PointFeatures.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _PoseFeatures.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _LineFeatures.GetHashCode();
+                result = _PointFeatures.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
+                result = _PoseFeatures.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
+                result = _LineFeatures.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -11383,9 +11272,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -11398,9 +11287,9 @@ namespace ReactiveRTM.RTC
             get { return _Images; }
             set 
             {
-                if(!_Images.SequenceEqual(value))
+                if(!(_Images.SequenceEqual(value)))
                 {
-                    _Images  = value;
+                    _Images = value;
                     RaisePropertyChanged("Images");
                 }
             }
@@ -11419,7 +11308,8 @@ namespace ReactiveRTM.RTC
         }
         public MultiCameraImages ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Images = new List<ReactiveRTM.RTC.CameraImage>();
         }
         public MultiCameraImages (global::RTC.MultiCameraImages source)
         {
@@ -11448,10 +11338,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Images.GetHashCode();
+                result = _Images.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -11467,9 +11355,9 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(!_Geometry.Equals(value))
+                if(!(_Geometry.Equals(value)))
                 {
-                    _Geometry  = value;
+                    _Geometry = value;
                     RaisePropertyChanged("Geometry");
                 }
             }
@@ -11482,9 +11370,9 @@ namespace ReactiveRTM.RTC
             get { return _CameraGeometries; }
             set 
             {
-                if(!_CameraGeometries.SequenceEqual(value))
+                if(!(_CameraGeometries.SequenceEqual(value)))
                 {
-                    _CameraGeometries  = value;
+                    _CameraGeometries = value;
                     RaisePropertyChanged("CameraGeometries");
                 }
             }
@@ -11503,7 +11391,8 @@ namespace ReactiveRTM.RTC
         }
         public MulticameraGeometry ()
         {
-            //TODO: 初期化
+            _Geometry = new ReactiveRTM.RTC.Geometry3D();
+            _CameraGeometries = new List<ReactiveRTM.RTC.Geometry3D>();
         }
         public MulticameraGeometry (global::RTC.MulticameraGeometry source)
         {
@@ -11532,10 +11421,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Geometry.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _CameraGeometries.GetHashCode();
+                result = _CameraGeometries.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -11551,9 +11438,9 @@ namespace ReactiveRTM.RTC
             get { return _Target; }
             set 
             {
-                if(!_Target.Equals(value))
+                if(!(_Target.Equals(value)))
                 {
-                    _Target  = value;
+                    _Target = value;
                     RaisePropertyChanged("Target");
                 }
             }
@@ -11566,9 +11453,9 @@ namespace ReactiveRTM.RTC
             get { return _DistanceTolerance; }
             set 
             {
-                if(!_DistanceTolerance.Equals(value))
+                if(!(_DistanceTolerance.Equals(value)))
                 {
-                    _DistanceTolerance  = value;
+                    _DistanceTolerance = value;
                     RaisePropertyChanged("DistanceTolerance");
                 }
             }
@@ -11581,9 +11468,9 @@ namespace ReactiveRTM.RTC
             get { return _HeadingTolerance; }
             set 
             {
-                if(!_HeadingTolerance.Equals(value))
+                if(!(_HeadingTolerance.Equals(value)))
                 {
-                    _HeadingTolerance  = value;
+                    _HeadingTolerance = value;
                     RaisePropertyChanged("HeadingTolerance");
                 }
             }
@@ -11596,9 +11483,9 @@ namespace ReactiveRTM.RTC
             get { return _TimeLimit; }
             set 
             {
-                if(!_TimeLimit.Equals(value))
+                if(!(_TimeLimit.Equals(value)))
                 {
-                    _TimeLimit  = value;
+                    _TimeLimit = value;
                     RaisePropertyChanged("TimeLimit");
                 }
             }
@@ -11611,9 +11498,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxSpeed; }
             set 
             {
-                if(!_MaxSpeed.Equals(value))
+                if(!(_MaxSpeed.Equals(value)))
                 {
-                    _MaxSpeed  = value;
+                    _MaxSpeed = value;
                     RaisePropertyChanged("MaxSpeed");
                 }
             }
@@ -11635,7 +11522,11 @@ namespace ReactiveRTM.RTC
         }
         public Waypoint2D ()
         {
-            //TODO: 初期化
+            _Target = new ReactiveRTM.RTC.Pose2D();
+            _DistanceTolerance = new System.Double();
+            _HeadingTolerance = new System.Double();
+            _TimeLimit = default(System.DateTime);
+            _MaxSpeed = new ReactiveRTM.RTC.Velocity2D();
         }
         public Waypoint2D (global::RTC.Waypoint2D source)
         {
@@ -11667,15 +11558,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Target.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _DistanceTolerance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HeadingTolerance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TimeLimit.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxSpeed.GetHashCode();
                 return result;
             }
@@ -11692,9 +11578,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -11707,9 +11593,9 @@ namespace ReactiveRTM.RTC
             get { return _Waypoints; }
             set 
             {
-                if(!_Waypoints.SequenceEqual(value))
+                if(!(_Waypoints.SequenceEqual(value)))
                 {
-                    _Waypoints  = value;
+                    _Waypoints = value;
                     RaisePropertyChanged("Waypoints");
                 }
             }
@@ -11728,7 +11614,8 @@ namespace ReactiveRTM.RTC
         }
         public Path2D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Waypoints = new List<ReactiveRTM.RTC.Waypoint2D>();
         }
         public Path2D (global::RTC.Path2D source)
         {
@@ -11757,10 +11644,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Waypoints.GetHashCode();
+                result = _Waypoints.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -11776,9 +11661,9 @@ namespace ReactiveRTM.RTC
             get { return _Target; }
             set 
             {
-                if(!_Target.Equals(value))
+                if(!(_Target.Equals(value)))
                 {
-                    _Target  = value;
+                    _Target = value;
                     RaisePropertyChanged("Target");
                 }
             }
@@ -11791,9 +11676,9 @@ namespace ReactiveRTM.RTC
             get { return _DistanceTolerance; }
             set 
             {
-                if(!_DistanceTolerance.Equals(value))
+                if(!(_DistanceTolerance.Equals(value)))
                 {
-                    _DistanceTolerance  = value;
+                    _DistanceTolerance = value;
                     RaisePropertyChanged("DistanceTolerance");
                 }
             }
@@ -11806,9 +11691,9 @@ namespace ReactiveRTM.RTC
             get { return _HeadingTolerance; }
             set 
             {
-                if(!_HeadingTolerance.Equals(value))
+                if(!(_HeadingTolerance.Equals(value)))
                 {
-                    _HeadingTolerance  = value;
+                    _HeadingTolerance = value;
                     RaisePropertyChanged("HeadingTolerance");
                 }
             }
@@ -11821,9 +11706,9 @@ namespace ReactiveRTM.RTC
             get { return _TimeLimit; }
             set 
             {
-                if(!_TimeLimit.Equals(value))
+                if(!(_TimeLimit.Equals(value)))
                 {
-                    _TimeLimit  = value;
+                    _TimeLimit = value;
                     RaisePropertyChanged("TimeLimit");
                 }
             }
@@ -11836,9 +11721,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxSpeed; }
             set 
             {
-                if(!_MaxSpeed.Equals(value))
+                if(!(_MaxSpeed.Equals(value)))
                 {
-                    _MaxSpeed  = value;
+                    _MaxSpeed = value;
                     RaisePropertyChanged("MaxSpeed");
                 }
             }
@@ -11860,7 +11745,11 @@ namespace ReactiveRTM.RTC
         }
         public Waypoint3D ()
         {
-            //TODO: 初期化
+            _Target = new ReactiveRTM.RTC.Pose3D();
+            _DistanceTolerance = new System.Double();
+            _HeadingTolerance = new System.Double();
+            _TimeLimit = default(System.DateTime);
+            _MaxSpeed = new ReactiveRTM.RTC.Velocity3D();
         }
         public Waypoint3D (global::RTC.Waypoint3D source)
         {
@@ -11892,15 +11781,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Target.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _DistanceTolerance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _HeadingTolerance.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TimeLimit.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxSpeed.GetHashCode();
                 return result;
             }
@@ -11917,9 +11801,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -11932,9 +11816,9 @@ namespace ReactiveRTM.RTC
             get { return _Waypoints; }
             set 
             {
-                if(!_Waypoints.SequenceEqual(value))
+                if(!(_Waypoints.SequenceEqual(value)))
                 {
-                    _Waypoints  = value;
+                    _Waypoints = value;
                     RaisePropertyChanged("Waypoints");
                 }
             }
@@ -11953,7 +11837,8 @@ namespace ReactiveRTM.RTC
         }
         public Path3D ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Waypoints = new List<ReactiveRTM.RTC.Waypoint3D>();
         }
         public Path3D (global::RTC.Path3D source)
         {
@@ -11982,10 +11867,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Waypoints.GetHashCode();
+                result = _Waypoints.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -12001,9 +11884,9 @@ namespace ReactiveRTM.RTC
             get { return _Point; }
             set 
             {
-                if(!_Point.Equals(value))
+                if(!(_Point.Equals(value)))
                 {
-                    _Point  = value;
+                    _Point = value;
                     RaisePropertyChanged("Point");
                 }
             }
@@ -12016,9 +11899,9 @@ namespace ReactiveRTM.RTC
             get { return _Colour; }
             set 
             {
-                if(!_Colour.Equals(value))
+                if(!(_Colour.Equals(value)))
                 {
-                    _Colour  = value;
+                    _Colour = value;
                     RaisePropertyChanged("Colour");
                 }
             }
@@ -12037,7 +11920,8 @@ namespace ReactiveRTM.RTC
         }
         public PointCloudPoint ()
         {
-            //TODO: 初期化
+            _Point = new ReactiveRTM.RTC.Point3D();
+            _Colour = new ReactiveRTM.RTC.RGBColour();
         }
         public PointCloudPoint (global::RTC.PointCloudPoint source)
         {
@@ -12066,9 +11950,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Point.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Colour.GetHashCode();
                 return result;
             }
@@ -12085,9 +11967,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -12100,9 +11982,9 @@ namespace ReactiveRTM.RTC
             get { return _Points; }
             set 
             {
-                if(!_Points.SequenceEqual(value))
+                if(!(_Points.SequenceEqual(value)))
                 {
-                    _Points  = value;
+                    _Points = value;
                     RaisePropertyChanged("Points");
                 }
             }
@@ -12121,7 +12003,8 @@ namespace ReactiveRTM.RTC
         }
         public PointCloud ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Points = new List<ReactiveRTM.RTC.PointCloudPoint>();
         }
         public PointCloud (global::RTC.PointCloud source)
         {
@@ -12150,10 +12033,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Points.GetHashCode();
+                result = _Points.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -12169,9 +12050,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -12184,9 +12065,9 @@ namespace ReactiveRTM.RTC
             get { return _Pan; }
             set 
             {
-                if(!_Pan.Equals(value))
+                if(!(_Pan.Equals(value)))
                 {
-                    _Pan  = value;
+                    _Pan = value;
                     RaisePropertyChanged("Pan");
                 }
             }
@@ -12199,9 +12080,9 @@ namespace ReactiveRTM.RTC
             get { return _Tilt; }
             set 
             {
-                if(!_Tilt.Equals(value))
+                if(!(_Tilt.Equals(value)))
                 {
-                    _Tilt  = value;
+                    _Tilt = value;
                     RaisePropertyChanged("Tilt");
                 }
             }
@@ -12221,7 +12102,9 @@ namespace ReactiveRTM.RTC
         }
         public PanTiltAngles ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Pan = new System.Double();
+            _Tilt = new System.Double();
         }
         public PanTiltAngles (global::RTC.PanTiltAngles source)
         {
@@ -12251,11 +12134,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Pan.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tilt.GetHashCode();
                 return result;
             }
@@ -12272,9 +12152,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -12287,9 +12167,9 @@ namespace ReactiveRTM.RTC
             get { return _Angles; }
             set 
             {
-                if(!_Angles.Equals(value))
+                if(!(_Angles.Equals(value)))
                 {
-                    _Angles  = value;
+                    _Angles = value;
                     RaisePropertyChanged("Angles");
                 }
             }
@@ -12302,9 +12182,9 @@ namespace ReactiveRTM.RTC
             get { return _PanSpeed; }
             set 
             {
-                if(!_PanSpeed.Equals(value))
+                if(!(_PanSpeed.Equals(value)))
                 {
-                    _PanSpeed  = value;
+                    _PanSpeed = value;
                     RaisePropertyChanged("PanSpeed");
                 }
             }
@@ -12317,9 +12197,9 @@ namespace ReactiveRTM.RTC
             get { return _TiltSpeed; }
             set 
             {
-                if(!_TiltSpeed.Equals(value))
+                if(!(_TiltSpeed.Equals(value)))
                 {
-                    _TiltSpeed  = value;
+                    _TiltSpeed = value;
                     RaisePropertyChanged("TiltSpeed");
                 }
             }
@@ -12340,7 +12220,10 @@ namespace ReactiveRTM.RTC
         }
         public PanTiltState ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Angles = new ReactiveRTM.RTC.PanTiltAngles();
+            _PanSpeed = new System.Double();
+            _TiltSpeed = new System.Double();
         }
         public PanTiltState (global::RTC.PanTiltState source)
         {
@@ -12371,13 +12254,9 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Angles.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _PanSpeed.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TiltSpeed.GetHashCode();
                 return result;
             }
@@ -12394,9 +12273,9 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(!_Geometry.Equals(value))
+                if(!(_Geometry.Equals(value)))
                 {
-                    _Geometry  = value;
+                    _Geometry = value;
                     RaisePropertyChanged("Geometry");
                 }
             }
@@ -12409,9 +12288,9 @@ namespace ReactiveRTM.RTC
             get { return _ElementGeometries; }
             set 
             {
-                if(!_ElementGeometries.SequenceEqual(value))
+                if(!(_ElementGeometries.SequenceEqual(value)))
                 {
-                    _ElementGeometries  = value;
+                    _ElementGeometries = value;
                     RaisePropertyChanged("ElementGeometries");
                 }
             }
@@ -12430,7 +12309,8 @@ namespace ReactiveRTM.RTC
         }
         public RangerGeometry ()
         {
-            //TODO: 初期化
+            _Geometry = new ReactiveRTM.RTC.Geometry3D();
+            _ElementGeometries = new List<ReactiveRTM.RTC.Geometry3D>();
         }
         public RangerGeometry (global::RTC.RangerGeometry source)
         {
@@ -12459,10 +12339,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Geometry.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ElementGeometries.GetHashCode();
+                result = _ElementGeometries.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -12478,9 +12356,9 @@ namespace ReactiveRTM.RTC
             get { return _MinAngle; }
             set 
             {
-                if(!_MinAngle.Equals(value))
+                if(!(_MinAngle.Equals(value)))
                 {
-                    _MinAngle  = value;
+                    _MinAngle = value;
                     RaisePropertyChanged("MinAngle");
                 }
             }
@@ -12493,9 +12371,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxAngle; }
             set 
             {
-                if(!_MaxAngle.Equals(value))
+                if(!(_MaxAngle.Equals(value)))
                 {
-                    _MaxAngle  = value;
+                    _MaxAngle = value;
                     RaisePropertyChanged("MaxAngle");
                 }
             }
@@ -12508,9 +12386,9 @@ namespace ReactiveRTM.RTC
             get { return _AngularRes; }
             set 
             {
-                if(!_AngularRes.Equals(value))
+                if(!(_AngularRes.Equals(value)))
                 {
-                    _AngularRes  = value;
+                    _AngularRes = value;
                     RaisePropertyChanged("AngularRes");
                 }
             }
@@ -12523,9 +12401,9 @@ namespace ReactiveRTM.RTC
             get { return _MinRange; }
             set 
             {
-                if(!_MinRange.Equals(value))
+                if(!(_MinRange.Equals(value)))
                 {
-                    _MinRange  = value;
+                    _MinRange = value;
                     RaisePropertyChanged("MinRange");
                 }
             }
@@ -12538,9 +12416,9 @@ namespace ReactiveRTM.RTC
             get { return _MaxRange; }
             set 
             {
-                if(!_MaxRange.Equals(value))
+                if(!(_MaxRange.Equals(value)))
                 {
-                    _MaxRange  = value;
+                    _MaxRange = value;
                     RaisePropertyChanged("MaxRange");
                 }
             }
@@ -12553,9 +12431,9 @@ namespace ReactiveRTM.RTC
             get { return _RangeRes; }
             set 
             {
-                if(!_RangeRes.Equals(value))
+                if(!(_RangeRes.Equals(value)))
                 {
-                    _RangeRes  = value;
+                    _RangeRes = value;
                     RaisePropertyChanged("RangeRes");
                 }
             }
@@ -12568,9 +12446,9 @@ namespace ReactiveRTM.RTC
             get { return _Frequency; }
             set 
             {
-                if(!_Frequency.Equals(value))
+                if(!(_Frequency.Equals(value)))
                 {
-                    _Frequency  = value;
+                    _Frequency = value;
                     RaisePropertyChanged("Frequency");
                 }
             }
@@ -12594,7 +12472,13 @@ namespace ReactiveRTM.RTC
         }
         public RangerConfig ()
         {
-            //TODO: 初期化
+            _MinAngle = new System.Double();
+            _MaxAngle = new System.Double();
+            _AngularRes = new System.Double();
+            _MinRange = new System.Double();
+            _MaxRange = new System.Double();
+            _RangeRes = new System.Double();
+            _Frequency = new System.Double();
         }
         public RangerConfig (global::RTC.RangerConfig source)
         {
@@ -12628,19 +12512,12 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinAngle.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxAngle.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _AngularRes.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxRange.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _RangeRes.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Frequency.GetHashCode();
                 return result;
             }
@@ -12657,9 +12534,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -12672,9 +12549,9 @@ namespace ReactiveRTM.RTC
             get { return _Ranges; }
             set 
             {
-                if(!_Ranges.SequenceEqual(value))
+                if(!(_Ranges.SequenceEqual(value)))
                 {
-                    _Ranges  = value;
+                    _Ranges = value;
                     RaisePropertyChanged("Ranges");
                 }
             }
@@ -12687,9 +12564,9 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(!_Geometry.Equals(value))
+                if(!(_Geometry.Equals(value)))
                 {
-                    _Geometry  = value;
+                    _Geometry = value;
                     RaisePropertyChanged("Geometry");
                 }
             }
@@ -12702,9 +12579,9 @@ namespace ReactiveRTM.RTC
             get { return _Config; }
             set 
             {
-                if(!_Config.Equals(value))
+                if(!(_Config.Equals(value)))
                 {
-                    _Config  = value;
+                    _Config = value;
                     RaisePropertyChanged("Config");
                 }
             }
@@ -12725,7 +12602,10 @@ namespace ReactiveRTM.RTC
         }
         public RangeData ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Ranges = new List<System.Double>();
+            _Geometry = new ReactiveRTM.RTC.RangerGeometry();
+            _Config = new ReactiveRTM.RTC.RangerConfig();
         }
         public RangeData (global::RTC.RangeData source)
         {
@@ -12756,13 +12636,9 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Ranges.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _Ranges.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 result = (result * 397) ^ _Geometry.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Config.GetHashCode();
                 return result;
             }
@@ -12779,9 +12655,9 @@ namespace ReactiveRTM.RTC
             get { return _Tm; }
             set 
             {
-                if(!_Tm.Equals(value))
+                if(!(_Tm.Equals(value)))
                 {
-                    _Tm  = value;
+                    _Tm = value;
                     RaisePropertyChanged("Tm");
                 }
             }
@@ -12794,9 +12670,9 @@ namespace ReactiveRTM.RTC
             get { return _Intensities; }
             set 
             {
-                if(!_Intensities.SequenceEqual(value))
+                if(!(_Intensities.SequenceEqual(value)))
                 {
-                    _Intensities  = value;
+                    _Intensities = value;
                     RaisePropertyChanged("Intensities");
                 }
             }
@@ -12809,9 +12685,9 @@ namespace ReactiveRTM.RTC
             get { return _Geometry; }
             set 
             {
-                if(!_Geometry.Equals(value))
+                if(!(_Geometry.Equals(value)))
                 {
-                    _Geometry  = value;
+                    _Geometry = value;
                     RaisePropertyChanged("Geometry");
                 }
             }
@@ -12824,9 +12700,9 @@ namespace ReactiveRTM.RTC
             get { return _Config; }
             set 
             {
-                if(!_Config.Equals(value))
+                if(!(_Config.Equals(value)))
                 {
-                    _Config  = value;
+                    _Config = value;
                     RaisePropertyChanged("Config");
                 }
             }
@@ -12847,7 +12723,10 @@ namespace ReactiveRTM.RTC
         }
         public IntensityData ()
         {
-            //TODO: 初期化
+            _Tm = default(System.DateTime);
+            _Intensities = new List<System.Double>();
+            _Geometry = new ReactiveRTM.RTC.RangerGeometry();
+            _Config = new ReactiveRTM.RTC.RangerConfig();
         }
         public IntensityData (global::RTC.IntensityData source)
         {
@@ -12878,13 +12757,9 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Tm.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Intensities.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _Intensities.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 result = (result * 397) ^ _Geometry.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Config.GetHashCode();
                 return result;
             }
@@ -12933,9 +12808,9 @@ namespace ReactiveRTM.RTC
             get { return _InstanceName; }
             set 
             {
-                if(!_InstanceName.Equals(value))
+                if(!(_InstanceName == (value)))
                 {
-                    _InstanceName  = value;
+                    _InstanceName = value;
                     RaisePropertyChanged("InstanceName");
                 }
             }
@@ -12948,9 +12823,9 @@ namespace ReactiveRTM.RTC
             get { return _TypeName; }
             set 
             {
-                if(!_TypeName.Equals(value))
+                if(!(_TypeName == (value)))
                 {
-                    _TypeName  = value;
+                    _TypeName = value;
                     RaisePropertyChanged("TypeName");
                 }
             }
@@ -12963,9 +12838,9 @@ namespace ReactiveRTM.RTC
             get { return _Polarity; }
             set 
             {
-                if(!_Polarity.Equals(value))
+                if(!(_Polarity.Equals(value)))
                 {
-                    _Polarity  = value;
+                    _Polarity = value;
                     RaisePropertyChanged("Polarity");
                 }
             }
@@ -12985,7 +12860,9 @@ namespace ReactiveRTM.RTC
         }
         public PortInterfaceProfile ()
         {
-            //TODO: 初期化
+            _InstanceName = string.Empty;
+            _TypeName = string.Empty;
+            _Polarity = new ReactiveRTM.RTC.PortInterfacePolarity();
         }
         public PortInterfaceProfile (global::omg.org.RTC.PortInterfaceProfile source)
         {
@@ -12999,7 +12876,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Polarity.Equals(_Polarity);
+            return other._InstanceName == (_InstanceName) && other._TypeName == (_TypeName) && other._Polarity.Equals(_Polarity);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13015,11 +12892,8 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _InstanceName.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TypeName.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Polarity.GetHashCode();
                 return result;
             }
@@ -13036,9 +12910,9 @@ namespace ReactiveRTM.RTC
             get { return _Name; }
             set 
             {
-                if(!_Name.Equals(value))
+                if(!(_Name == (value)))
                 {
-                    _Name  = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -13051,9 +12925,9 @@ namespace ReactiveRTM.RTC
             get { return _ConnectorId; }
             set 
             {
-                if(!_ConnectorId.Equals(value))
+                if(!(_ConnectorId == (value)))
                 {
-                    _ConnectorId  = value;
+                    _ConnectorId = value;
                     RaisePropertyChanged("ConnectorId");
                 }
             }
@@ -13066,9 +12940,9 @@ namespace ReactiveRTM.RTC
             get { return _Ports; }
             set 
             {
-                if(!_Ports.SequenceEqual(value))
+                if(!(_Ports.SequenceEqual(value)))
                 {
-                    _Ports  = value;
+                    _Ports = value;
                     RaisePropertyChanged("Ports");
                 }
             }
@@ -13081,9 +12955,9 @@ namespace ReactiveRTM.RTC
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13104,7 +12978,10 @@ namespace ReactiveRTM.RTC
         }
         public ConnectorProfile ()
         {
-            //TODO: 初期化
+            _Name = string.Empty;
+            _ConnectorId = string.Empty;
+            _Ports = new List<ReactiveRTM.RTC.PortService>();
+            _Properties = new Dictionary<string,object>();
         }
         public ConnectorProfile (global::omg.org.RTC.ConnectorProfile source)
         {
@@ -13119,7 +12996,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._ConnectorId.Equals(_ConnectorId) && other._Ports.SequenceEqual(_Ports) && other._Properties.SequenceEqual(_Properties);
+            return other._Name == (_Name) && other._ConnectorId == (_ConnectorId) && other._Ports.SequenceEqual(_Ports) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13135,14 +13012,10 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _ConnectorId.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Ports.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Ports.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13158,9 +13031,9 @@ namespace ReactiveRTM.RTC
             get { return _Name; }
             set 
             {
-                if(!_Name.Equals(value))
+                if(!(_Name == (value)))
                 {
-                    _Name  = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -13173,9 +13046,9 @@ namespace ReactiveRTM.RTC
             get { return _Interfaces; }
             set 
             {
-                if(!_Interfaces.SequenceEqual(value))
+                if(!(_Interfaces.SequenceEqual(value)))
                 {
-                    _Interfaces  = value;
+                    _Interfaces = value;
                     RaisePropertyChanged("Interfaces");
                 }
             }
@@ -13188,9 +13061,9 @@ namespace ReactiveRTM.RTC
             get { return _PortRef; }
             set 
             {
-                if(!_PortRef.Equals(value))
+                if(!(_PortRef == (value)))
                 {
-                    _PortRef  = value;
+                    _PortRef = value;
                     RaisePropertyChanged("PortRef");
                 }
             }
@@ -13203,9 +13076,9 @@ namespace ReactiveRTM.RTC
             get { return _ConnectorProfiles; }
             set 
             {
-                if(!_ConnectorProfiles.SequenceEqual(value))
+                if(!(_ConnectorProfiles.SequenceEqual(value)))
                 {
-                    _ConnectorProfiles  = value;
+                    _ConnectorProfiles = value;
                     RaisePropertyChanged("ConnectorProfiles");
                 }
             }
@@ -13218,9 +13091,9 @@ namespace ReactiveRTM.RTC
             get { return _Owner; }
             set 
             {
-                if(!_Owner.Equals(value))
+                if(!(_Owner == (value)))
                 {
-                    _Owner  = value;
+                    _Owner = value;
                     RaisePropertyChanged("Owner");
                 }
             }
@@ -13233,9 +13106,9 @@ namespace ReactiveRTM.RTC
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13258,7 +13131,12 @@ namespace ReactiveRTM.RTC
         }
         public PortProfile ()
         {
-            //TODO: 初期化
+            _Name = string.Empty;
+            _Interfaces = new List<ReactiveRTM.RTC.PortInterfaceProfile>();
+            _PortRef = default(ReactiveRTM.RTC.PortService);
+            _ConnectorProfiles = new List<ReactiveRTM.RTC.ConnectorProfile>();
+            _Owner = default(ReactiveRTM.RTC.RTObject);
+            _Properties = new Dictionary<string,object>();
         }
         public PortProfile (global::omg.org.RTC.PortProfile source)
         {
@@ -13275,7 +13153,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Interfaces.SequenceEqual(_Interfaces) && other._PortRef.Equals(_PortRef) && other._ConnectorProfiles.SequenceEqual(_ConnectorProfiles) && other._Owner.Equals(_Owner) && other._Properties.SequenceEqual(_Properties);
+            return other._Name == (_Name) && other._Interfaces.SequenceEqual(_Interfaces) && other._PortRef == (_PortRef) && other._ConnectorProfiles.SequenceEqual(_ConnectorProfiles) && other._Owner == (_Owner) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13291,18 +13169,12 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Interfaces.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _Interfaces.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 result = (result * 397) ^ _PortRef.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ConnectorProfiles.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _ConnectorProfiles.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 result = (result * 397) ^ _Owner.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13318,9 +13190,9 @@ namespace ReactiveRTM.RTC
             get { return _Kind; }
             set 
             {
-                if(!_Kind.Equals(value))
+                if(!(_Kind.Equals(value)))
                 {
-                    _Kind  = value;
+                    _Kind = value;
                     RaisePropertyChanged("Kind");
                 }
             }
@@ -13333,9 +13205,9 @@ namespace ReactiveRTM.RTC
             get { return _Rate; }
             set 
             {
-                if(!_Rate.Equals(value))
+                if(!(_Rate.Equals(value)))
                 {
-                    _Rate  = value;
+                    _Rate = value;
                     RaisePropertyChanged("Rate");
                 }
             }
@@ -13348,9 +13220,9 @@ namespace ReactiveRTM.RTC
             get { return _Owner; }
             set 
             {
-                if(!_Owner.Equals(value))
+                if(!(_Owner == (value)))
                 {
-                    _Owner  = value;
+                    _Owner = value;
                     RaisePropertyChanged("Owner");
                 }
             }
@@ -13363,9 +13235,9 @@ namespace ReactiveRTM.RTC
             get { return _Participants; }
             set 
             {
-                if(!_Participants.SequenceEqual(value))
+                if(!(_Participants.SequenceEqual(value)))
                 {
-                    _Participants  = value;
+                    _Participants = value;
                     RaisePropertyChanged("Participants");
                 }
             }
@@ -13378,9 +13250,9 @@ namespace ReactiveRTM.RTC
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13402,7 +13274,11 @@ namespace ReactiveRTM.RTC
         }
         public ExecutionContextProfile ()
         {
-            //TODO: 初期化
+            _Kind = new ReactiveRTM.RTC.ExecutionKind();
+            _Rate = new System.Double();
+            _Owner = default(ReactiveRTM.RTC.RTObject);
+            _Participants = new List<ReactiveRTM.RTC.RTObject>();
+            _Properties = new Dictionary<string,object>();
         }
         public ExecutionContextProfile (global::omg.org.RTC.ExecutionContextProfile source)
         {
@@ -13418,7 +13294,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner.Equals(_Owner) && other._Participants.SequenceEqual(_Participants) && other._Properties.SequenceEqual(_Properties);
+            return other._Kind.Equals(_Kind) && other._Rate.Equals(_Rate) && other._Owner == (_Owner) && other._Participants.SequenceEqual(_Participants) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13434,16 +13310,11 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Kind.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Rate.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Owner.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Participants.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Participants.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13459,9 +13330,9 @@ namespace ReactiveRTM.RTC
             get { return _ActionComponent; }
             set 
             {
-                if(!_ActionComponent.Equals(value))
+                if(!(_ActionComponent == (value)))
                 {
-                    _ActionComponent  = value;
+                    _ActionComponent = value;
                     RaisePropertyChanged("ActionComponent");
                 }
             }
@@ -13474,9 +13345,9 @@ namespace ReactiveRTM.RTC
             get { return _Id; }
             set 
             {
-                if(!_Id.Equals(value))
+                if(!(_Id == (value)))
                 {
-                    _Id  = value;
+                    _Id = value;
                     RaisePropertyChanged("Id");
                 }
             }
@@ -13495,7 +13366,8 @@ namespace ReactiveRTM.RTC
         }
         public FsmBehaviorProfile ()
         {
-            //TODO: 初期化
+            _ActionComponent = default(ReactiveRTM.RTC.FsmParticipantAction);
+            _Id = string.Empty;
         }
         public FsmBehaviorProfile (global::omg.org.RTC.FsmBehaviorProfile source)
         {
@@ -13508,7 +13380,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._ActionComponent.Equals(_ActionComponent) && other._Id.Equals(_Id);
+            return other._ActionComponent == (_ActionComponent) && other._Id == (_Id);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13524,9 +13396,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _ActionComponent.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Id.GetHashCode();
                 return result;
             }
@@ -13543,9 +13413,9 @@ namespace ReactiveRTM.RTC
             get { return _BehaviorProfiles; }
             set 
             {
-                if(!_BehaviorProfiles.SequenceEqual(value))
+                if(!(_BehaviorProfiles.SequenceEqual(value)))
                 {
-                    _BehaviorProfiles  = value;
+                    _BehaviorProfiles = value;
                     RaisePropertyChanged("BehaviorProfiles");
                 }
             }
@@ -13563,7 +13433,7 @@ namespace ReactiveRTM.RTC
         }
         public FsmProfile ()
         {
-            //TODO: 初期化
+            _BehaviorProfiles = new List<ReactiveRTM.RTC.FsmBehaviorProfile>();
         }
         public FsmProfile (global::omg.org.RTC.FsmProfile source)
         {
@@ -13591,8 +13461,7 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _BehaviorProfiles.GetHashCode();
+                result = _BehaviorProfiles.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -13608,9 +13477,9 @@ namespace ReactiveRTM.RTC
             get { return _InstanceName; }
             set 
             {
-                if(!_InstanceName.Equals(value))
+                if(!(_InstanceName == (value)))
                 {
-                    _InstanceName  = value;
+                    _InstanceName = value;
                     RaisePropertyChanged("InstanceName");
                 }
             }
@@ -13623,9 +13492,9 @@ namespace ReactiveRTM.RTC
             get { return _TypeName; }
             set 
             {
-                if(!_TypeName.Equals(value))
+                if(!(_TypeName == (value)))
                 {
-                    _TypeName  = value;
+                    _TypeName = value;
                     RaisePropertyChanged("TypeName");
                 }
             }
@@ -13638,9 +13507,9 @@ namespace ReactiveRTM.RTC
             get { return _Description; }
             set 
             {
-                if(!_Description.Equals(value))
+                if(!(_Description == (value)))
                 {
-                    _Description  = value;
+                    _Description = value;
                     RaisePropertyChanged("Description");
                 }
             }
@@ -13653,9 +13522,9 @@ namespace ReactiveRTM.RTC
             get { return _Version; }
             set 
             {
-                if(!_Version.Equals(value))
+                if(!(_Version == (value)))
                 {
-                    _Version  = value;
+                    _Version = value;
                     RaisePropertyChanged("Version");
                 }
             }
@@ -13668,9 +13537,9 @@ namespace ReactiveRTM.RTC
             get { return _Vendor; }
             set 
             {
-                if(!_Vendor.Equals(value))
+                if(!(_Vendor == (value)))
                 {
-                    _Vendor  = value;
+                    _Vendor = value;
                     RaisePropertyChanged("Vendor");
                 }
             }
@@ -13683,9 +13552,9 @@ namespace ReactiveRTM.RTC
             get { return _Category; }
             set 
             {
-                if(!_Category.Equals(value))
+                if(!(_Category == (value)))
                 {
-                    _Category  = value;
+                    _Category = value;
                     RaisePropertyChanged("Category");
                 }
             }
@@ -13698,9 +13567,9 @@ namespace ReactiveRTM.RTC
             get { return _PortProfiles; }
             set 
             {
-                if(!_PortProfiles.SequenceEqual(value))
+                if(!(_PortProfiles.SequenceEqual(value)))
                 {
-                    _PortProfiles  = value;
+                    _PortProfiles = value;
                     RaisePropertyChanged("PortProfiles");
                 }
             }
@@ -13713,9 +13582,9 @@ namespace ReactiveRTM.RTC
             get { return _Parent; }
             set 
             {
-                if(!_Parent.Equals(value))
+                if(!(_Parent == (value)))
                 {
-                    _Parent  = value;
+                    _Parent = value;
                     RaisePropertyChanged("Parent");
                 }
             }
@@ -13728,9 +13597,9 @@ namespace ReactiveRTM.RTC
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13756,7 +13625,15 @@ namespace ReactiveRTM.RTC
         }
         public ComponentProfile ()
         {
-            //TODO: 初期化
+            _InstanceName = string.Empty;
+            _TypeName = string.Empty;
+            _Description = string.Empty;
+            _Version = string.Empty;
+            _Vendor = string.Empty;
+            _Category = string.Empty;
+            _PortProfiles = new List<ReactiveRTM.RTC.PortProfile>();
+            _Parent = default(ReactiveRTM.RTC.RTObject);
+            _Properties = new Dictionary<string,object>();
         }
         public ComponentProfile (global::omg.org.RTC.ComponentProfile source)
         {
@@ -13776,7 +13653,7 @@ namespace ReactiveRTM.RTC
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._InstanceName.Equals(_InstanceName) && other._TypeName.Equals(_TypeName) && other._Description.Equals(_Description) && other._Version.Equals(_Version) && other._Vendor.Equals(_Vendor) && other._Category.Equals(_Category) && other._PortProfiles.SequenceEqual(_PortProfiles) && other._Parent.Equals(_Parent) && other._Properties.SequenceEqual(_Properties);
+            return other._InstanceName == (_InstanceName) && other._TypeName == (_TypeName) && other._Description == (_Description) && other._Version == (_Version) && other._Vendor == (_Vendor) && other._Category == (_Category) && other._PortProfiles.SequenceEqual(_PortProfiles) && other._Parent == (_Parent) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -13792,24 +13669,15 @@ namespace ReactiveRTM.RTC
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _InstanceName.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _TypeName.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Description.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Version.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Vendor.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Category.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _PortProfiles.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _PortProfiles.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 result = (result * 397) ^ _Parent.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13830,9 +13698,9 @@ namespace ReactiveRTM.RTM
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13850,7 +13718,7 @@ namespace ReactiveRTM.RTM
         }
         public ModuleProfile ()
         {
-            //TODO: 初期化
+            _Properties = new Dictionary<string,object>();
         }
         public ModuleProfile (global::RTM.ModuleProfile source)
         {
@@ -13878,8 +13746,7 @@ namespace ReactiveRTM.RTM
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13895,9 +13762,9 @@ namespace ReactiveRTM.RTM
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -13915,7 +13782,7 @@ namespace ReactiveRTM.RTM
         }
         public ManagerProfile ()
         {
-            //TODO: 初期化
+            _Properties = new Dictionary<string,object>();
         }
         public ManagerProfile (global::RTM.ManagerProfile source)
         {
@@ -13943,8 +13810,7 @@ namespace ReactiveRTM.RTM
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -13984,9 +13850,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Name; }
             set 
             {
-                if(!_Name.Equals(value))
+                if(!(_Name == (value)))
                 {
-                    _Name  = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -13999,9 +13865,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Value; }
             set 
             {
-                if(!_Value.Equals(value))
+                if(!(_Value == (value)))
                 {
-                    _Value  = value;
+                    _Value = value;
                     RaisePropertyChanged("Value");
                 }
             }
@@ -14020,7 +13886,8 @@ namespace ReactiveRTM.SDOPackage
         }
         public NameValue ()
         {
-            //TODO: 初期化
+            _Name = string.Empty;
+            _Value = default(System.Object);
         }
         public NameValue (global::org.omg.SDOPackage.NameValue source)
         {
@@ -14033,7 +13900,7 @@ namespace ReactiveRTM.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Value.Equals(_Value);
+            return other._Name == (_Name) && other._Value == (_Value);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14049,9 +13916,7 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Value.GetHashCode();
                 return result;
             }
@@ -14068,9 +13933,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _EnumeratedValues; }
             set 
             {
-                if(!_EnumeratedValues.SequenceEqual(value))
+                if(!(_EnumeratedValues.SequenceEqual(value)))
                 {
-                    _EnumeratedValues  = value;
+                    _EnumeratedValues = value;
                     RaisePropertyChanged("EnumeratedValues");
                 }
             }
@@ -14088,7 +13953,7 @@ namespace ReactiveRTM.SDOPackage
         }
         public EnumerationType ()
         {
-            //TODO: 初期化
+            _EnumeratedValues = new List<System.String>();
         }
         public EnumerationType (global::org.omg.SDOPackage.EnumerationType source)
         {
@@ -14116,8 +13981,7 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _EnumeratedValues.GetHashCode();
+                result = _EnumeratedValues.Aggregate(result, (s,x) => (s * 397) ^ x.GetHashCode());
                 return result;
             }
         }
@@ -14133,9 +13997,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Min; }
             set 
             {
-                if(!_Min.Equals(value))
+                if(!(_Min.Equals(value)))
                 {
-                    _Min  = value;
+                    _Min = value;
                     RaisePropertyChanged("Min");
                 }
             }
@@ -14148,9 +14012,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Max; }
             set 
             {
-                if(!_Max.Equals(value))
+                if(!(_Max.Equals(value)))
                 {
-                    _Max  = value;
+                    _Max = value;
                     RaisePropertyChanged("Max");
                 }
             }
@@ -14163,9 +14027,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _MinInclusive; }
             set 
             {
-                if(!_MinInclusive.Equals(value))
+                if(!(_MinInclusive.Equals(value)))
                 {
-                    _MinInclusive  = value;
+                    _MinInclusive = value;
                     RaisePropertyChanged("MinInclusive");
                 }
             }
@@ -14178,9 +14042,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _MaxInclusive; }
             set 
             {
-                if(!_MaxInclusive.Equals(value))
+                if(!(_MaxInclusive.Equals(value)))
                 {
-                    _MaxInclusive  = value;
+                    _MaxInclusive = value;
                     RaisePropertyChanged("MaxInclusive");
                 }
             }
@@ -14201,7 +14065,10 @@ namespace ReactiveRTM.SDOPackage
         }
         public RangeType ()
         {
-            //TODO: 初期化
+            _Min = new global::org.omg.SDOPackage.Numeric();
+            _Max = new global::org.omg.SDOPackage.Numeric();
+            _MinInclusive = new System.Boolean();
+            _MaxInclusive = new System.Boolean();
         }
         public RangeType (global::org.omg.SDOPackage.RangeType source)
         {
@@ -14232,13 +14099,9 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Min.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Max.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxInclusive.GetHashCode();
                 return result;
             }
@@ -14255,9 +14118,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Min; }
             set 
             {
-                if(!_Min.Equals(value))
+                if(!(_Min.Equals(value)))
                 {
-                    _Min  = value;
+                    _Min = value;
                     RaisePropertyChanged("Min");
                 }
             }
@@ -14270,9 +14133,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Max; }
             set 
             {
-                if(!_Max.Equals(value))
+                if(!(_Max.Equals(value)))
                 {
-                    _Max  = value;
+                    _Max = value;
                     RaisePropertyChanged("Max");
                 }
             }
@@ -14285,9 +14148,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _MinInclusive; }
             set 
             {
-                if(!_MinInclusive.Equals(value))
+                if(!(_MinInclusive.Equals(value)))
                 {
-                    _MinInclusive  = value;
+                    _MinInclusive = value;
                     RaisePropertyChanged("MinInclusive");
                 }
             }
@@ -14300,9 +14163,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _MaxInclusive; }
             set 
             {
-                if(!_MaxInclusive.Equals(value))
+                if(!(_MaxInclusive.Equals(value)))
                 {
-                    _MaxInclusive  = value;
+                    _MaxInclusive = value;
                     RaisePropertyChanged("MaxInclusive");
                 }
             }
@@ -14315,9 +14178,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Step; }
             set 
             {
-                if(!_Step.Equals(value))
+                if(!(_Step.Equals(value)))
                 {
-                    _Step  = value;
+                    _Step = value;
                     RaisePropertyChanged("Step");
                 }
             }
@@ -14339,7 +14202,11 @@ namespace ReactiveRTM.SDOPackage
         }
         public IntervalType ()
         {
-            //TODO: 初期化
+            _Min = new global::org.omg.SDOPackage.Numeric();
+            _Max = new global::org.omg.SDOPackage.Numeric();
+            _MinInclusive = new System.Boolean();
+            _MaxInclusive = new System.Boolean();
+            _Step = new global::org.omg.SDOPackage.Numeric();
         }
         public IntervalType (global::org.omg.SDOPackage.IntervalType source)
         {
@@ -14371,15 +14238,10 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Min.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Max.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MinInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _MaxInclusive.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Step.GetHashCode();
                 return result;
             }
@@ -14396,9 +14258,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Name; }
             set 
             {
-                if(!_Name.Equals(value))
+                if(!(_Name == (value)))
                 {
-                    _Name  = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -14411,9 +14273,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Type; }
             set 
             {
-                if(!_Type.Equals(value))
+                if(!(_Type == (value)))
                 {
-                    _Type  = value;
+                    _Type = value;
                     RaisePropertyChanged("Type");
                 }
             }
@@ -14426,9 +14288,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _AllowedValues; }
             set 
             {
-                if(!_AllowedValues.Equals(value))
+                if(!(_AllowedValues.Equals(value)))
                 {
-                    _AllowedValues  = value;
+                    _AllowedValues = value;
                     RaisePropertyChanged("AllowedValues");
                 }
             }
@@ -14448,7 +14310,9 @@ namespace ReactiveRTM.SDOPackage
         }
         public Parameter ()
         {
-            //TODO: 初期化
+            _Name = string.Empty;
+            _Type = default(ReactiveRTM.CORBA.TypeCode);
+            _AllowedValues = new global::org.omg.SDOPackage.AllowedValues();
         }
         public Parameter (global::org.omg.SDOPackage.Parameter source)
         {
@@ -14462,7 +14326,7 @@ namespace ReactiveRTM.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Name.Equals(_Name) && other._Type.Equals(_Type) && other._AllowedValues.Equals(_AllowedValues);
+            return other._Name == (_Name) && other._Type == (_Type) && other._AllowedValues.Equals(_AllowedValues);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14478,11 +14342,8 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Name.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Type.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _AllowedValues.GetHashCode();
                 return result;
             }
@@ -14499,9 +14360,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -14519,7 +14380,7 @@ namespace ReactiveRTM.SDOPackage
         }
         public OrganizationProperty ()
         {
-            //TODO: 初期化
+            _Properties = new Dictionary<string,object>();
         }
         public OrganizationProperty (global::org.omg.SDOPackage.OrganizationProperty source)
         {
@@ -14547,8 +14408,7 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -14564,9 +14424,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _DeviceType; }
             set 
             {
-                if(!_DeviceType.Equals(value))
+                if(!(_DeviceType == (value)))
                 {
-                    _DeviceType  = value;
+                    _DeviceType = value;
                     RaisePropertyChanged("DeviceType");
                 }
             }
@@ -14579,9 +14439,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Manufacturer; }
             set 
             {
-                if(!_Manufacturer.Equals(value))
+                if(!(_Manufacturer == (value)))
                 {
-                    _Manufacturer  = value;
+                    _Manufacturer = value;
                     RaisePropertyChanged("Manufacturer");
                 }
             }
@@ -14594,9 +14454,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Model; }
             set 
             {
-                if(!_Model.Equals(value))
+                if(!(_Model == (value)))
                 {
-                    _Model  = value;
+                    _Model = value;
                     RaisePropertyChanged("Model");
                 }
             }
@@ -14609,9 +14469,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Version; }
             set 
             {
-                if(!_Version.Equals(value))
+                if(!(_Version == (value)))
                 {
-                    _Version  = value;
+                    _Version = value;
                     RaisePropertyChanged("Version");
                 }
             }
@@ -14624,9 +14484,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -14648,7 +14508,11 @@ namespace ReactiveRTM.SDOPackage
         }
         public DeviceProfile ()
         {
-            //TODO: 初期化
+            _DeviceType = string.Empty;
+            _Manufacturer = string.Empty;
+            _Model = string.Empty;
+            _Version = string.Empty;
+            _Properties = new Dictionary<string,object>();
         }
         public DeviceProfile (global::org.omg.SDOPackage.DeviceProfile source)
         {
@@ -14664,7 +14528,7 @@ namespace ReactiveRTM.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._DeviceType.Equals(_DeviceType) && other._Manufacturer.Equals(_Manufacturer) && other._Model.Equals(_Model) && other._Version.Equals(_Version) && other._Properties.SequenceEqual(_Properties);
+            return other._DeviceType == (_DeviceType) && other._Manufacturer == (_Manufacturer) && other._Model == (_Model) && other._Version == (_Version) && other._Properties.SequenceEqual(_Properties);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14680,16 +14544,11 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _DeviceType.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Manufacturer.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Model.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Version.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
@@ -14705,9 +14564,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Id; }
             set 
             {
-                if(!_Id.Equals(value))
+                if(!(_Id == (value)))
                 {
-                    _Id  = value;
+                    _Id = value;
                     RaisePropertyChanged("Id");
                 }
             }
@@ -14720,9 +14579,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _InterfaceType; }
             set 
             {
-                if(!_InterfaceType.Equals(value))
+                if(!(_InterfaceType == (value)))
                 {
-                    _InterfaceType  = value;
+                    _InterfaceType = value;
                     RaisePropertyChanged("InterfaceType");
                 }
             }
@@ -14735,9 +14594,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Properties; }
             set 
             {
-                if(!_Properties.SequenceEqual(value))
+                if(!(_Properties.SequenceEqual(value)))
                 {
-                    _Properties  = value;
+                    _Properties = value;
                     RaisePropertyChanged("Properties");
                 }
             }
@@ -14750,9 +14609,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Service; }
             set 
             {
-                if(!_Service.Equals(value))
+                if(!(_Service == (value)))
                 {
-                    _Service  = value;
+                    _Service = value;
                     RaisePropertyChanged("Service");
                 }
             }
@@ -14773,7 +14632,10 @@ namespace ReactiveRTM.SDOPackage
         }
         public ServiceProfile ()
         {
-            //TODO: 初期化
+            _Id = string.Empty;
+            _InterfaceType = string.Empty;
+            _Properties = new Dictionary<string,object>();
+            _Service = default(ReactiveRTM.SDOPackage.SDOService);
         }
         public ServiceProfile (global::org.omg.SDOPackage.ServiceProfile source)
         {
@@ -14788,7 +14650,7 @@ namespace ReactiveRTM.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Id.Equals(_Id) && other._InterfaceType.Equals(_InterfaceType) && other._Properties.SequenceEqual(_Properties) && other._Service.Equals(_Service);
+            return other._Id == (_Id) && other._InterfaceType == (_InterfaceType) && other._Properties.SequenceEqual(_Properties) && other._Service == (_Service);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14804,13 +14666,9 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Id.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _InterfaceType.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _Properties.GetHashCode();
-            //TODO: 配列のハッシュは？
+                result = _Properties.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 result = (result * 397) ^ _Service.GetHashCode();
                 return result;
             }
@@ -14827,9 +14685,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Id; }
             set 
             {
-                if(!_Id.Equals(value))
+                if(!(_Id == (value)))
                 {
-                    _Id  = value;
+                    _Id = value;
                     RaisePropertyChanged("Id");
                 }
             }
@@ -14842,9 +14700,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _Description; }
             set 
             {
-                if(!_Description.Equals(value))
+                if(!(_Description == (value)))
                 {
-                    _Description  = value;
+                    _Description = value;
                     RaisePropertyChanged("Description");
                 }
             }
@@ -14857,9 +14715,9 @@ namespace ReactiveRTM.SDOPackage
             get { return _ConfigurationData; }
             set 
             {
-                if(!_ConfigurationData.SequenceEqual(value))
+                if(!(_ConfigurationData.SequenceEqual(value)))
                 {
-                    _ConfigurationData  = value;
+                    _ConfigurationData = value;
                     RaisePropertyChanged("ConfigurationData");
                 }
             }
@@ -14879,7 +14737,9 @@ namespace ReactiveRTM.SDOPackage
         }
         public ConfigurationSet ()
         {
-            //TODO: 初期化
+            _Id = string.Empty;
+            _Description = string.Empty;
+            _ConfigurationData = new Dictionary<string,object>();
         }
         public ConfigurationSet (global::org.omg.SDOPackage.ConfigurationSet source)
         {
@@ -14893,7 +14753,7 @@ namespace ReactiveRTM.SDOPackage
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return other._Id.Equals(_Id) && other._Description.Equals(_Description) && other._ConfigurationData.SequenceEqual(_ConfigurationData);
+            return other._Id == (_Id) && other._Description == (_Description) && other._ConfigurationData.SequenceEqual(_ConfigurationData);
         }
         ///<exclude/>
         public override bool Equals(object obj)
@@ -14909,12 +14769,9 @@ namespace ReactiveRTM.SDOPackage
             unchecked
             {
                 int result = 0;
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Id.GetHashCode();
-            //TODO: 配列のハッシュは？
                 result = (result * 397) ^ _Description.GetHashCode();
-            //TODO: 配列のハッシュは？
-                result = (result * 397) ^ _ConfigurationData.GetHashCode();
+                result = _ConfigurationData.Aggregate(result, (s, x) => (((s * 397) ^ x.Key.GetHashCode()) * 397) ^ x.Value.GetHashCode());
                 return result;
             }
         }
