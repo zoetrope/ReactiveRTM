@@ -18,36 +18,33 @@ namespace ReactiveRTM.Corba
         {
             var corbaSetting = new Dictionary<string, string>();
 
-            if (setting != null)
+            if (setting.Common != null)
             {
-                if (setting.Common != null)
-                {
-                    corbaSetting.SetOption("name", setting.Common.Name);
-                    corbaSetting.SetOption("priority", setting.Common.Priority);
-                    corbaSetting.SetOption("endian", setting.Common.Endian);
-                }
+                corbaSetting.SetOption("name", setting.Common.Name);
+                corbaSetting.SetOption("priority", setting.Common.Priority);
+                corbaSetting.SetOption("endian", setting.Common.Endian);
+            }
 
-                if (setting.Client != null)
-                {
-                    corbaSetting.SetOption("clientReceiveTimeOut", setting.Client.ClientReceiveTimeOut);
-                    corbaSetting.SetOption("clientSendTimeOut", setting.Client.ClientSendTimeOut);
-                    corbaSetting.SetOption("clientRequestTimeOut", setting.Client.ClientRequestTimeOut);
-                    corbaSetting.SetOption("unusedConnectionKeepAlive", setting.Client.UnusedConnectionKeepAlive);
-                    corbaSetting.SetOption("clientConnectionLimit", setting.Client.ClientConnectionLimit);
-                    corbaSetting.SetOption("allowRequestMultiplex", setting.Client.AllowRequestMultiplex);
-                    corbaSetting.SetOption("maxNumberOfMultiplexedRequests", setting.Client.MaxNumberOfMultiplexedRequests);
-                    corbaSetting.SetOption("maxNumberOfRetries", setting.Client.MaxNumberOfRetries);
-                    corbaSetting.SetOption("retryDelay", setting.Client.RetryDelay);
-                }
+            if (setting.Client != null)
+            {
+                corbaSetting.SetOption("clientReceiveTimeOut", setting.Client.ClientReceiveTimeOut);
+                corbaSetting.SetOption("clientSendTimeOut", setting.Client.ClientSendTimeOut);
+                corbaSetting.SetOption("clientRequestTimeOut", setting.Client.ClientRequestTimeOut);
+                corbaSetting.SetOption("unusedConnectionKeepAlive", setting.Client.UnusedConnectionKeepAlive);
+                corbaSetting.SetOption("clientConnectionLimit", setting.Client.ClientConnectionLimit);
+                corbaSetting.SetOption("allowRequestMultiplex", setting.Client.AllowRequestMultiplex);
+                corbaSetting.SetOption("maxNumberOfMultiplexedRequests", setting.Client.MaxNumberOfMultiplexedRequests);
+                corbaSetting.SetOption("maxNumberOfRetries", setting.Client.MaxNumberOfRetries);
+                corbaSetting.SetOption("retryDelay", setting.Client.RetryDelay);
+            }
 
-                if (setting.Server != null)
-                {
-                    corbaSetting.SetOption("port", setting.Server.Port);
-                    corbaSetting.SetOption("machineName", setting.Server.MachineName);
-                    corbaSetting.SetOption("bindTo", setting.Server.BindTo);
-                    corbaSetting.SetOption("useIpAddress", setting.Server.UseIpAddress);
-                    corbaSetting.SetOption("serverThreadsMaxPerConnection", setting.Server.ServerThreadsMaxPerConnection);
-                }
+            if (setting.Server != null)
+            {
+                corbaSetting.SetOption("port", setting.Server.Port);
+                corbaSetting.SetOption("machineName", setting.Server.MachineName);
+                corbaSetting.SetOption("bindTo", setting.Server.BindTo);
+                corbaSetting.SetOption("useIpAddress", setting.Server.UseIpAddress);
+                corbaSetting.SetOption("serverThreadsMaxPerConnection", setting.Server.ServerThreadsMaxPerConnection);
             }
 
             lock (_channelLock)
@@ -101,7 +98,6 @@ namespace ReactiveRTM.Corba
 
     static class CorbaSettingExtensions
     {
-
         public static void SetOption<T>(this Dictionary<string, string> corbaSetting, string name, T param)
         {
             if (param == null) return;

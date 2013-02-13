@@ -21,16 +21,16 @@ namespace ReactiveRTM.Corba
         {
             _setting = setting;
 
-            if (_setting.Enable.Value)
+            if (_setting.Enable)
             {
                 IsEnabled = true;
             }
 
             _namingServices = _setting.NamingServers.Select(x => new NamingServiceWrapper(x)).ToList();
 
-            if (_setting.Update.Enable.Value)
+            if (_setting.Update.Enable)
             {
-                _timerDispose = Observable.Timer(TimeSpan.FromSeconds(_setting.Update.Interval.Value))
+                _timerDispose = Observable.Timer(TimeSpan.FromSeconds(_setting.Update.Interval))
                     .Subscribe(x => Update());
             }
 

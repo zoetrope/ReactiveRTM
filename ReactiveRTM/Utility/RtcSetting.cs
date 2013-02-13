@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace ReactiveRTM.Core
 {
+#if LANG_JP
+    /// <summary>
+    /// 設定
+    /// </summary>
+#else
+    /// <summary>
+    /// Configuration
+    /// </summary>    
+#endif
     public class RtcSetting
     {
         public NamingSetting Naming { get; set; }
@@ -19,7 +28,14 @@ namespace ReactiveRTM.Core
 
         public RtcSetting()
         {
+            Naming = new NamingSetting();
             Catalogs = new List<CatalogSetting>();
+            Logger = new LoggerSetting();
+            Manager = new ManagerSetting();
+            Timer = new TimerSetting();
+            ExecutionContext = new ExecutionContextSetting();
+            SdoService = new SdoServiceSetting();
+            Corba = new CorbaSetting();
         }
     }
 
@@ -34,7 +50,7 @@ namespace ReactiveRTM.Core
 #endif
     public class NamingSetting
     {
-        public bool? Enable { get; set; }
+        public bool Enable { get; set; }
         public string Formats { get; set; }
         public List<string> NamingServers { get; set; }
         public string Type { get; set; }
@@ -42,7 +58,11 @@ namespace ReactiveRTM.Core
 
         public NamingSetting()
         {
-            NamingServers = new List<string>();
+            Enable = true;
+            Formats = "%h.host/%n.rtc";
+            NamingServers = new List<string>() { "localhost:2809" };
+            Type = "Corba";
+            Update = new NamingUpdateSetting();
         }
     }
 
@@ -57,9 +77,16 @@ namespace ReactiveRTM.Core
 #endif
     public class NamingUpdateSetting
     {
-        public bool? Enable { get; set; }
-        public int? Interval { get; set; }
-        public bool? Rebind { get; set; }
+        public bool Enable { get; set; }
+        public int Interval { get; set; }
+        public bool Rebind { get; set; }
+
+        public NamingUpdateSetting()
+        {
+            Enable = false;
+            Interval = 10;
+            Rebind = true;
+        }
     }
 
 #if LANG_JP
@@ -88,12 +115,19 @@ namespace ReactiveRTM.Core
 #endif
     public class LoggerSetting
     {
-        public bool? Enable { get; set; }
+        public bool Enable { get; set; }
         public string Level { get; set; }
         public bool? ShowLogName { get; set; }
         public bool? ShowDataTime { get; set; }
         public string DateTimeFormat { get; set; }
         public string Adapter { get; set; }
+
+        public LoggerSetting()
+        {
+            Enable = true;
+            Level = "DEBUG";
+            Adapter = "RtcLogger";
+        }
     }
 
 #if LANG_JP
@@ -109,16 +143,24 @@ namespace ReactiveRTM.Core
     {
         public string Name { get; set; }
         public string NamingFormats { get; set; }
-        public bool? IsMaster { get; set; }
+        public bool IsMaster { get; set; }
         public string CorbaServant { get; set; }
         public string MasterManager { get; set; }
-        public bool? ShutdownOnNortcs { get; set; }
-        public bool? ShutdownAuto { get; set; }
-        public double? AutoShutdownDuration { get; set; }
+        public bool ShutdownOnNortcs { get; set; }
+        public bool ShutdownAuto { get; set; }
+        public double AutoShutdownDuration { get; set; }
         public List<PrecreateComponent> PrecreateComponents { get; set; }
 
         public ManagerSetting()
         {
+            Name = "Manager";
+            NamingFormats = "%M.manager";
+            IsMaster = false;
+
+            ShutdownOnNortcs = false;
+            ShutdownAuto = false;
+            AutoShutdownDuration = 10.0;
+
             PrecreateComponents = new List<PrecreateComponent>();
         }
     }
@@ -140,8 +182,14 @@ namespace ReactiveRTM.Core
 #endif
     public class TimerSetting
     {
-        public bool? Enable { get; set; }
-        public int? Tick { get; set; }
+        public bool Enable { get; set; }
+        public double Tick { get; set; }
+
+        public TimerSetting()
+        {
+            Enable = false;
+            Tick = 10;
+        }
     }
 
 #if LANG_JP
@@ -163,17 +211,36 @@ namespace ReactiveRTM.Core
     {
         public ProviderSetting Provider { get; set; }
         public ConsumerSetting Consumer { get; set; }
+
+        public SdoServiceSetting()
+        {
+            Provider = new ProviderSetting();
+            Consumer = new ConsumerSetting();
+        }
     }
     public class ProviderSetting
     {
         public List<string> AvailableServices { get; set; }
         public List<string> EnabledServices { get; set; }
         public List<string> ProvidingServices { get; set; }
+
+        public ProviderSetting()
+        {
+            AvailableServices = new List<string>();
+            EnabledServices = new List<string>();
+            ProvidingServices = new List<string>();
+        }
     }
     public class ConsumerSetting
     {
         public List<string> AvailableServices { get; set; }
         public List<string> EnabledServices { get; set; }
+
+        public ConsumerSetting()
+        {
+            AvailableServices = new List<string>();
+            EnabledServices = new List<string>();
+        }
     }
 
 
@@ -192,6 +259,13 @@ namespace ReactiveRTM.Core
         public CorbaCommonSetting Common { get; set; }
         public CorbaClientSetting Client { get; set; }
         public CorbaServerSetting Server { get; set; }
+
+        public CorbaSetting()
+        {
+            Common = new CorbaCommonSetting();
+            Client = new CorbaClientSetting();
+            Server = new CorbaServerSetting();
+        }
     }
 
 #if LANG_JP

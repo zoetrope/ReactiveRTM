@@ -43,15 +43,10 @@ namespace ReactiveRTM.Utility
             }
             else
             {
-                CreateDefaultSetting();
+                _setting = new RtcSetting();
             }
 
         }
 
-        private void CreateDefaultSetting()
-        {
-            _setting = new RtcSetting();
-
-        }
     }
 }

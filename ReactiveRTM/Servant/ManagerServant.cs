@@ -17,7 +17,7 @@ namespace ReactiveRTM.Servant
         {
             _setting = setting;
 
-            if (_setting.IsMaster.Value)
+            if (_setting.IsMaster)
             {
 
             }
