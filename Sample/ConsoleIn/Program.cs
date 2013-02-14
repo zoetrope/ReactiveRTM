@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Management;
+using ReactiveRTM.Component;
+using ReactiveRTM.Port;
 
 /// <summary>
 /// コンソール入力のデータをデータポートに出力するサンプル

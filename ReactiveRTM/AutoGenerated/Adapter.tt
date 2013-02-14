@@ -1,0 +1,58 @@
+﻿<#@ template language="C#" debug="true" #>
+<#@ output extension=".generated.cs" #>
+<#@ assembly Name="System.Core.dll" #>
+<#@ assembly Name="$(SolutionDir)\Lib\IIOP.NET.1.9.3\net20\IIOPChannel.dll" #>
+<#@ assembly Name="$(SolutionDir)\idl\RTC.IDL.dll" #>
+<#@ assembly Name="$(SolutionDir)\ReactiveRTM.Support\Bin\Debug\ReactiveRTM.Support.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="ReactiveRTM.Support" #>
+<#
+    var types = typeof(OpenRTM.InPortCdr).Assembly.GetTypes();
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
+using ReactiveRTM.Corba;
+using ReactiveRTM.Extensions;
+
+<# foreach(var x in ClassGenerator.GenerateTemplates(types)) {#>
+ 
+namespace <#= x.Namespace #>
+{
+<# foreach(var ct in x.ClassTemplates) {#>
+
+    public class <#= ct.ClassName #>Adapter : MarshalByRefObject, <#= ct.IiopClassName #>
+    {
+        private <#= ct.ClassName #> _target;
+
+        public <#= ct.ClassName #>Adapter(<#= ct.ClassName #> target)
+        {
+            _target = target;
+        }
+<# foreach(var method in ct.AllMethodTemplates) {#>
+        public <#= method.IiopReturnType #> <#= method.IiopName #>(<#= method.IiopDecArgs #>)
+        {
+<#     foreach(var param in method.AdapterBeforeCall) {#> 
+            <#= param #>;
+<#     } #>
+            <#= method.AdapterCallMethod #>
+<#     foreach(var param in method.AdapterAfterCall) {#> 
+            <#= param #>;
+<#     } #>
+            <#= method.AdapterReturnValue #>
+        }
+<# } #>
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
+    }
+<# }#>
+}
+<# }#>

@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Channels;
 using Ch.Elca.Iiop;
 using Ch.Elca.Iiop.Idl;
 using omg.org.CORBA;
-using ReactiveRTM.Core;
+using ReactiveRTM.Utility;
 
 namespace ReactiveRTM.Corba
 {

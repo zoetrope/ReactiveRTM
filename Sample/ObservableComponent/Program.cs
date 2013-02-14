@@ -5,9 +5,10 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using ReactiveRTM;
-using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Management;
+using ReactiveRTM.Component;
 
 /// <summary>
 /// コンポーネントを監視するサンプル

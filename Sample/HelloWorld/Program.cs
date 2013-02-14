@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ReactiveRTM;
-using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Management;
+using ReactiveRTM.Component;
 
 /// <summary>
 /// 周期的にHello Worldを表示するサンプル

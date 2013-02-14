@@ -1,5 +1,6 @@
-﻿using ReactiveRTM.Core;
+﻿using ReactiveRTM.Component;
 using ReactiveRTM.OpenRTM;
+using ReactiveRTM.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;

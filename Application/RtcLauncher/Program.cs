@@ -1,4 +1,4 @@
-﻿using ReactiveRTM.Core;
+﻿using ReactiveRTM.Management;
 using System;
 using System.Collections.Generic;
 using System.Linq;

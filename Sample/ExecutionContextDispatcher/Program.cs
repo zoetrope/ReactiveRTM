@@ -7,9 +7,10 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using System.Threading;
-using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Component;
+using ReactiveRTM.Port;
 
 /// <summary>
 /// 実行スレッドを実行コンテキストのスレッドに切り替えるサンプル

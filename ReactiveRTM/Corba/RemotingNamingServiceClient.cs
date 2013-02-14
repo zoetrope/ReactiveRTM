@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
-using ReactiveRTM.Core;
 
 namespace ReactiveRTM.Corba
 {

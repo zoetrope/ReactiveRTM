@@ -5,7 +5,7 @@ using System.Text;
 using ReactiveRTM.Extensions;
 using ReactiveRTM.RTC;
 
-namespace ReactiveRTM.Core
+namespace ReactiveRTM.Extensions
 {
 
     public enum PortType

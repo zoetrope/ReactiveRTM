@@ -92,18 +92,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Core\ActivityTest.cs" />
+    <Compile Include="Component\ActivityTest.cs" />
     <Compile Include="Corba\CdrSerializerTest.cs" />
     <Compile Include="ChainingAssertion.MSTest.cs" />
-    <Compile Include="Core\ComponentObserverTest.cs" />
-    <Compile Include="Core\ComponentOperationTest.cs" />
-    <Compile Include="Core\RtcManagerTest.cs" />
-    <Compile Include="Core\ComponentCompositionTest.cs" />
-    <Compile Include="Core\DataPortTest.cs" />
+    <Compile Include="Component\ComponentObserverTest.cs" />
+    <Compile Include="Component\ComponentOperationTest.cs" />
+    <Compile Include="Management\RtcManagerTest.cs" />
+    <Compile Include="Management\ComponentCompositionTest.cs" />
+    <Compile Include="Port\DataPortTest.cs" />
     <Compile Include="GeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SandBox.cs" />
-    <Compile Include="SimpleServiceTest.cs" />
+    <Compile Include="Port\SimpleServiceTest.cs" />
     <Compile Include="Utility\RtcSettingTest.cs" />
   </ItemGroup>
   <ItemGroup>

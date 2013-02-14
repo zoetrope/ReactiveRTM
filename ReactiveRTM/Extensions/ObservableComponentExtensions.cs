@@ -6,8 +6,8 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Threading.Tasks;
 using ReactiveRTM.Corba;
-using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Component;
 
 namespace ReactiveRTM.Extensions
 {

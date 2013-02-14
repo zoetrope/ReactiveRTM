@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReactiveRTM.Core
+namespace ReactiveRTM.Utility
 {
 #if LANG_JP
     /// <summary>

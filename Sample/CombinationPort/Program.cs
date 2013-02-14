@@ -4,8 +4,9 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Text;
-using ReactiveRTM.Core;
 using ReactiveRTM.RTC;
+using ReactiveRTM.Component;
+using ReactiveRTM.Port;
 
 /// <summary>
 /// データポートの合成のサンプル
