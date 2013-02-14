@@ -38,7 +38,7 @@ namespace ReactiveRTM.Management
 
 
         private ModuleFactory<ReactiveComponent> _componentFactory;
-        private RtcSettingManager _settingManager;
+        private RtcSetting _setting;
         private NamingServiceContainer _namingContainer;
 
 
@@ -71,14 +71,14 @@ namespace ReactiveRTM.Management
         {
             try
             {
-                var opt = RunOption.ParseOption(args);
+                var opt = RunOption.Parse(args);
                 
-                _settingManager = new RtcSettingManager(opt.SettingFileName);
+                _setting = RtcSetting.Load(opt.SettingFileName);
 
-                CorbaUtility.Initialize(_settingManager.RtcSetting.Corba);
-                _namingContainer = new NamingServiceContainer(_settingManager.RtcSetting.Naming);
+                CorbaUtility.Initialize(_setting.Corba);
+                _namingContainer = new NamingServiceContainer(_setting.Naming);
 
-                _componentFactory = new ModuleFactory<ReactiveComponent>(_settingManager.RtcSetting.Catalogs);
+                _componentFactory = new ModuleFactory<ReactiveComponent>(_setting.Catalogs);
                 _componentFactory.LoadCatalog();
             }
             catch (FileNotFoundException ex)
@@ -153,28 +153,5 @@ namespace ReactiveRTM.Management
         }
     }
 
-    public class RunOption
-    {
-        public static RunOption ParseOption(IEnumerable<string> args)
-        {
-            var opt = new RunOption();
-
-            var p = new OptionSet() {
-                { "f|file=",      v => opt.SettingFileName = v },
-                { "v|version",  v => opt.Version = true },
-                { "h|?|help",   v => opt.Help = v != null },
-            };
-            opt.Extra = p.Parse(args);
-
-            return opt;
-
-        }
-
-        public string SettingFileName { get; set; }
-        public bool Help { get; set; }
-        public bool Version { get; set; }
-
-        public List<string> Extra { get; set; }
-    }
 
 }

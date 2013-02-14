@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Common.Logging;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YamlDotNet.RepresentationModel.Serialization;
 
 namespace ReactiveRTM.Utility
 {
@@ -36,6 +39,49 @@ namespace ReactiveRTM.Utility
             ExecutionContext = new ExecutionContextSetting();
             SdoService = new SdoServiceSetting();
             Corba = new CorbaSetting();
+        }
+
+        private static ILog _logger = LogManager.GetCurrentClassLogger();
+        private static List<string> _defaultSettingFileNames = new List<string> { "rtc.yaml" };
+        
+        /// <summary>
+        /// Load RtcSetting from yaml file
+        /// </summary>
+        /// <param name="fileName">
+        /// RtcSetting file path.
+        /// if not found a file name, use default setting file (./rtc.yaml).
+        /// if not found a default setting file, use default setting.
+        /// </param>
+        /// <returns>loaded setting</returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="SyntaxErrorException">yaml syntax error</exception>
+        public static RtcSetting Load(string fileName)
+        {
+            RtcSetting setting;
+
+            var settingFile = fileName;
+            if (string.IsNullOrEmpty(settingFile) || !File.Exists(settingFile))
+            {
+                settingFile = _defaultSettingFileNames.Where(f => File.Exists(f)).FirstOrDefault();
+            }
+
+            if (!string.IsNullOrEmpty(settingFile))
+            {
+                _logger.InfoFormat("parse setting file. file name = {0}", settingFile);
+                using (var input = new StreamReader(settingFile, Encoding.UTF8))
+                {
+                    var yamlSerializer = new YamlSerializer<RtcSetting>();
+                    setting = yamlSerializer.Deserialize(input);
+                }
+            }
+            else
+            {
+                _logger.Info("use default setting");
+                setting = new RtcSetting();
+            }
+
+            return setting;
+
         }
     }
 
